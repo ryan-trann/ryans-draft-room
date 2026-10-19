@@ -1,7 +1,7 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#101827"><title>Ryan's Draft Room</title><style>
 :root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#eaf0fa;background:#0d1422}*{box-sizing:border-box}body{margin:0}header{padding:18px 16px;background:#131e30;position:sticky;top:0;z-index:2;border-bottom:1px solid #30415a}.wrap{max-width:1000px;margin:auto;padding:16px}.eyebrow{font-size:11px;letter-spacing:.15em;color:#9aaed1;text-transform:uppercase}h1{font-size:23px;margin:4px 0 8px}h2{font-size:17px;margin:0 0 12px}p{color:#adbbd0;line-height:1.45}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat,.panel{background:#172237;border:1px solid #30415a;border-radius:14px;padding:14px}.stat b{font-size:22px;display:block}.stat small{font-size:11px;color:#a7b9d1}.tabs{display:flex;gap:6px;overflow:auto;margin:14px 0}.tabs button{flex:1}.tabs button.active{background:#3375ec;color:white}button,input,select{font:inherit;border-radius:9px;border:1px solid #455873;padding:10px;background:#24334d;color:#fff}button{cursor:pointer}button.primary{background:#3478f6;border-color:#3478f6;font-weight:700}button:disabled{opacity:.45}input{width:100%;min-width:0}.panel{margin-bottom:12px}.row{display:flex;gap:8px;align-items:center}.row>*{min-width:0}.grow{flex:1}.muted{color:#9daec7;font-size:12px}.chip{display:inline-block;background:#263b5d;border-radius:6px;padding:3px 6px;font-size:11px;color:#c2d8fc}.pick{padding:10px 0;border-bottom:1px solid #30415a;display:flex;gap:10px;align-items:center}.pick:last-child{border:0}.pick strong{display:block}.rank{width:27px;color:#a8bfe6}.hidden{display:none}.scroll{max-height:55vh;overflow:auto}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.actions{display:flex;flex-wrap:wrap;gap:8px}.ok{color:#8de5b3}.warning{color:#ffd087}.note{padding:10px;border-radius:9px;background:#27354c;font-size:12px;color:#bcd0e8}label{display:block;font-size:12px;color:#adc0dd;margin-bottom:5px}table{width:100%;border-collapse:collapse;font-size:12px}td,th{padding:8px 4px;border-bottom:1px solid #30415a;text-align:left}th{color:#9fb6d8}#data>.panel:nth-child(2){display:none}#status{font-size:12px;margin-top:7px;color:#a7c8ff}@media(max-width:650px){.two{grid-template-columns:1fr}.wrap{padding:10px}.panel{padding:12px}header{padding:12px}.stats{gap:5px}.stat{padding:10px}.stat b{font-size:19px}}
-</style></head><body><header><div style="max-width:1000px;margin:auto"><div class="eyebrow">2026–27 · 12 teams · H2H 9-category</div><h1>Ryan's Draft Room</h1><div class="muted">Snake draft · Pick 11 · 14 rounds · 200 projections included · v12</div></div></header><main class="wrap"><div class="stats"><div class="stat"><small>ON THE CLOCK</small><b id="clock">Keith</b><small id="pickNo">Pick 1 / 168</small></div><div class="stat"><small>RYAN'S NEXT</small><b id="next">#11</b><small id="until">10 picks away</small></div><div class="stat"><small>RECORDED</small><b id="count">0</b><small>of 168 picks</small></div></div><nav class="tabs"><button class="active" data-tab="draft">Draft</button><button data-tab="recommend">Rankings</button><button data-tab="teams">Teams</button><button data-tab="standings">Category Ranks</button></nav>
-<section id="draft"><div class="panel"><h2>Best available picks for team on the clock</h2><div class="muted" id="bestPickContext">Hybrid ranking · recalculated after every pick</div><div id="bestPicks" style="margin-top:10px"></div></div><div class="panel"><h2>Draft strategy</h2><div class="row" style="justify-content:space-between"><label for="sideBetPriority">Weekly side-bet importance</label><strong id="sideBetPriorityText">80%</strong></div><input type="range" min="50" max="100" step="5" id="sideBetPriority" value="80" style="width:100%"><p class="muted">Side bet: finish first among the 12 teams in the most weekly categories (priority). H2H matchup: win five or more categories (secondary). Season projections are a proxy for weekly strength, not a weekly forecast.</p></div><div class="panel"><h2>Record the next pick</h2><label>Player selected</label><input id="player" placeholder="Search: Jokic, Doncic, Wembanyama…" autocomplete="off"><datalist id="players"></datalist><div id="playerSuggestions" class="hidden" style="margin-top:6px;max-height:240px;overflow:auto;border:1px solid #455873;border-radius:10px;background:#1d2c44"></div><div class="row" style="margin-top:9px"><button class="primary grow" id="record">Record pick</button><button id="undo">Undo</button></div><div id="status"></div></div><div class="panel"><h2>Recent selections</h2><div id="recent" class="scroll muted">No picks yet.</div></div><div class="panel"><h2>Your draft picks</h2><div id="myPicks" class="muted"></div></div></section>
+</style></head><body><header><div style="max-width:1000px;margin:auto"><div class="eyebrow">2026–27 · 12 teams · H2H 9-category</div><h1>Ryan's Draft Room</h1><div class="muted">Snake draft · Pick 11 · 14 rounds · 200 projections included · v13</div></div></header><main class="wrap"><div class="stats"><div class="stat"><small>ON THE CLOCK</small><b id="clock">Keith</b><small id="pickNo">Pick 1 / 168</small></div><div class="stat"><small>RYAN'S NEXT</small><b id="next">#11</b><small id="until">10 picks away</small></div><div class="stat"><small>RECORDED</small><b id="count">0</b><small>of 168 picks</small></div></div><nav class="tabs"><button class="active" data-tab="draft">Draft</button><button data-tab="recommend">Rankings</button><button data-tab="teams">Teams</button><button data-tab="standings">Category Ranks</button></nav>
+<section id="draft"><div class="panel"><h2>Best available picks for team on the clock</h2><div class="muted" id="bestPickContext">Hybrid ranking · recalculated after every pick</div><div id="bestPicks" style="margin-top:10px"></div></div><div class="panel"><h2>Draft strategy</h2><div class="row" style="justify-content:space-between"><label for="sideBetPriority">Weekly side-bet importance</label><strong id="sideBetPriorityText">80%</strong></div><input type="range" min="50" max="100" step="5" id="sideBetPriority" value="80" style="width:100%"><p class="muted">Side bet: lead the league in the most of nine categories each week; tied leaders split the pot. H2H: win five or more categories against your opponent. Simulated weekly variation is an estimate from season projections, not a weekly forecast.</p></div><div class="panel"><h2>Record the next pick</h2><label>Player selected</label><input id="player" placeholder="Search: Jokic, Doncic, Wembanyama…" autocomplete="off"><datalist id="players"></datalist><div id="playerSuggestions" class="hidden" style="margin-top:6px;max-height:240px;overflow:auto;border:1px solid #455873;border-radius:10px;background:#1d2c44"></div><div class="row" style="margin-top:9px"><button class="primary grow" id="record">Record pick</button><button id="undo">Undo</button></div><div id="status"></div></div><div class="panel"><h2>Recent selections</h2><div id="recent" class="scroll muted">No picks yet.</div></div><div class="panel"><h2>Your draft picks</h2><div id="myPicks" class="muted"></div></div></section>
 <section id="recommend" class="hidden"><div class="panel"><h2>Recommended available players</h2><div id="projectionNotice" class="note"></div><div class="row" style="margin:12px 0"><input id="filter" placeholder="Search player or position"><select id="sort"><option value="fit">Best fit</option><option value="base">Overall value</option></select></div><div id="recommendations" class="scroll"></div></div><div class="panel"><h2>How ranking works</h2><p>Projected season totals for FGM, FTM, 3PM, OREB, DREB, AST, STL and BLK are standardized across imported players. Turnovers are reversed. When Ryan has drafted players, the fit score boosts categories where his projected roster is relatively weak. Roster eligibility is checked against PG, SG, G, SF, PF, F, C×2, UTIL×3, bench×3.</p><div class="note">These are heuristic recommendations, not a full Monte Carlo simulation of other managers' future picks. No projection values are fabricated.</div></div></section>
 <section id="teams" class="hidden"><div class="panel"><h2>Team rosters</h2><select id="teamSelect" style="width:100%;margin-bottom:12px"></select><div id="roster"></div></div><div class="panel"><h2>Category totals</h2><div class="muted">Uses the built-in Hashtag Basketball projections. Lower turnovers are better.</div><div style="overflow:auto" id="teamTotals"></div></div><div class="panel"><h2>Draft controls and backups</h2><p class="muted">Clear picks only after confirmation. Back up picks before the live draft so you can recover if Safari storage is cleared.</p><div class="actions"><button id="reset">Clear all draft picks</button><button id="export">Backup draft JSON</button><button id="restoreBtn">Restore backup</button><input id="restore" type="file" accept=".json" class="hidden"></div></div></section>
 <section id="standings" class="hidden"><div class="panel"><h2>League category rankings</h2><p class="muted">All 12 teams ranked by drafted players’ projected season totals. Rank 1 is best; fewer turnovers are better. These are incomplete drafted-only standings, not actual weekly side-bet results. Early-draft teams with different numbers of picks are not directly comparable. Updates after each pick.</p><div id="standingsStatus" class="muted" style="margin:10px 0"></div><div id="categoryStandings" style="overflow-x:auto;-webkit-overflow-scrolling:touch"></div></div></section>
@@ -77,67 +77,175 @@ $('record').onclick=()=>{
 $('sideBetPriority').value=Number.isFinite(Number(state.sideBetPriority))?Math.min(100,Math.max(50,Number(state.sideBetPriority))):80;
 $('sideBetPriority').oninput=()=>{state.sideBetPriority=Number($('sideBetPriority').value);save();renderBestPicks()};
 document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));['draft','recommend','teams','standings'].forEach(id=>$(id).classList.toggle('hidden',id!==b.dataset.tab))});
+
+/*
+ * Predictive weekly-payout model.
+ * This is a scenario estimate, not a projection of any specific NBA week:
+ * - forecast remaining snake picks using projection value and roster needs;
+ * - create position-eligible active lineups (11 starters, modest bench use);
+ * - apply identical seeded weekly shocks across scenarios;
+ * - for each simulated week, pay 1 / number of tied leaders in category wins.
+ */
 function hybridRankings(){
- const pickIndex=state.picks.length;if(pickIndex>=168)return [];
- const team=teamAt(pickIndex),pool=available(),st=stats();
- const positions=p=>(p?.positions||'').split(/[,/| ]+/);
- const teams={};for(const t of TEAMS)teams[t]=[];
- for(const pick of state.picks)teams[pick.team].push(playerFor(pick));
- const raw=p=>p?score(p,st,null):0;
- const contribution=(p,c)=>p?((Number(p[c]||0)-st[c].m)/st[c].sd)*(c==='TO'?-1:1):0;
- const vectors={};
- for(const t of TEAMS){
-  const sorted=teams[t].slice().sort((a,b)=>raw(b)-raw(a));
-  const v=Object.fromEntries(CATS.map(c=>[c,0]));
-  sorted.forEach((p,i)=>{for(const c of CATS)v[c]+=contribution(p,c)*(i<11?1:.35)});
-  vectors[t]=v;
- }
- const mine=teams[team],mineSorted=mine.slice().sort((a,b)=>raw(b)-raw(a)),own=vectors[team];
- const temperature=2.8+Math.max(0,14-mine.length)*.28;
- const sigmoid=v=>1/(1+Math.exp(-Math.max(-30,Math.min(30,v))));
- const opponents=TEAMS.filter(t=>t!==team);
- const objective=v=>{
-  let firsts=0;
-  for(const c of CATS){
-   const max=Math.max(v[c],...opponents.map(t=>vectors[t][c]));
-   const ownWeight=Math.exp((v[c]-max)/temperature);
-   let denominator=ownWeight;
-   for(const t of opponents)denominator+=Math.exp((vectors[t][c]-max)/temperature);
-   firsts+=ownWeight/denominator;
-  }
-  const probs=CATS.map(c=>opponents.reduce((sum,t)=>sum+sigmoid((v[c]-vectors[t][c])/temperature),0)/opponents.length);
-  let distribution=[1,0,0,0,0,0,0,0,0,0];
-  for(const p of probs){
-   const next=Array(10).fill(0);
-   for(let j=0;j<9;j++){next[j]+=distribution[j]*(1-p);next[j+1]+=distribution[j]*p}
-   distribution=next;
-  }
-  return {firsts,matchWin:distribution.slice(5).reduce((a,b)=>a+b,0)};
+ const pickIndex=state.picks.length;
+ if(pickIndex>=168)return [];
+ const currentTeam=teamAt(pickIndex);
+ const currentIndex=TEAMS.indexOf(currentTeam);
+ const pool=available();
+ if(!pool.length)return [];
+ const st=stats();
+ const cats=CATS, catCount=cats.length, teamCount=TEAMS.length;
+ const activeSlots=['PG','SG','G','SF','PF','F','C','C','UTIL','UTIL','UTIL'];
+ const pos=p=>(p?.positions||'').split(/[,/| ]+/).filter(Boolean);
+ const permitted=(p,slot)=>{
+  const a=pos(p);
+  return slot==='UTIL'||a.includes(slot)||(slot==='G'&&(a.includes('PG')||a.includes('SG')))||(slot==='F'&&(a.includes('SF')||a.includes('PF')));
  };
- const before=objective(own);
- let next=-1;for(let k=pickIndex+1;k<168;k++)if(teamAt(k)===team){next=k;break}
- const gap=next<0?0:Math.min(24,next-pickIndex);
- const occupied=mine.filter(Boolean),scarcePositions=['PG','SG','SF','PF','C'].filter(pos=>occupied.filter(p=>positions(p).includes(pos)).length<(pos==='C'?2:1));
- const items=pool.map((p,index)=>{
-  const value=raw(p),newVec={...own};
-  const candidateFactor=mine.length<11?1:(mineSorted.length>=11&&value>raw(mineSorted[10])?1:.35);
-  const displaced=candidateFactor===1&&mine.length>=11?mineSorted[10]:null;
-  for(const c of CATS)newVec[c]+=contribution(p,c)*candidateFactor-(displaced?contribution(displaced,c)*.65:0);
-  const after=objective(newVec);
-  const positionBoost=scarcePositions.filter(pos=>positions(p).includes(pos)).length*.07;
-  const urgency=gap?Math.max(0,1-index/Math.max(30,gap*3))*.06:0;
-  return {p,sideDelta:after.firsts-before.firsts,matchDelta:after.matchWin-before.matchWin,rawScore:value,positionBoost,urgency};
- });
- const normalized=field=>{const mean=items.reduce((v,x)=>v+x[field],0)/Math.max(1,items.length);const sd=Math.sqrt(items.reduce((v,x)=>v+(x[field]-mean)**2,0)/Math.max(1,items.length))||1;return x=>(x[field]-mean)/sd};
- const sideZ=normalized('sideDelta'),matchZ=normalized('matchDelta'),rawZ=normalized('rawScore');
- const sideWeight=Math.min(1,Math.max(.5,(Number($('sideBetPriority')?.value)||80)/100));
- return items.map(x=>({...x,value:sideWeight*sideZ(x)+(1-sideWeight)*matchZ(x)+.12*rawZ(x)+x.positionBoost+x.urgency,fits:true})).sort((a,b)=>b.value-a.value);
+ const merit=p=>p?score(p,st,null):-1000;
+ const rankedPool=pool.slice().sort((a,b)=>merit(b)-merit(a));
+ const existing=TEAMS.map(()=>[]);
+ for(const pick of state.picks){
+  const t=TEAMS.indexOf(pick.team);
+  if(t>=0)existing[t].push(playerFor(pick));
+ }
+ const getScore=p=>merit(p);
+ function forecast(first){
+  const rosters=existing.map(xs=>xs.slice());
+  const taken=new Set();
+  if(first)taken.add(first.draftId);
+  for(let k=pickIndex;k<168;k++){
+   const t=TEAMS.indexOf(teamAt(k));
+   if(t<0)continue;
+   let selection=null;
+   if(k===pickIndex&&first)selection=first;
+   else {
+    const roster=rosters[t];
+    const counts={PG:0,SG:0,SF:0,PF:0,C:0};
+    for(const p of roster){
+     if(!p)continue;
+     const positions=pos(p);
+     for(const c of Object.keys(counts))if(positions.includes(c))counts[c]++;
+    }
+    let examined=0,best=-1e9;
+    for(const p of rankedPool){
+     if(taken.has(p.draftId))continue;
+     let bonus=0;
+     const a=pos(p);
+     if(a.includes('C')&&counts.C<2)bonus+=.55;
+     if(a.includes('PG')&&counts.PG<1)bonus+=.38;
+     if(a.includes('SG')&&counts.SG<1)bonus+=.38;
+     if(a.includes('SF')&&counts.SF<1)bonus+=.38;
+     if(a.includes('PF')&&counts.PF<1)bonus+=.38;
+     const v=getScore(p)+bonus;
+     if(v>best){best=v;selection=p}
+     if(++examined>=24)break;
+    }
+   }
+   if(selection)taken.add(selection.draftId);
+   rosters[t].push(selection);
+  }
+  return rosters;
+ }
+ function lineupMeans(rosters){
+  const means=new Float64Array(teamCount*catCount);
+  for(let t=0;t<teamCount;t++){
+   const players=rosters[t].filter(Boolean).sort((a,b)=>merit(b)-merit(a));
+   const slots=Array(activeSlots.length).fill(null);
+   function match(p,seen){
+    for(let i=0;i<activeSlots.length;i++){
+     if(seen[i]||!permitted(p,activeSlots[i]))continue;
+     seen[i]=true;
+     if(!slots[i]||match(slots[i],seen)){slots[i]=p;return true}
+    }
+    return false;
+   }
+   for(const p of players)match(p,Array(activeSlots.length).fill(false));
+   const starters=new Set(slots.filter(Boolean).map(p=>p.draftId));
+   for(const p of players){
+    const participation=starters.has(p.draftId)?1:.18;
+    for(let c=0;c<catCount;c++)means[t*catCount+c]+=Math.max(0,Number(p[cats[c]]||0))/24*participation;
+   }
+  }
+  return means;
+ }
+ // Seeded common random numbers make candidate comparisons stable after a redraw.
+ const trials=320;
+ let seed=0x6e624eb7;
+ const random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296};
+ const normal=()=>((random()+random()+random()+random()+random()+random())-3)*1.41421356237;
+ const shared=new Float32Array(trials*teamCount);
+ const specific=new Float32Array(trials*teamCount*catCount);
+ for(let k=0;k<trials*teamCount;k++)shared[k]=normal();
+ for(let k=0;k<specific.length;k++)specific[k]=normal();
+ const volatility=[1.08,1.20,1.22,1.12,1.02,1.10,1.30,1.42,1.20];
+ function evaluate(means){
+  const weeklySds=new Float64Array(means.length);
+  for(let i=0;i<means.length;i++)weeklySds[i]=Math.sqrt(Math.max(1,means[i]))*volatility[i%catCount]+means[i]*.045;
+  let payout=0,h2h=0,firsts=0,solo=0,tie=0;
+  const values=new Float64Array(teamCount*catCount);
+  const catWins=new Uint8Array(teamCount);
+  const versus=new Uint8Array(teamCount);
+  for(let week=0;week<trials;week++){
+   catWins.fill(0);versus.fill(0);
+   const sharedStart=week*teamCount,noiseStart=week*teamCount*catCount;
+   for(let t=0;t<teamCount;t++){
+    const shift=shared[sharedStart+t];
+    for(let c=0;c<catCount;c++){
+     const i=t*catCount+c;
+     values[i]=Math.max(0,means[i]+means[i]*.085*shift+weeklySds[i]*specific[noiseStart+i]);
+    }
+   }
+   for(let c=0;c<catCount;c++){
+    let winner=-1,winning=0;
+    for(let t=0;t<teamCount;t++){
+     const v=values[t*catCount+c];
+     if(winner<0||(c===8?v<winning:v>winning)){winner=t;winning=v}
+    }
+    if(winner>=0)catWins[winner]++;
+    const own=values[currentIndex*catCount+c];
+    for(let t=0;t<teamCount;t++){
+     if(t===currentIndex)continue;
+     const other=values[t*catCount+c];
+     if(c===8?own<other:own>other)versus[t]++;
+    }
+   }
+   let maxWin=0,winnerCount=0;
+   for(let t=0;t<teamCount;t++)maxWin=Math.max(maxWin,catWins[t]);
+   for(let t=0;t<teamCount;t++)if(catWins[t]===maxWin)winnerCount++;
+   if(catWins[currentIndex]===maxWin){
+    payout+=1/winnerCount;
+    if(winnerCount===1)solo++;else tie++;
+   }
+   firsts+=catWins[currentIndex];
+   for(let t=0;t<teamCount;t++)if(t!==currentIndex&&versus[t]>=5)h2h++;
+  }
+  return {share:payout/trials,h2h:h2h/(trials*(teamCount-1)),firsts:firsts/trials,solo:solo/trials,tie:tie/trials};
+ }
+ // Keep a broad, category-diverse shortlist rather than simulating every player.
+ const shortlist=[],chosen=new Set();
+ function add(p){if(p&&!chosen.has(p.draftId)){chosen.add(p.draftId);shortlist.push(p)}}
+ rankedPool.slice(0,32).forEach(add);
+ for(const c of cats)pool.slice().sort((a,b)=>(Number(b[c]||0)-Number(a[c]||0))*(c==='TO'?-1:1)).slice(0,4).forEach(add);
+ for(const position of ['PG','SG','SF','PF','C'])rankedPool.filter(p=>pos(p).includes(position)).slice(0,3).forEach(add);
+ const finalists=shortlist.slice(0,72);
+ const weight=Math.min(1,Math.max(.5,(Number($('sideBetPriority')?.value)||80)/100));
+ const scores=[];
+ for(const p of finalists){
+  const outcome=evaluate(lineupMeans(forecast(p)));
+  scores.push({p,share:outcome.share,h2h:outcome.h2h,firsts:outcome.firsts,solo:outcome.solo,tie:outcome.tie,
+   value:weight*outcome.share+(1-weight)*outcome.h2h});
+ }
+ scores.sort((a,b)=>b.value-a.value||merit(b.p)-merit(a.p));
+ return scores;
 }
 function renderBestPicks(){
- const out=$('bestPicks'),ranked=hybridRankings();if($('sideBetPriorityText'))$('sideBetPriorityText').textContent=String($('sideBetPriority').value)+'%';
- if(!ranked.length){out.textContent='No available projections.';return}
- $('bestPickContext').textContent='Pick #'+Math.min(state.picks.length+1,168)+' · '+(state.picks.length<168?teamAt(state.picks.length):'Draft complete')+' on the clock · '+ranked.length+' available · recommendations for '+teamAt(state.picks.length)+' · hybrid scoring';
- out.innerHTML=ranked.slice(0,5).map((x,i)=>'<div class="pick"><span class="rank">'+(i+1)+'</span><div class="grow"><strong>'+esc(playerLabel(x.p))+'</strong><div class="muted">'+esc(x.p.positions||'')+' · Hybrid score '+x.value.toFixed(1)+(x.fits?'':' · no open roster slot')+'</div></div><button type="button" class="bestSelect" data-id="'+esc(x.p.draftId)+'" data-name="'+esc(x.p.name)+'">Select</button></div>').join('');
+ const out=$('bestPicks'),ranked=hybridRankings();
+ if($('sideBetPriorityText'))$('sideBetPriorityText').textContent=String($('sideBetPriority').value)+'%';
+ if(!ranked.length){out.textContent='No available projections or the draft is complete.';return}
+ const pct=n=>(n*100).toFixed(1)+'%';
+ $('bestPickContext').textContent='Pick #'+Math.min(state.picks.length+1,168)+' · '+teamAt(state.picks.length)+' on the clock · '+available().length+' available · '+ranked.length+' candidates simulated';
+ out.innerHTML='<p class="muted" style="margin:4px 0 10px">Estimated weekly side-bet share includes split pots. H2H is the average estimated win chance against a league opponent. Scenario estimates, not guaranteed outcomes.</p>'+
+ ranked.slice(0,5).map((x,i)=>'<div class="pick"><span class="rank">'+(i+1)+'</span><div class="grow"><strong>'+esc(playerLabel(x.p))+'</strong><div class="muted">'+esc(x.p.positions||'')+' · Side bet '+pct(x.share)+' of pot · H2H '+pct(x.h2h)+'</div><div class="muted">Expected category leads '+x.firsts.toFixed(2)+' per week · weighted score '+pct(x.value)+'</div></div><button type="button" class="bestSelect" data-id="'+esc(x.p.draftId)+'" data-name="'+esc(x.p.name)+'">Select</button></div>').join('');
  out.querySelectorAll('.bestSelect').forEach(b=>b.onclick=()=>{selectedPlayerId=b.dataset.id;$('player').value=b.dataset.name;$('playerSuggestions').classList.add('hidden');$('status').textContent='Selected '+b.dataset.name+'. Tap Record pick to confirm.'});
 }
 function showPlayerSuggestions(){
