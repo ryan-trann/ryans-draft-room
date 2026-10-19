@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#101827"><title>Ryan's Draft Room</title><style>
 :root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#eaf0fa;background:#0d1422}*{box-sizing:border-box}body{margin:0}header{padding:18px 16px;background:#131e30;position:sticky;top:0;z-index:2;border-bottom:1px solid #30415a}.wrap{max-width:1000px;margin:auto;padding:16px}.eyebrow{font-size:11px;letter-spacing:.15em;color:#9aaed1;text-transform:uppercase}h1{font-size:23px;margin:4px 0 8px}h2{font-size:17px;margin:0 0 12px}p{color:#adbbd0;line-height:1.45}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat,.panel{background:#172237;border:1px solid #30415a;border-radius:14px;padding:14px}.stat b{font-size:22px;display:block}.stat small{font-size:11px;color:#a7b9d1}.tabs{display:flex;gap:6px;overflow:auto;margin:14px 0}.tabs button{flex:1}.tabs button.active{background:#3375ec;color:white}button,input,select{font:inherit;border-radius:9px;border:1px solid #455873;padding:10px;background:#24334d;color:#fff}button{cursor:pointer}button.primary{background:#3478f6;border-color:#3478f6;font-weight:700}button:disabled{opacity:.45}input{width:100%;min-width:0}.panel{margin-bottom:12px}.row{display:flex;gap:8px;align-items:center}.row>*{min-width:0}.grow{flex:1}.muted{color:#9daec7;font-size:12px}.chip{display:inline-block;background:#263b5d;border-radius:6px;padding:3px 6px;font-size:11px;color:#c2d8fc}.pick{padding:10px 0;border-bottom:1px solid #30415a;display:flex;gap:10px;align-items:center}.pick:last-child{border:0}.pick strong{display:block}.rank{width:27px;color:#a8bfe6}.hidden{display:none}.scroll{max-height:55vh;overflow:auto}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.actions{display:flex;flex-wrap:wrap;gap:8px}.ok{color:#8de5b3}.warning{color:#ffd087}.note{padding:10px;border-radius:9px;background:#27354c;font-size:12px;color:#bcd0e8}label{display:block;font-size:12px;color:#adc0dd;margin-bottom:5px}table{width:100%;border-collapse:collapse;font-size:12px}td,th{padding:8px 4px;border-bottom:1px solid #30415a;text-align:left}th{color:#9fb6d8}#data>.panel:nth-child(2){display:none}#status{font-size:12px;margin-top:7px;color:#a7c8ff}@media(max-width:650px){.two{grid-template-columns:1fr}.wrap{padding:10px}.panel{padding:12px}header{padding:12px}.stats{gap:5px}.stat{padding:10px}.stat b{font-size:19px}}
-</style></head><body><header><div style="max-width:1000px;margin:auto"><div class="eyebrow">2026–27 · 12 teams · H2H 9-category</div><h1>Ryan's Draft Room</h1><div class="muted">Snake draft · Pick 11 · 14 rounds · 200 projections included · v8</div></div></header><main class="wrap"><div class="stats"><div class="stat"><small>ON THE CLOCK</small><b id="clock">Keith</b><small id="pickNo">Pick 1 / 168</small></div><div class="stat"><small>RYAN'S NEXT</small><b id="next">#11</b><small id="until">10 picks away</small></div><div class="stat"><small>RECORDED</small><b id="count">0</b><small>of 168 picks</small></div></div><nav class="tabs"><button class="active" data-tab="draft">Draft</button><button data-tab="recommend">Rankings</button><button data-tab="teams">Teams</button><button data-tab="data">Projections</button></nav>
+</style></head><body><header><div style="max-width:1000px;margin:auto"><div class="eyebrow">2026–27 · 12 teams · H2H 9-category</div><h1>Ryan's Draft Room</h1><div class="muted">Snake draft · Pick 11 · 14 rounds · 200 projections included · v9</div></div></header><main class="wrap"><div class="stats"><div class="stat"><small>ON THE CLOCK</small><b id="clock">Keith</b><small id="pickNo">Pick 1 / 168</small></div><div class="stat"><small>RYAN'S NEXT</small><b id="next">#11</b><small id="until">10 picks away</small></div><div class="stat"><small>RECORDED</small><b id="count">0</b><small>of 168 picks</small></div></div><nav class="tabs"><button class="active" data-tab="draft">Draft</button><button data-tab="recommend">Rankings</button><button data-tab="teams">Teams</button><button data-tab="data">Projections</button></nav>
 <section id="draft"><div class="panel"><h2>Best available picks for team on the clock</h2><div class="muted" id="bestPickContext">Hybrid ranking · recalculated after every pick</div><div id="bestPicks" style="margin-top:10px"></div></div><div class="panel"><h2>Record the next pick</h2><label>Player selected</label><input id="player" list="players" placeholder="Search: Jokic, Doncic, Wembanyama…" autocomplete="off"><datalist id="players"></datalist><div id="playerSuggestions" class="hidden" style="margin-top:6px;max-height:240px;overflow:auto;border:1px solid #455873;border-radius:10px;background:#1d2c44"></div><div class="row" style="margin-top:9px"><button class="primary grow" id="record">Record pick</button><button id="undo">Undo</button></div><div id="status"></div></div><div class="panel"><h2>Recent selections</h2><div id="recent" class="scroll muted">No picks yet.</div></div><div class="panel"><h2>Your draft picks</h2><div id="myPicks" class="muted"></div></div></section>
 <section id="recommend" class="hidden"><div class="panel"><h2>Recommended available players</h2><div id="projectionNotice" class="note"></div><div class="row" style="margin:12px 0"><input id="filter" placeholder="Search player or position"><select id="sort"><option value="fit">Best fit</option><option value="base">Overall value</option></select></div><div id="recommendations" class="scroll"></div></div><div class="panel"><h2>How ranking works</h2><p>Projected season totals for FGM, FTM, 3PM, OREB, DREB, AST, STL and BLK are standardized across imported players. Turnovers are reversed. When Ryan has drafted players, the fit score boosts categories where his projected roster is relatively weak. Roster eligibility is checked against PG, SG, G, SF, PF, F, C×2, UTIL×3, bench×3.</p><div class="note">These are heuristic recommendations, not a full Monte Carlo simulation of other managers' future picks. No projection values are fabricated.</div></div></section>
 <section id="teams" class="hidden"><div class="panel"><h2>Team rosters</h2><select id="teamSelect" style="width:100%;margin-bottom:12px"></select><div id="roster"></div></div><div class="panel"><h2>Category totals</h2><div class="muted">Available once projections are imported. Turnovers are better when lower.</div><div style="overflow:auto" id="teamTotals"></div></div></section>
@@ -12,28 +12,76 @@ function stats(){const arr=state.projections;let o={};for(let c of CATS){let val
 function renderTeams(){let t=$('teamSelect').value||'Ryan',list=state.picks.filter(x=>x.team===t);$('roster').innerHTML=list.map((x,i)=>`<div class="pick"><span class="rank">${i+1}</span><div><strong>${esc(x.player)}</strong><span class="muted">${esc(playerFor(x.player)?.positions||'')}</span></div></div>`).join('')||'<p>No selections yet.</p>';$('teamTotals').innerHTML=state.projections.length?'<table><thead><tr><th>Team</th>'+CATS.map(c=>`<th>${c}</th>`).join('')+'</tr></thead><tbody>'+TEAMS.map(t=>{let pp=state.picks.filter(x=>x.team===t).map(x=>playerFor(x.player)).filter(Boolean);return `<tr><td>${esc(t)}</td>${CATS.map(c=>`<td>${pp.reduce((v,p)=>v+(p[c]||0),0).toFixed(0)}</td>`).join('')}</tr>`}).join('')+'</tbody></table>':''}
 $('record').onclick=()=>{let v=$('player').value.trim();if(!v)return $('status').textContent='Enter a player name.';if(state.picks.some(x=>norm(x.player)===norm(v)))return $('status').textContent='That player has already been drafted.';if(state.picks.length>=168)return;let match=playerFor(v);if(!match)return $('status').textContent='Tap an exact player name from the suggestions first.';state.picks.push({team:teamAt(state.picks.length),player:match?match.name:v});$('player').value='';$('status').textContent=`Recorded ${v}.`;save();render()};$('player').onkeydown=e=>{if(e.key==='Enter')$('record').click()};$('undo').onclick=()=>{if(!state.picks.length)return;let x=state.picks.pop();$('status').textContent=`Undid ${x.player}.`;save();render()};$('filter').oninput=renderRankings;$('sort').onchange=renderRankings;$('teamSelect').onchange=renderTeams;TEAMS.forEach(t=>$('teamSelect').add(new Option(t,t)));$('teamSelect').value='Ryan';document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));['draft','recommend','teams','data'].forEach(id=>$(id).classList.toggle('hidden',id!==b.dataset.tab))});
 function hybridRankings(){
- const pickIndex=state.picks.length,team=pickIndex<168?teamAt(pickIndex):null;
- if(!team)return [];
- const pool=available(),st=stats(),teamPlayers={};
- for(const pick of state.picks){const p=playerFor(pick.player);if(p)(teamPlayers[pick.team]??=[]).push(p)}
- const mine=teamPlayers[team]||[],slots=['PG','SG','G','SF','PF','F','C','C','UTIL','UTIL','UTIL','BN','BN','BN'];
- const positions=p=>(p.positions||'').split(/[,/| ]+/);
- const canFill=(p,slot)=>{const a=positions(p);return slot==='UTIL'||slot==='BN'||a.includes(slot)||(slot==='G'&&(a.includes('PG')||a.includes('SG')))||(slot==='F'&&(a.includes('SF')||a.includes('PF'))};
- function matched(players){const assigned=Array(slots.length).fill(-1);function dfs(k,seen){for(let j=0;j<slots.length;j++){if(seen[j]||!canFill(players[k],slots[j]))continue;seen[j]=true;if(assigned[j]===-1||dfs(assigned[j],seen)){assigned[j]=k;return true}}return false}let count=0;for(let k=0;k<players.length;k++)if(dfs(k,Array(slots.length).fill(false)))count++;return {count,used:assigned.map((v,i)=>v>=0?i:-1).filter(i=>i>=0)}}
- const fitted=matched(mine),used=new Set(fitted.used),open=slots.filter((_,i)=>!used.has(i));
- const weak={};if(mine.length)for(const c of CATS){const z=mine.reduce((v,p)=>v+((p[c]||0)-st[c].m)/st[c].sd*(c==='TO'?-1:1),0)/mine.length;weak[c]=Math.max(0,Math.min(.6,-z*.25))}
- const totals={};for(const [t,players] of Object.entries(teamPlayers)){totals[t]={};for(const c of CATS)totals[t][c]=players.reduce((v,p)=>v+(+p[c]||0),0)}
+ const pickIndex=state.picks.length;
+ if(pickIndex>=168)return [];
+ const team=teamAt(pickIndex),pool=available(),st=stats(),teamPlayers={};
+ for(const pick of state.picks){
+  const player=playerFor(pick.player);
+  if(player)(teamPlayers[pick.team]??=[]).push(player);
+ }
+ const mine=teamPlayers[team]||[];
+ const slots=['PG','SG','G','SF','PF','F','C','C','UTIL','UTIL','UTIL','BN','BN','BN'];
+ const canFill=(p,slot)=>{
+  const positions=(p.positions||'').split(/[,/| ]+/);
+  return slot==='UTIL'||slot==='BN'||positions.includes(slot)||(slot==='G'&&(positions.includes('PG')||positions.includes('SG')))||(slot==='F'&&(positions.includes('SF')||positions.includes('PF')));
+ };
+ function matched(players){
+  const assigned=Array(slots.length).fill(-1);
+  function dfs(k,seen){
+   for(let j=0;j<slots.length;j++){
+    if(seen[j]||!canFill(players[k],slots[j]))continue;
+    seen[j]=true;
+    if(assigned[j]===-1||dfs(assigned[j],seen)){
+     assigned[j]=k;
+     return true;
+    }
+   }
+   return false;
+  }
+  let count=0;
+  for(let k=0;k<players.length;k++)if(dfs(k,Array(slots.length).fill(false)))count++;
+  return {count,used:assigned.map((v,i)=>v>=0?i:-1).filter(i=>i>=0)};
+ }
+ const fitted=matched(mine);
+ const open=slots.filter((_,i)=>!fitted.used.includes(i));
+ const weak={};
+ if(mine.length){
+  for(const c of CATS){
+   const z=mine.reduce((v,p)=>v+((p[c]||0)-st[c].m)/st[c].sd*(c==='TO'?-1:1),0)/mine.length;
+   weak[c]=Math.max(0,Math.min(.6,-z*.25));
+  }
+ }
+ const totals={};
+ for(const [t,players] of Object.entries(teamPlayers)){
+  totals[t]={};
+  for(const c of CATS)totals[t][c]=players.reduce((v,p)=>v+(+p[c]||0),0);
+ }
  const opponents=Object.entries(totals).filter(([t])=>t!==team).map(([,v])=>v);
  const own=totals[team]||Object.fromEntries(CATS.map(c=>[c,0]));
- let next=-1;for(let k=pickIndex+1;k<168;k++)if(teamAt(k)===team){next=k;break}
+ let next=-1;
+ for(let k=pickIndex+1;k<168;k++){
+  if(teamAt(k)===team){next=k;break;}
+ }
  const gap=next<0?0:Math.min(24,next-pickIndex);
  return pool.map((p,index)=>{
-  const base=score(p,st,weak),fits=mine.length<slots.length&&matched([...mine,p]).count>fitted.count;
+  const base=score(p,st,weak);
+  const fits=mine.length<slots.length&&matched([...mine,p]).count>fitted.count;
   const positional=open.filter(slot=>canFill(p,slot)&&slot!=='BN'&&slot!=='UTIL').length;
   const positionBoost=fits?Math.min(1.2,positional*.22):-3;
   let competition=0;
-  if(opponents.length>=3)for(const c of CATS){const before=own[c],after=before+(+p[c]||0);for(const opp of opponents){const other=opp[c];competition+=.13*((c==='TO'?after<other:after>other)?1:0)-.13*((c==='TO'?before<other:before>other)?1:0)}}
-  const scarcity=Math.max(0,1-index/Math.max(30,gap*3)),urgency=gap?Math.min(1.2,scarcity*.7):0;
+  if(opponents.length>=3){
+   for(const c of CATS){
+    const before=own[c],after=before+(+p[c]||0);
+    for(const opp of opponents){
+     const other=opp[c];
+     const wasAhead=c==='TO'?before<other:before>other;
+     const nowAhead=c==='TO'?after<other:after>other;
+     competition+=.13*(Number(nowAhead)-Number(wasAhead));
+    }
+   }
+  }
+  const scarcity=Math.max(0,1-index/Math.max(30,gap*3));
+  const urgency=gap?Math.min(1.2,scarcity*.7):0;
   return {p,value:base+positionBoost+competition+urgency,fits};
  }).sort((a,b)=>b.value-a.value);
 }
