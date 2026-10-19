@@ -224,7 +224,7 @@ function hybridRankings(){
  for(const p of finalists){
   const outcome=evaluate(lineupMeans(forecast(p)));
   scores.push({p,share:outcome.share,h2h:outcome.h2h,firsts:outcome.firsts,solo:outcome.solo,tie:outcome.tie,
-   value:weight*outcome.share+(1-weight)*outcome.h2h-0.004*Math.max(0,topOverallMerit-merit(p))});
+   value:weight*outcome.share+(1-weight)*outcome.h2h-0.008*Math.max(0,topOverallMerit-merit(p))});
  }
  scores.sort((a,b)=>b.value-a.value||merit(b.p)-merit(a.p));
  return scores;
