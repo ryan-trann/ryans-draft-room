@@ -127,7 +127,7 @@ try{
   await expect(page.locator('.stream-row').first()).toContainText('Improves:');
   await expect(page.locator('.stream-row').first()).toContainText('Weakens:');
   const values=await page.locator('.stream-row .section-header .positive').allTextContents();
-  const impacts=values.map(v=>Number(v.match(/([+−-]?\\d+\\.\\d+) pp/)?.[1].replace('−','-')||0));
+  const impacts=values.map(v=>Number(v.match(/([+−-]?\d+\.\d+) pp/)?.[1].replace('−','-')||0));
   expect(impacts.every(n=>n>=0)).toBe(true);
   expect(impacts.every((n,i)=>i===0||impacts[i-1]>=n)).toBe(true);
   const addId=await page.locator('.stream-row .stream-pair').first().locator('div').last().locator('b').textContent();
