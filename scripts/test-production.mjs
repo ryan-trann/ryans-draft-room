@@ -11,6 +11,8 @@ const page=await browser.newPage({viewport:{width:393,height:852},deviceScaleFac
 const errors=[],writes=[],projectionWrites=[],draftWrites=[];let remote=JSON.parse(await fs.readFile('team-rosters.json','utf8'));
 const originalDraft=JSON.parse(await fs.readFile('draft-teams.json','utf8')).picks;
 page.on('pageerror',e=>errors.push(e.message));
+const injuryFixture={source:'ESPN NBA injuries',sourceUrl:'https://www.espn.com/nba/injuries',updatedAt:'2026-10-20T02:00:00Z',count:12,players:Array.from({length:12},(_,i)=>({name:'Fixture Injured '+i,team:'ATL',status:'Out'}))};
+await page.route('**/injuries.json?fresh=*',route=>route.fulfill({contentType:'application/json',body:JSON.stringify(injuryFixture)}));
 await page.clock.setFixedTime(new Date('2026-10-20T03:15:00Z'));
 await page.route('**/team-rosters.json?fresh=*',route=>route.fulfill({contentType:'application/json',body:JSON.stringify(remote)}));
 await page.route('https://api.github.com/**',async route=>{
@@ -36,7 +38,7 @@ try{
  expect(duplicateLabels.length).toBeGreaterThan(0);
  for(const p of duplicateLabels)expect(p.actual).toBe(p.expected);
  await page.screenshot({path:evidence+'/01-team-mobile.png'});
- // v40: Team has no redundant Category Strategy entry; Trades is the sole auto finder.
+ // v41: Team has no redundant Category Strategy entry; Trades is the sole auto finder.
  await expect(page.locator('.strategy-entry')).toHaveCount(0);
  await page.getByRole('button',{name:'Trades',exact:true}).click();
  await page.getByRole('button',{name:'Find ideas',exact:true}).click();
@@ -105,14 +107,30 @@ try{
  await page.getByRole('button',{name:'Team',exact:true}).click();await page.getByRole('button',{name:'Select N.Jokic for comparison',exact:true}).click();await page.getByRole('button',{name:'Select D.Clingan for comparison',exact:true}).click();await page.getByRole('button',{name:'Compare',exact:true}).click();await expect(page.locator('.comparison-table tbody tr')).toHaveCount(11);await page.screenshot({path:evidence+'/03-comparison-mobile.png'});await page.getByRole('button',{name:'Close panel',exact:true}).click();
  await page.getByRole('button',{name:'Ranks',exact:true}).click();await expect(page.locator('.category-row')).toHaveCount(9);await page.getByRole('button',{name:'League',exact:true}).click();await expect(page.locator('.league-row')).toHaveCount(12);
  await page.getByRole('button',{name:'Players',exact:true}).click();await page.getByRole('textbox',{name:'Search players',exact:true}).fill('zz-no-player');await expect(page.getByRole('heading',{name:'No matching players',exact:true})).toBeVisible();await page.getByRole('button',{name:'Clear search',exact:true}).click();await page.getByRole('combobox',{name:'Sort players',exact:true}).selectOption('adp');await expect(page.locator('.player-lab-row').first()).toContainText('N.Jokic');
- await page.getByRole('button',{name:'Stream',exact:true}).click();await page.getByRole('button',{name:'Find streaming opportunities',exact:true}).click();await expect(page.locator('.stream-results')).toContainText('+22.82');await page.screenshot({path:evidence+'/04-stream-mobile.png'});
+ await page.getByRole('button',{name:'Stream',exact:true}).click();
+ await expect(page.getByRole('checkbox',{name:'Exclude injured players'})).toBeChecked();
+ await expect(page.locator('.injury-status')).toContainText('ESPN NBA injuries');
+ await page.getByRole('button',{name:'Find streaming opportunities',exact:true}).click();
+ await expect(page.locator('.stream-results')).toContainText('+22.82');
+ // A newly listed injured pickup disappears; switching the filter off restores it.
+ const addId=await page.locator('.stream-row .stream-pair').first().locator('div').last().locator('b').textContent();
+ const projection=initial.projections.find(p=>addId?.startsWith(p.name));
+ if(projection){
+  injuryFixture.players.unshift({name:projection.name,team:projection.team,status:'Out'});
+  injuryFixture.count=injuryFixture.players.length;
+  await page.getByRole('button',{name:'Find streaming opportunities',exact:true}).click();
+  await expect(page.locator('.stream-results')).toContainText('injured excluded');
+  await page.getByRole('checkbox',{name:'Exclude injured players'}).uncheck();
+  await expect(page.locator('.stream-results')).not.toContainText('injured excluded');
+ }
+ await page.screenshot({path:evidence+'/04-stream-mobile.png'});
  await page.getByRole('button',{name:'Open menu',exact:true}).click();await page.getByRole('button',{name:'Draft & backups',exact:false}).click();await expect(page.getByRole('heading',{name:'DRAFT CENTER',exact:true})).toBeVisible();await expect(page.locator('#legacy-ui')).toBeHidden();await expect(page.locator('#export')).toBeVisible();await expect(page.locator('#bestPickContext')).toContainText('Draft complete');
  const backup=await page.evaluate(()=>JSON.stringify(state));
  await page.screenshot({path:evidence+'/06-draft-mobile.png'});
  await page.locator('#reset').click();await expect(page.locator('#count')).toHaveText('0');await page.locator('#player').fill('N.Jokic');await page.locator('#playerSuggestions button').first().click();await page.locator('#record').click();await expect(page.locator('#count')).toHaveText('1');await page.locator('#undo').click();await expect(page.locator('#count')).toHaveText('0');
  await page.locator('#restore').setInputFiles({name:'draft-backup.json',mimeType:'application/json',buffer:Buffer.from(backup)});await expect(page.locator('#count')).toHaveText('168');
  await page.getByRole('button',{name:'Team',exact:true}).click();await page.getByRole('button',{name:'Open menu',exact:true}).click();await page.getByRole('button',{name:'GitHub & projections',exact:false}).click();await page.getByRole('button',{name:'Upload projections',exact:true}).click();
- await expect(page.getByRole('heading',{name:'UPLOAD PROJECTIONS',exact:true})).toBeVisible();await expect(page.locator('#legacy-ui')).toBeHidden();await expect(page.locator('.preview-label')).toHaveText('v40');expect(await page.locator('.hero-title').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);await page.screenshot({path:evidence+'/07a-projections-start-mobile.png'});
+ await expect(page.getByRole('heading',{name:'UPLOAD PROJECTIONS',exact:true})).toBeVisible();await expect(page.locator('#legacy-ui')).toBeHidden();await expect(page.locator('.preview-label')).toHaveText('v41');expect(await page.locator('.hero-title').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);await page.screenshot({path:evidence+'/07a-projections-start-mobile.png'});
  await page.getByRole('button',{name:'Validate and preview',exact:true}).click();await expect(page.locator('#tool-projections-preview')).toContainText('Validation failed');await expect(page.locator('#tool-projections-publish')).toBeDisabled();
  const tableText=await page.evaluate(()=>window.DRAFT_PROJECTIONS_RAW.trim().split(/\r?\n/).map(row=>{const x=row.split(/\s+/);x[1]=x[1].replaceAll('_',' ');if(x[2]==='-')x[2]='';return x.join(' ')}).join('\n'));
  await page.getByLabel('Projection table',{exact:true}).fill(tableText);await page.getByRole('button',{name:'Validate and preview',exact:true}).click();await expect(page.locator('#tool-projections-preview')).toContainText('Valid: 300 players');
