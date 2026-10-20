@@ -118,3 +118,11 @@
 .trade-verdict{display:inline-block;padding:5px 8px;margin:6px 0 3px;border-radius:6px;font-size:11px;font-weight:650;line-height:1.4}
 .trade-verdict.strong{color:#88efd0;background:#173b35;border:1px solid #356f60}
 .trade-verdict.situational{color:#ffcd83;background:#382a20;border:1px solid #725536}
+
+/* Stream injury availability control (default enabled). */
+.injury-toggle{display:flex;gap:11px;align-items:flex-start;padding:11px 12px;margin:12px 0 7px;border:1px solid #42355b;border-radius:9px;background:#211a2e;cursor:pointer}
+.injury-toggle input{width:18px;height:18px;flex:none;margin:2px 0 0;accent-color:#aa83ff}
+.injury-toggle span{display:flex;flex-direction:column;gap:2px}
+.injury-toggle b{color:#f4f2f8;font-weight:650;font-size:13px}
+.injury-toggle small{font-size:11px}
+.injury-status{margin:0 0 12px!important;font-size:11px!important}
