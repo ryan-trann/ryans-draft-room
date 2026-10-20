@@ -2,7 +2,12 @@ import {chromium,expect} from '@playwright/test';
 import fs from 'node:fs/promises';
 import http from 'node:http';
 import path from 'node:path';
-const root=path.resolve('dist'),prefix='/ryans-draft-room/',evidence=path.resolve('../production-evidence');await fs.mkdir(evidence,{recursive:true});
+const root=path.resolve('dist'),prefix='/ryans-draft-room/',evidence=path.resolve('../production-evidence');
+const builtHtml=await fs.readFile(path.join(root,'index.html'),'utf8');
+if(!builtHtml.includes('Content-Security-Policy')||!builtHtml.includes('script-src \'self\' \'sha256-'))throw Error('Missing script-hash CSP');
+if(builtHtml.includes('src="projections-300-data.js'))throw Error('Executable projections script still included');
+if(!builtHtml.includes('id="shared-projections-json"'))throw Error('Missing inert projection payload');
+await fs.mkdir(evidence,{recursive:true});
 const mime={'.html':'text/html','.js':'application/javascript','.css':'text/css','.json':'application/json','.woff':'font/woff','.woff2':'font/woff2'};
 const server=http.createServer(async(req,res)=>{try{const url=new URL(req.url,'http://127.0.0.1'),rel=decodeURIComponent(url.pathname).replace(prefix,'/');const file=path.resolve(root,'.'+(rel==='/'?'/index.html':rel));if(!file.startsWith(root+path.sep))throw Error();const bytes=await fs.readFile(file);res.setHeader('Content-Type',mime[path.extname(file)]||'application/octet-stream');res.end(bytes)}catch{res.statusCode=404;res.end('Not found')}});
 await new Promise(resolve=>server.listen(4182,'127.0.0.1',resolve));
@@ -17,7 +22,7 @@ await page.clock.setFixedTime(new Date('2026-10-20T03:15:00Z'));
 await page.route('**/team-rosters.json?fresh=*',route=>route.fulfill({contentType:'application/json',body:JSON.stringify(remote)}));
 await page.route('https://api.github.com/**',async route=>{
  const req=route.request();
- if(req.url().endsWith('/contents/projections-300-data.js')||req.url().endsWith('/contents/draft-teams.json')){
+ if(req.url().endsWith('/contents/projections-300-data.json')||req.url().endsWith('/contents/draft-teams.json')){
   if(req.method()==='GET')return route.fulfill({contentType:'application/json',body:'{"sha":"fixture-tool-sha"}'});
   if(req.method()==='PUT'){(req.url().includes('projections-')?projectionWrites:draftWrites).push(req.postDataJSON());return route.fulfill({contentType:'application/json',body:'{"commit":{"sha":"fixture-tool-commit"}}'});}
  }
@@ -38,7 +43,7 @@ try{
  expect(duplicateLabels.length).toBeGreaterThan(0);
  for(const p of duplicateLabels)expect(p.actual).toBe(p.expected);
  await page.screenshot({path:evidence+'/01-team-mobile.png'});
- // v45: Team has no redundant Category Strategy entry; Trades is the sole auto finder.
+ // v46: Team has no redundant Category Strategy entry; Trades is the sole auto finder.
  await expect(page.locator('.strategy-entry')).toHaveCount(0);
  await page.getByRole('button',{name:'Trades',exact:true}).click();
  await page.getByRole('button',{name:'Find ideas',exact:true}).click();
@@ -159,7 +164,7 @@ try{
  await page.locator('#reset').click();await expect(page.locator('#count')).toHaveText('0');await page.locator('#player').fill('N.Jokic');await page.locator('#playerSuggestions button').first().click();await page.locator('#record').click();await expect(page.locator('#count')).toHaveText('1');await page.locator('#undo').click();await expect(page.locator('#count')).toHaveText('0');
  await page.locator('#restore').setInputFiles({name:'draft-backup.json',mimeType:'application/json',buffer:Buffer.from(backup)});await expect(page.locator('#count')).toHaveText('168');
  await page.getByRole('button',{name:'Team',exact:true}).click();await page.getByRole('button',{name:'Open menu',exact:true}).click();await page.getByRole('button',{name:'GitHub & projections',exact:false}).click();await page.getByRole('button',{name:'Upload projections',exact:true}).click();
- await expect(page.getByRole('heading',{name:'UPLOAD PROJECTIONS',exact:true})).toBeVisible();await expect(page.locator('#legacy-ui')).toBeHidden();await expect(page.locator('.preview-label')).toHaveText('v45');expect(await page.locator('.hero-title').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);await page.screenshot({path:evidence+'/07a-projections-start-mobile.png'});
+ await expect(page.getByRole('heading',{name:'UPLOAD PROJECTIONS',exact:true})).toBeVisible();await expect(page.locator('#legacy-ui')).toBeHidden();await expect(page.locator('.preview-label')).toHaveText('v46');expect(await page.locator('.hero-title').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);await page.screenshot({path:evidence+'/07a-projections-start-mobile.png'});
  await page.getByRole('button',{name:'Validate and preview',exact:true}).click();await expect(page.locator('#tool-projections-preview')).toContainText('Validation failed');await expect(page.locator('#tool-projections-publish')).toBeDisabled();
  const tableText=await page.evaluate(()=>window.DRAFT_PROJECTIONS_RAW.trim().split(/\r?\n/).map(row=>{const x=row.split(/\s+/);x[1]=x[1].replaceAll('_',' ');if(x[2]==='-')x[2]='';return x.join(' ')}).join('\n'));
  await page.getByLabel('Projection table',{exact:true}).fill(tableText);await page.getByRole('button',{name:'Validate and preview',exact:true}).click();await expect(page.locator('#tool-projections-preview')).toContainText('Valid: 300 players');
