@@ -91,6 +91,7 @@ try{
  await page.getByRole('button',{name:'Close panel',exact:true}).click();
  await page.getByRole('button',{name:'Team',exact:true}).click();
  await page.getByRole('button',{name:'Manage',exact:true}).click();
+ await page.getByRole('combobox',{name:'Action',exact:true}).selectOption('drop');
  await page.getByRole('button',{name:'Add to batch',exact:true}).click();remote.revision=3;await page.locator('#editorToken').fill('FAKE_TEST_TOKEN_ONLY');await page.getByRole('button',{name:'Save batch to GitHub',exact:true}).click();await expect(page.locator('.live-save-status')).toContainText('Another device');expect(writes.length).toBe(1);expect(await page.evaluate(()=>window.DraftRoomBridge.data().batch.length)).toBe(1);
  await page.getByRole('button',{name:'Discard batch',exact:true}).click();await page.getByRole('button',{name:'Close panel',exact:true}).click();remote.revision=2;
  await page.getByRole('button',{name:'Team',exact:true}).click();await page.getByRole('button',{name:'Select N.Jokic for comparison',exact:true}).click();await page.getByRole('button',{name:'Select D.Clingan for comparison',exact:true}).click();await page.getByRole('button',{name:'Compare',exact:true}).click();await expect(page.locator('.comparison-table tbody tr')).toHaveCount(11);await page.screenshot({path:evidence+'/03-comparison-mobile.png'});await page.getByRole('button',{name:'Close panel',exact:true}).click();
