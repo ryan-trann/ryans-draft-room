@@ -70,7 +70,7 @@ function packages(ids:string[],n:number){
 export function findDeals(rosters:Roster,from:string,all:Player[],cats:string[],format:DealFormat='1:1',ignored:string[]=[],limit=12):{rows:Candidate[];examined:number;fairCount:number}{
  const lookup=new Map(all.map(p=>[p.draftId,p])),v=lookupValue(all,cats),market=v.market,raw=v.raw;
  const sides=format.split(':').map(Number),otherNames=Object.keys(rosters).filter(t=>t!==from);
- const base=share(rosters,cats,lookup),taken=new Set(Object.values(rosters).flat());
+ const base=share(rosters,cats,lookup),targetCats=cats.filter(c=>!ignored.includes(c)),focusBase=share(rosters,targetCats.length?targetCats:cats,lookup),taken=new Set(Object.values(rosters).flat());
  const free=all.filter(p=>!taken.has(p.draftId)).sort((a,b)=>(market.get(b.draftId)||0)-(market.get(a.draftId)||0));
  const additions=free.slice(0,4);
  const myPacks=packages(rosters[from]||[],sides[0]);
@@ -109,7 +109,9 @@ export function findDeals(rosters:Roster,from:string,all:Player[],cats:string[],
    if(theirsValue < -1.3 || mineValue < -3)continue;
    const after=share(draft,cats,lookup),cashMine=after[from]-base[from],cashTheirs=after[other]-base[other];
    if(cashMine<=.002 || cashTheirs<-.018)continue;
-   const benefit=cashMine+cashTheirs*.35-Math.max(0,-theirsValue)*.018-difference*.09;
+   const focusAfter=share(draft,targetCats.length?targetCats:cats,lookup);
+   const focusedGain=focusAfter[from]-focusBase[from];
+   const benefit=cashMine*.6+focusedGain*.4+cashTheirs*.35-Math.max(0,-theirsValue)*.018-difference*.09;
    rows.push({other,give:mine,receive:theirs,format,cashMine,cashTheirs,fairness:1-difference,partnerGain:theirsValue,myGain:mineValue,partnerDrop,myDrop,myAdd,partnerAdd,reason:'Comparable projected market value and limited partner downside',_priority:benefit} as Candidate & {_priority:number});
   }
  }
