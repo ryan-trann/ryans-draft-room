@@ -94,7 +94,9 @@ window.DraftRoomBridge.stream=async function(from,start,end){  if(dayFromIso(sta
   const roster=analysisPlayers(from);
   const taken=new Set(TEAMS.flatMap(t=>currentRosters[t]||[]));
   const free=state.projections.filter(p=>!taken.has(p.draftId));
-  const candidateLimit=Math.max(1,Math.ceil(roster.length/2));
+  // Only treat the lowest-value roster slots as disposable for short-term streaming.
+  // The remainder require a deliberate permanent roster move, not a one-week swap.
+  const candidateLimit=Math.min(3,Math.max(1,Math.floor(roster.length/4)));
   const lowValueIds=new Set(roster.slice().sort((a,b)=>weeklyCategoryValue(a,1)-weeklyCategoryValue(b,1)).slice(0,candidateLimit).map(p=>p.draftId));
   const drop=roster.filter(p=>lowValueIds.has(p.draftId)&&counts[nbaCode(p.team)]!==undefined).map(p=>({p,games:counts[nbaCode(p.team)],score:weeklyCategoryValue(p,counts[nbaCode(p.team)])})).sort((a,b)=>a.score-b.score);
   const adds=free.filter(p=>pickupCounts[nbaCode(p.team)]!==undefined).map(p=>({p,games:pickupCounts[nbaCode(p.team)],score:weeklyCategoryValue(p,pickupCounts[nbaCode(p.team)])})).sort((a,b)=>b.score-a.score);
