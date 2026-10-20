@@ -16,7 +16,12 @@ export function rankStreamingPairs(pairs:StreamPair[],rosters:Roster,from:string
  const totals=Object.fromEntries(Object.entries(rosters).map(([t,ids])=>[t,total(ids,lookup,cats,countsRoster)]));
  const trials=1024;
  const baseline=estimatePotFromTotals(totals,cats,trials).shares[from]||0;
- const eligible=pairs.filter(v=>v.a.games>0&&rosters[from].includes(v.d.p.draftId)&&!Object.values(rosters).some(ids=>ids.includes(v.a.p.draftId)));
+ // These are one-week swaps, not permission to sacrifice season-long roster value.
+ // Restrict drops to the three weakest projected per-game roster players.
+ const mine=rosters[from]||[];
+ const perGameScore=(id:string)=>{const p=lookup.get(id);if(!p)return -Infinity;return cats.reduce((n,c)=>n+(c==='TO'?-1:1)*perGame(p,c),0)};
+ const streamable=new Set(mine.slice().sort((a,b)=>perGameScore(a)-perGameScore(b)).slice(0,Math.min(3,Math.max(1,Math.floor(mine.length/4)))));
+ const eligible=pairs.filter(v=>v.a.games>0&&streamable.has(v.d.p.draftId)&&!Object.values(rosters).some(ids=>ids.includes(v.a.p.draftId)));
  const results:RankedStreamPair[]=[];
  for(const v of eligible){
   const updated=Object.fromEntries(Object.entries(totals).map(([t,row])=>[t,t===from?{...row}:row]));
