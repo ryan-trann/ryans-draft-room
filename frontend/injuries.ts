@@ -10,7 +10,12 @@ const alias=(full:string)=>{
  const filtered=tokens.filter(x=>!suffix.test(x));
  return normalize(filtered[0].slice(0,1)+filtered.slice(1).join(''));
 };
-export const injuryKey=(name:string,team:string)=>normalize(team)+'|'+(name.includes('.')?normalize(name):alias(name));
+const teamAliases:Record<string,string>={
+ gs:'gsw',sa:'sas',ny:'nyk',no:'nop',utah:'uta',pho:'phx',phoe:'phx',bkn:'bkn',bk:'bkn',
+ lac:'lac',la:'lac',lal:'lal',was:'was',wsh:'was',por:'por'
+};
+const teamKey=(team:string)=>{const key=normalize(team);return teamAliases[key]||key};
+export const injuryKey=(name:string,team:string)=>teamKey(team)+'|'+(name.includes('.')?normalize(name):alias(name));
 export const isListedInjured=(name:string,team:string,snapshot:InjurySnapshot)=>
  snapshot.players.some(p=>injuryKey(p.name,p.team)===injuryKey(name,team)&&!/^(available|active|healthy)$/i.test(p.status.trim()));
 export const isRecentInjurySnapshot=(s:InjurySnapshot)=>
