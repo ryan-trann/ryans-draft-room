@@ -28,6 +28,34 @@ function analysisGrade(rosters,first,second){
  const delta=t=>Object.fromEntries(ANALYSIS_CATS.map(c=>[c,{old:before[t][c],new:after[t][c],oldRank:rankBefore[t][c],newRank:rankAfter[t][c]}]));
  return {first:grade(first),second:grade(second),a:delta(first),b:delta(second)};
 }
+
+// Estimate the share of weekly category-leading payouts using smooth relative
+// win probabilities rather than treating each league-rank position equally.
+// This is an analytical approximation; it is not historical NBA injury modeling.
+function cashShareModel(rosters){
+ const totals=analysisAllTotals(rosters),result=Object.fromEntries(TEAMS.map(t=>[t,{share:0,cats:{}}]));
+ for(const cat of ANALYSIS_CATS){
+  const raw=TEAMS.map(t=>(cat==='TO'?-1:1)*totals[t][cat]);
+  const mean=raw.reduce((a,b)=>a+b,0)/raw.length;
+  const range=Math.max(...raw)-Math.min(...raw);
+  const scale=Math.max(range*.22,Math.abs(mean)*.09,1);
+  const max=Math.max(...raw);
+  const weights=raw.map(x=>Math.exp((x-max)/scale));
+  const sum=weights.reduce((a,b)=>a+b,0);
+  TEAMS.forEach((t,i)=>{const prob=weights[i]/sum;result[t].share+=prob;result[t].cats[cat]=prob});
+ }
+ return result;
+}
+function cashImpact(before,after,a,b){
+ const x=cashShareModel(before),y=cashShareModel(after);
+ return {a:y[a].share-x[a].share,b:y[b].share-x[b].share,
+  beforeA:x[a].share,afterA:y[a].share,beforeB:x[b].share,afterB:y[b].share,
+  catA:Object.fromEntries(ANALYSIS_CATS.map(c=>[c,y[a].cats[c]-x[a].cats[c]])),
+  catB:Object.fromEntries(ANALYSIS_CATS.map(c=>[c,y[b].cats[c]-x[b].cats[c]]))};
+}
+function cashDetails(delta,team){
+ return '<div class="muted">'+esc(team)+' category-leading probability changes: '+ANALYSIS_CATS.map(c=>c+' '+(delta[c]>=0?'+':'')+(delta[c]*100).toFixed(1)+'pp').join(' · ')+'</div>';
+}
 function analysisSelect(id,values,prefer){
  const e=$(id),value=e.value||prefer;
  e.innerHTML=values.map(o=>'<option value="'+esc(o.id)+'">'+esc(o.label)+'</option>').join('');
@@ -62,9 +90,9 @@ function analysisGradeHtml(grade,a,b){
 $('analyzeTrade').onclick=()=>{
  try{
   const a=$('tradeA').value,b=$('tradeB').value,x=$('tradeGive').value,y=$('tradeReceive').value;
-  const proposal=analysisSwap(currentRosters,a,b,x,y),result=analysisGrade(proposal,a,b);
+  const proposal=analysisSwap(currentRosters,a,b,x,y),result=analysisGrade(proposal,a,b),cash=cashImpact(currentRosters,proposal,a,b);
   $('tradeResults').innerHTML='<p><strong>'+esc(editorName(x))+'</strong> ('+esc(a)+') for <strong>'+esc(editorName(y))+'</strong> ('+esc(b)+')</p>'+
-   analysisGradeHtml(result,a,b)+'<p class="muted">Projected season-category ranks; historical draft remains unchanged. This is an analysis only—no trade is saved.</p>';
+   '<p><strong>Estimated weekly side-bet change:</strong> '+esc(a)+' '+(cash.a>=0?'+':'')+cash.a.toFixed(3)+' category shares; '+esc(b)+' '+(cash.b>=0?'+':'')+cash.b.toFixed(3)+' shares.</p>'+cashDetails(cash.catA,a)+cashDetails(cash.catB,b)+analysisGradeHtml(result,a,b)+'<p class="muted">Estimated shares are a heuristic sensitivity model, not calibrated winning probabilities. Projected season-category ranks; historical draft remains unchanged. This is an analysis only—no trade is saved.</p>';
  }catch(e){$('tradeResults').textContent=e.message}
 };
 $('recommendTrades').onclick=()=>{
@@ -74,15 +102,15 @@ $('recommendTrades').onclick=()=>{
  for(const other of others)for(const x of mine)for(const y of currentRosters[other]||[]){
   try{
    const updated=analysisSwap(currentRosters,from,other,x,y);
-   const g=analysisGrade(updated,from,other);
-   recommended.push({other,x,y,my:g.first,their:g.second,total:g.first+g.second,qualifies:g.first>0&&g.second>=0});
+   const g=analysisGrade(updated,from,other),cash=cashImpact(currentRosters,updated,from,other);
+   recommended.push({other,x,y,my:g.first,their:g.second,cashMine:cash.a,cashTheirs:cash.b,qualifies:cash.a>0&&cash.b>=-0.025});
   }catch(e){}
  }
- recommended.sort((a,b)=>Number(b.qualifies)-Number(a.qualifies)||b.my-a.my||b.their-a.their);
+ recommended.sort((a,b)=>Number(b.qualifies)-Number(a.qualifies)||b.cashMine-a.cashMine||b.cashTheirs-a.cashTheirs||b.my-a.my);
  const positive=recommended.filter(x=>x.qualifies);
  const results=(positive.length?positive:recommended).slice(0,max);
- $('recommendResults').innerHTML='<p class="muted">'+(positive.length?positive.length+' trades improve your rank without worsening the partner’s rank; showing strongest candidates.':'No mutually favorable 1-for-1 trades by this category-rank metric; showing least-bad alternatives.')+'</p>'+
- results.map((x,i)=>'<div class="pick"><span class="rank">'+(i+1)+'</span><div class="grow"><strong>Give '+esc(editorName(x.x))+' · Get '+esc(editorName(x.y))+'</strong><div class="muted">Partner: '+esc(x.other)+' · Your rank gain '+(x.my>=0?'+':'')+x.my.toFixed(1)+' · Their rank gain '+(x.their>=0?'+':'')+x.their.toFixed(1)+'</div></div></div>').join('');
+ $('recommendResults').innerHTML='<p class="muted">'+(positive.length?positive.length+' offers improve your estimated side-bet share with limited downside for the partner; showing strongest candidates.':'No clearly mutually beneficial one-for-one trades under the estimated side-bet model; showing best alternatives.')+'</p>'+
+ results.map((x,i)=>'<div class="pick"><span class="rank">'+(i+1)+'</span><div class="grow"><strong>Give '+esc(editorName(x.x))+' · Get '+esc(editorName(x.y))+'</strong><div class="muted">Partner: '+esc(x.other)+' · Your estimated side-bet share '+(x.cashMine>=0?'+':'')+x.cashMine.toFixed(3)+' · Partner '+(x.cashTheirs>=0?'+':'')+x.cashTheirs.toFixed(3)+' · Rank changes '+(x.my>=0?'+':'')+x.my.toFixed(1)+' / '+(x.their>=0?'+':'')+x.their.toFixed(1)+'</div></div></div>').join('');
 };
 const NBA_ALIASES={GS:'GSW',NO:'NOP',NY:'NYK',SA:'SAS',PHO:'PHX',UTAH:'UTA',WSH:'WAS'};
 function nbaCode(code){return NBA_ALIASES[String(code||'').trim().toUpperCase()]||String(code||'').trim().toUpperCase()}
