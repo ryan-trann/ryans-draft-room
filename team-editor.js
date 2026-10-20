@@ -128,7 +128,8 @@ $('editorPublish').onclick=async()=>{
   const old=await read.json(),encoded=String(old.content||'').replace(/\s/g,'');
   const remote=JSON.parse(decodeURIComponent(Array.from(atob(encoded),c=>'%'+c.charCodeAt(0).toString(16).padStart(2,'0')).join('')));
   if(Number(remote.revision||1)!==editorRevision)throw Error('Another device has saved newer rosters. Discard your batch and reload before editing.');
-  const teams={};for(const t of TEAMS)teams[t]=next[t].map(id=>({playerId:id,name:editorName(id)}));
+  // Persist the canonical projection name; editorName includes UI-only disambiguation.
+  const teams={};for(const t of TEAMS)teams[t]=next[t].map(id=>({playerId:id,name:state.projections.find(p=>p.draftId===id).name}));
   const json=JSON.stringify({formatVersion:1,revision:editorRevision+1,source:'Draft Room team editor',teams},null,2)+'\n';
   const bytes=new TextEncoder().encode(json);let binary='';for(const b of bytes)binary+=String.fromCharCode(b);
   const response=await fetch(url,{method:'PUT',headers:{...headers,'Content-Type':'application/json'},body:JSON.stringify({message:'Update fantasy team rosters ('+editorMoves.length+' moves)',sha:old.sha,content:btoa(binary),branch:'main'})});

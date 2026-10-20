@@ -1,0 +1,34 @@
+/* Native responsive website: no device frame or simulated keyboard is shipped. */
+html,body,#root{margin:0;width:100%;min-height:100%;background:#0d0e14}
+body{font-family:'Inter',system-ui,sans-serif}
+body.modern-ready{overflow:hidden}
+body.modern-ready #legacy-ui{display:none}
+#return-modern{display:none}
+body.show-original #return-modern{display:block;position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:100;background:#8558fa;color:white;border:1px solid #b18aff;box-shadow:0 4px 20px #0008;padding:13px 20px;white-space:nowrap}
+body.show-original{padding-bottom:85px}
+.draft-app{position:fixed;inset:0;height:100dvh;--mobile-safe-area-height:env(safe-area-inset-bottom,0px);--device-safe-area-top:env(safe-area-inset-top,0px);font-size:14px}
+.draft-app .app-header{position:absolute;top:0;height:calc(60px + env(safe-area-inset-top,0px));padding:calc(8px + env(safe-area-inset-top,0px)) max(18px,calc((100vw - 680px)/2)) 8px;border-bottom:1px solid #1f2230}
+.draft-app .wordmark{font-size:23px}.draft-app .preview-label{font-size:9px;margin-top:4px}
+.draft-app .app-body{position:absolute;top:calc(60px + env(safe-area-inset-top,0px));bottom:calc(64px + env(safe-area-inset-bottom,0px));left:0;right:0}
+.draft-app .mobile-page{position:absolute;inset:0}.draft-app .mobile-scroll{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y}
+.draft-app .content{width:100%;max-width:680px;margin:0 auto;padding:16px 18px 40px}.draft-app .trade-content{max-width:600px;padding-top:14px;padding-bottom:20px}
+.draft-app .bottom-nav{position:absolute;max-width:680px;margin:auto;left:0;right:0;bottom:0;height:calc(64px + env(safe-area-inset-bottom,0px));padding:5px 0 env(safe-area-inset-bottom,0px)!important;align-items:flex-start}.draft-app .bottom-nav button{min-height:53px;font-size:11px;gap:4px}.draft-app .bottom-nav button.active:after{bottom:-3px}
+.draft-app .intro{font-size:14px}.draft-app .row-main b{font-size:14px}.draft-app .row-main small{font-size:12px}.draft-app .player-meta{font-size:11px}.draft-app .roster-row{min-height:72px}.draft-app .category-row small{font-size:11px}
+.draft-app .team-switch{min-height:42px!important}.draft-app .hero-title{font-size:48px!important;line-height:1;margin:14px 0 12px!important}
+.draft-app .trade-content .player-pick b{font-size:12px}.draft-app .trade-content .player-pick small{font-size:11px}.draft-app .trade-content .player-pick{min-height:64px}.draft-app .trade-content .player-pick .avatar{width:34px;min-width:34px;height:34px;font-size:12px}
+.draft-app .trade-summary h2{font-size:14px!important}.draft-app .share-values span{font-size:12px}.draft-app .model-note{font-size:11px!important}.draft-app .impact-table td,.draft-app .impact-table th{height:31px!important;font-size:13px}.draft-app .impact-table thead th{font-size:11px}.draft-app .primary-button{font-size:14px!important;min-height:46px}
+.draft-app .compare-tray{bottom:calc(69px + env(safe-area-inset-bottom,0px))!important;max-width:650px;margin:auto}
+.draft-app .toast{bottom:calc(72px + env(safe-area-inset-bottom,0px));max-width:640px;margin:auto}
+.draft-app .toast{top:calc(68px + env(safe-area-inset-top,0px));bottom:auto;pointer-events:none;box-shadow:0 5px 24px #0008}.draft-app .toast .icon-button{pointer-events:auto}
+.draft-app .trade-content{padding-bottom:28px}.draft-app .trade-content .save-caption{font-size:11px;line-height:1.3}
+dialog.production-sheet{position:fixed;inset:auto 0 0;width:min(100%,680px);max-width:680px;max-height:88dvh;min-height:0;margin:0 auto;padding:0 0 env(safe-area-inset-bottom,0px);border:1px solid #444052;border-bottom:0;border-radius:20px 20px 0 0;background:#11131c;color:#f1eef7;font:400 14px/1.45 'Inter',sans-serif;overflow:hidden;box-shadow:0 -16px 48px #0006}
+dialog.production-sheet[open]{display:flex;flex-direction:column}dialog.production-sheet:not([open]){display:none}dialog.production-sheet::backdrop{background:#0009}
+.production-sheet .sheet-handle-zone{display:grid;place-items:center;min-height:26px}.production-sheet .sheet-handle{width:38px;height:4px;border-radius:3px;background:#62657a}
+.production-sheet .sheet-header{padding:0 18px 14px}.production-sheet .sheet-title{font-size:18px;margin:0;padding-right:35px;line-height:1.4}.production-sheet .sheet-description{font-size:12px;color:#a3aec7;line-height:1.5;margin:5px 0 0}.production-sheet .sheet-content{overflow-y:auto;padding:0 18px 24px;overscroll-behavior:contain;touch-action:pan-y}.production-sheet .sheet-close{top:21px}
+.production-sheet button,.production-sheet input,.production-sheet select{font-family:inherit}.production-sheet p{font-size:13px;color:#9da5bb}.production-sheet h3{color:#f1eef7}
+.production-sheet .icon-button{padding:0;background:transparent}.production-sheet .field input{font-size:16px}.production-sheet .comparison-table th,.production-sheet .comparison-table td{padding:11px 5px}.production-sheet .selection-row{font-size:14px}
+.live-save-form #editorSummary{font-size:12px;line-height:1.6;background:#191b28;color:#bec6dd;border:1px solid #333749;max-height:160px;overflow:auto;border-radius:8px;padding:12px}
+.live-save-form label{display:block;color:#bdc6dc;font-size:12px;margin:14px 0 7px}.live-save-form #editorToken{display:block;width:100%;background:#181b26;color:#f2f0f8;border:1px solid #43465b;border-radius:8px;padding:11px;min-height:46px;font-size:16px;box-sizing:border-box}
+.live-save-form .actions{display:flex;gap:8px;flex-wrap:wrap}.live-save-form #editorPublish{background:#8558fa;color:#fff;width:100%;border:0;border-radius:8px;min-height:46px;font-size:14px;font-weight:600}.live-save-form #editorBack{display:none}
+.live-save-form .live-save-status{color:#b9a2e0;padding:12px 0;font-size:12px;line-height:1.5}.live-save-form #editorReviewArea.hidden{display:none}
+@media(min-width:800px){.draft-app .hero-title{font-size:56px!important}.draft-app .roster-row{min-height:76px}.draft-app .content{padding-top:24px}.draft-app .trade-content .exchange{gap:16px;grid-template-columns:1fr 28px 1fr}.draft-app .trade-content .player-pick b{font-size:15px}.draft-app .share-values strong{font-size:54px}.draft-app .trade-summary{padding:20px 0}.draft-app .impact-table th,.draft-app .impact-table td{height:38px!important}}
