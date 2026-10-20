@@ -129,7 +129,7 @@ function nbaDate(raw){
  return null;
 }
 function normalizeSchedule(payload){
- if(Array.isArray(payload.games))return {source:payload.source||'Repository NBA schedule',generatedAt:payload.generatedAt||'',games:payload.games.map(x=>({date:nbaDate(x.date),home:nbaCode(x.home),away:nbaCode(x.away)}))};
+ if(Array.isArray(payload.games))return {source:payload.source||'Repository NBA schedule',generatedAt:payload.generatedAt||'',games:payload.games.map(x=>({date:nbaDate(x.date),home:nbaCode(x.home),away:nbaCode(x.away),startUtc:x.startUtc||null}))};
  const days=payload.leagueSchedule?.gameDates;
  if(!Array.isArray(days))throw Error('Unrecognized NBA schedule format.');
  const games=[],seen=new Set();
@@ -140,7 +140,7 @@ function normalizeSchedule(payload){
    const id=String(g.gameId||'');
    if(!id.startsWith('002')||seen.has(id))continue;
    seen.add(id);
-   games.push({date,home:nbaCode(g.homeTeam?.teamTricode),away:nbaCode(g.awayTeam?.teamTricode)});
+   games.push({date,home:nbaCode(g.homeTeam?.teamTricode),away:nbaCode(g.awayTeam?.teamTricode),startUtc:g.gameDateTimeUTC||null});
   }
  }
  return {source:'Official NBA schedule CDN',generatedAt:'',games};
@@ -149,7 +149,7 @@ function gamesForRange(data,start,end){
  if(!Array.isArray(data.games))throw Error('Schedule has no games.');
  const counts={},selected=data.games.filter(g=>g.date>=start&&g.date<=end&&g.home&&g.away);
  for(const g of selected){counts[g.home]=(counts[g.home]||0)+1;counts[g.away]=(counts[g.away]||0)+1}
- return {counts,gameCount:selected.length};
+ return {counts,gameCount:selected.length,games:selected};
 }
 function dateInNBAZone(utcDate){
  const pieces=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date(utcDate));
@@ -174,7 +174,7 @@ async function getEspnWeeklySchedule(start,end){
    const away=competition?.competitors?.find(x=>x.homeAway==='away')?.team?.abbreviation;
    if(!home||!away)continue;
    seen.add(event.id);
-   games.push({date:dateInNBAZone(competition.date||event.date),home:nbaCode(home),away:nbaCode(away)});
+   games.push({date:dateInNBAZone(competition.date||event.date),home:nbaCode(home),away:nbaCode(away),startUtc:competition.date||event.date});
   }
  }
  const result=gamesForRange({games},start,end);
@@ -265,6 +265,27 @@ function streamingEffectiveRange(start,end,today=pacificDate()){
  const effectiveStart=today>start?today:start;
  return {start:effectiveStart,end,remaining:effectiveStart!==start};
 }
+
+function movePacificDate(iso,days){
+ const d=dayFromIso(iso);d.setDate(d.getDate()+days);return isoDay(d);
+}
+function eligibleGames(games,start,end,delay,now=new Date()){
+ const today=pacificDate(now),availableFrom=movePacificDate(today,delay);
+ const nowMs=now.getTime(),countsRoster={},countsPickup={},stats={missingToday:0,expired:0,tooEarly:0};
+ const increment=(obj,team)=>{obj[nbaCode(team)]=(obj[nbaCode(team)]||0)+1};
+ for(const g of games){
+  if(g.date<start||g.date>end)continue;
+  const tipoff=g.startUtc?Date.parse(g.startUtc):NaN;
+  const isToday=g.date===today;
+  const alreadyStarted=Number.isFinite(tipoff)?tipoff<=nowMs:(g.date<today||isToday);
+  if(isToday&&!Number.isFinite(tipoff))stats.missingToday++;
+  if(alreadyStarted){stats.expired++;continue}
+  increment(countsRoster,g.home);increment(countsRoster,g.away);
+  if(g.date<availableFrom){stats.tooEarly++;continue}
+  increment(countsPickup,g.home);increment(countsPickup,g.away);
+ }
+ return {countsRoster,countsPickup,stats,availableFrom,from:today};
+}
 function weeklyPerGame(p,c){return p.GP>0?Number(p[c]||0)/p.GP:0}
 function weeklyCategoryValue(p,games){
  const z=stats(), cats=ANALYSIS_CATS;
@@ -280,8 +301,13 @@ $('streamRecommend').onclick=async()=>{
   const start=$('streamWeekStart').value,end=$('streamWeekEnd').value;
   if(dayFromIso(start)>dayFromIso(end))throw Error('Week end must follow week start.');
   const effective=streamingEffectiveRange(start,end);
-  const schedule=await getNbaSchedule(effective.start,end),counts=schedule.counts;
-  $('streamScheduleStatus').textContent='Remaining NBA games: '+effective.start+' through '+end+' · '+schedule.gameCount+' games · '+schedule.source+(effective.remaining?' · Games before today excluded.':'')+'.';
+  const schedule=await getNbaSchedule(effective.start,end);
+  const delay=Number($('streamDelay').value);
+  if(![0,1,2,3].includes(delay))throw Error('Choose a valid pickup eligibility setting');
+  const eligibility=eligibleGames(schedule.games,effective.start,end,delay);
+  const counts=eligibility.countsRoster,pickupCounts=eligibility.countsPickup;
+  const unknown=eligibility.stats.missingToday;
+  $('streamScheduleStatus').textContent='NBA games still eligible this matchup: '+effective.start+' through '+end+' · '+schedule.source+' · Free-agent pickup eligible from '+eligibility.availableFrom+' (Pacific)'+(unknown?' · '+unknown+' games today lack start times and were excluded for safety.':'')+'.';
   const from=$('streamTeam').value;
   const roster=analysisPlayers(from);
   const taken=new Set(TEAMS.flatMap(t=>currentRosters[t]||[]));
@@ -289,16 +315,16 @@ $('streamRecommend').onclick=async()=>{
   const candidateLimit=Math.max(1,Math.ceil(roster.length/2));
   const lowValueIds=new Set(roster.slice().sort((a,b)=>weeklyCategoryValue(a,1)-weeklyCategoryValue(b,1)).slice(0,candidateLimit).map(p=>p.draftId));
   const drop=roster.filter(p=>lowValueIds.has(p.draftId)&&counts[nbaCode(p.team)]!==undefined).map(p=>({p,games:counts[nbaCode(p.team)],score:weeklyCategoryValue(p,counts[nbaCode(p.team)])})).sort((a,b)=>a.score-b.score);
-  const adds=free.filter(p=>counts[nbaCode(p.team)]!==undefined).map(p=>({p,games:counts[nbaCode(p.team)],score:weeklyCategoryValue(p,counts[nbaCode(p.team)])})).sort((a,b)=>b.score-a.score);
+  const adds=free.filter(p=>pickupCounts[nbaCode(p.team)]!==undefined).map(p=>({p,games:pickupCounts[nbaCode(p.team)],score:weeklyCategoryValue(p,pickupCounts[nbaCode(p.team)])})).sort((a,b)=>b.score-a.score);
   const pairs=[];
   for(const d of drop)for(const a of adds)if(a.games>d.games){
    const gain=a.score-d.score;
    if(gain>0)pairs.push({d,a,gain});
   }
   pairs.sort((a,b)=>b.gain-a.gain);
-  $('streamResults').innerHTML='<p class="muted">'+Object.keys(counts).length+' NBA teams have verified scheduled games in this date range. Recommendations compare per-game projections × games, normalized over the nine league categories. Only positive-gain replacements with more scheduled games are shown.</p>'+
+  $('streamResults').innerHTML='<p class="muted">'+Object.keys(counts).length+' NBA teams have remaining playable games. Pickup games begin on the configured eligible day. Recommendations compare per-game projections × games, normalized over the nine league categories. Only positive-gain replacements with more scheduled games are shown.</p>'+
    (pairs.slice(0,15).map((x,i)=>'<div class="pick"><span class="rank">'+(i+1)+'</span><div class="grow"><strong>Drop '+esc(playerLabel(x.d.p))+' · Add '+esc(playerLabel(x.a.p))+'</strong><div class="muted">'+x.d.games+' → '+x.a.games+' games · Estimated weighted production gain +'+x.gain.toFixed(2)+'</div></div></div>').join('')||'<p>No positive-gain streaming match yet. Try a different NBA week.</p>')+
-   '<p class="muted">Streaming is a short-term estimate. A player’s long-term value, waiver rules, games-on-bench and exact calendar-day schedule must be checked before dropping anyone. No roster changes are applied automatically.</p>';
+   '<p class="muted">Streaming is a short-term estimate. The eligibility delay is your assumption, not a verified Yahoo league setting. Waiver clearance, daily lineup congestion, roster limits and player long-term value must still be considered. No roster changes are applied automatically.</p>';
  }catch(e){$('streamResults').textContent='Streaming unavailable: '+e.message}
  finally{button.disabled=false}
 };
