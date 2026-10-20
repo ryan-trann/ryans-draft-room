@@ -38,7 +38,7 @@ try{
  await page.locator('.strategy-choice').nth(1).click();
  await page.getByRole('button',{name:'Find balanced trades for this strategy',exact:false}).click();
  await expect(page.getByRole('combobox',{name:'Trade format',exact:true})).toBeVisible();
- await expect(page.locator('.ideas-section .footnote')).toContainText('pot-payout');
+ await expect(page.locator('.ideas-section .footnote')).toContainText('cash-pot gain');
  await expect(page.locator('.ideas-section .status-note').last()).toContainText(/offers pass|No offers passed/);
  await expect(page.locator('.payout-line').first()).toContainText('Your pot');
  await expect(page.locator('.payout-comparison').first()).toContainText(/You gain more|Opponent gains more|Similar gains/);
