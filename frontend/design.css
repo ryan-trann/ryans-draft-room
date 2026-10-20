@@ -74,3 +74,34 @@
 .draft-app:has(.mobile-page[data-keyboard-visible="true"]) .bottom-nav{display:none}
 .draft-app:has(.compare-tray) .content:not(.trade-content){padding-bottom:90px}
 .trade-content .save-caption{margin-top:3px!important;line-height:1.3!important}
+
+
+/* v31 strategy, value-balanced trade search and category edge additions.
+   Uses the same purple/charcoal card language and 44px touch targets as v30. */
+.strategy-entry{display:flex;align-items:center;gap:12px;width:100%;min-height:66px;text-align:left;background:#211a30;border:1px solid #524067!important;border-radius:9px;padding:12px;margin:0 0 13px;color:#f4f2f8!important}
+.strategy-icon{display:grid;place-items:center;width:35px;min-width:35px;height:35px;border-radius:9px;background:#392551;color:#bf9aff;font-size:26px}
+.strategy-entry>span:nth-child(2){display:grid;gap:3px;flex:1}
+.strategy-entry b{font-size:13px}.strategy-entry small{font-size:11px;color:#aaa0c3}
+.strategy-entry svg{color:#bb9aea}
+.gap-row{min-height:84px;align-items:center}
+.gap-row>div{min-width:0}
+.gap-row .gap-value{color:#c1a4ef;font-size:10px;margin-top:4px}
+.gap-track{height:3px;width:100%;max-width:172px;display:block;margin-top:8px;border-radius:9px;background:#31303f;overflow:hidden}
+.gap-track>span{height:100%;display:block;background:#a77dff;border-radius:9px}
+.strategy-inline,.strategy-clear{background:transparent;color:#bc9aff!important;border:0;padding:3px 0;min-height:27px;font-size:11px!important;text-decoration:underline;text-underline-offset:3px}
+.strategy-options{display:grid;gap:8px;margin:12px 0 20px}
+.strategy-choice{display:grid;gap:6px;width:100%;min-height:80px;text-align:left;background:#181923;border:1px solid #363449!important;border-radius:9px;padding:13px 14px}
+.strategy-choice.selected{background:#2a2040;border-color:#a581ff!important}
+.strategy-choice-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.strategy-choice b{font-size:13px;color:#f3edf9}
+.strategy-choice-top>span{color:#c3a7ff;font-size:10px}
+.strategy-choice small{font-size:11px;color:#abb0c6}
+.strategy-sheet .intro{margin:9px 0!important}
+.strategy-sheet .primary-button{margin-top:14px}
+.deal-sheet .eyebrow{margin:14px 0 7px}
+.deal-sheet h3{font-size:17px;line-height:1.3;margin-bottom:18px;color:#eee9f7}
+.deal-sheet .positive{color:#88efd0}
+.deal-sheet .data-line{gap:16px}
+.deal-sheet .data-line b{text-align:right;font-size:13px}
+.ideas-section>.field{margin:0 0 13px}
+.ideas-section>.field select{font-size:14px}
