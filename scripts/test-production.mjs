@@ -40,6 +40,8 @@ try{
  await expect(page.getByRole('combobox',{name:'Trade format',exact:true})).toBeVisible();
  await expect(page.locator('.ideas-section .footnote')).toContainText('pot-payout');
  await expect(page.locator('.ideas-section .status-note').last()).toContainText(/offers improve|No fair offers/);
+ await expect(page.locator('.payout-line').first()).toContainText('Your pot');
+ await expect(page.locator('.payout-comparison').first()).toContainText(/You gain more|Opponent gains more|Similar gains/);
  await page.getByRole('combobox',{name:'Trade format',exact:true}).selectOption('2:2');
  await expect(page.locator('.ideas-section .status-note').last()).toContainText(/offers improve|No fair offers/);
  await page.getByRole('button',{name:'Analyze',exact:true}).click();
