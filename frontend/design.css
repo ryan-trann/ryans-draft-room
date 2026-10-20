@@ -126,3 +126,7 @@
 .injury-toggle b{color:#f4f2f8;font-weight:650;font-size:13px}
 .injury-toggle small{font-size:11px}
 .injury-status{margin:0 0 12px!important;font-size:11px!important}
+
+.injury-refresh{display:inline-flex;align-items:center;gap:8px;color:#c4adff!important;background:#1c1728;border:1px solid #584374!important;border-radius:8px;padding:8px 12px;margin:0 0 5px;cursor:pointer;font-size:12px!important;font-weight:650!important}
+.injury-refresh:hover{background:#282037}
+.injury-source-note{font-size:11px!important;margin:0 0 13px!important}
