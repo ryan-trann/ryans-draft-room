@@ -85,6 +85,7 @@ async function loadRosterCloud(){
   editorValidate(next);
   currentRosters=next;editorRevision=Number(data.revision||1);editorReady=true;
   renderTeams();renderCategoryStandings();renderRankings();editorUpdateUI();
+  if(typeof analysisRefresh==='function')analysisRefresh();
   $('editorStatus').textContent='Saved rosters loaded from GitHub · revision '+editorRevision+'.';
   return true;
  }catch(e){$('editorStatus').textContent='Roster refresh failed: '+e.message+'. Previous rosters remain visible.';return false}
@@ -134,6 +135,7 @@ $('editorPublish').onclick=async()=>{
   if(!response.ok){const info=await response.json().catch(()=>({}));throw Error('GitHub HTTP '+response.status+': '+(info.message||'Rejected'))}
   currentRosters=next;editorRevision++;editorMoves=[];editorReview=false;$('editorReviewArea').classList.add('hidden');
   renderTeams();renderCategoryStandings();renderRankings();editorUpdateUI();
+  if(typeof analysisRefresh==='function')analysisRefresh();
   $('editorStatus').textContent='Saved to GitHub (revision '+editorRevision+'). Current rosters and category ranks updated.';
  }catch(e){$('editorStatus').textContent='Save failed: '+e.message+'. Staged changes are still queued.'}
  finally{$('editorPublish').disabled=false}
