@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-20T21:37:23.867Z",
-  "count": 86,
+  "updatedAt": "2026-10-20T23:26:41.887Z",
+  "count": 82,
   "players": [
     {
       "name": "Mouhamed Gueye",
@@ -95,24 +95,24 @@
       "status": "Day-To-Day"
     },
     {
+      "name": "Caleb Martin",
+      "team": "DAL",
+      "status": "Out"
+    },
+    {
       "name": "Tarik Biberovic",
       "team": "DAL",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Santi Aldama",
-      "team": "DAL",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Jett Howard",
-      "team": "DAL",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Dereck Lively II",
       "team": "DAL",
-      "status": "Day-To-Day"
+      "status": "Out"
+    },
+    {
+      "name": "Santi Aldama",
+      "team": "DAL",
+      "status": "Out"
     },
     {
       "name": "Spencer Jones",
@@ -170,14 +170,14 @@
       "status": "Day-To-Day"
     },
     {
-      "name": "Aaron Nesmith",
+      "name": "T.J. McConnell",
       "team": "IND",
       "status": "Out"
     },
     {
-      "name": "T.J. McConnell",
+      "name": "Aaron Nesmith",
       "team": "IND",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Johnny Furphy",
@@ -235,19 +235,9 @@
       "status": "Day-To-Day"
     },
     {
-      "name": "Jerami Grant",
-      "team": "MEM",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "GG Jackson",
-      "team": "MEM",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Isaiah Stewart",
       "team": "MEM",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Vladislav Goldin",
@@ -302,17 +292,7 @@
     {
       "name": "Dean Wade",
       "team": "PHI",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Adem Bona",
-      "team": "PHI",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Anfernee Simons",
-      "team": "PHI",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Tacko Fall",
@@ -402,17 +382,17 @@
     {
       "name": "Blake Hinson",
       "team": "UTA",
-      "status": "Day-To-Day"
+      "status": "Out"
+    },
+    {
+      "name": "Tony Bradley",
+      "team": "UTA",
+      "status": "Out"
     },
     {
       "name": "Trey Alexander",
       "team": "UTA",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Kyle Filipowski",
-      "team": "UTA",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Jusuf Nurkic",
