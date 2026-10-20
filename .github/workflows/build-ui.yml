@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - "frontend/**"
+      - "modern-bridge.js"
+      - "analysis-tools.js"
       - "index.source.html"
       - "scripts/prepare-production.mjs"
       - "scripts/test-production.mjs"
@@ -47,6 +49,8 @@ jobs:
           name: verified-site
           path: |
             dist/index.html
+            dist/modern-bridge.js
+            dist/analysis-tools.js
             dist/assets/
           if-no-files-found: error
           retention-days: 1
@@ -71,6 +75,8 @@ jobs:
           test -s verified-site/index.html
           test -d verified-site/assets
           cp verified-site/index.html index.html
+          cp verified-site/modern-bridge.js modern-bridge.js
+          cp verified-site/analysis-tools.js analysis-tools.js
           mkdir -p assets
           cp -R verified-site/assets/. assets/
           git config user.name "github-actions[bot]"
