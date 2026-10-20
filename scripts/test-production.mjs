@@ -55,7 +55,8 @@ try{
  await expect(page.locator('.trade-summary')).toBeVisible();
  await expect(page.getByRole('button',{name:'Queue for review'})).toHaveCount(0);
  await page.getByRole('button',{name:'Compare all 9 categories'}).click();
- await expect(page.locator('.impact-table tbody tr')).toHaveCount(18);
+ await expect(page.locator('.impact-table').nth(1).locator('tbody tr')).toHaveCount(9);
+ await expect(page.locator('.impact-table').nth(2).locator('tbody tr')).toHaveCount(9);
  await page.getByRole('button',{name:'Close panel'}).click();
  await page.getByRole('button',{name:'Find ideas',exact:true}).click();
  await page.getByRole('combobox',{name:'Trade format',exact:true}).selectOption('2:2');
