@@ -32,6 +32,20 @@ try{
  await expect(page.getByRole('heading',{name:'MY TEAM',exact:true})).toBeVisible();await expect(page.locator('.team-overview')).toContainText('75.0');await expect(page.locator('.roster-row')).toHaveCount(14);
  const initial=await page.evaluate(()=>window.DraftRoomBridge.data());expect(initial.revision).toBe(1);expect(initial.projections.length).toBe(300);expect(initial.projections.filter(p=>p.adp>0).length).toBe(186);expect(Object.values(initial.rosters).flat().length).toBe(168);
  await page.screenshot({path:evidence+'/01-team-mobile.png'});
+ // v31: category strategy is native to Team, passes priority into balanced trades.
+ await page.locator('.strategy-entry').click();
+ await expect(page.locator('.strategy-choice')).toHaveCount(7);
+ await page.locator('.strategy-choice').nth(1).click();
+ await page.getByRole('button',{name:'Find balanced trades for this strategy',exact:false}).click();
+ await expect(page.getByRole('combobox',{name:'Trade format',exact:true})).toBeVisible();
+ await expect(page.locator('.ideas-section .status-note').last()).toContainText(/credible offers|No credible mutually beneficial/);
+ await page.getByRole('combobox',{name:'Trade format',exact:true}).selectOption('2:2');
+ await expect(page.locator('.ideas-section .status-note').last()).toContainText(/credible offers|No credible mutually beneficial/);
+ await page.getByRole('button',{name:'Analyze',exact:true}).click();
+ await page.getByRole('button',{name:'Ranks',exact:true}).click();
+ await expect(page.locator('.gap-row')).toHaveCount(9);
+ await expect(page.locator('.gap-value')).toHaveCount(9);
+
  await page.getByRole('button',{name:'Trades',exact:true}).click();await expect(page.locator('.trade-summary')).toContainText('+0.219');await expect(page.locator('.trade-summary')).toContainText('−0.255');await page.screenshot({path:evidence+'/02-trade-mobile.png'});
  await page.getByRole('button',{name:'Queue for review',exact:true}).click();await expect(page.locator('#editorToken')).toBeVisible();
  expect(await page.evaluate(()=>window.DraftRoomBridge.data().rosters)).toEqual(initial.rosters);
