@@ -175,31 +175,68 @@ async function getNbaSchedule(start,end){
  try{return await getEspnWeeklySchedule(start,end)}catch(e){errors.push('ESPN weekly schedule: '+e.message)}
  throw Error('NBA game schedule unavailable for '+start+' to '+end+'. '+errors.join('; ')+'. Try again later or select a different week.');
 }
-function chooseWeek(date=new Date()){
- const today=new Date(date.getFullYear(),date.getMonth(),date.getDate());
- today.setDate(today.getDate()-((today.getDay()+6)%7));
- return today;
+// Yahoo's published 2026-27 DEFAULT game weeks (custom leagues may differ).
+// Includes the special 14-day NBA Cup and All-Star matchups.
+const YAHOO_WEEKS_2026=[
+ ['2026-10-20','2026-10-25'],['2026-10-26','2026-11-01'],
+ ['2026-11-02','2026-11-08'],['2026-11-09','2026-11-15'],
+ ['2026-11-16','2026-11-22'],['2026-11-23','2026-11-29'],
+ ['2026-11-30','2026-12-13'],['2026-12-14','2026-12-20'],
+ ['2026-12-21','2026-12-27'],['2026-12-28','2027-01-03'],
+ ['2027-01-04','2027-01-10'],['2027-01-11','2027-01-17'],
+ ['2027-01-18','2027-01-24'],['2027-01-25','2027-01-31'],
+ ['2027-02-01','2027-02-07'],['2027-02-08','2027-02-14'],
+ ['2027-02-15','2027-02-28'],['2027-03-01','2027-03-07'],
+ ['2027-03-08','2027-03-14'],['2027-03-15','2027-03-21'],
+ ['2027-03-22','2027-03-28'],['2027-03-29','2027-04-04'],
+ ['2027-04-05','2027-04-11']
+];
+function pacificDate(now=new Date()){
+ const parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/Los_Angeles',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(now);
+ const field=type=>parts.find(p=>p.type===type)?.value;
+ return field('year')+'-'+field('month')+'-'+field('day');
+}
+function chooseYahooWeek(today=pacificDate()){
+ return YAHOO_WEEKS_2026.findIndex(([from,to])=>from<=today&&today<=to);
+}
+function selectYahooWeek(index){
+ if(index<0||index>=YAHOO_WEEKS_2026.length)throw Error('Outside published Yahoo season dates. Set a custom week manually.');
+ const [from,to]=YAHOO_WEEKS_2026[index];
+ $('streamWeekStart').value=from;$('streamWeekEnd').value=to;
+ $('streamScheduleStatus').textContent='Yahoo default Week '+(index+1)+': '+from+' through '+to+'. If your private league differs, edit the dates.';
 }
 function initializeStreamingWeek(){
- const monday=chooseWeek();
- $('streamWeekStart').value=isoDay(monday);
- const sunday=new Date(monday);sunday.setDate(sunday.getDate()+6);
- $('streamWeekEnd').value=isoDay(sunday);
-}
-function shiftWeek(days){
- const d=dayFromIso($('streamWeekStart').value);
- d.setDate(d.getDate()+days);
+ const today=pacificDate();
+ const idx=chooseYahooWeek(today);
+ if(idx>=0)return selectYahooWeek(idx);
+ const future=YAHOO_WEEKS_2026.findIndex(([from])=>from>today);
+ if(future>=0)return selectYahooWeek(future);
+ // Out-of-season visitors can still use custom date ranges.
+ const d=dayFromIso(today);d.setDate(d.getDate()-((d.getDay()+6)%7));
  $('streamWeekStart').value=isoDay(d);
  const end=new Date(d);end.setDate(end.getDate()+6);
  $('streamWeekEnd').value=isoDay(end);
- $('streamScheduleStatus').textContent='Week changed. Run streaming recommendations to load the NBA schedule.';
 }
-$('streamPreviousWeek').onclick=()=>shiftWeek(-7);
-$('streamNextWeek').onclick=()=>shiftWeek(7);
-$('streamWeekStart').onchange=()=>{
- try{const date=dayFromIso($('streamWeekStart').value);date.setDate(date.getDate()+6);$('streamWeekEnd').value=isoDay(date)}catch(e){}
-};
+function shiftWeek(direction){
+ const from=$('streamWeekStart').value,to=$('streamWeekEnd').value;
+ const exact=YAHOO_WEEKS_2026.findIndex(([s,e])=>s===from&&e===to);
+ if(exact>=0&&exact+direction>=0&&exact+direction<YAHOO_WEEKS_2026.length)return selectYahooWeek(exact+direction);
+ const d=dayFromIso(from);d.setDate(d.getDate()+7*direction);
+ $('streamWeekStart').value=isoDay(d);
+ const end=new Date(d);end.setDate(end.getDate()+6);
+ $('streamWeekEnd').value=isoDay(end);
+ $('streamScheduleStatus').textContent='Custom week: '+$('streamWeekStart').value+' through '+$('streamWeekEnd').value+'.';
+}
+$('streamPreviousWeek').onclick=()=>shiftWeek(-1);
+$('streamNextWeek').onclick=()=>shiftWeek(1);
+$('streamWeekStart').onchange=()=>{$('streamScheduleStatus').textContent='Custom start date selected. Review your week end date.'};
+$('streamWeekEnd').onchange=()=>{$('streamScheduleStatus').textContent='Custom matchup dates selected.'};
 initializeStreamingWeek();
+function streamingEffectiveRange(start,end,today=pacificDate()){
+ if(today>end)throw Error('This matchup has ended. Select the current or a future week to find remaining games.');
+ const effectiveStart=today>start?today:start;
+ return {start:effectiveStart,end,remaining:effectiveStart!==start};
+}
 function weeklyPerGame(p,c){return p.GP>0?Number(p[c]||0)/p.GP:0}
 function weeklyCategoryValue(p,games){
  const z=stats(), cats=ANALYSIS_CATS;
@@ -214,8 +251,9 @@ $('streamRecommend').onclick=async()=>{
  try{
   const start=$('streamWeekStart').value,end=$('streamWeekEnd').value;
   if(dayFromIso(start)>dayFromIso(end))throw Error('Week end must follow week start.');
-  const schedule=await getNbaSchedule(start,end),counts=schedule.counts;
-  $('streamScheduleStatus').textContent='Official NBA regular-season schedule: '+start+' through '+end+' · '+schedule.gameCount+' games · '+schedule.source+'.';
+  const effective=streamingEffectiveRange(start,end);
+  const schedule=await getNbaSchedule(effective.start,end),counts=schedule.counts;
+  $('streamScheduleStatus').textContent='Remaining NBA games: '+effective.start+' through '+end+' · '+schedule.gameCount+' games · '+schedule.source+(effective.remaining?' · Games before today excluded.':'')+'.';
   const from=$('streamTeam').value;
   const roster=analysisPlayers(from);
   const taken=new Set(TEAMS.flatMap(t=>currentRosters[t]||[]));
