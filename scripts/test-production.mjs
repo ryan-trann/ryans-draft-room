@@ -38,7 +38,7 @@ try{
  await page.locator('.strategy-choice').nth(1).click();
  await page.getByRole('button',{name:'Find balanced trades for this strategy',exact:false}).click();
  await expect(page.getByRole('combobox',{name:'Trade format',exact:true})).toBeVisible();
- await expect(page.locator('.ideas-section .footnote')).toContainText('cash pot');
+ await expect(page.locator('.ideas-section .footnote')).toContainText('pot-payout');
  await expect(page.locator('.ideas-section .status-note').last()).toContainText(/credible offers|No credible mutually beneficial/);
  await page.getByRole('combobox',{name:'Trade format',exact:true}).selectOption('2:2');
  await expect(page.locator('.ideas-section .status-note').last()).toContainText(/credible offers|No credible mutually beneficial/);
