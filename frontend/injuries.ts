@@ -16,8 +16,17 @@ const teamAliases:Record<string,string>={
 };
 const teamKey=(team:string)=>{const key=normalize(team);return teamAliases[key]||key};
 export const injuryKey=(name:string,team:string)=>teamKey(team)+'|'+(name.includes('.')?normalize(name):alias(name));
+export const injuryAvailability=(name:string,team:string,snapshot:InjurySnapshot):number=>{
+ const entry=snapshot.players.find(p=>injuryKey(p.name,p.team)===injuryKey(name,team));
+ if(!entry)return 1;
+ const status=entry.status.trim().toLowerCase();
+ if(/^(available|active|healthy|probable)$/.test(status))return 1;
+ if(/questionable|day.to.day|dtd/.test(status))return .65;
+ if(/doubtful/.test(status))return .2;
+ return 0;
+};
 export const isListedInjured=(name:string,team:string,snapshot:InjurySnapshot)=>
- snapshot.players.some(p=>injuryKey(p.name,p.team)===injuryKey(name,team)&&!/^(available|active|healthy)$/i.test(p.status.trim()));
+ injuryAvailability(name,team,snapshot)<1;
 export const isRecentInjurySnapshot=(s:InjurySnapshot)=>
  Boolean(s&&Array.isArray(s.players)&&s.players.length>=10&&Number.isFinite(Date.parse(s.updatedAt))&&Date.now()-Date.parse(s.updatedAt)>=0&&Date.now()-Date.parse(s.updatedAt)<12*60*60*1000);
 export async function getInjurySnapshot():Promise<InjurySnapshot>{
