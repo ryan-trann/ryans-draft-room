@@ -123,7 +123,36 @@ function gamesForRange(data,start,end){
  for(const g of selected){counts[g.home]=(counts[g.home]||0)+1;counts[g.away]=(counts[g.away]||0)+1}
  return {counts,gameCount:selected.length};
 }
-let scheduleCache=null;
+function dateInNBAZone(utcDate){
+ const pieces=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date(utcDate));
+ const field=part=>pieces.find(x=>x.type===part)?.value;
+ return field('year')+'-'+field('month')+'-'+field('day');
+}
+async function getEspnWeeklySchedule(start,end){
+ const months=new Set();
+ let cursor=dayFromIso(start),stop=dayFromIso(end);
+ while(cursor<=stop){months.add(cursor.getFullYear()+String(cursor.getMonth()+1).padStart(2,'0'));cursor.setDate(cursor.getDate()+1)}
+ const games=[],seen=new Set();
+ for(const month of months){
+  const url='https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard?dates='+month+'&limit=500';
+  const response=await fetch(url,{cache:'no-store'});
+  if(!response.ok)throw Error('ESPN HTTP '+response.status);
+  const data=await response.json();
+  if(!Array.isArray(data.events))throw Error('ESPN schedule format changed');
+  for(const event of data.events){
+   if(Number(event.season?.type)!==2||seen.has(event.id))continue;
+   const competition=event.competitions?.[0];
+   const home=competition?.competitors?.find(x=>x.homeAway==='home')?.team?.abbreviation;
+   const away=competition?.competitors?.find(x=>x.homeAway==='away')?.team?.abbreviation;
+   if(!home||!away)continue;
+   seen.add(event.id);
+   games.push({date:dateInNBAZone(competition.date||event.date),home:nbaCode(home),away:nbaCode(away)});
+  }
+ }
+ const result=gamesForRange({games},start,end);
+ if(!result.gameCount)throw Error('ESPN reports no regular-season games for this week');
+ return {...result,source:'ESPN NBA schedule',generatedAt:'',gameRows:games.length};
+}
 async function getNbaSchedule(start,end){
  // GitHub Pages-local cache keeps Safari independent of NBA cross-origin rules.
  // If the scheduled GitHub workflow has not populated it, try the official feed.
@@ -143,6 +172,7 @@ async function getNbaSchedule(start,end){
    return {...range,source:label,generatedAt:data.generatedAt,gameRows:data.games.length};
   }catch(e){errors.push(label+': '+e.message)}
  }
+ try{return await getEspnWeeklySchedule(start,end)}catch(e){errors.push('ESPN weekly schedule: '+e.message)}
  throw Error('NBA game schedule unavailable for '+start+' to '+end+'. '+errors.join('; ')+'. Try again later or select a different week.');
 }
 function chooseWeek(date=new Date()){
