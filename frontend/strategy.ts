@@ -58,8 +58,12 @@ export function estimatePot(rosters:Roster,cats:string[],all:Player[],trials=POT
  return potFromLookup(rosters,cats,lookup,trials);
 }
 function potFromLookup(rosters:Roster,cats:string[],lookup:Map<string,Player>,trials=POT_TRIALS):PotResult{
- const teams=Object.keys(rosters),n=teams.length;
- const totals=teams.map(t=>cats.map(c=>sum(rosters[t].map(id=>lookup.get(id)).filter(Boolean) as Player[],c)));
+ const totals=Object.fromEntries(Object.entries(rosters).map(([t,ids])=>[t,Object.fromEntries(cats.map(c=>[c,sum(ids.map(id=>lookup.get(id)).filter(Boolean) as Player[],c)]))]));
+ return estimatePotFromTotals(totals,cats,trials);
+}
+export function estimatePotFromTotals(totalsByTeam:Record<string,Record<string,number>>,cats:string[],trials=POT_TRIALS):PotResult{
+ const teams=Object.keys(totalsByTeam),n=teams.length;
+ const totals=teams.map(t=>cats.map(c=>totalsByTeam[t][c]||0));
  const cdfs=cats.map((cat,k)=>{
   const raw=teams.map((_,i)=>flipped(cat)*totals[i][k]);
   const avg=raw.reduce((a,b)=>a+b,0)/n,range=Math.max(...raw)-Math.min(...raw);
