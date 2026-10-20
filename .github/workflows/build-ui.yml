@@ -7,6 +7,7 @@ on:
       - "index.source.html"
       - "scripts/prepare-production.mjs"
       - "scripts/test-production.mjs"
+      - "scripts/test-injuries.mjs"
       - ".github/workflows/build-ui.yml"
   workflow_dispatch:
 
