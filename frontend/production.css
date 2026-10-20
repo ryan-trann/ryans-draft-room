@@ -32,3 +32,24 @@ dialog.production-sheet[open]{display:flex;flex-direction:column}dialog.producti
 .live-save-form .actions{display:flex;gap:8px;flex-wrap:wrap}.live-save-form #editorPublish{background:#8558fa;color:#fff;width:100%;border:0;border-radius:8px;min-height:46px;font-size:14px;font-weight:600}.live-save-form #editorBack{display:none}
 .live-save-form .live-save-status{color:#b9a2e0;padding:12px 0;font-size:12px;line-height:1.5}.live-save-form #editorReviewArea.hidden{display:none}
 @media(min-width:800px){.draft-app .hero-title{font-size:56px!important}.draft-app .roster-row{min-height:76px}.draft-app .content{padding-top:24px}.draft-app .trade-content .exchange{gap:16px;grid-template-columns:1fr 28px 1fr}.draft-app .trade-content .player-pick b{font-size:15px}.draft-app .share-values strong{font-size:54px}.draft-app .trade-summary{padding:20px 0}.draft-app .impact-table th,.draft-app .impact-table td{height:38px!important}}
+/* Draft, projection upload, and restore share the main app shell. */
+.tool-back{justify-content:flex-start;gap:6px;width:auto;min-height:42px;margin-bottom:4px}
+.native-tools{color:#eeeaf5;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.native-tools>.wrap{max-width:none;padding:0;margin:0}.native-tools>#draft{display:block!important}
+.native-tools .panel{background:#151720;border:1px solid #30303f;border-radius:12px;padding:16px;margin:16px 0;box-shadow:none}
+.native-tools h2{font-family:'Inter',sans-serif;font-size:16px;line-height:1.4;margin:0 0 10px;color:#eeeaf5}.native-tools p{color:#aab3c9;font-size:13px;line-height:1.65;margin:10px 0}
+.native-tools label{display:block;font-size:12px;color:#bac2d8;margin:14px 0 6px}.native-tools .muted,.native-tools small{color:#a0abc3;font-size:12px}
+.native-tools input:not([type='range']),.native-tools textarea,.native-tools select{font:400 16px/1.5 'Inter',sans-serif;width:100%;max-width:100%;box-sizing:border-box;background:#1b1d2a;color:#f2edf9;border:1px solid #45445b;border-radius:8px;padding:11px;min-height:46px}
+.native-tools textarea{min-height:180px;resize:vertical}.native-tools input[type='file']{font-size:13px}.native-tools input[type='range']{accent-color:#986fff;min-height:44px}
+.native-tools button,.native-tools a{font:500 13px/1.4 'Inter',sans-serif;min-height:44px;padding:11px 13px;box-sizing:border-box;border-radius:8px}
+.native-tools button{background:#242234;color:#d8c7ff;border:1px solid #48405f;cursor:pointer;margin-top:8px}.native-tools button.primary{background:#8558fa;border-color:#8558fa;color:#fff;font-weight:600}
+.native-tools button:disabled{opacity:.45;cursor:default}.native-tools a{color:#c3a5ff!important;display:inline-flex;align-items:center;max-width:100%}.native-tools strong{color:#eeeaf5}
+.native-tools .note{background:#202030;border:1px solid #393348;border-radius:8px;padding:12px;color:#c4c5db;font-size:12px;margin-top:12px;white-space:pre-wrap}
+.native-tools .actions,.native-tools .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.native-tools .grow{flex:1 1 160px}.native-tools .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:16px 0}
+.native-tools .stat{min-width:0;background:#181824;border:1px solid #343142;border-radius:10px;padding:11px 9px;display:flex;flex-direction:column;gap:5px}.native-tools .stat b{font-family:'Bebas Neue',sans-serif;font-size:30px;line-height:1.1;color:#b58aff}.native-tools .stat small{font-size:10px;line-height:1.4}
+.native-tools .pick{display:flex;gap:10px;align-items:center;border-bottom:1px solid #30313e;padding:11px 0;min-height:48px}.native-tools .pick .muted{display:block}.native-tools .rank{min-width:32px;color:#a998c1;font-size:12px}.native-tools .chip{display:inline-block;background:#242132;color:#d9c9f6;border:1px solid #42364f;padding:8px 10px;border-radius:7px;font-size:12px}
+.native-tools .scroll{max-height:360px;overflow:auto}.native-tools table{font-size:12px;width:100%;border-collapse:collapse}.native-tools td,.native-tools th{padding:9px 6px;border-bottom:1px solid #363244}.native-tools .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.native-tools #playerSuggestions{background:#181924!important;border-color:#40394f!important}.native-tools #playerSuggestions button{width:100%;text-align:left;background:transparent;display:flex;justify-content:space-between;gap:8px}.native-tools #status{color:#c3a5ff;font-size:12px;padding-top:10px}.native-projections button,.native-restore button{width:100%}
+.native-tools :focus-visible,.tool-back:focus-visible{outline:2px solid #bb94ff;outline-offset:3px}
+
+.draft-app .tool-content .hero-title{white-space:normal;line-height:1.05;overflow-wrap:normal}.draft-app .tool-content .hero-title span{white-space:nowrap}

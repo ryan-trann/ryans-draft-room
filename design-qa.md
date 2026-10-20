@@ -27,3 +27,9 @@ Primary interactions tested: all five tabs; live 300-player projection data and 
 - [x] Check all five fidelity surfaces.
 
 Follow-up limit: desktop Chromium emulation verifies the iPhone viewport and touch layout; physical iPhone Safari was not available for this test.
+
+## v30 tool continuity update
+
+Draft Center, projection uploads and saved-team restore now share the purple header, version label, back action and bottom navigation. Screens: `../production-evidence/06-draft-mobile.png`, `07a-projections-start-mobile.png`, `07-projections-mobile.png`, `08-restore-mobile.png`. Existing form validation and publication handlers are retained and scoped to avoid duplicate element IDs. Old upload URLs redirect into the app. Completed drafts now clear stale on-the-clock context. Browser checks cover draft record/undo/local backup restore, 300-player validation, missing-token protection, one mocked projection publication with token clearing, 168-pick restore validation, and the old upload URL redirect. No application errors; checks passed at 393 × 852 and 1280 × 900.
+
+The first upload capture exposed a clipped one-line heading at 393 px. Tool-page headings now wrap naturally; the refreshed `07a-projections-start-mobile.png` shows the full heading, and a browser assertion verifies its content width. Post-fix suite: passed.

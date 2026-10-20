@@ -8,13 +8,18 @@ const server=http.createServer(async(req,res)=>{try{const url=new URL(req.url,'h
 await new Promise(resolve=>server.listen(4182,'127.0.0.1',resolve));
 const browser=await chromium.launch({headless:true,executablePath:process.env.QA_BROWSER_EXECUTABLE||undefined,args:process.env.QA_BROWSER_ARGS?JSON.parse(process.env.QA_BROWSER_ARGS):[]});
 const page=await browser.newPage({viewport:{width:393,height:852},deviceScaleFactor:1,isMobile:true,hasTouch:true,timezoneId:'America/Los_Angeles'});
-const errors=[],writes=[];let remote=JSON.parse(await fs.readFile('team-rosters.json','utf8'));
+const errors=[],writes=[],projectionWrites=[],draftWrites=[];let remote=JSON.parse(await fs.readFile('team-rosters.json','utf8'));
 const originalDraft=JSON.parse(await fs.readFile('draft-teams.json','utf8')).picks;
 page.on('pageerror',e=>errors.push(e.message));
 await page.clock.setFixedTime(new Date('2026-10-20T03:15:00Z'));
 await page.route('**/team-rosters.json?fresh=*',route=>route.fulfill({contentType:'application/json',body:JSON.stringify(remote)}));
 await page.route('https://api.github.com/**',async route=>{
- const req=route.request();if(!req.url().endsWith('/contents/team-rosters.json'))throw Error('Unexpected API endpoint');
+ const req=route.request();
+ if(req.url().endsWith('/contents/projections-300-data.js')||req.url().endsWith('/contents/draft-teams.json')){
+  if(req.method()==='GET')return route.fulfill({contentType:'application/json',body:'{"sha":"fixture-tool-sha"}'});
+  if(req.method()==='PUT'){(req.url().includes('projections-')?projectionWrites:draftWrites).push(req.postDataJSON());return route.fulfill({contentType:'application/json',body:'{"commit":{"sha":"fixture-tool-commit"}}'});}
+ }
+ if(!req.url().endsWith('/contents/team-rosters.json'))throw Error('Unexpected API endpoint');
  if(req.method()==='GET')return route.fulfill({contentType:'application/json',body:JSON.stringify({sha:'fixture-sha',content:Buffer.from(JSON.stringify(remote)).toString('base64')})});
  if(req.method()==='PUT'){const body=req.postDataJSON();remote=JSON.parse(Buffer.from(body.content,'base64').toString('utf8'));writes.push(body);return route.fulfill({contentType:'application/json',body:'{"commit":{"sha":"fixture-commit"}}'});}
  return route.abort();
@@ -42,10 +47,28 @@ try{
  await page.getByRole('button',{name:'Ranks',exact:true}).click();await expect(page.locator('.category-row')).toHaveCount(9);await page.getByRole('button',{name:'League',exact:true}).click();await expect(page.locator('.league-row')).toHaveCount(12);
  await page.getByRole('button',{name:'Players',exact:true}).click();await page.getByRole('textbox',{name:'Search players',exact:true}).fill('zz-no-player');await expect(page.getByRole('heading',{name:'No matching players',exact:true})).toBeVisible();await page.getByRole('button',{name:'Clear search',exact:true}).click();await page.getByRole('combobox',{name:'Sort players',exact:true}).selectOption('adp');await expect(page.locator('.player-lab-row').first()).toContainText('N.Jokic');
  await page.getByRole('button',{name:'Stream',exact:true}).click();await page.getByRole('button',{name:'Find streaming opportunities',exact:true}).click();await expect(page.locator('.stream-results')).toContainText('+22.82');await page.screenshot({path:evidence+'/04-stream-mobile.png'});
- await page.getByRole('button',{name:'Open menu',exact:true}).click();await page.getByRole('button',{name:'Draft archive & backups',exact:false}).click();await expect(page.locator('#legacy-ui')).toBeVisible();await expect(page.locator('#export')).toBeAttached();await page.getByRole('button',{name:'Back to Draft Room',exact:false}).click();await expect(page.locator('body')).toHaveClass(/modern-ready/);
+ await page.getByRole('button',{name:'Open menu',exact:true}).click();await page.getByRole('button',{name:'Draft & backups',exact:false}).click();await expect(page.getByRole('heading',{name:'DRAFT CENTER',exact:true})).toBeVisible();await expect(page.locator('#legacy-ui')).toBeHidden();await expect(page.locator('#export')).toBeVisible();await expect(page.locator('#bestPickContext')).toContainText('Draft complete');
+ const backup=await page.evaluate(()=>JSON.stringify(state));
+ await page.screenshot({path:evidence+'/06-draft-mobile.png'});
+ await page.locator('#reset').click();await expect(page.locator('#count')).toHaveText('0');await page.locator('#player').fill('N.Jokic');await page.locator('#playerSuggestions button').first().click();await page.locator('#record').click();await expect(page.locator('#count')).toHaveText('1');await page.locator('#undo').click();await expect(page.locator('#count')).toHaveText('0');
+ await page.locator('#restore').setInputFiles({name:'draft-backup.json',mimeType:'application/json',buffer:Buffer.from(backup)});await expect(page.locator('#count')).toHaveText('168');
+ await page.getByRole('button',{name:'Team',exact:true}).click();await page.getByRole('button',{name:'Open menu',exact:true}).click();await page.getByRole('button',{name:'GitHub & projections',exact:false}).click();await page.getByRole('button',{name:'Upload projections',exact:true}).click();
+ await expect(page.getByRole('heading',{name:'UPLOAD PROJECTIONS',exact:true})).toBeVisible();await expect(page.locator('#legacy-ui')).toBeHidden();await expect(page.locator('.preview-label')).toHaveText('v30');expect(await page.locator('.hero-title').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);await page.screenshot({path:evidence+'/07a-projections-start-mobile.png'});
+ await page.getByRole('button',{name:'Validate and preview',exact:true}).click();await expect(page.locator('#tool-projections-preview')).toContainText('Validation failed');await expect(page.locator('#tool-projections-publish')).toBeDisabled();
+ const tableText=await page.evaluate(()=>window.DRAFT_PROJECTIONS_RAW.trim().split(/\r?\n/).map(row=>{const x=row.split(/\s+/);x[1]=x[1].replaceAll('_',' ');if(x[2]==='-')x[2]='';return x.join(' ')}).join('\n'));
+ await page.getByLabel('Projection table',{exact:true}).fill(tableText);await page.getByRole('button',{name:'Validate and preview',exact:true}).click();await expect(page.locator('#tool-projections-preview')).toContainText('Valid: 300 players');
+ await page.getByRole('button',{name:'Publish validated projections to GitHub',exact:true}).click();await expect(page.locator('#tool-projections-status')).toContainText('Enter a fine-grained');expect(projectionWrites.length).toBe(0);
+ await page.getByLabel('One-time GitHub token',{exact:true}).fill('FAKE_TEST_TOKEN_ONLY');await page.getByRole('button',{name:'Publish validated projections to GitHub',exact:true}).click();await expect(page.locator('#tool-projections-status')).toContainText('Published 300 players');expect(projectionWrites.length).toBe(1);await expect(page.locator('#tool-projections-token')).toHaveValue('');
+ await page.screenshot({path:evidence+'/07-projections-mobile.png'});
+ await page.getByRole('button',{name:'Back to team',exact:true}).click();await expect(page.getByRole('heading',{name:'MY TEAM',exact:true})).toBeVisible();await page.getByRole('button',{name:'Open menu',exact:true}).click();await page.getByRole('button',{name:'Draft & backups',exact:false}).click();await page.getByRole('link',{name:'Replace saved teams from a backup',exact:true}).click();
+ await expect(page.getByRole('heading',{name:'RESTORE TEAMS',exact:true})).toBeVisible();await page.locator('#tool-restore-backup').setInputFiles({name:'draft-backup.json',mimeType:'application/json',buffer:Buffer.from(backup)});await page.getByRole('button',{name:'Validate all teams',exact:true}).click();await expect(page.locator('#tool-restore-preview')).toContainText('Validated 168 unique picks');await expect(page.locator('#tool-restore-publish')).toBeEnabled();
+ await page.screenshot({path:evidence+'/08-restore-mobile.png'});
+ await page.getByRole('button',{name:'Team',exact:true}).click();
+ await page.goto('http://127.0.0.1:4182'+prefix+'upload.html');await expect(page.getByRole('heading',{name:'UPLOAD PROJECTIONS',exact:true})).toBeVisible();await expect(page.locator('#legacy-ui')).toBeHidden();await page.getByRole('button',{name:'Team',exact:true}).click();
+ await expect(page.locator('body')).toHaveClass(/modern-ready/);
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBe(true);
  await page.setViewportSize({width:1280,height:900});await page.getByRole('button',{name:'Team',exact:true}).click();await page.screenshot({path:evidence+'/05-team-desktop.png'});
  expect(errors).toEqual([]);
- const result={status:'passed',viewports:[{width:393,height:852},{width:1280,height:900}],appErrors:errors,mockedGitHubWrites:writes.length,checks:['live data loading','category/trade parity','review-before-save','missing-token guard','canonical identity serialization','successful save and reload','unchanged draft history','stale-revision protection','two-player comparison','rankings','search and ADP sorting','live schedule streaming','original backup/archive access','responsive overflow']};
+ const result={status:'passed',viewports:[{width:393,height:852},{width:1280,height:900}],appErrors:errors,mockedGitHubWrites:writes.length,mockedProjectionWrites:projectionWrites.length,checks:['live data loading','category/trade parity','review-before-save','missing-token guard','canonical identity serialization','successful save and reload','unchanged draft history','stale-revision protection','two-player comparison','rankings','search and ADP sorting','live schedule streaming','native draft record, undo and restore','native projection validation and mocked publication','native backup reconciliation','legacy upload URL redirect','responsive overflow']};
  await fs.writeFile(evidence+'/results.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result));
 }finally{await browser.close();await new Promise(resolve=>server.close(resolve));}

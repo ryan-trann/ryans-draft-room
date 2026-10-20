@@ -10,7 +10,7 @@ The classic files (`analysis-tools.js`, projections, saved rosters, draft histor
 
 ## Behavior and compatibility
 
-The five tabs provide team management, category rankings, player search and comparison, trade analysis, and streaming. Menu → Draft archive & backups opens the original draft controls, backup/restore, and upload links. If initialization fails, the original tools remain available.
+The five tabs provide team management, category rankings, player search and comparison, trade analysis, and streaming. Menu → Draft & backups opens draft controls and backup/restore inside the purple app shell. GitHub & projections opens native projection upload and saved-team restore screens. Old upload URLs redirect to their matching app routes. Draft controls retain their original event handlers and state. Upload and restore forms retain their original validation and publication code, scoped to each form. If initialization fails, the original tools remain available.
 
 GitHub roster saves retain the original one-time token, review/confirmation, and concurrent-revision protection. Tokens are not stored by the new interface. A serialization fix saves canonical projection names instead of disambiguated display labels so players with duplicate abbreviated names can reload correctly.
 
