@@ -32,6 +32,8 @@ jobs:
         run: npm ci
       - name: Typecheck and build production bundle
         run: npm run build
+      - name: Verify NBA injury player matching
+        run: node scripts/test-injuries.mjs
       - name: Install browser for regression tests
         run: npx playwright install --with-deps chromium
       - name: Run production regression suite
@@ -46,6 +48,6 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html assets/
           if ! git diff --cached --quiet; then
-            git commit -m "Publish verified v41 side-bet payout trade model"
+            git commit -m "Publish verified v42 side-bet payout trade model"
             git push
           fi
