@@ -36,7 +36,7 @@ try{
  expect(duplicateLabels.length).toBeGreaterThan(0);
  for(const p of duplicateLabels)expect(p.actual).toBe(p.expected);
  await page.screenshot({path:evidence+'/01-team-mobile.png'});
- // v37: Team has no redundant Category Strategy entry; Trades is the sole auto finder.
+ // v38: Team has no redundant Category Strategy entry; Trades is the sole auto finder.
  await expect(page.locator('.strategy-entry')).toHaveCount(0);
  await page.getByRole('button',{name:'Trades',exact:true}).click();
  await page.getByRole('button',{name:'Find ideas',exact:true}).click();
@@ -46,15 +46,39 @@ try{
  await expect(page.locator('.payout-line').first()).toContainText('Your pot');
  await expect(page.locator('.payout-comparison').first()).toContainText(/You gain more|Opponent gains more|Similar gains/);
  await expect(page.locator('.trade-verdict').first()).toContainText(/Strong recommendation|Situational/);
+ // Trade suggestions are analysis-only, including the full recommended package.
+ await page.locator('.idea-row').first().click();
+ await expect(page.getByRole('button',{name:'Queue scenario for review'})).toHaveCount(0);
+ await page.getByRole('button',{name:'Analyze trade',exact:true}).click();
+ await expect(page.locator('.impact-heading')).toContainText('Analyze recommended trade');
+ await expect(page.locator('.pot-summary')).toContainText('cash-pot payout');
+ await expect(page.locator('.trade-summary')).toBeVisible();
+ await expect(page.getByRole('button',{name:'Queue for review'})).toHaveCount(0);
+ await page.getByRole('button',{name:'Compare all 9 categories'}).click();
+ await expect(page.locator('.impact-table tbody tr')).toHaveCount(18);
+ await page.getByRole('button',{name:'Close panel'}).click();
+ await page.getByRole('button',{name:'Find ideas',exact:true}).click();
  await page.getByRole('combobox',{name:'Trade format',exact:true}).selectOption('2:2');
  await expect(page.locator('.ideas-section .status-note').last()).toContainText(/offers pass|No offers passed/);
+ // If a 2-for-2 offer is available, analyze both players on each side.
+ if(await page.locator('.idea-row').count()){
+  await page.locator('.idea-row').first().click();
+  await page.getByRole('button',{name:'Analyze trade',exact:true}).click();
+  await expect(page.locator('.impact-heading')).toContainText('2 for 2');
+  await expect(page.locator('.pot-summary')).toBeVisible();
+  await expect(page.getByRole('button',{name:'Queue for review'})).toHaveCount(0);
+ }
  await page.getByRole('button',{name:'Analyze',exact:true}).click();
  await expect(page.locator('.pot-summary')).toContainText('cash-pot payout');
  await page.getByRole('button',{name:'Ranks',exact:true}).click();
  await expect(page.locator('.gap-row')).toHaveCount(9);
  await expect(page.locator('.gap-value')).toHaveCount(9);
  await page.getByRole('button',{name:'Trades',exact:true}).click();await expect(page.locator('.trade-summary')).toContainText('+0.219');await expect(page.locator('.trade-summary')).toContainText('−0.255');await page.screenshot({path:evidence+'/02-trade-mobile.png'});
- await page.getByRole('button',{name:'Queue for review',exact:true}).click();await expect(page.locator('#editorToken')).toBeVisible();
+ await expect(page.getByRole('button',{name:'Queue for review',exact:true})).toHaveCount(0);
+ await page.getByRole('button',{name:'Team',exact:true}).click();
+ await page.getByRole('button',{name:'Manage',exact:true}).click();
+ await page.getByRole('button',{name:'Add to batch',exact:true}).click();
+ await expect(page.locator('#editorToken')).toBeVisible();
  expect(await page.evaluate(()=>window.DraftRoomBridge.data().rosters)).toEqual(initial.rosters);
  await page.getByRole('button',{name:'Save batch to GitHub',exact:true}).click();await expect(page.locator('.live-save-status')).toContainText('Enter the fine-grained');expect(writes.length).toBe(0);
  await page.locator('#editorToken').fill('FAKE_TEST_TOKEN_ONLY');await page.getByRole('button',{name:'Save batch to GitHub',exact:true}).click();await expect(page.locator('.live-save-status')).toHaveCount(0);expect(writes.length).toBe(1);expect(remote.revision).toBe(2);
@@ -64,7 +88,9 @@ try{
  await page.evaluate(()=>window.DraftRoomBridge.reload());expect(await page.evaluate(()=>window.DraftRoomBridge.data().revision)).toBe(2);
  expect(await page.evaluate(()=>state.picks)).toEqual(originalDraft);
  await page.getByRole('button',{name:'Close panel',exact:true}).click();
- await page.getByRole('button',{name:'Queue for review',exact:true}).click();remote.revision=3;await page.locator('#editorToken').fill('FAKE_TEST_TOKEN_ONLY');await page.getByRole('button',{name:'Save batch to GitHub',exact:true}).click();await expect(page.locator('.live-save-status')).toContainText('Another device');expect(writes.length).toBe(1);expect(await page.evaluate(()=>window.DraftRoomBridge.data().batch.length)).toBe(1);
+ await page.getByRole('button',{name:'Team',exact:true}).click();
+ await page.getByRole('button',{name:'Manage',exact:true}).click();
+ await page.getByRole('button',{name:'Add to batch',exact:true}).click();remote.revision=3;await page.locator('#editorToken').fill('FAKE_TEST_TOKEN_ONLY');await page.getByRole('button',{name:'Save batch to GitHub',exact:true}).click();await expect(page.locator('.live-save-status')).toContainText('Another device');expect(writes.length).toBe(1);expect(await page.evaluate(()=>window.DraftRoomBridge.data().batch.length)).toBe(1);
  await page.getByRole('button',{name:'Discard batch',exact:true}).click();await page.getByRole('button',{name:'Close panel',exact:true}).click();remote.revision=2;
  await page.getByRole('button',{name:'Team',exact:true}).click();await page.getByRole('button',{name:'Select N.Jokic for comparison',exact:true}).click();await page.getByRole('button',{name:'Select D.Clingan for comparison',exact:true}).click();await page.getByRole('button',{name:'Compare',exact:true}).click();await expect(page.locator('.comparison-table tbody tr')).toHaveCount(11);await page.screenshot({path:evidence+'/03-comparison-mobile.png'});await page.getByRole('button',{name:'Close panel',exact:true}).click();
  await page.getByRole('button',{name:'Ranks',exact:true}).click();await expect(page.locator('.category-row')).toHaveCount(9);await page.getByRole('button',{name:'League',exact:true}).click();await expect(page.locator('.league-row')).toHaveCount(12);
@@ -76,7 +102,7 @@ try{
  await page.locator('#reset').click();await expect(page.locator('#count')).toHaveText('0');await page.locator('#player').fill('N.Jokic');await page.locator('#playerSuggestions button').first().click();await page.locator('#record').click();await expect(page.locator('#count')).toHaveText('1');await page.locator('#undo').click();await expect(page.locator('#count')).toHaveText('0');
  await page.locator('#restore').setInputFiles({name:'draft-backup.json',mimeType:'application/json',buffer:Buffer.from(backup)});await expect(page.locator('#count')).toHaveText('168');
  await page.getByRole('button',{name:'Team',exact:true}).click();await page.getByRole('button',{name:'Open menu',exact:true}).click();await page.getByRole('button',{name:'GitHub & projections',exact:false}).click();await page.getByRole('button',{name:'Upload projections',exact:true}).click();
- await expect(page.getByRole('heading',{name:'UPLOAD PROJECTIONS',exact:true})).toBeVisible();await expect(page.locator('#legacy-ui')).toBeHidden();await expect(page.locator('.preview-label')).toHaveText('v37');expect(await page.locator('.hero-title').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);await page.screenshot({path:evidence+'/07a-projections-start-mobile.png'});
+ await expect(page.getByRole('heading',{name:'UPLOAD PROJECTIONS',exact:true})).toBeVisible();await expect(page.locator('#legacy-ui')).toBeHidden();await expect(page.locator('.preview-label')).toHaveText('v38');expect(await page.locator('.hero-title').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);await page.screenshot({path:evidence+'/07a-projections-start-mobile.png'});
  await page.getByRole('button',{name:'Validate and preview',exact:true}).click();await expect(page.locator('#tool-projections-preview')).toContainText('Validation failed');await expect(page.locator('#tool-projections-publish')).toBeDisabled();
  const tableText=await page.evaluate(()=>window.DRAFT_PROJECTIONS_RAW.trim().split(/\r?\n/).map(row=>{const x=row.split(/\s+/);x[1]=x[1].replaceAll('_',' ');if(x[2]==='-')x[2]='';return x.join(' ')}).join('\n'));
  await page.getByLabel('Projection table',{exact:true}).fill(tableText);await page.getByRole('button',{name:'Validate and preview',exact:true}).click();await expect(page.locator('#tool-projections-preview')).toContainText('Valid: 300 players');
