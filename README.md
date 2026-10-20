@@ -1,4 +1,4 @@
-# Ryan’s Draft Room
+# PL Fantasy Basketball
 
 Mobile-first fantasy basketball tools with the approved purple interface. The published site remains at https://ryan-trann.github.io/ryans-draft-room/.
 

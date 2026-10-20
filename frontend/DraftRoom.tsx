@@ -59,7 +59,7 @@ export default function Prototype(){
  const title=(a:string,b:string)=><h1 className="hero-title">{a} <span>{b}</span></h1>;
  const sheetTitle=sheet==='teams'?'Choose teams':sheet==='pick'?`Choose player to ${side==='give'?'send':'receive'}`:sheet==='review'?'Review roster changes':sheet==='editor'?'Manage roster':sheet==='compare'?'Player comparison':sheet==='impact'?'All category changes':sheet==='menu'?'Draft room':sheet==='week'?'Matchup dates':sheet==='detail'?label(detail):'GitHub & projections';
  return <div className="draft-app">
- <header className="app-header"><div><div className="wordmark">RYAN’S <span>DRAFT ROOM</span></div><span className="preview-label">FANTASY BASKETBALL</span></div><button className="icon-button" aria-label="Open menu" onClick={()=>open('menu')}><DotsThree size={25} weight="bold"/></button></header>
+ <header className="app-header"><div><div className="wordmark">PL <span>FANTASY BASKETBALL</span></div><span className="preview-label">v29</span></div><button className="icon-button" aria-label="Open menu" onClick={()=>open('menu')}><DotsThree size={25} weight="bold"/></button></header>
  <div className="app-body"><MobileScroll key={tab} className="draft-scroll"><main className={'content '+(tab==='Trades'?'trade-content':'')}>
  {tab==='Trades'?<>
  <button className="team-switch trade-team-switch" aria-label="Choose trade teams" onClick={()=>open('teams')}><b>{team}</b><ArrowsLeftRight size={22} className="purple"/><b>{other}</b><CaretDown size={15}/></button>
