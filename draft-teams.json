@@ -1,0 +1,1015 @@
+{
+  "formatVersion": 1,
+  "source": "ryan-draft-backup.json",
+  "description": "Completed 12-team, 14-round draft, reconciled against the current 300-player projections",
+  "picks": [
+    {
+      "team": "Keith",
+      "player": "N.Jokic",
+      "playerId": "hb-1",
+      "unlisted": false
+    },
+    {
+      "team": "Dave",
+      "player": "V.Wembanyama",
+      "playerId": "hb-2",
+      "unlisted": false
+    },
+    {
+      "team": "Sean",
+      "player": "L.Doncic",
+      "playerId": "hb-3",
+      "unlisted": false
+    },
+    {
+      "team": "Matt",
+      "player": "S.Gilgeous-Alexander",
+      "playerId": "hb-5",
+      "unlisted": false
+    },
+    {
+      "team": "Chris",
+      "player": "J.Tatum",
+      "playerId": "hb-6",
+      "unlisted": false
+    },
+    {
+      "team": "Tim",
+      "player": "C.Cunningham",
+      "playerId": "hb-7",
+      "unlisted": false
+    },
+    {
+      "team": "Aaron",
+      "player": "G.Antetokounmpo",
+      "playerId": "hb-4",
+      "unlisted": false
+    },
+    {
+      "team": "Alan",
+      "player": "J.Johnson",
+      "playerId": "hb-8",
+      "unlisted": false
+    },
+    {
+      "team": "Joe",
+      "player": "T.Maxey",
+      "playerId": "hb-17",
+      "unlisted": false
+    },
+    {
+      "team": "Jake",
+      "player": "C.Flagg",
+      "playerId": "hb-14",
+      "unlisted": false
+    },
+    {
+      "team": "Ryan",
+      "player": "A.Edwards",
+      "playerId": "hb-10",
+      "unlisted": false
+    },
+    {
+      "team": "Cam",
+      "player": "S.Barnes",
+      "playerId": "hb-11",
+      "unlisted": false
+    },
+    {
+      "team": "Cam",
+      "player": "K.Towns",
+      "playerId": "hb-12",
+      "unlisted": false
+    },
+    {
+      "team": "Ryan",
+      "player": "D.Mitchell",
+      "playerId": "hb-15",
+      "unlisted": false
+    },
+    {
+      "team": "Jake",
+      "player": "T.Haliburton",
+      "playerId": "hb-32",
+      "unlisted": false
+    },
+    {
+      "team": "Joe",
+      "player": "A.Sengün",
+      "playerId": "hb-9",
+      "unlisted": false
+    },
+    {
+      "team": "Alan",
+      "player": "E.Mobley",
+      "playerId": "hb-13",
+      "unlisted": false
+    },
+    {
+      "team": "Aaron",
+      "player": "A.Thompson",
+      "playerId": "hb-20",
+      "unlisted": false
+    },
+    {
+      "team": "Tim",
+      "player": "L.Ball",
+      "playerId": "hb-52",
+      "unlisted": false
+    },
+    {
+      "team": "Chris",
+      "player": "J.Murray",
+      "playerId": "hb-37",
+      "unlisted": false
+    },
+    {
+      "team": "Matt",
+      "player": "T.Young",
+      "playerId": "hb-21",
+      "unlisted": false
+    },
+    {
+      "team": "Sean",
+      "player": "W.Kessler",
+      "playerId": "hb-25",
+      "unlisted": false
+    },
+    {
+      "team": "Dave",
+      "player": "A.Reaves",
+      "playerId": "hb-27",
+      "unlisted": false
+    },
+    {
+      "team": "Keith",
+      "player": "K.Durant",
+      "playerId": "hb-36",
+      "unlisted": false
+    },
+    {
+      "team": "Keith",
+      "player": "J.Giddey",
+      "playerId": "hb-19",
+      "unlisted": false
+    },
+    {
+      "team": "Dave",
+      "player": "C.Holmgren",
+      "playerId": "hb-28",
+      "unlisted": false
+    },
+    {
+      "team": "Sean",
+      "player": "J.Duren",
+      "playerId": "hb-29",
+      "unlisted": false
+    },
+    {
+      "team": "Matt",
+      "player": "L.Markkanen",
+      "playerId": "hb-31",
+      "unlisted": false
+    },
+    {
+      "team": "Chris",
+      "player": "J.Brunson",
+      "playerId": "hb-60",
+      "unlisted": false
+    },
+    {
+      "team": "Tim",
+      "player": "D.Booker",
+      "playerId": "hb-51",
+      "unlisted": false
+    },
+    {
+      "team": "Aaron",
+      "player": "P.Banchero",
+      "playerId": "hb-18",
+      "unlisted": false
+    },
+    {
+      "team": "Alan",
+      "player": "D.Sabonis",
+      "playerId": "hb-30",
+      "unlisted": false
+    },
+    {
+      "team": "Joe",
+      "player": "B.Adebayo",
+      "playerId": "hb-22",
+      "unlisted": false
+    },
+    {
+      "team": "Jake",
+      "player": "K.Leonard",
+      "playerId": "hb-42",
+      "unlisted": false
+    },
+    {
+      "team": "Ryan",
+      "player": "D.Clingan",
+      "playerId": "hb-23",
+      "unlisted": false
+    },
+    {
+      "team": "Cam",
+      "player": "J.Harden",
+      "playerId": "hb-24",
+      "unlisted": false
+    },
+    {
+      "team": "Cam",
+      "player": "P.Siakam",
+      "playerId": "hb-34",
+      "unlisted": false
+    },
+    {
+      "team": "Ryan",
+      "player": "R.Gobert",
+      "playerId": "hb-49",
+      "unlisted": false
+    },
+    {
+      "team": "Jake",
+      "player": "B.Miller",
+      "playerId": "hb-58",
+      "unlisted": false
+    },
+    {
+      "team": "Joe",
+      "player": "J.Brown",
+      "playerId": "hb-61",
+      "unlisted": false
+    },
+    {
+      "team": "Alan",
+      "player": "A.Davis",
+      "playerId": "hb-16",
+      "unlisted": false
+    },
+    {
+      "team": "Aaron",
+      "player": "J.Williams",
+      "playerId": "hb-45",
+      "unlisted": false
+    },
+    {
+      "team": "Tim",
+      "player": "J.Jackson Jr.",
+      "playerId": "hb-26",
+      "unlisted": false
+    },
+    {
+      "team": "Chris",
+      "player": "C.Boozer",
+      "playerId": "hb-54",
+      "unlisted": false
+    },
+    {
+      "team": "Matt",
+      "player": "D.Avdija",
+      "playerId": "hb-43",
+      "unlisted": false
+    },
+    {
+      "team": "Sean",
+      "player": "T.Murphy III",
+      "playerId": "hb-33",
+      "unlisted": false
+    },
+    {
+      "team": "Dave",
+      "player": "D.White",
+      "playerId": "hb-44",
+      "unlisted": false
+    },
+    {
+      "team": "Keith",
+      "player": "K.Ware",
+      "playerId": "hb-53",
+      "unlisted": false
+    },
+    {
+      "team": "Keith",
+      "player": "O.Okongwu",
+      "playerId": "hb-48",
+      "unlisted": false
+    },
+    {
+      "team": "Dave",
+      "player": "D.Daniels",
+      "playerId": "hb-67",
+      "unlisted": false
+    },
+    {
+      "team": "Sean",
+      "player": "A.Sarr",
+      "playerId": "hb-41",
+      "unlisted": false
+    },
+    {
+      "team": "Matt",
+      "player": "I.Zubac",
+      "playerId": "hb-65",
+      "unlisted": false
+    },
+    {
+      "team": "Chris",
+      "player": "F.Wagner",
+      "playerId": "hb-50",
+      "unlisted": false
+    },
+    {
+      "team": "Tim",
+      "player": "Z.Williamson",
+      "playerId": "hb-55",
+      "unlisted": false
+    },
+    {
+      "team": "Aaron",
+      "player": "D.Bane",
+      "playerId": "hb-75",
+      "unlisted": false
+    },
+    {
+      "team": "Alan",
+      "player": "Z.Edey",
+      "playerId": "hb-35",
+      "unlisted": false
+    },
+    {
+      "team": "Joe",
+      "player": "S.Curry",
+      "playerId": "hb-39",
+      "unlisted": false
+    },
+    {
+      "team": "Jake",
+      "player": "J.Embiid",
+      "playerId": "hb-38",
+      "unlisted": false
+    },
+    {
+      "team": "Ryan",
+      "player": "M.Buzelis",
+      "playerId": "hb-40",
+      "unlisted": false
+    },
+    {
+      "team": "Cam",
+      "player": "K.George",
+      "playerId": "hb-83",
+      "unlisted": false
+    },
+    {
+      "team": "Cam",
+      "player": "J.Randle",
+      "playerId": "hb-63",
+      "unlisted": false
+    },
+    {
+      "team": "Ryan",
+      "player": "N.Reid",
+      "playerId": "hb-64",
+      "unlisted": false
+    },
+    {
+      "team": "Jake",
+      "player": "K.Irving",
+      "playerId": "hb-68",
+      "unlisted": false
+    },
+    {
+      "team": "Joe",
+      "player": "D.Garland",
+      "playerId": "hb-70",
+      "unlisted": false
+    },
+    {
+      "team": "Alan",
+      "player": "M.Robinson",
+      "playerId": "hb-74",
+      "unlisted": false
+    },
+    {
+      "team": "Aaron",
+      "player": "O.Anunoby",
+      "playerId": "hb-78",
+      "unlisted": false
+    },
+    {
+      "team": "Tim",
+      "player": "L.James",
+      "playerId": "hb-47",
+      "unlisted": false
+    },
+    {
+      "team": "Chris",
+      "player": "S.Castle",
+      "playerId": "hb-72",
+      "unlisted": false
+    },
+    {
+      "team": "Matt",
+      "player": "M.Porter Jr.",
+      "playerId": "hb-73",
+      "unlisted": false
+    },
+    {
+      "team": "Sean",
+      "player": "A.Thompson",
+      "playerId": "hb-62",
+      "unlisted": false
+    },
+    {
+      "team": "Dave",
+      "player": "K.Knueppel",
+      "playerId": "hb-91",
+      "unlisted": false
+    },
+    {
+      "team": "Keith",
+      "player": "C.Wilson",
+      "playerId": "hb-56",
+      "unlisted": false
+    },
+    {
+      "team": "Keith",
+      "player": "D.Queen",
+      "playerId": "hb-79",
+      "unlisted": false
+    },
+    {
+      "team": "Dave",
+      "player": "J.Hart",
+      "playerId": "hb-90",
+      "unlisted": false
+    },
+    {
+      "team": "Sean",
+      "player": "D.Harper",
+      "playerId": "hb-129",
+      "unlisted": false
+    },
+    {
+      "team": "Matt",
+      "player": "J.Allen",
+      "playerId": "hb-98",
+      "unlisted": false
+    },
+    {
+      "team": "Chris",
+      "player": "P.Pritchard",
+      "playerId": "hb-128",
+      "unlisted": false
+    },
+    {
+      "team": "Tim",
+      "player": "T.Herro",
+      "playerId": "hb-80",
+      "unlisted": false
+    },
+    {
+      "team": "Aaron",
+      "player": "N.Alexander-Walker",
+      "playerId": "hb-71",
+      "unlisted": false
+    },
+    {
+      "team": "Alan",
+      "player": "D.Sharpe",
+      "playerId": "hb-46",
+      "unlisted": false
+    },
+    {
+      "team": "Joe",
+      "player": "J.Morant",
+      "playerId": "hb-102",
+      "unlisted": false
+    },
+    {
+      "team": "Jake",
+      "player": "P.George",
+      "playerId": "hb-59",
+      "unlisted": false
+    },
+    {
+      "team": "Ryan",
+      "player": "B.Podziemski",
+      "playerId": "hb-96",
+      "unlisted": false
+    },
+    {
+      "team": "Cam",
+      "player": "V.Edgecombe",
+      "playerId": "hb-76",
+      "unlisted": false
+    },
+    {
+      "team": "Cam",
+      "player": "J.McDaniels",
+      "playerId": "hb-95",
+      "unlisted": false
+    },
+    {
+      "team": "Ryan",
+      "player": "I.Quickley",
+      "playerId": "hb-82",
+      "unlisted": false
+    },
+    {
+      "team": "Jake",
+      "player": "M.Bridges",
+      "playerId": "hb-146",
+      "unlisted": false
+    },
+    {
+      "team": "Joe",
+      "player": "J.Green",
+      "playerId": "hb-106",
+      "unlisted": false
+    },
+    {
+      "team": "Alan",
+      "player": "K.Maluach",
+      "playerId": "hb-89",
+      "unlisted": false
+    },
+    {
+      "team": "Aaron",
+      "player": "D.Fox",
+      "playerId": "hb-88",
+      "unlisted": false
+    },
+    {
+      "team": "Tim",
+      "player": "M.Bridges",
+      "playerId": "hb-103",
+      "unlisted": false
+    },
+    {
+      "team": "Chris",
+      "player": "D.Murray",
+      "playerId": "hb-57",
+      "unlisted": false
+    },
+    {
+      "team": "Matt",
+      "player": "A.Dybantsa",
+      "playerId": "hb-185",
+      "unlisted": false
+    },
+    {
+      "team": "Sean",
+      "player": "C.Coward",
+      "playerId": "hb-108",
+      "unlisted": false
+    },
+    {
+      "team": "Dave",
+      "player": "A.Gordon",
+      "playerId": "hb-148",
+      "unlisted": false
+    },
+    {
+      "team": "Keith",
+      "player": "K.Murray",
+      "playerId": "hb-84",
+      "unlisted": false
+    },
+    {
+      "team": "Keith",
+      "player": "J.Smith Jr.",
+      "playerId": "hb-93",
+      "unlisted": false
+    },
+    {
+      "team": "Dave",
+      "player": "A.Wiggins",
+      "playerId": "hb-69",
+      "unlisted": false
+    },
+    {
+      "team": "Sean",
+      "player": "T.Camara",
+      "playerId": "hb-110",
+      "unlisted": false
+    },
+    {
+      "team": "Matt",
+      "player": "B.Ingram",
+      "playerId": "hb-87",
+      "unlisted": false
+    },
+    {
+      "team": "Chris",
+      "player": "N.Queta",
+      "playerId": "hb-114",
+      "unlisted": false
+    },
+    {
+      "team": "Tim",
+      "player": "M.Turner",
+      "playerId": "hb-92",
+      "unlisted": false
+    },
+    {
+      "team": "Aaron",
+      "player": "I.Hartenstein",
+      "playerId": "hb-77",
+      "unlisted": false
+    },
+    {
+      "team": "Alan",
+      "player": "J.Poeltl",
+      "playerId": "hb-105",
+      "unlisted": false
+    },
+    {
+      "team": "Joe",
+      "player": "S.Mamukelashvili",
+      "playerId": "hb-117",
+      "unlisted": false
+    },
+    {
+      "team": "Jake",
+      "player": "D.Lillard",
+      "playerId": "hb-101",
+      "unlisted": false
+    },
+    {
+      "team": "Ryan",
+      "player": "C.McCollum",
+      "playerId": "hb-118",
+      "unlisted": false
+    },
+    {
+      "team": "Cam",
+      "player": "R.Rollins",
+      "playerId": "hb-100",
+      "unlisted": false
+    },
+    {
+      "team": "Cam",
+      "player": "M.Diabaté",
+      "playerId": "hb-121",
+      "unlisted": false
+    },
+    {
+      "team": "Ryan",
+      "player": "C.Wallace",
+      "playerId": "hb-132",
+      "unlisted": false
+    },
+    {
+      "team": "Jake",
+      "player": "J.Collins",
+      "playerId": "hb-107",
+      "unlisted": false
+    },
+    {
+      "team": "Joe",
+      "player": "Y.Lendeborg",
+      "playerId": "hb-141",
+      "unlisted": false
+    },
+    {
+      "team": "Alan",
+      "player": "N.Claxton",
+      "playerId": "hb-104",
+      "unlisted": false
+    },
+    {
+      "team": "Aaron",
+      "player": "J.Suggs",
+      "playerId": "hb-66",
+      "unlisted": false
+    },
+    {
+      "team": "Tim",
+      "player": "R.Barrett",
+      "playerId": "hb-85",
+      "unlisted": false
+    },
+    {
+      "team": "Chris",
+      "player": "C.Murray-Boyles",
+      "playerId": "hb-99",
+      "unlisted": false
+    },
+    {
+      "team": "Matt",
+      "player": "N.Powell",
+      "playerId": "hb-116",
+      "unlisted": false
+    },
+    {
+      "team": "Sean",
+      "player": "P.Watson",
+      "playerId": "hb-127",
+      "unlisted": false
+    },
+    {
+      "team": "Dave",
+      "player": "T.Jerome",
+      "playerId": "hb-109",
+      "unlisted": false
+    },
+    {
+      "team": "Keith",
+      "player": "S.Bey",
+      "playerId": "hb-123",
+      "unlisted": false
+    },
+    {
+      "team": "Keith",
+      "player": "G.Santos",
+      "playerId": "hb-113",
+      "unlisted": false
+    },
+    {
+      "team": "Dave",
+      "player": "W.Carter Jr.",
+      "playerId": "hb-122",
+      "unlisted": false
+    },
+    {
+      "team": "Sean",
+      "player": "D.Peterson",
+      "playerId": "hb-142",
+      "unlisted": false
+    },
+    {
+      "team": "Matt",
+      "player": "D.Gafford",
+      "playerId": "hb-163",
+      "unlisted": false
+    },
+    {
+      "team": "Chris",
+      "player": "I.Jackson",
+      "playerId": "hb-119",
+      "unlisted": false
+    },
+    {
+      "team": "Tim",
+      "player": "J.Holiday",
+      "playerId": "hb-145",
+      "unlisted": false
+    },
+    {
+      "team": "Aaron",
+      "player": "C.White",
+      "playerId": "hb-112",
+      "unlisted": false
+    },
+    {
+      "team": "Alan",
+      "player": "P.Reed",
+      "playerId": "hb-134",
+      "unlisted": false
+    },
+    {
+      "team": "Joe",
+      "player": "Y.Missi",
+      "playerId": "hb-168",
+      "unlisted": false
+    },
+    {
+      "team": "Jake",
+      "player": "R.Hachimura",
+      "playerId": "hb-155",
+      "unlisted": false
+    },
+    {
+      "team": "Ryan",
+      "player": "P.Washington",
+      "playerId": "hb-94",
+      "unlisted": false
+    },
+    {
+      "team": "Cam",
+      "player": "J.Kuminga",
+      "playerId": "hb-124",
+      "unlisted": false
+    },
+    {
+      "team": "Cam",
+      "player": "Z.LaVine",
+      "playerId": "hb-125",
+      "unlisted": false
+    },
+    {
+      "team": "Ryan",
+      "player": "Q.Grimes",
+      "playerId": "hb-130",
+      "unlisted": false
+    },
+    {
+      "team": "Jake",
+      "player": "A.Dosunmu",
+      "playerId": "hb-198",
+      "unlisted": false
+    },
+    {
+      "team": "Joe",
+      "player": "D.Brooks",
+      "playerId": "hb-149",
+      "unlisted": false
+    },
+    {
+      "team": "Alan",
+      "player": "K.George",
+      "playerId": "hb-126",
+      "unlisted": false
+    },
+    {
+      "team": "Aaron",
+      "player": "A.Nembhard",
+      "playerId": "hb-181",
+      "unlisted": false
+    },
+    {
+      "team": "Tim",
+      "player": "D.Green",
+      "playerId": "hb-111",
+      "unlisted": false
+    },
+    {
+      "team": "Chris",
+      "player": "J.Nurkic",
+      "playerId": "hb-81",
+      "unlisted": false
+    },
+    {
+      "team": "Matt",
+      "player": "J.Jaquez Jr.",
+      "playerId": "hb-137",
+      "unlisted": false
+    },
+    {
+      "team": "Sean",
+      "player": "A.Mara",
+      "playerId": "hb-269",
+      "unlisted": false
+    },
+    {
+      "team": "Dave",
+      "player": "R.Sheppard",
+      "playerId": "hb-138",
+      "unlisted": false
+    },
+    {
+      "team": "Keith",
+      "player": "C.Gillespie",
+      "playerId": "hb-140",
+      "unlisted": false
+    },
+    {
+      "team": "Keith",
+      "player": "D.Vassell",
+      "playerId": "hb-139",
+      "unlisted": false
+    },
+    {
+      "team": "Dave",
+      "player": "N.Vucevic",
+      "playerId": "hb-187",
+      "unlisted": false
+    },
+    {
+      "team": "Sean",
+      "player": "A.Bailey",
+      "playerId": "hb-152",
+      "unlisted": false
+    },
+    {
+      "team": "Matt",
+      "player": "J.McCain",
+      "playerId": "hb-200",
+      "unlisted": false
+    },
+    {
+      "team": "Chris",
+      "player": "M.Brown Jr.",
+      "playerId": "hb-191",
+      "unlisted": false
+    },
+    {
+      "team": "Tim",
+      "player": "T.Eason",
+      "playerId": "hb-133",
+      "unlisted": false
+    },
+    {
+      "team": "Aaron",
+      "player": "D.Ayton",
+      "playerId": "hb-233",
+      "unlisted": false
+    },
+    {
+      "team": "Alan",
+      "player": "K.Porter Jr.",
+      "playerId": "hb-136",
+      "unlisted": false
+    },
+    {
+      "team": "Joe",
+      "player": "F.VanVleet",
+      "playerId": "hb-120",
+      "unlisted": false
+    },
+    {
+      "team": "Jake",
+      "player": "D.DeRozan",
+      "playerId": "hb-177",
+      "unlisted": false
+    },
+    {
+      "team": "Ryan",
+      "player": "B.Portis",
+      "playerId": "hb-144",
+      "unlisted": false
+    },
+    {
+      "team": "Cam",
+      "player": "E.Demin",
+      "playerId": "hb-143",
+      "unlisted": false
+    },
+    {
+      "team": "Cam",
+      "player": "A.Drummond",
+      "playerId": "hb-151",
+      "unlisted": false
+    },
+    {
+      "team": "Ryan",
+      "player": "C.Braun",
+      "playerId": "hb-160",
+      "unlisted": false
+    },
+    {
+      "team": "Jake",
+      "player": "D.Mitchell",
+      "playerId": "hb-196",
+      "unlisted": false
+    },
+    {
+      "team": "Joe",
+      "player": "C.Johnson",
+      "playerId": "hb-135",
+      "unlisted": false
+    },
+    {
+      "team": "Alan",
+      "player": "A.Mitchell",
+      "playerId": "hb-131",
+      "unlisted": false
+    },
+    {
+      "team": "Aaron",
+      "player": "J.LaRavia",
+      "playerId": "hb-250",
+      "unlisted": false
+    },
+    {
+      "team": "Tim",
+      "player": "J.Champagnie",
+      "playerId": "hb-176",
+      "unlisted": false
+    },
+    {
+      "team": "Chris",
+      "player": "M.Raynaud",
+      "playerId": "hb-240",
+      "unlisted": false
+    },
+    {
+      "team": "Matt",
+      "player": "D.Acuff Jr.",
+      "playerId": "hb-189",
+      "unlisted": false
+    },
+    {
+      "team": "Sean",
+      "player": "Z.Risacher",
+      "playerId": "hb-211",
+      "unlisted": false
+    },
+    {
+      "team": "Dave",
+      "player": "T.Jones",
+      "playerId": "hb-172",
+      "unlisted": false
+    },
+    {
+      "team": "Keith",
+      "player": "A.Black",
+      "playerId": "hb-115",
+      "unlisted": false
+    }
+  ]
+}
