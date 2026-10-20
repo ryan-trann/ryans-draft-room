@@ -38,6 +38,7 @@ jobs:
         run: npm run test:production
       - name: Publish verified build without modifying league data
         run: |
+          git pull --ff-only origin main
           cp dist/index.html index.html
           mkdir -p assets
           cp -R dist/assets/. assets/
