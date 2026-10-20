@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-20T15:29:31.494Z",
-  "count": 90,
+  "updatedAt": "2026-10-20T21:37:23.867Z",
+  "count": 86,
   "players": [
     {
       "name": "Mouhamed Gueye",
@@ -25,47 +25,27 @@
       "status": "Out"
     },
     {
-      "name": "Coby White",
+      "name": "Kylan Boswell",
       "team": "CHA",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Kon Knueppel",
       "team": "CHA",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Grayson Allen",
-      "team": "CHA",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Moussa Diabate",
-      "team": "CHA",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Kylan Boswell",
-      "team": "CHA",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Grant Williams",
       "team": "CHA",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Zach Collins",
-      "team": "CHI",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Nic Claxton",
-      "team": "CHI",
       "status": "Out"
     },
     {
-      "name": "Tobe Awaka",
+      "name": "Coby White",
+      "team": "CHA",
+      "status": "Out"
+    },
+    {
+      "name": "Leonard Miller",
       "team": "CHI",
       "status": "Day-To-Day"
     },
@@ -75,8 +55,28 @@
       "status": "Day-To-Day"
     },
     {
-      "name": "Nae'Qwan Tomlin",
-      "team": "CLE",
+      "name": "Dailyn Swain",
+      "team": "CHI",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Zach Collins",
+      "team": "CHI",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Tobe Awaka",
+      "team": "CHI",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Jordan Hawkins",
+      "team": "CHI",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Nic Claxton",
+      "team": "CHI",
       "status": "Out"
     },
     {
@@ -85,17 +85,22 @@
       "status": "Day-To-Day"
     },
     {
+      "name": "Nae'Qwan Tomlin",
+      "team": "CLE",
+      "status": "Out"
+    },
+    {
       "name": "Khalifa Diop",
       "team": "CLE",
       "status": "Day-To-Day"
     },
     {
-      "name": "Santi Aldama",
+      "name": "Tarik Biberovic",
       "team": "DAL",
       "status": "Day-To-Day"
     },
     {
-      "name": "Tarik Biberovic",
+      "name": "Santi Aldama",
       "team": "DAL",
       "status": "Day-To-Day"
     },
@@ -125,16 +130,6 @@
       "status": "Out"
     },
     {
-      "name": "Stephen Curry",
-      "team": "GSW",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Kristaps Porzingis",
-      "team": "GSW",
-      "status": "Out"
-    },
-    {
       "name": "Charles Bassey",
       "team": "GSW",
       "status": "Day-To-Day"
@@ -143,6 +138,16 @@
       "name": "Brandin Podziemski",
       "team": "GSW",
       "status": "Day-To-Day"
+    },
+    {
+      "name": "Stephen Curry",
+      "team": "GSW",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Kristaps Porzingis",
+      "team": "GSW",
+      "status": "Out"
     },
     {
       "name": "Moses Moody",
@@ -155,17 +160,22 @@
       "status": "Out"
     },
     {
-      "name": "Jarace Walker",
-      "team": "IND",
+      "name": "Julian Phillips",
+      "team": "HOU",
       "status": "Day-To-Day"
     },
     {
-      "name": "T.J. McConnell",
-      "team": "IND",
+      "name": "Steven Adams",
+      "team": "HOU",
       "status": "Day-To-Day"
     },
     {
       "name": "Aaron Nesmith",
+      "team": "IND",
+      "status": "Out"
+    },
+    {
+      "name": "T.J. McConnell",
       "team": "IND",
       "status": "Day-To-Day"
     },
@@ -200,7 +210,7 @@
       "status": "Out"
     },
     {
-      "name": "Bronny James",
+      "name": "Adou Thiero",
       "team": "LAL",
       "status": "Day-To-Day"
     },
@@ -210,7 +220,7 @@
       "status": "Day-To-Day"
     },
     {
-      "name": "Adou Thiero",
+      "name": "Bronny James",
       "team": "LAL",
       "status": "Day-To-Day"
     },
@@ -240,33 +250,13 @@
       "status": "Out"
     },
     {
-      "name": "Dru Smith",
+      "name": "Vladislav Goldin",
       "team": "MIA",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Bam Adebayo",
-      "team": "MIA",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Pelle Larsson",
-      "team": "MIA",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Jericho Sims",
-      "team": "MIL",
       "status": "Day-To-Day"
     },
     {
       "name": "Nate Ament",
       "team": "MIL",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Rocco Zikarsky",
-      "team": "MIN",
       "status": "Day-To-Day"
     },
     {
@@ -290,29 +280,19 @@
       "status": "Out"
     },
     {
+      "name": "Jonathan Isaac",
+      "team": "ORL",
+      "status": "Out"
+    },
+    {
       "name": "Anthony Black",
       "team": "ORL",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Franz Wagner",
-      "team": "ORL",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Jase Richardson",
-      "team": "ORL",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Noah Penda",
       "team": "ORL",
       "status": "Out"
-    },
-    {
-      "name": "Jonathan Isaac",
-      "team": "ORL",
-      "status": "Day-To-Day"
     },
     {
       "name": "Izaiyah Nelson",
@@ -417,7 +397,7 @@
     {
       "name": "Nate Bittle",
       "team": "TOR",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Blake Hinson",
@@ -442,7 +422,7 @@
     {
       "name": "AJ Dybantsa",
       "team": "WAS",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Tristan Vukcevic",
