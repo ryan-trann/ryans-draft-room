@@ -12,20 +12,22 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: purple-app-build
   cancel-in-progress: false
 
 jobs:
-  build-and-publish:
+  verify:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
-          persist-credentials: true
-      - uses: actions/setup-node@v4
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '22'
           cache: npm
@@ -39,16 +41,42 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Run production regression suite
         run: npm run test:production
-      - name: Publish verified build without modifying league data
+      - name: Package only verified public build
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: verified-site
+          path: |
+            dist/index.html
+            dist/assets/
+          if-no-files-found: error
+          retention-days: 1
+
+  publish:
+    needs: verify
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: true
+      - name: Download verified site bundle
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: verified-site
+          path: verified-site
+      - name: Publish without running project code or dependencies
         run: |
           git pull --ff-only origin main
-          cp dist/index.html index.html
+          test -s verified-site/index.html
+          test -d verified-site/assets
+          cp verified-site/index.html index.html
           mkdir -p assets
-          cp -R dist/assets/. assets/
+          cp -R verified-site/assets/. assets/
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html assets/
           if ! git diff --cached --quiet; then
-            git commit -m "Publish verified v45 side-bet payout trade model"
+            git commit -m "Publish verified security-hardened build"
             git push
           fi
