@@ -5,7 +5,8 @@ const url='https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries
 const response=await fetch(url,{headers:{'user-agent':'PL-Fantasy-Basketball/1.0 (public injury snapshot)','accept':'application/json'},signal:AbortSignal.timeout(20000)});
 if(!response.ok)throw Error('ESPN injury feed returned '+response.status);
 const data=await response.json();
-if(!Array.isArray(data.injuries))throw Error('Unexpected ESPN injury schema');
+if(!Array.isArray(data.injuries))throw Error('Unexpected ESPN injury schema: '+JSON.stringify(Object.keys(data)));
+console.log('ESPN payload sample:',JSON.stringify(data.injuries.slice(0,2)).slice(0,2500));
 const rows=[];
 for(const group of data.injuries){
  const team=group?.team?.abbreviation||group?.abbreviation||'';
