@@ -79,7 +79,7 @@ try{
  const edgeLabels=await page.locator('.gap-value').allTextContents();
  expect(edgeLabels.every(v=>v==='League leader'||/^\\d+\\.\\d% (behind|more than) /.test(v))).toBe(true);
  const turnoverGap=await page.locator('.gap-row').filter({has:page.getByText('Turnovers', {exact:false})}).locator('.gap-value').textContent();
- expect(turnoverGap==='League leader'||/\\d+\\.\\d% more than /.test(turnoverGap)).toBe(true);
+ expect(turnoverGap==='League leader'||/\d+\.\d% more than /.test(turnoverGap)).toBe(true);
 
  await page.getByRole('button',{name:'Trades',exact:true}).click();await expect(page.locator('.trade-summary')).toContainText('Estimated weekly side-bet change');await expect(page.locator('.trade-summary')).toContainText('category shares');await page.screenshot({path:evidence+'/02-trade-mobile.png'});
  await expect(page.getByRole('button',{name:'Queue for review',exact:true})).toHaveCount(0);
