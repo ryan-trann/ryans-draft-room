@@ -26,7 +26,7 @@ await page.route('https://api.github.com/**',async route=>{
   if(req.method()==='GET')return route.fulfill({contentType:'application/json',body:'{"sha":"fixture-tool-sha"}'});
   if(req.method()==='PUT'){(req.url().includes('projections-')?projectionWrites:draftWrites).push(req.postDataJSON());return route.fulfill({contentType:'application/json',body:'{"commit":{"sha":"fixture-tool-commit"}}'});}
  }
- if(!req.url().endsWith('/contents/team-rosters.json'))throw Error('Unexpected API endpoint');
+ if(!req.url().endsWith('/contents/team-rosters.json'))throw Error('Unexpected API endpoint '+req.method()+' '+req.url());
  if(req.method()==='GET')return route.fulfill({contentType:'application/json',body:JSON.stringify({sha:'fixture-sha',content:Buffer.from(JSON.stringify(remote)).toString('base64')})});
  if(req.method()==='PUT'){const body=req.postDataJSON();remote=JSON.parse(Buffer.from(body.content,'base64').toString('utf8'));writes.push(body);return route.fulfill({contentType:'application/json',body:'{"commit":{"sha":"fixture-commit"}}'});}
  return route.abort();
