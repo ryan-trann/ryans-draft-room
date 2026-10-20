@@ -97,8 +97,8 @@ export function findDeals(rosters:Roster,from:string,all:Player[],cats:string[],
    draft[other]=draft[other].filter(x=>!theirs.includes(x)).concat(mine);
    let myDrop:string|undefined,partnerDrop:string|undefined,myAdd:string|undefined,partnerAdd:string|undefined;
    const beforeSize=rosters[from].length,otherSize=rosters[other].length;
-   if(draft[from].length>beforeSize){myDrop=draft[from].slice().sort((a,b)=>(market.get(a)||0)-(market.get(b)||0))[0];draft[from]=draft[from].filter(id=>id!==myDrop)}
-   if(draft[other].length>otherSize){partnerDrop=draft[other].slice().sort((a,b)=>(market.get(a)||0)-(market.get(b)||0))[0];draft[other]=draft[other].filter(id=>id!==partnerDrop)}
+   if(draft[from].length>beforeSize){myDrop=draft[from].filter(id=>!theirs.includes(id)).sort((a,b)=>(market.get(a)||0)-(market.get(b)||0))[0];if(!myDrop)continue;draft[from]=draft[from].filter(id=>id!==myDrop)}
+   if(draft[other].length>otherSize){partnerDrop=draft[other].filter(id=>!mine.includes(id)).sort((a,b)=>(market.get(a)||0)-(market.get(b)||0))[0];if(!partnerDrop)continue;draft[other]=draft[other].filter(id=>id!==partnerDrop)}
    const used=new Set(Object.values(draft).flat());
    const nextFree=additions.filter(p=>!used.has(p.draftId));
    if(draft[from].length<beforeSize){myAdd=nextFree[0]?.draftId;if(!myAdd)continue;draft[from].push(myAdd)}
