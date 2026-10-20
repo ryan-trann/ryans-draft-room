@@ -84,7 +84,7 @@ $('recommendTrades').onclick=()=>{
  $('recommendResults').innerHTML='<p class="muted">'+(positive.length?positive.length+' trades improve your rank without worsening the partner’s rank; showing strongest candidates.':'No mutually favorable 1-for-1 trades by this category-rank metric; showing least-bad alternatives.')+'</p>'+
  results.map((x,i)=>'<div class="pick"><span class="rank">'+(i+1)+'</span><div class="grow"><strong>Give '+esc(editorName(x.x))+' · Get '+esc(editorName(x.y))+'</strong><div class="muted">Partner: '+esc(x.other)+' · Your rank gain '+(x.my>=0?'+':'')+x.my.toFixed(1)+' · Their rank gain '+(x.their>=0?'+':'')+x.their.toFixed(1)+'</div></div></div>').join('');
 };
-const NBA_ALIASES={GS:'GSW',NO:'NOP',NY:'NYK',SA:'SAS',PHO:'PHX',UTAH:'UTA'};
+const NBA_ALIASES={GS:'GSW',NO:'NOP',NY:'NYK',SA:'SAS',PHO:'PHX',UTAH:'UTA',WSH:'WAS'};
 function nbaCode(code){return NBA_ALIASES[String(code||'').trim().toUpperCase()]||String(code||'').trim().toUpperCase()}
 function isoDay(date){return [date.getFullYear(),String(date.getMonth()+1).padStart(2,'0'),String(date.getDate()).padStart(2,'0')].join('-')}
 function dayFromIso(text){
