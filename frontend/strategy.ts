@@ -4,7 +4,6 @@ export type DealFormat='1:1'|'2:2'|'2:1'|'1:2';
 export type TradeVerdict='strong'|'situational'|'avoid';
 export type Candidate={verdict:TradeVerdict;rivalRisk:'high'|'medium'|'low';adjustedGain:number;other:string;give:string[];receive:string[];format:DealFormat;cashMine:number;cashTheirs:number;fairness:number;partnerGain:number;myGain:number;potMine:number;potTheirs:number;potBefore:number;potAfter:number;partnerPotBefore:number;partnerPotAfter:number;partnerDrop?:string;myDrop?:string;myAdd?:string;partnerAdd?:string;reason:string};
 export type CategoryGap={cat:string;rank:number;total:number;leader:number;gap:number;gapPct:number;leaderName:string;near:boolean};
-export type Strategy={punts:string[];focus:string[];score:number;description:string;opportunity:number};
 const flipped=(c:string)=>c==='TO'?-1:1;
 const num=(p:Player,c:string)=>Number(p[c]||0);
 const sum=(p:Player[],c:string)=>p.reduce((a,x)=>a+num(x,c),0);
@@ -20,30 +19,6 @@ export function gaps(team:string,rosters:Roster,cats:string[],all:Player[]):Cate
   return {cat,rank:teams.findIndex(x=>x.name===team)+1,total,leader:leader.total,gap,gapPct:Math.max(0,Math.min(1,gap/Math.max(Math.abs(leader.total),1))),leaderName:leader.name,near:gap<=stdev(teams.map(t=>t.total))*.6};
  });
 }
-export function strategies(team:string,rosters:Roster,cats:string[],all:Player[]):Strategy[]{
- const rows=gaps(team,rosters,cats,all);
- const lookup=new Map(all.map(p=>[p.draftId,p]));
- const scales=Object.fromEntries(cats.map(cat=>[cat,stdev(Object.values(rosters).map(ids=>sum(ids.map(id=>lookup.get(id)).filter(Boolean) as Player[],cat)))]));
- const opportunity=(row:CategoryGap)=>Math.exp(-row.gap/Math.max(scales[row.cat],1));
- const weaknesses=rows.slice().sort((a,b)=>opportunity(a)-opportunity(b));
- // One clear candidate for each level. Punt means DEPRIORITIZE, not a
- // fictional change in the user's projected category totals.
- const choices=[[],[weaknesses[0].cat],[weaknesses[0].cat,weaknesses[1].cat]];
- return choices.map(punts=>{
-  const focus=rows.filter(x=>!punts.includes(x.cat)).sort((a,b)=>opportunity(b)-opportunity(a)).slice(0,4).map(x=>x.cat);
-  // Score these three priorities by the actual cash-pot changes of realistic
-  // 1:1 offers found using each strategy; don't reward a punt by subtracting
-  // an "ignored category" from the league-wide payout calculation.
-  const deals=findDeals(rosters,team,all,cats,'1:1',punts,6).rows;
-  const top=deals.slice(0,3);
-  const score=top.length?top.reduce((n,d)=>n+d.adjustedGain,0)/top.length:0;
-  const description=punts.length
-   ?'Deprioritize '+punts.join(' and ')+' when finding offers. All nine categories still count toward your actual pot estimate.'
-   :'Evaluate offers across all nine categories without deprioritizing any.';
-  return {punts,focus,score,opportunity:top.length,description};
- }).sort((a,b)=>b.score-a.score||a.punts.length-b.punts.length);
-}
-
 function lookupValue(all:Player[],cats:string[]){
  const av=Object.fromEntries(cats.map(c=>[c,all.reduce((n,p)=>n+num(p,c),0)/Math.max(all.length,1)]));
  const sd=Object.fromEntries(cats.map(c=>[c,stdev(all.map(p=>num(p,c)))]));
