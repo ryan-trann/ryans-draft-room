@@ -38,7 +38,7 @@ try{
  expect(duplicateLabels.length).toBeGreaterThan(0);
  for(const p of duplicateLabels)expect(p.actual).toBe(p.expected);
  await page.screenshot({path:evidence+'/01-team-mobile.png'});
- // v44: Team has no redundant Category Strategy entry; Trades is the sole auto finder.
+ // v45: Team has no redundant Category Strategy entry; Trades is the sole auto finder.
  await expect(page.locator('.strategy-entry')).toHaveCount(0);
  await page.getByRole('button',{name:'Trades',exact:true}).click();
  await page.getByRole('button',{name:'Find ideas',exact:true}).click();
@@ -105,7 +105,17 @@ try{
  await page.getByRole('button',{name:'Add to batch',exact:true}).click();remote.revision=3;await page.locator('#editorToken').fill('FAKE_TEST_TOKEN_ONLY');await page.getByRole('button',{name:'Save batch to GitHub',exact:true}).click();await expect(page.locator('.live-save-status')).toContainText('Another device');expect(writes.length).toBe(1);expect(await page.evaluate(()=>window.DraftRoomBridge.data().batch.length)).toBe(1);
  await page.getByRole('button',{name:'Discard batch',exact:true}).click();await page.getByRole('button',{name:'Close panel',exact:true}).click();remote.revision=2;
  await page.getByRole('button',{name:'Team',exact:true}).click();await page.getByRole('button',{name:'Select N.Jokic for comparison',exact:true}).click();await page.getByRole('button',{name:'Select D.Clingan for comparison',exact:true}).click();await page.getByRole('button',{name:'Compare',exact:true}).click();await expect(page.locator('.comparison-table tbody tr')).toHaveCount(11);await page.screenshot({path:evidence+'/03-comparison-mobile.png'});await page.getByRole('button',{name:'Close panel',exact:true}).click();
- await page.getByRole('button',{name:'Ranks',exact:true}).click();await expect(page.locator('.category-row')).toHaveCount(9);await page.getByRole('button',{name:'League',exact:true}).click();await expect(page.locator('.league-row')).toHaveCount(12);
+ await page.getByRole('button',{name:'Ranks',exact:true}).click();await expect(page.locator('.category-row')).toHaveCount(9);await page.getByRole('button',{name:'League',exact:true}).click();
+ await expect(page.getByRole('region',{name:'All team category rankings'})).toBeVisible();
+ await expect(page.locator('.league-matrix tbody tr')).toHaveCount(12);
+ await expect(page.locator('.league-matrix thead th')).toHaveCount(10);
+ await expect(page.locator('.league-matrix tbody tr').first().locator('td')).toHaveCount(9);
+ await expect(page.locator('.league-matrix tbody tr.is-my-team')).toHaveCount(1);
+ await page.getByRole('button',{name:'Single category',exact:true}).click();
+ await expect(page.locator('.league-row')).toHaveCount(12);
+ await page.getByRole('button',{name:'All categories',exact:true}).click();
+ await expect(page.locator('.league-matrix tbody tr')).toHaveCount(12);
+ await page.screenshot({path:evidence+'/05-rank-matrix-mobile.png'});
  await page.getByRole('button',{name:'Players',exact:true}).click();await page.getByRole('textbox',{name:'Search players',exact:true}).fill('zz-no-player');await expect(page.getByRole('heading',{name:'No matching players',exact:true})).toBeVisible();await page.getByRole('button',{name:'Clear search',exact:true}).click();await page.getByRole('combobox',{name:'Sort players',exact:true}).selectOption('adp');await expect(page.locator('.player-lab-row').first()).toContainText('N.Jokic');
  await page.getByRole('button',{name:'Stream',exact:true}).click();
  await expect(page.getByRole('checkbox',{name:'Exclude injured players'})).toBeChecked();
@@ -149,7 +159,7 @@ try{
  await page.locator('#reset').click();await expect(page.locator('#count')).toHaveText('0');await page.locator('#player').fill('N.Jokic');await page.locator('#playerSuggestions button').first().click();await page.locator('#record').click();await expect(page.locator('#count')).toHaveText('1');await page.locator('#undo').click();await expect(page.locator('#count')).toHaveText('0');
  await page.locator('#restore').setInputFiles({name:'draft-backup.json',mimeType:'application/json',buffer:Buffer.from(backup)});await expect(page.locator('#count')).toHaveText('168');
  await page.getByRole('button',{name:'Team',exact:true}).click();await page.getByRole('button',{name:'Open menu',exact:true}).click();await page.getByRole('button',{name:'GitHub & projections',exact:false}).click();await page.getByRole('button',{name:'Upload projections',exact:true}).click();
- await expect(page.getByRole('heading',{name:'UPLOAD PROJECTIONS',exact:true})).toBeVisible();await expect(page.locator('#legacy-ui')).toBeHidden();await expect(page.locator('.preview-label')).toHaveText('v44');expect(await page.locator('.hero-title').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);await page.screenshot({path:evidence+'/07a-projections-start-mobile.png'});
+ await expect(page.getByRole('heading',{name:'UPLOAD PROJECTIONS',exact:true})).toBeVisible();await expect(page.locator('#legacy-ui')).toBeHidden();await expect(page.locator('.preview-label')).toHaveText('v45');expect(await page.locator('.hero-title').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);await page.screenshot({path:evidence+'/07a-projections-start-mobile.png'});
  await page.getByRole('button',{name:'Validate and preview',exact:true}).click();await expect(page.locator('#tool-projections-preview')).toContainText('Validation failed');await expect(page.locator('#tool-projections-publish')).toBeDisabled();
  const tableText=await page.evaluate(()=>window.DRAFT_PROJECTIONS_RAW.trim().split(/\r?\n/).map(row=>{const x=row.split(/\s+/);x[1]=x[1].replaceAll('_',' ');if(x[2]==='-')x[2]='';return x.join(' ')}).join('\n'));
  await page.getByLabel('Projection table',{exact:true}).fill(tableText);await page.getByRole('button',{name:'Validate and preview',exact:true}).click();await expect(page.locator('#tool-projections-preview')).toContainText('Valid: 300 players');
