@@ -1,0 +1,703 @@
+{
+  "formatVersion": 1,
+  "revision": 1,
+  "source": "Initial completed draft",
+  "teams": {
+    "Keith": [
+      {
+        "playerId": "hb-1",
+        "name": "N.Jokic"
+      },
+      {
+        "playerId": "hb-36",
+        "name": "K.Durant"
+      },
+      {
+        "playerId": "hb-19",
+        "name": "J.Giddey"
+      },
+      {
+        "playerId": "hb-53",
+        "name": "K.Ware"
+      },
+      {
+        "playerId": "hb-48",
+        "name": "O.Okongwu"
+      },
+      {
+        "playerId": "hb-56",
+        "name": "C.Wilson"
+      },
+      {
+        "playerId": "hb-79",
+        "name": "D.Queen"
+      },
+      {
+        "playerId": "hb-84",
+        "name": "K.Murray"
+      },
+      {
+        "playerId": "hb-93",
+        "name": "J.Smith Jr."
+      },
+      {
+        "playerId": "hb-123",
+        "name": "S.Bey"
+      },
+      {
+        "playerId": "hb-113",
+        "name": "G.Santos"
+      },
+      {
+        "playerId": "hb-140",
+        "name": "C.Gillespie"
+      },
+      {
+        "playerId": "hb-139",
+        "name": "D.Vassell"
+      },
+      {
+        "playerId": "hb-115",
+        "name": "A.Black"
+      }
+    ],
+    "Dave": [
+      {
+        "playerId": "hb-2",
+        "name": "V.Wembanyama"
+      },
+      {
+        "playerId": "hb-27",
+        "name": "A.Reaves"
+      },
+      {
+        "playerId": "hb-28",
+        "name": "C.Holmgren"
+      },
+      {
+        "playerId": "hb-44",
+        "name": "D.White"
+      },
+      {
+        "playerId": "hb-67",
+        "name": "D.Daniels"
+      },
+      {
+        "playerId": "hb-91",
+        "name": "K.Knueppel"
+      },
+      {
+        "playerId": "hb-90",
+        "name": "J.Hart"
+      },
+      {
+        "playerId": "hb-148",
+        "name": "A.Gordon"
+      },
+      {
+        "playerId": "hb-69",
+        "name": "A.Wiggins"
+      },
+      {
+        "playerId": "hb-109",
+        "name": "T.Jerome"
+      },
+      {
+        "playerId": "hb-122",
+        "name": "W.Carter Jr."
+      },
+      {
+        "playerId": "hb-138",
+        "name": "R.Sheppard"
+      },
+      {
+        "playerId": "hb-187",
+        "name": "N.Vucevic"
+      },
+      {
+        "playerId": "hb-172",
+        "name": "T.Jones"
+      }
+    ],
+    "Sean": [
+      {
+        "playerId": "hb-3",
+        "name": "L.Doncic"
+      },
+      {
+        "playerId": "hb-25",
+        "name": "W.Kessler"
+      },
+      {
+        "playerId": "hb-29",
+        "name": "J.Duren"
+      },
+      {
+        "playerId": "hb-33",
+        "name": "T.Murphy III"
+      },
+      {
+        "playerId": "hb-41",
+        "name": "A.Sarr"
+      },
+      {
+        "playerId": "hb-62",
+        "name": "A.Thompson"
+      },
+      {
+        "playerId": "hb-129",
+        "name": "D.Harper"
+      },
+      {
+        "playerId": "hb-108",
+        "name": "C.Coward"
+      },
+      {
+        "playerId": "hb-110",
+        "name": "T.Camara"
+      },
+      {
+        "playerId": "hb-127",
+        "name": "P.Watson"
+      },
+      {
+        "playerId": "hb-142",
+        "name": "D.Peterson"
+      },
+      {
+        "playerId": "hb-269",
+        "name": "A.Mara"
+      },
+      {
+        "playerId": "hb-152",
+        "name": "A.Bailey"
+      },
+      {
+        "playerId": "hb-211",
+        "name": "Z.Risacher"
+      }
+    ],
+    "Matt": [
+      {
+        "playerId": "hb-5",
+        "name": "S.Gilgeous-Alexander"
+      },
+      {
+        "playerId": "hb-21",
+        "name": "T.Young"
+      },
+      {
+        "playerId": "hb-31",
+        "name": "L.Markkanen"
+      },
+      {
+        "playerId": "hb-43",
+        "name": "D.Avdija"
+      },
+      {
+        "playerId": "hb-65",
+        "name": "I.Zubac"
+      },
+      {
+        "playerId": "hb-73",
+        "name": "M.Porter Jr."
+      },
+      {
+        "playerId": "hb-98",
+        "name": "J.Allen"
+      },
+      {
+        "playerId": "hb-185",
+        "name": "A.Dybantsa"
+      },
+      {
+        "playerId": "hb-87",
+        "name": "B.Ingram"
+      },
+      {
+        "playerId": "hb-116",
+        "name": "N.Powell"
+      },
+      {
+        "playerId": "hb-163",
+        "name": "D.Gafford"
+      },
+      {
+        "playerId": "hb-137",
+        "name": "J.Jaquez Jr."
+      },
+      {
+        "playerId": "hb-200",
+        "name": "J.McCain"
+      },
+      {
+        "playerId": "hb-189",
+        "name": "D.Acuff Jr."
+      }
+    ],
+    "Chris": [
+      {
+        "playerId": "hb-6",
+        "name": "J.Tatum"
+      },
+      {
+        "playerId": "hb-37",
+        "name": "J.Murray"
+      },
+      {
+        "playerId": "hb-60",
+        "name": "J.Brunson"
+      },
+      {
+        "playerId": "hb-54",
+        "name": "C.Boozer"
+      },
+      {
+        "playerId": "hb-50",
+        "name": "F.Wagner"
+      },
+      {
+        "playerId": "hb-72",
+        "name": "S.Castle"
+      },
+      {
+        "playerId": "hb-128",
+        "name": "P.Pritchard"
+      },
+      {
+        "playerId": "hb-57",
+        "name": "D.Murray"
+      },
+      {
+        "playerId": "hb-114",
+        "name": "N.Queta"
+      },
+      {
+        "playerId": "hb-99",
+        "name": "C.Murray-Boyles"
+      },
+      {
+        "playerId": "hb-119",
+        "name": "I.Jackson"
+      },
+      {
+        "playerId": "hb-81",
+        "name": "J.Nurkic"
+      },
+      {
+        "playerId": "hb-191",
+        "name": "M.Brown Jr."
+      },
+      {
+        "playerId": "hb-240",
+        "name": "M.Raynaud"
+      }
+    ],
+    "Tim": [
+      {
+        "playerId": "hb-7",
+        "name": "C.Cunningham"
+      },
+      {
+        "playerId": "hb-52",
+        "name": "L.Ball"
+      },
+      {
+        "playerId": "hb-51",
+        "name": "D.Booker"
+      },
+      {
+        "playerId": "hb-26",
+        "name": "J.Jackson Jr."
+      },
+      {
+        "playerId": "hb-55",
+        "name": "Z.Williamson"
+      },
+      {
+        "playerId": "hb-47",
+        "name": "L.James"
+      },
+      {
+        "playerId": "hb-80",
+        "name": "T.Herro"
+      },
+      {
+        "playerId": "hb-103",
+        "name": "M.Bridges"
+      },
+      {
+        "playerId": "hb-92",
+        "name": "M.Turner"
+      },
+      {
+        "playerId": "hb-85",
+        "name": "R.Barrett"
+      },
+      {
+        "playerId": "hb-145",
+        "name": "J.Holiday"
+      },
+      {
+        "playerId": "hb-111",
+        "name": "D.Green"
+      },
+      {
+        "playerId": "hb-133",
+        "name": "T.Eason"
+      },
+      {
+        "playerId": "hb-176",
+        "name": "J.Champagnie"
+      }
+    ],
+    "Aaron": [
+      {
+        "playerId": "hb-4",
+        "name": "G.Antetokounmpo"
+      },
+      {
+        "playerId": "hb-20",
+        "name": "A.Thompson"
+      },
+      {
+        "playerId": "hb-18",
+        "name": "P.Banchero"
+      },
+      {
+        "playerId": "hb-45",
+        "name": "J.Williams"
+      },
+      {
+        "playerId": "hb-75",
+        "name": "D.Bane"
+      },
+      {
+        "playerId": "hb-78",
+        "name": "O.Anunoby"
+      },
+      {
+        "playerId": "hb-71",
+        "name": "N.Alexander-Walker"
+      },
+      {
+        "playerId": "hb-88",
+        "name": "D.Fox"
+      },
+      {
+        "playerId": "hb-77",
+        "name": "I.Hartenstein"
+      },
+      {
+        "playerId": "hb-66",
+        "name": "J.Suggs"
+      },
+      {
+        "playerId": "hb-112",
+        "name": "C.White"
+      },
+      {
+        "playerId": "hb-181",
+        "name": "A.Nembhard"
+      },
+      {
+        "playerId": "hb-233",
+        "name": "D.Ayton"
+      },
+      {
+        "playerId": "hb-250",
+        "name": "J.LaRavia"
+      }
+    ],
+    "Alan": [
+      {
+        "playerId": "hb-8",
+        "name": "J.Johnson"
+      },
+      {
+        "playerId": "hb-13",
+        "name": "E.Mobley"
+      },
+      {
+        "playerId": "hb-30",
+        "name": "D.Sabonis"
+      },
+      {
+        "playerId": "hb-16",
+        "name": "A.Davis"
+      },
+      {
+        "playerId": "hb-35",
+        "name": "Z.Edey"
+      },
+      {
+        "playerId": "hb-74",
+        "name": "M.Robinson"
+      },
+      {
+        "playerId": "hb-46",
+        "name": "D.Sharpe"
+      },
+      {
+        "playerId": "hb-89",
+        "name": "K.Maluach"
+      },
+      {
+        "playerId": "hb-105",
+        "name": "J.Poeltl"
+      },
+      {
+        "playerId": "hb-104",
+        "name": "N.Claxton"
+      },
+      {
+        "playerId": "hb-134",
+        "name": "P.Reed"
+      },
+      {
+        "playerId": "hb-126",
+        "name": "K.George"
+      },
+      {
+        "playerId": "hb-136",
+        "name": "K.Porter Jr."
+      },
+      {
+        "playerId": "hb-131",
+        "name": "A.Mitchell"
+      }
+    ],
+    "Joe": [
+      {
+        "playerId": "hb-17",
+        "name": "T.Maxey"
+      },
+      {
+        "playerId": "hb-9",
+        "name": "A.Sengün"
+      },
+      {
+        "playerId": "hb-22",
+        "name": "B.Adebayo"
+      },
+      {
+        "playerId": "hb-61",
+        "name": "J.Brown"
+      },
+      {
+        "playerId": "hb-39",
+        "name": "S.Curry"
+      },
+      {
+        "playerId": "hb-70",
+        "name": "D.Garland"
+      },
+      {
+        "playerId": "hb-102",
+        "name": "J.Morant"
+      },
+      {
+        "playerId": "hb-106",
+        "name": "J.Green"
+      },
+      {
+        "playerId": "hb-117",
+        "name": "S.Mamukelashvili"
+      },
+      {
+        "playerId": "hb-141",
+        "name": "Y.Lendeborg"
+      },
+      {
+        "playerId": "hb-168",
+        "name": "Y.Missi"
+      },
+      {
+        "playerId": "hb-149",
+        "name": "D.Brooks"
+      },
+      {
+        "playerId": "hb-120",
+        "name": "F.VanVleet"
+      },
+      {
+        "playerId": "hb-135",
+        "name": "C.Johnson"
+      }
+    ],
+    "Jake": [
+      {
+        "playerId": "hb-14",
+        "name": "C.Flagg"
+      },
+      {
+        "playerId": "hb-32",
+        "name": "T.Haliburton"
+      },
+      {
+        "playerId": "hb-42",
+        "name": "K.Leonard"
+      },
+      {
+        "playerId": "hb-58",
+        "name": "B.Miller"
+      },
+      {
+        "playerId": "hb-38",
+        "name": "J.Embiid"
+      },
+      {
+        "playerId": "hb-68",
+        "name": "K.Irving"
+      },
+      {
+        "playerId": "hb-59",
+        "name": "P.George"
+      },
+      {
+        "playerId": "hb-146",
+        "name": "M.Bridges"
+      },
+      {
+        "playerId": "hb-101",
+        "name": "D.Lillard"
+      },
+      {
+        "playerId": "hb-107",
+        "name": "J.Collins"
+      },
+      {
+        "playerId": "hb-155",
+        "name": "R.Hachimura"
+      },
+      {
+        "playerId": "hb-198",
+        "name": "A.Dosunmu"
+      },
+      {
+        "playerId": "hb-177",
+        "name": "D.DeRozan"
+      },
+      {
+        "playerId": "hb-196",
+        "name": "D.Mitchell"
+      }
+    ],
+    "Ryan": [
+      {
+        "playerId": "hb-10",
+        "name": "A.Edwards"
+      },
+      {
+        "playerId": "hb-15",
+        "name": "D.Mitchell"
+      },
+      {
+        "playerId": "hb-23",
+        "name": "D.Clingan"
+      },
+      {
+        "playerId": "hb-49",
+        "name": "R.Gobert"
+      },
+      {
+        "playerId": "hb-40",
+        "name": "M.Buzelis"
+      },
+      {
+        "playerId": "hb-64",
+        "name": "N.Reid"
+      },
+      {
+        "playerId": "hb-96",
+        "name": "B.Podziemski"
+      },
+      {
+        "playerId": "hb-82",
+        "name": "I.Quickley"
+      },
+      {
+        "playerId": "hb-118",
+        "name": "C.McCollum"
+      },
+      {
+        "playerId": "hb-132",
+        "name": "C.Wallace"
+      },
+      {
+        "playerId": "hb-94",
+        "name": "P.Washington"
+      },
+      {
+        "playerId": "hb-130",
+        "name": "Q.Grimes"
+      },
+      {
+        "playerId": "hb-144",
+        "name": "B.Portis"
+      },
+      {
+        "playerId": "hb-160",
+        "name": "C.Braun"
+      }
+    ],
+    "Cam": [
+      {
+        "playerId": "hb-11",
+        "name": "S.Barnes"
+      },
+      {
+        "playerId": "hb-12",
+        "name": "K.Towns"
+      },
+      {
+        "playerId": "hb-24",
+        "name": "J.Harden"
+      },
+      {
+        "playerId": "hb-34",
+        "name": "P.Siakam"
+      },
+      {
+        "playerId": "hb-83",
+        "name": "K.George"
+      },
+      {
+        "playerId": "hb-63",
+        "name": "J.Randle"
+      },
+      {
+        "playerId": "hb-76",
+        "name": "V.Edgecombe"
+      },
+      {
+        "playerId": "hb-95",
+        "name": "J.McDaniels"
+      },
+      {
+        "playerId": "hb-100",
+        "name": "R.Rollins"
+      },
+      {
+        "playerId": "hb-121",
+        "name": "M.Diabaté"
+      },
+      {
+        "playerId": "hb-124",
+        "name": "J.Kuminga"
+      },
+      {
+        "playerId": "hb-125",
+        "name": "Z.LaVine"
+      },
+      {
+        "playerId": "hb-143",
+        "name": "E.Demin"
+      },
+      {
+        "playerId": "hb-151",
+        "name": "A.Drummond"
+      }
+    ]
+  }
+}
