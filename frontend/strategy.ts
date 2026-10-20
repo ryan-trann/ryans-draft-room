@@ -20,16 +20,19 @@ export function gaps(team:string,rosters:Roster,cats:string[],all:Player[]):Cate
  });
 }
 function lookupValue(all:Player[],cats:string[]){
- const av=Object.fromEntries(cats.map(c=>[c,all.reduce((n,p)=>n+num(p,c),0)/Math.max(all.length,1)]));
- const sd=Object.fromEntries(cats.map(c=>[c,stdev(all.map(p=>num(p,c)))]));
- const scores=all.map(p=>({p,score:cats.reduce((n,c)=>n+flipped(c)*(num(p,c)-av[c])/sd[c],0)})).sort((a,b)=>b.score-a.score);
+ const pg=(p:Player,c:string)=>num(p,c)/Math.max(1,p.GP);
+ const av=Object.fromEntries(cats.map(c=>[c,all.reduce((n,p)=>n+pg(p,c),0)/Math.max(all.length,1)]));
+ const sd=Object.fromEntries(cats.map(c=>[c,stdev(all.map(p=>pg(p,c)))]));
+ const z=(p:Player)=>cats.reduce((n,c)=>n+flipped(c)*(pg(p,c)-av[c])/sd[c],0);
+ const ranked=all.map(p=>({p,score:z(p)})).sort((a,b)=>b.score-a.score);
+ const replacement=ranked.slice(Math.max(0,168),Math.max(1,178));
+ const replacementValue=replacement.reduce((n,v)=>n+v.score,0)/Math.max(1,replacement.length);
  const market=new Map<string,number>(),raw=new Map<string,number>();
- scores.forEach(({p,score},i)=>{
-  raw.set(p.draftId,score);
-  const projectionRank=i+1;
-  const rank=Number(p.adp)>0?projectionRank*.77+Math.min(300,Number(p.adp))*.23:projectionRank;
-  market.set(p.draftId,5+100*Math.pow(Math.max(0,1-rank/(all.length+35)),2.1));
- });
+ for(const {p,score} of ranked){
+  const value=Math.max(0,(score-replacementValue)*Math.max(0,Number(p.GP)||0)/82);
+  raw.set(p.draftId,value);
+  market.set(p.draftId,value);
+ }
  return {market,raw};
 }
 function share(rosters:Roster,cats:string[],lookup:Map<string,Player>){
@@ -124,8 +127,8 @@ export function findDeals(rosters:Roster,from:string,all:Player[],cats:string[],
    const difference=Math.abs(a-b)/Math.max(a,b,1);
    // Hard value guardrail: prevents star-for-role-player proposals like Braun/Wembanyama.
    if(difference>(format==='1:1'?.19:.22))continue;
-   // High-end elite-for-nonelite 1:1s demand a very close market value.
-   if(format==='1:1'&&Math.max(a,b)>88&&difference>.105)continue;
+   // Star trades need closer projected value than ordinary offers.
+   if(format==='1:1'&&Math.max(a,b)>12&&difference>.12)continue;
    fairCount++;
    preliminary.push({mine,theirs,difference});
   }
