@@ -64,26 +64,35 @@ function potFromLookup(rosters:Roster,cats:string[],lookup:Map<string,Player>,tr
 export function estimatePotFromTotals(totalsByTeam:Record<string,Record<string,number>>,cats:string[],trials=POT_TRIALS):PotResult{
  const teams=Object.keys(totalsByTeam),n=teams.length;
  const totals=teams.map(t=>cats.map(c=>totalsByTeam[t][c]||0));
- const cdfs=cats.map((cat,k)=>{
-  const raw=teams.map((_,i)=>flipped(cat)*totals[i][k]);
-  const avg=raw.reduce((a,b)=>a+b,0)/n,range=Math.max(...raw)-Math.min(...raw);
-  const scale=Math.max(range*.22,Math.abs(avg)*.09,1),max=Math.max(...raw);
-  const weights=raw.map(v=>Math.exp((v-max)/scale)),total=weights.reduce((a,b)=>a+b,0);
-  let cumulative=0;
-  return weights.map((w,i)=>i===n-1?1:(cumulative+=w/total));
- });
+ // Model noisy weekly outcomes rather than drawing independent category winners
+ // from arbitrary softmax shares. Common deterministic random numbers keep
+ // before/after trade comparisons stable. One shared team factor captures the
+ // tendency for high-game weeks to improve several categories together.
  const won=new Float64Array(n),categoryWins=new Uint8Array(n);
+ const weekly=totals.map(row=>row.map(v=>v/19)); // 82-game season ≈ 19 matchup weeks
+ const normal=(trial:number,team:number,cat:number)=>{
+  const u=Math.max(1e-9,halton(trial+1+team*13,PRIMES[(cat*2)%PRIMES.length]));
+  const v=halton(trial+1+team*19,PRIMES[(cat*2+1)%PRIMES.length]);
+  return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);
+ };
  for(let trial=0;trial<trials;trial++){
   categoryWins.fill(0);
-  const draws=POT_DRAWS[trial%POT_DRAWS.length];
+  const shared=teams.map((_,i)=>normal(trial,i,8));
   for(let k=0;k<cats.length;k++){
-   const draw=draws[k%draws.length],cdf=cdfs[k];
-   let t=0;while(t<n-1&&draw>cdf[t])t++;
-   categoryWins[t]++;
+   let leader=0,best=-Infinity;
+   for(let i=0;i<n;i++){
+    const mean=weekly[i][k];
+    // Counting-stat dispersion + week-to-week playing-time variation.
+    const spread=Math.sqrt(Math.max(1,Math.abs(mean)*1.15+mean*mean*.025));
+    const draw=mean+spread*(normal(trial,i,k)*.93+shared[i]*.37);
+    const oriented=flipped(cats[k])*draw;
+    if(oriented>best){best=oriented;leader=i}
+   }
+   categoryWins[leader]++;
   }
   let highest=0,count=0;
-  for(let t=0;t<n;t++)if(categoryWins[t]>highest){highest=categoryWins[t];count=1}else if(categoryWins[t]===highest)count++;
-  if(highest>0)for(let t=0;t<n;t++)if(categoryWins[t]===highest)won[t]+=1/count;
+  for(let i=0;i<n;i++)if(categoryWins[i]>highest){highest=categoryWins[i];count=1}else if(categoryWins[i]===highest)count++;
+  if(highest>0)for(let i=0;i<n;i++)if(categoryWins[i]===highest)won[i]+=1/count;
  }
  return {teams,shares:Object.fromEntries(teams.map((team,i)=>[team,won[i]/trials])),trials};
 }
