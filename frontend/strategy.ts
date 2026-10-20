@@ -1,6 +1,6 @@
 import type {Player,Roster} from './engine';
 
-export type DealFormat='1:1'|'2:2'|'2:1'|'1:2';
+export type DealFormat='1:1'|'2:2';
 export type TradeVerdict='strong'|'situational'|'avoid';
 export type Candidate={verdict:TradeVerdict;rivalRisk:'high'|'medium'|'low';adjustedGain:number;other:string;give:string[];receive:string[];format:DealFormat;cashMine:number;cashTheirs:number;fairness:number;partnerGain:number;myGain:number;potMine:number;potTheirs:number;potBefore:number;potAfter:number;partnerPotBefore:number;partnerPotAfter:number;partnerDrop?:string;myDrop?:string;myAdd?:string;partnerAdd?:string;reason:string};
 export type CategoryGap={cat:string;rank:number;total:number;leader:number;gap:number;gapPct:number;leaderName:string;near:boolean};
