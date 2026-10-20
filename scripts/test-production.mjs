@@ -74,7 +74,7 @@ try{
  await page.getByRole('button',{name:'Ranks',exact:true}).click();
  await expect(page.locator('.gap-row')).toHaveCount(9);
  await expect(page.locator('.gap-value')).toHaveCount(9);
- await page.getByRole('button',{name:'Trades',exact:true}).click();await expect(page.locator('.trade-summary')).toContainText('+0.219');await expect(page.locator('.trade-summary')).toContainText('−0.255');await page.screenshot({path:evidence+'/02-trade-mobile.png'});
+ await page.getByRole('button',{name:'Trades',exact:true}).click();await expect(page.locator('.trade-summary')).toContainText('Estimated weekly side-bet change');await expect(page.locator('.trade-summary')).toContainText('category shares');await page.screenshot({path:evidence+'/02-trade-mobile.png'});
  await expect(page.getByRole('button',{name:'Queue for review',exact:true})).toHaveCount(0);
  await page.getByRole('button',{name:'Team',exact:true}).click();
  await page.getByRole('button',{name:'Manage',exact:true}).click();
