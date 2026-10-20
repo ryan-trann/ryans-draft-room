@@ -52,7 +52,7 @@ window.DraftRoomBridge.standings=function(){
 
  return teams.map((t,i)=>({...t,rank:teams.findIndex(x=>Math.abs(x.points-t.points)<.00001)+1}));
 };
-window.DraftRoomBridge.ranked=function(query,sort){ const all=state.projections,q=norm(query),s=stats(),mine=state.picks.filter(x=>x.team==='Ryan').map(x=>playerFor(x)).filter(Boolean),weak={};
+window.DraftRoomBridge.ranked=function(query,sort){ const all=state.projections,q=norm(query),s=stats(),mine=(currentRosters['Ryan']||[]).map(id=>state.projections.find(p=>p.draftId===id)).filter(Boolean),weak={};
  if(mine.length)for(const c of CATS){
   const z=mine.reduce((v,p)=>v+((p[c]||0)-s[c].m)/s[c].sd*(c==='TO'?-1:1),0)/mine.length;
   weak[c]=Math.max(0,Math.min(.5,-z*.2));
