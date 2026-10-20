@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
-  "revision": 1,
-  "source": "Initial completed draft",
+  "revision": 2,
+  "source": "Draft Room team editor",
   "teams": {
     "Keith": [
       {
@@ -361,8 +361,8 @@
         "name": "A.Thompson"
       },
       {
-        "playerId": "hb-18",
-        "name": "P.Banchero"
+        "playerId": "hb-30",
+        "name": "D.Sabonis"
       },
       {
         "playerId": "hb-45",
@@ -419,8 +419,8 @@
         "name": "E.Mobley"
       },
       {
-        "playerId": "hb-30",
-        "name": "D.Sabonis"
+        "playerId": "hb-18",
+        "name": "P.Banchero"
       },
       {
         "playerId": "hb-16",
