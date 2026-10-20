@@ -77,7 +77,7 @@ try{
  // Percentages are relative to projected league leaders; TO is lower-is-better.
  await expect(page.locator('.gap-row').filter({has:page.locator('.gap-value')}).first()).toBeVisible();
  const edgeLabels=await page.locator('.gap-value').allTextContents();
- expect(edgeLabels.every(v=>v==='League leader'||/^\\d+\\.\\d% (behind|more than) /.test(v))).toBe(true);
+ expect(edgeLabels.every(v=>v==='League leader'||/^\d+\.\d% (behind|more than) /.test(v))).toBe(true);
  const turnoverGap=await page.locator('.gap-row').filter({has:page.getByText('Turnovers', {exact:false})}).locator('.gap-value').textContent();
  expect(turnoverGap==='League leader'||/\d+\.\d% more than /.test(turnoverGap)).toBe(true);
 
