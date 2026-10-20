@@ -43,7 +43,7 @@ def build_schedule(payload):
             if game_id in seen:
                 continue
             seen.add(game_id)
-            games.append({"date": date, "home": home, "away": away})
+            games.append({"date": date, "home": home, "away": away, "startUtc": game.get("gameDateTimeUTC") or None})
     if len(games) < 200:
         raise ValueError(f"Only {len(games)} regular-season games found; refusing incomplete schedule.")
     games.sort(key=lambda g: (g["date"], g["home"], g["away"]))
@@ -93,7 +93,7 @@ def fetch_espn_fallback():
             parsed = datetime.fromisoformat(when.replace("Z", "+00:00"))
             date = parsed.astimezone(ZoneInfo("America/New_York")).date().isoformat()
             seen.add(id_)
-            games.append({"date": date, "home": home, "away": away})
+            games.append({"date": date, "home": home, "away": away, "startUtc": parsed.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")})
     if len(games) < 200:
         raise ValueError(f"ESPN monthly schedule incomplete: {len(games)} games")
     games.sort(key=lambda g: (g["date"], g["home"], g["away"]))
