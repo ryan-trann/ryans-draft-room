@@ -64,7 +64,7 @@ function potFromLookup(rosters:Roster,cats:string[],lookup:Map<string,Player>,tr
  const totals=Object.fromEntries(Object.entries(rosters).map(([t,ids])=>[t,Object.fromEntries(cats.map(c=>[c,sum(ids.map(id=>lookup.get(id)).filter(Boolean) as Player[],c)]))]));
  return estimatePotFromTotals(totals,cats,trials);
 }
-export function estimatePotFromTotals(totalsByTeam:Record<string,Record<string,number>>,cats:string[],trials=POT_TRIALS):PotResult{
+export function estimatePotFromTotals(totalsByTeam:Record<string,Record<string,number>>,cats:string[],trials=POT_TRIALS,weeklyScale=19):PotResult{
  const teams=Object.keys(totalsByTeam),n=teams.length;
  const totals=teams.map(t=>cats.map(c=>totalsByTeam[t][c]||0));
  // Model noisy weekly outcomes rather than drawing independent category winners
@@ -72,7 +72,7 @@ export function estimatePotFromTotals(totalsByTeam:Record<string,Record<string,n
  // before/after trade comparisons stable. One shared team factor captures the
  // tendency for high-game weeks to improve several categories together.
  const won=new Float64Array(n),categoryWins=new Uint8Array(n);
- const weekly=totals.map(row=>row.map(v=>v/19)); // 82-game season ≈ 19 matchup weeks
+ const weekly=totals.map(row=>row.map(v=>v/weeklyScale)); // season totals or an already-projected week
  const normal=(trial:number,team:number,cat:number)=>{
   const u=Math.max(1e-9,halton(trial+1+team*13,PRIMES[(cat*2)%PRIMES.length]));
   const v=halton(trial+1+team*19,PRIMES[(cat*2+1)%PRIMES.length]);
