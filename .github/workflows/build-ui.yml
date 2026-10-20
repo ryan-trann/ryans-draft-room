@@ -1,0 +1,50 @@
+name: Build and verify purple app
+
+on:
+  push:
+    paths:
+      - "frontend/**"
+      - "index.source.html"
+      - "scripts/prepare-production.mjs"
+      - "scripts/test-production.mjs"
+      - ".github/workflows/build-ui.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: purple-app-build
+  cancel-in-progress: false
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install pinned dependencies
+        run: npm ci
+      - name: Typecheck and build production bundle
+        run: npm run build
+      - name: Install browser for regression tests
+        run: npx playwright install --with-deps chromium
+      - name: Run production regression suite
+        run: npm run test:production
+      - name: Publish verified build without modifying league data
+        run: |
+          cp dist/index.html index.html
+          mkdir -p assets
+          cp -R dist/assets/. assets/
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html assets/
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish verified v31 purple strategy and trade tools"
+            git push
+          fi
