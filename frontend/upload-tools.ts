@@ -5,7 +5,7 @@ export function mountProjections(host){
 
 'use strict';
 const $=id=>host.querySelector('[data-tool-id="'+id+'"]');
-const repo='ryan-trann/ryans-draft-room',path='projections-300-data.js';
+const repo='ryan-trann/ryans-draft-room',path='projections-300-data.json';
 let staged=null;
 const isNumber=x=>/^-?(?:\d+(?:\.\d*)?|\.\d+)$/.test(x);
 const start=/^(\d{1,3})(?:\s+\d{1,3})?\s+(.+?)\s+(?:(\d+(?:\.\d+)?)\s+)?((?:PG|SG|SF|PF|C)(?:,(?:PG|SG|SF|PF|C))*)\s+([A-Z]{2,3})\s+(\d{1,2})\s+(\d+(?:\.\d+)?)(?:\s+(.*))?$/i;
@@ -91,7 +91,7 @@ $('publish').addEventListener('click',async()=>{
   const priorResponse=await fetch(url,{headers,cache:'no-store'});
   if(!priorResponse.ok)throw Error('Could not access repository file (HTTP '+priorResponse.status+'). Check token permissions.');
   const prior=await priorResponse.json();
-  const file='window.DRAFT_PROJECTIONS_RAW=String.raw'+String.fromCharCode(96)+staged.raw+String.fromCharCode(96)+';\n';
+  const file=JSON.stringify({formatVersion:1,raw:staged.raw},null,2)+'\n';
   const bytes=new TextEncoder().encode(file);
   let binary='';for(const byte of bytes)binary+=String.fromCharCode(byte);
   const body={message:'Update Hashtag projections through Draft Room',content:btoa(binary),sha:prior.sha,branch:'main'};
@@ -113,9 +113,9 @@ let staged=null;
 const norm=s=>String(s||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');
 const corrections={mara:'A.Mara',ayton:'D.Ayton',laravia:'J.LaRavia',raynaud:'M.Raynaud',risaxher:'Z.Risacher'};
 function readProjectionFile(src){
- const m=src.match(/^window\.DRAFT_PROJECTIONS_RAW=String\.raw\x60([\s\S]*?)\x60;/);
- if(!m)throw Error('Shared projection file is invalid.');
- return m[1].trim().split(/\r?\n/).map(row=>{const x=row.split(/\s+/);return {name:x[1].replace(/_/g,' '),positions:x[3],team:x[4],draftId:'hb-'+x[0]};});
+ const data=JSON.parse(src);
+ if(data.formatVersion!==1||typeof data.raw!=='string')throw Error('Shared projection JSON is invalid.');
+ return data.raw.trim().split(/\r?\n/).map(row=>{const x=row.split(/\s+/);return {name:x[1].replace(/_/g,' '),positions:x[3],team:x[4],draftId:'hb-'+x[0]};});
 }
 function reconcileBackup(data,projections){
  if(!Array.isArray(data.picks)||data.picks.length!==168)throw Error('Backup must contain exactly 168 picks for a completed draft.');
@@ -150,7 +150,7 @@ $('validate').onclick=async()=>{
  try{
   if(file.size>1500000)throw Error('File exceeds 1.5 MB.');
   const backup=JSON.parse(await file.text());
-  const resp=await fetch('projections-300-data.js?fresh='+Date.now(),{cache:'no-store'});
+  const resp=await fetch('projections-300-data.json?fresh='+Date.now(),{cache:'no-store'});
   if(!resp.ok)throw Error('Could not load shared projections: HTTP '+resp.status);
   const projections=readProjectionFile(await resp.text());
   staged=reconcileBackup(backup,projections);
