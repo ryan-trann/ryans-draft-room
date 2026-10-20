@@ -38,7 +38,7 @@ try{
  expect(duplicateLabels.length).toBeGreaterThan(0);
  for(const p of duplicateLabels)expect(p.actual).toBe(p.expected);
  await page.screenshot({path:evidence+'/01-team-mobile.png'});
- // v43: Team has no redundant Category Strategy entry; Trades is the sole auto finder.
+ // v44: Team has no redundant Category Strategy entry; Trades is the sole auto finder.
  await expect(page.locator('.strategy-entry')).toHaveCount(0);
  await page.getByRole('button',{name:'Trades',exact:true}).click();
  await page.getByRole('button',{name:'Find ideas',exact:true}).click();
@@ -119,16 +119,27 @@ try{
  await expect(page.locator('.stream-results')).toBeVisible();
  await expect(page.locator('.stream-results')).not.toContainText('J.Butler');
  await expect(page.locator('.stream-results')).not.toContainText('K.Porzingis');
- // A newly listed injured pickup disappears; switching the filter off restores it.
- const addId=await page.locator('.stream-row .stream-pair').first().locator('div').last().locator('b').textContent();
- const projection=initial.projections.find(p=>addId?.startsWith(p.name));
- if(projection){
-  injuryFixture.players.unshift({name:projection.name,team:projection.team,status:'Out'});
-  injuryFixture.count=injuryFixture.players.length;
-  await page.getByRole('button',{name:'Find streaming opportunities',exact:true}).click();
-  await expect(page.locator('.stream-results')).toContainText('injured excluded');
-  await page.getByRole('checkbox',{name:'Exclude injured players'}).uncheck();
-  await expect(page.locator('.stream-results')).not.toContainText('injured excluded');
+ // Pot-ranked picks must be positive and sorted; injury filtering remains reversible.
+ const suggestionCount=await page.locator('.stream-row').count();
+ if(suggestionCount){
+  await expect(page.locator('.stream-row').first()).toContainText('weekly pot share');
+  await expect(page.locator('.stream-row').first()).toContainText('Modeled pot:');
+  await expect(page.locator('.stream-row').first()).toContainText('Improves:');
+  await expect(page.locator('.stream-row').first()).toContainText('Weakens:');
+  const values=await page.locator('.stream-row .section-header .positive').allTextContents();
+  const impacts=values.map(v=>Number(v.match(/([+−-]?\\d+\\.\\d+) pp/)?.[1].replace('−','-')||0));
+  expect(impacts.every(n=>n>=0)).toBe(true);
+  expect(impacts.every((n,i)=>i===0||impacts[i-1]>=n)).toBe(true);
+  const addId=await page.locator('.stream-row .stream-pair').first().locator('div').last().locator('b').textContent();
+  const projection=initial.projections.find(p=>addId?.startsWith(p.name));
+  if(projection){
+   injuryFixture.players.unshift({name:projection.name,team:projection.team,status:'Out'});
+   injuryFixture.count=injuryFixture.players.length;
+   await page.getByRole('button',{name:'Find streaming opportunities',exact:true}).click();
+   await expect(page.locator('.stream-results')).toContainText('injured excluded');
+   await page.getByRole('checkbox',{name:'Exclude injured players'}).uncheck();
+   await expect(page.locator('.stream-results')).not.toContainText('injured excluded');
+  }
  }
  await page.screenshot({path:evidence+'/04-stream-mobile.png'});
  await page.getByRole('button',{name:'Open menu',exact:true}).click();await page.getByRole('button',{name:'Draft & backups',exact:false}).click();await expect(page.getByRole('heading',{name:'DRAFT CENTER',exact:true})).toBeVisible();await expect(page.locator('#legacy-ui')).toBeHidden();await expect(page.locator('#export')).toBeVisible();await expect(page.locator('#bestPickContext')).toContainText('Draft complete');
@@ -137,7 +148,7 @@ try{
  await page.locator('#reset').click();await expect(page.locator('#count')).toHaveText('0');await page.locator('#player').fill('N.Jokic');await page.locator('#playerSuggestions button').first().click();await page.locator('#record').click();await expect(page.locator('#count')).toHaveText('1');await page.locator('#undo').click();await expect(page.locator('#count')).toHaveText('0');
  await page.locator('#restore').setInputFiles({name:'draft-backup.json',mimeType:'application/json',buffer:Buffer.from(backup)});await expect(page.locator('#count')).toHaveText('168');
  await page.getByRole('button',{name:'Team',exact:true}).click();await page.getByRole('button',{name:'Open menu',exact:true}).click();await page.getByRole('button',{name:'GitHub & projections',exact:false}).click();await page.getByRole('button',{name:'Upload projections',exact:true}).click();
- await expect(page.getByRole('heading',{name:'UPLOAD PROJECTIONS',exact:true})).toBeVisible();await expect(page.locator('#legacy-ui')).toBeHidden();await expect(page.locator('.preview-label')).toHaveText('v43');expect(await page.locator('.hero-title').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);await page.screenshot({path:evidence+'/07a-projections-start-mobile.png'});
+ await expect(page.getByRole('heading',{name:'UPLOAD PROJECTIONS',exact:true})).toBeVisible();await expect(page.locator('#legacy-ui')).toBeHidden();await expect(page.locator('.preview-label')).toHaveText('v44');expect(await page.locator('.hero-title').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);await page.screenshot({path:evidence+'/07a-projections-start-mobile.png'});
  await page.getByRole('button',{name:'Validate and preview',exact:true}).click();await expect(page.locator('#tool-projections-preview')).toContainText('Validation failed');await expect(page.locator('#tool-projections-publish')).toBeDisabled();
  const tableText=await page.evaluate(()=>window.DRAFT_PROJECTIONS_RAW.trim().split(/\r?\n/).map(row=>{const x=row.split(/\s+/);x[1]=x[1].replaceAll('_',' ');if(x[2]==='-')x[2]='';return x.join(' ')}).join('\n'));
  await page.getByLabel('Projection table',{exact:true}).fill(tableText);await page.getByRole('button',{name:'Validate and preview',exact:true}).click();await expect(page.locator('#tool-projections-preview')).toContainText('Valid: 300 players');
