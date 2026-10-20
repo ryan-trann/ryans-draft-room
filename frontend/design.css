@@ -105,3 +105,11 @@
 .deal-sheet .data-line b{text-align:right;font-size:13px}
 .ideas-section>.field{margin:0 0 13px}
 .ideas-section>.field select{font-size:14px}
+
+/* Relative weekly pot signals: green only if Ryan gains more than opponent. */
+.payout-line{display:block;font-size:12px;font-weight:650;margin-top:4px}
+.payout-comparison{display:block;font-size:11px;margin:4px 0 8px}
+.relative-ahead{color:#88efd0!important}
+.rival-ahead{color:#ffcd83!important}
+.relative-even{color:#c9bbeb!important}
+.deal-sheet .payout-comparison{padding:8px 0;font-weight:600}
