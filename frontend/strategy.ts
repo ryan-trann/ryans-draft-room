@@ -1,7 +1,7 @@
 import type {Player,Roster} from './engine';
 
 export type DealFormat='1:1'|'2:2'|'2:1'|'1:2';
-export type Candidate={other:string;give:string[];receive:string[];format:DealFormat;cashMine:number;cashTheirs:number;fairness:number;partnerGain:number;myGain:number;partnerDrop?:string;myDrop?:string;myAdd?:string;partnerAdd?:string;reason:string};
+export type Candidate={other:string;give:string[];receive:string[];format:DealFormat;cashMine:number;cashTheirs:number;fairness:number;partnerGain:number;myGain:number;potMine:number;potTheirs:number;potBefore:number;potAfter:number;partnerPotBefore:number;partnerPotAfter:number;partnerDrop?:string;myDrop?:string;myAdd?:string;partnerAdd?:string;reason:string};
 export type CategoryGap={cat:string;rank:number;total:number;leader:number;gap:number;gapPct:number;leaderName:string;near:boolean};
 export type Strategy={punts:string[];focus:string[];score:number;description:string;opportunity:number};
 const flipped=(c:string)=>c==='TO'?-1:1;
@@ -62,6 +62,51 @@ function share(rosters:Roster,cats:string[],lookup:Map<string,Player>){
  }
  return shares;
 }
+
+// A side-bet payout is awarded to the team with the MOST category leads
+// in each simulated week. Tied leading teams split the pot, not the categories.
+// These are *heuristic* scenarios from projected totals, not calibrated
+// weekly NBA distributions or real Yahoo matchup outcomes.
+const POT_TRIALS=2048;
+const PRIMES=[2,3,5,7,11,13,17,19,23];
+function halton(index:number,base:number){let f=1,r=0;while(index>0){f/=base;r+=f*(index%base);index=Math.floor(index/base)}return r}
+const POT_DRAWS=Array.from({length:POT_TRIALS},(_,i)=>PRIMES.map(p=>halton(i+1,p)));
+type PotResult={teams:string[];shares:Record<string,number>;trials:number};
+export function estimatePot(rosters:Roster,cats:string[],all:Player[],trials=POT_TRIALS):PotResult{
+ const lookup=new Map(all.map(p=>[p.draftId,p]));
+ return potFromLookup(rosters,cats,lookup,trials);
+}
+function potFromLookup(rosters:Roster,cats:string[],lookup:Map<string,Player>,trials=POT_TRIALS):PotResult{
+ const teams=Object.keys(rosters),n=teams.length;
+ const totals=teams.map(t=>cats.map(c=>sum(rosters[t].map(id=>lookup.get(id)).filter(Boolean) as Player[],c)));
+ const cdfs=cats.map((cat,k)=>{
+  const raw=teams.map((_,i)=>flipped(cat)*totals[i][k]);
+  const avg=raw.reduce((a,b)=>a+b,0)/n,range=Math.max(...raw)-Math.min(...raw);
+  const scale=Math.max(range*.22,Math.abs(avg)*.09,1),max=Math.max(...raw);
+  const weights=raw.map(v=>Math.exp((v-max)/scale)),total=weights.reduce((a,b)=>a+b,0);
+  let cumulative=0;
+  return weights.map((w,i)=>i===n-1?1:(cumulative+=w/total));
+ });
+ const won=new Float64Array(n),categoryWins=new Uint8Array(n);
+ for(let trial=0;trial<trials;trial++){
+  categoryWins.fill(0);
+  const draws=POT_DRAWS[trial%POT_DRAWS.length];
+  for(let k=0;k<cats.length;k++){
+   const draw=draws[k%draws.length],cdf=cdfs[k];
+   let t=0;while(t<n-1&&draw>cdf[t])t++;
+   categoryWins[t]++;
+  }
+  let highest=0,count=0;
+  for(let t=0;t<n;t++)if(categoryWins[t]>highest){highest=categoryWins[t];count=1}else if(categoryWins[t]===highest)count++;
+  if(highest>0)for(let t=0;t<n;t++)if(categoryWins[t]===highest)won[t]+=1/count;
+ }
+ return {teams,shares:Object.fromEntries(teams.map((team,i)=>[team,won[i]/trials])),trials};
+}
+export function potImpact(before:Roster,after:Roster,cats:string[],all:Player[],from:string,other:string){
+ const lookup=new Map(all.map(p=>[p.draftId,p]));
+ const a=potFromLookup(before,cats,lookup),b=potFromLookup(after,cats,lookup);
+ return {mine:b.shares[from]-a.shares[from],theirs:b.shares[other]-a.shares[other],beforeMine:a.shares[from],afterMine:b.shares[from],beforeTheirs:a.shares[other],afterTheirs:b.shares[other],trials:a.trials};
+}
 function packages(ids:string[],n:number){
  if(n===1)return ids.map(x=>[x]);
  const out:string[][]=[];for(let i=0;i<ids.length;i++)for(let j=i+1;j<ids.length;j++)out.push([ids[i],ids[j]]);
@@ -74,7 +119,7 @@ export function findDeals(rosters:Roster,from:string,all:Player[],cats:string[],
  const free=all.filter(p=>!taken.has(p.draftId)).sort((a,b)=>(market.get(b.draftId)||0)-(market.get(a.draftId)||0));
  const additions=free.slice(0,4);
  const myPacks=packages(rosters[from]||[],sides[0]);
- const rows:Candidate[]=[];
+ const potential:(Candidate & {_priority:number;_roster:Roster})[]=[];
  let examined=0,fairCount=0;
  for(const other of otherNames){
   const theirPacks=packages(rosters[other]||[],sides[1]);
@@ -108,15 +153,37 @@ export function findDeals(rosters:Roster,from:string,all:Player[],cats:string[],
    // No deals that severely damage the other manager's overall projected production.
    if(theirsValue < -1.3 || mineValue < -3)continue;
    const after=share(draft,cats,lookup),cashMine=after[from]-base[from],cashTheirs=after[other]-base[other];
-   if(cashMine<=.002 || cashTheirs<-.018)continue;
+   if(cashTheirs<-.018 || cashMine<-.09)continue;
    const focusAfter=share(draft,targetCats.length?targetCats:cats,lookup);
    const focusedGain=focusAfter[from]-focusBase[from];
-   const benefit=cashMine*.6+focusedGain*.4+cashTheirs*.35-Math.max(0,-theirsValue)*.018-difference*.09;
-   rows.push({other,give:mine,receive:theirs,format,cashMine,cashTheirs,fairness:1-difference,partnerGain:theirsValue,myGain:mineValue,partnerDrop,myDrop,myAdd,partnerAdd,reason:'Comparable projected market value and limited partner downside',_priority:benefit} as Candidate & {_priority:number});
+   // Partner gain is a feasibility constraint, NEVER a positive ranking bonus.
+   const benefit=cashMine*.73+focusedGain*.27-Math.max(0,-theirsValue)*.012-difference*.035;
+   potential.push({other,give:mine,receive:theirs,format,cashMine,cashTheirs,fairness:1-difference,partnerGain:theirsValue,myGain:mineValue,potMine:0,potTheirs:0,potBefore:0,potAfter:0,partnerPotBefore:0,partnerPotAfter:0,partnerDrop,myDrop,myAdd,partnerAdd,reason:'Comparable projected value and limited partner downside',_priority:benefit,_roster:draft});
   }
  }
- rows.sort((a,b)=>((b as Candidate & {_priority:number})._priority)-((a as Candidate & {_priority:number})._priority));
- return {rows:rows.slice(0,limit),examined,fairCount};
+ // Cheap category-share screening selects diverse plausible offers to simulate.
+ // Final ordering, however, is ONLY Ryan's modeled POT payout improvement.
+ potential.sort((a,b)=>b._priority-a._priority);
+ const seen=new Set<string>(),shortlist:typeof potential=[];
+ const perOpponent=new Map<string,number>();
+ for(const row of potential){
+  if((perOpponent.get(row.other)||0)>=20)continue;
+  const key=[row.other,...row.give,...row.receive].join('|');
+  if(seen.has(key))continue;
+  seen.add(key);perOpponent.set(row.other,(perOpponent.get(row.other)||0)+1);
+  shortlist.push(row);
+ }
+ const potBefore=potFromLookup(rosters,cats,lookup);
+ const ranked:Candidate[]=[];
+ for(const proposal of shortlist){
+  const result=potFromLookup(proposal._roster,cats,lookup);
+  const mineGain=result.shares[from]-potBefore.shares[from];
+  // Do not recommend deals whose actual side-bet payout estimate declines.
+  if(mineGain<=0.0001)continue;
+  ranked.push({...proposal,potMine:mineGain,potTheirs:result.shares[proposal.other]-potBefore.shares[proposal.other],potBefore:potBefore.shares[from],potAfter:result.shares[from],partnerPotBefore:potBefore.shares[proposal.other],partnerPotAfter:result.shares[proposal.other]});
+ }
+ ranked.sort((a,b)=>b.potMine-a.potMine||b.cashMine-a.cashMine||b.fairness-a.fairness);
+ return {rows:ranked.slice(0,limit),examined,fairCount};
 }
 export function tradeMoves(deal:Candidate,from:string){
  const other=deal.other,actions:{kind:string;team:string;other:string;give:string;receive:string}[]=[];
