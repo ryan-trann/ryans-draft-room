@@ -271,7 +271,7 @@ function movePacificDate(iso,days){
 }
 function eligibleGames(games,start,end,delay,now=new Date()){
  const today=pacificDate(now),availableFrom=movePacificDate(today,delay);
- const nowMs=now.getTime(),countsRoster={},countsPickup={},stats={missingToday:0,expired:0,tooEarly:0};
+ const nowMs=now.getTime(),countsRoster={},countsPickup={},activeGames=[],stats={missingToday:0,expired:0,tooEarly:0};
  const increment=(obj,team)=>{obj[nbaCode(team)]=(obj[nbaCode(team)]||0)+1};
  for(const g of games){
   if(g.date<start||g.date>end)continue;
@@ -281,10 +281,11 @@ function eligibleGames(games,start,end,delay,now=new Date()){
   if(isToday&&!Number.isFinite(tipoff))stats.missingToday++;
   if(alreadyStarted){stats.expired++;continue}
   increment(countsRoster,g.home);increment(countsRoster,g.away);
+  activeGames.push(g);
   if(g.date<availableFrom){stats.tooEarly++;continue}
   increment(countsPickup,g.home);increment(countsPickup,g.away);
  }
- return {countsRoster,countsPickup,stats,availableFrom,from:today};
+ return {countsRoster,countsPickup,activeGames,stats,availableFrom,from:today};
 }
 function weeklyPerGame(p,c){return p.GP>0?Number(p[c]||0)/p.GP:0}
 function weeklyCategoryValue(p,games){
