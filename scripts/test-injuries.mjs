@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
-import {build} from 'esbuild';
-const output=await build({entryPoints:['frontend/injuries.ts'],bundle:true,platform:'node',format:'esm',write:false});
-const src=output.outputFiles[0].text;
+import ts from 'typescript';
+import {readFile} from 'node:fs/promises';
+const src=ts.transpileModule(await readFile('frontend/injuries.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText;
 const lib=await import('data:text/javascript;base64,'+Buffer.from(src).toString('base64'));
 const report={source:'ESPN NBA injuries',sourceUrl:'https://www.espn.com/nba/injuries',updatedAt:new Date().toISOString(),count:12,players:[
  {name:'Jimmy Butler III',team:'GSW',status:'Out'},
