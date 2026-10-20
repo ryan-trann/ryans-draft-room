@@ -358,6 +358,26 @@ function updateFromSharedRaw(raw){
   if(replacement)pick.playerId=replacement.draftId;
   else{pick.playerId=null;pick.unlisted=true}
  }
+ // Keep current team ownership attached to players when a new projection upload changes rank/order.
+ const oldById=new Map(old.map(p=>[p.draftId,p]));
+ const revisedRosters={};
+ for(const team of TEAMS){
+  revisedRosters[team]=(currentRosters[team]||[]).map(id=>{
+   const prior=oldById.get(id);
+   if(!prior)return null;
+   const exact=freshBySignature.get(signature(prior));
+   if(exact)return exact.draftId;
+   const sameName=fresh.filter(p=>norm(p.name)===norm(prior.name));
+   return sameName.length===1?sameName[0].draftId:null;
+  }).filter(Boolean);
+ }
+ const rosterIDs=Object.values(revisedRosters).flat();
+ if(rosterIDs.length===Object.values(currentRosters).flat().length&&new Set(rosterIDs).size===rosterIDs.length){
+  currentRosters=revisedRosters;
+ }else{
+  if(typeof editorReady!=='undefined')editorReady=false;
+  if($('editorStatus'))$('editorStatus').textContent='Some rostered players could not be matched to the new projections. Reload the roster file and review identities before editing.';
+ }
  state.projections=fresh;
  latestSharedProjections=fresh;
  state.projectionDatasetVersion=17;
