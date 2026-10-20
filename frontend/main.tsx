@@ -8,5 +8,6 @@ try{
  if(!window.DraftRoomBridge?.data().ready)throw Error('Saved roster data could not be loaded.');
  const {default:DraftRoom}=await import('./DraftRoom');
  document.body.classList.add('modern-ready');
+ document.body.classList.remove('app-loading');
  createRoot(host).render(<React.StrictMode><DraftRoom/></React.StrictMode>);
-}catch(error){console.error('Draft Room interface could not start; original tools remain available.',error);document.body.classList.add('show-original');}
+}catch(error){console.error('Draft Room interface could not start; original tools remain available.',error);document.body.classList.remove('app-loading');document.body.classList.add('show-original');}

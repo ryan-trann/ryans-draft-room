@@ -26,7 +26,9 @@ await page.route('https://api.github.com/**',async route=>{
 });
 page.on('dialog',d=>d.accept());
 try{
- await page.goto('http://127.0.0.1:4182'+prefix,{waitUntil:'networkidle'});await expect(page.locator('body')).toHaveClass(/modern-ready/);await page.evaluate(()=>document.fonts.ready);
+ await page.route('**/assets/*.js',async route=>{await new Promise(resolve=>setTimeout(resolve,80));await route.continue()});
+ await page.goto('http://127.0.0.1:4182'+prefix,{waitUntil:'commit'});await expect(page.locator('#legacy-ui')).toBeHidden();
+ await page.waitForLoadState('networkidle');await expect(page.locator('body')).toHaveClass(/modern-ready/);await page.evaluate(()=>document.fonts.ready);
  await expect(page.getByRole('heading',{name:'MY TEAM',exact:true})).toBeVisible();await expect(page.locator('.team-overview')).toContainText('75.0');await expect(page.locator('.roster-row')).toHaveCount(14);
  const initial=await page.evaluate(()=>window.DraftRoomBridge.data());expect(initial.revision).toBe(1);expect(initial.projections.length).toBe(300);expect(initial.projections.filter(p=>p.adp>0).length).toBe(186);expect(Object.values(initial.rosters).flat().length).toBe(168);
  await page.screenshot({path:evidence+'/01-team-mobile.png'});
