@@ -121,6 +121,7 @@ try{
  await expect(page.locator('.stream-results')).not.toContainText('K.Porzingis');
  // Pot-ranked picks must be positive and sorted; injury filtering remains reversible.
  const suggestionCount=await page.locator('.stream-row').count();
+ expect(suggestionCount).toBeGreaterThan(0);
  if(suggestionCount){
   await expect(page.locator('.stream-row').first()).toContainText('weekly pot share');
   await expect(page.locator('.stream-row').first()).toContainText('Modeled pot:');
