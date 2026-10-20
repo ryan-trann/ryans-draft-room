@@ -302,12 +302,12 @@ $('streamRecommend').onclick=async()=>{
   if(dayFromIso(start)>dayFromIso(end))throw Error('Week end must follow week start.');
   const effective=streamingEffectiveRange(start,end);
   const schedule=await getNbaSchedule(effective.start,end);
-  const delay=Number($('streamDelay').value);
-  if(![0,1,2,3].includes(delay))throw Error('Choose a valid pickup eligibility setting');
-  const eligibility=eligibleGames(schedule.games,effective.start,end,delay);
+  // This league allows real-time free-agent additions before tipoff.
+  // Unknown Yahoo waiver statuses are not inferred or screened.
+  const eligibility=eligibleGames(schedule.games,effective.start,end,0);
   const counts=eligibility.countsRoster,pickupCounts=eligibility.countsPickup;
   const unknown=eligibility.stats.missingToday;
-  $('streamScheduleStatus').textContent='NBA games still eligible this matchup: '+effective.start+' through '+end+' · '+schedule.source+' · Free-agent pickup eligible from '+eligibility.availableFrom+' (Pacific)'+(unknown?' · '+unknown+' games today lack start times and were excluded for safety.':'')+'.';
+  $('streamScheduleStatus').textContent='NBA games still eligible this matchup: '+effective.start+' through '+end+' · '+schedule.source+' · Immediate free-agent eligibility, provided tipoff has not occurred'+(unknown?' · '+unknown+' games today lack start times and were excluded for safety.':'')+'.';
   const from=$('streamTeam').value;
   const roster=analysisPlayers(from);
   const taken=new Set(TEAMS.flatMap(t=>currentRosters[t]||[]));
@@ -322,9 +322,9 @@ $('streamRecommend').onclick=async()=>{
    if(gain>0)pairs.push({d,a,gain});
   }
   pairs.sort((a,b)=>b.gain-a.gain);
-  $('streamResults').innerHTML='<p class="muted">'+Object.keys(counts).length+' NBA teams have remaining playable games. Pickup games begin on the configured eligible day. Recommendations compare per-game projections × games, normalized over the nine league categories. Only positive-gain replacements with more scheduled games are shown.</p>'+
+  $('streamResults').innerHTML='<p class="muted">'+Object.keys(counts).length+' NBA teams have remaining playable games. Pickup games count only when tipoff is still in the future. Recommendations compare per-game projections × games, normalized over the nine league categories. Only positive-gain replacements with more scheduled games are shown.</p>'+
    (pairs.slice(0,15).map((x,i)=>'<div class="pick"><span class="rank">'+(i+1)+'</span><div class="grow"><strong>Drop '+esc(playerLabel(x.d.p))+' · Add '+esc(playerLabel(x.a.p))+'</strong><div class="muted">'+x.d.games+' → '+x.a.games+' games · Estimated weighted production gain +'+x.gain.toFixed(2)+'</div></div></div>').join('')||'<p>No positive-gain streaming match yet. Try a different NBA week.</p>')+
-   '<p class="muted">Streaming is a short-term estimate. The eligibility delay is your assumption, not a verified Yahoo league setting. Waiver clearance, daily lineup congestion, roster limits and player long-term value must still be considered. No roster changes are applied automatically.</p>';
+   '<p class="muted">Streaming is a short-term estimate. Real-time additions are assumed for available free agents. The app cannot identify players on waivers; confirm their availability in Yahoo. Daily lineup congestion, roster limits and long-term value must still be considered. No roster changes are applied automatically.</p>';
  }catch(e){$('streamResults').textContent='Streaming unavailable: '+e.message}
  finally{button.disabled=false}
 };
