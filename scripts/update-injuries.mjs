@@ -6,10 +6,13 @@ const response=await fetch(url,{headers:{'user-agent':'PL-Fantasy-Basketball/1.0
 if(!response.ok)throw Error('ESPN injury feed returned '+response.status);
 const data=await response.json();
 if(!Array.isArray(data.injuries))throw Error('Unexpected ESPN injury schema: '+JSON.stringify(Object.keys(data)));
-console.log('ESPN payload sample:',JSON.stringify(data.injuries.slice(0,2)).slice(0,2500));
+
+const nbaTeams=Object.fromEntries([
+ ['Atlanta Hawks','ATL'],['Boston Celtics','BOS'],['Brooklyn Nets','BKN'],['Charlotte Hornets','CHA'],['Chicago Bulls','CHI'],['Cleveland Cavaliers','CLE'],['Dallas Mavericks','DAL'],['Denver Nuggets','DEN'],['Detroit Pistons','DET'],['Golden State Warriors','GSW'],['Houston Rockets','HOU'],['Indiana Pacers','IND'],['LA Clippers','LAC'],['Los Angeles Clippers','LAC'],['Los Angeles Lakers','LAL'],['Memphis Grizzlies','MEM'],['Miami Heat','MIA'],['Milwaukee Bucks','MIL'],['Minnesota Timberwolves','MIN'],['New Orleans Pelicans','NOP'],['New York Knicks','NYK'],['Oklahoma City Thunder','OKC'],['Orlando Magic','ORL'],['Philadelphia 76ers','PHI'],['Phoenix Suns','PHX'],['Portland Trail Blazers','POR'],['Sacramento Kings','SAC'],['San Antonio Spurs','SAS'],['Toronto Raptors','TOR'],['Utah Jazz','UTA'],['Washington Wizards','WAS']
+ ]);
 const rows=[];
 for(const group of data.injuries){
- const team=group?.team?.abbreviation||group?.abbreviation||'';
+ const team=group?.team?.abbreviation||group?.abbreviation||nbaTeams[group?.displayName]||'';
  for(const item of group.injuries||[]){
   const name=item?.athlete?.displayName||item?.athlete?.fullName||'';
   const status=String(item?.status?.name||item?.status?.description||item?.status||'').trim();
