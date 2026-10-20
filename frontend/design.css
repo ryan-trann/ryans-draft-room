@@ -130,3 +130,21 @@
 .injury-refresh{display:inline-flex;align-items:center;gap:8px;color:#c4adff!important;background:#1c1728;border:1px solid #584374!important;border-radius:8px;padding:8px 12px;margin:0 0 5px;cursor:pointer;font-size:12px!important;font-weight:650!important}
 .injury-refresh:hover{background:#282037}
 .injury-source-note{font-size:11px!important;margin:0 0 13px!important}
+
+/* Category rankings matrix: scroll nine categories while keeping teams visible. */
+.rank-view-toggle{display:flex;gap:4px;padding:4px;background:#191721;border:1px solid #373044;border-radius:9px;margin:14px 0 8px}
+.rank-view-toggle button{flex:1;min-width:0;padding:9px 5px;background:transparent;border-radius:6px;color:#a9abc0;font-size:12px!important;font-weight:600}
+.rank-view-toggle button.active{background:#7650cf;color:#fff;box-shadow:0 2px 8px #09071144}
+.league-matrix-scroll{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;border:1px solid #393146;border-radius:10px;background:#15151f;scrollbar-width:thin;scrollbar-color:#68538b #211d2b;-webkit-overflow-scrolling:touch}
+.league-matrix{border-collapse:separate;border-spacing:0;width:max-content;min-width:100%;font-size:12px;font-variant-numeric:tabular-nums}
+.league-matrix th,.league-matrix td{border-bottom:1px solid #2b2836;text-align:center;padding:10px 6px;min-width:49px;white-space:nowrap}
+.league-matrix thead th{position:sticky;top:0;background:#211b2c;color:#c1b0dd;font-size:10px;letter-spacing:.3px;z-index:2}
+.league-matrix .league-matrix-team{position:sticky;left:0;z-index:3;text-align:left;min-width:102px;max-width:125px;padding-left:10px;background:#191722;box-shadow:2px 0 6px #0a081c50}
+.league-matrix .league-matrix-team span{display:block;max-width:110px;overflow:hidden;text-overflow:ellipsis;font-size:11px;font-weight:650;color:#dfd8e9}
+.league-matrix thead .league-matrix-team{z-index:4;background:#211b2c}
+.league-matrix tbody tr:last-child th,.league-matrix tbody tr:last-child td{border-bottom:none}
+.league-matrix tbody tr.is-my-team td,.league-matrix tbody tr.is-my-team th.league-matrix-team{background:#2e2145!important}
+.league-matrix tbody tr.is-my-team th span{color:#d6beff}
+.matrix-rank{display:inline-flex;min-width:29px;min-height:29px;align-items:center;justify-content:center;border-radius:7px;color:#d7d2e5;font-weight:650}
+.matrix-rank.matrix-top{background:#17372e;color:#91efd0}
+.matrix-rank.matrix-low{color:#efc28b}
