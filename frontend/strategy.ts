@@ -1,7 +1,8 @@
 import type {Player,Roster} from './engine';
 
 export type DealFormat='1:1'|'2:2'|'2:1'|'1:2';
-export type Candidate={other:string;give:string[];receive:string[];format:DealFormat;cashMine:number;cashTheirs:number;fairness:number;partnerGain:number;myGain:number;potMine:number;potTheirs:number;potBefore:number;potAfter:number;partnerPotBefore:number;partnerPotAfter:number;partnerDrop?:string;myDrop?:string;myAdd?:string;partnerAdd?:string;reason:string};
+export type TradeVerdict='strong'|'situational'|'avoid';
+export type Candidate={verdict:TradeVerdict;rivalRisk:'high'|'medium'|'low';adjustedGain:number;other:string;give:string[];receive:string[];format:DealFormat;cashMine:number;cashTheirs:number;fairness:number;partnerGain:number;myGain:number;potMine:number;potTheirs:number;potBefore:number;potAfter:number;partnerPotBefore:number;partnerPotAfter:number;partnerDrop?:string;myDrop?:string;myAdd?:string;partnerAdd?:string;reason:string};
 export type CategoryGap={cat:string;rank:number;total:number;leader:number;gap:number;gapPct:number;leaderName:string;near:boolean};
 export type Strategy={punts:string[];focus:string[];score:number;description:string;opportunity:number};
 const flipped=(c:string)=>c==='TO'?-1:1;
@@ -158,7 +159,7 @@ export function findDeals(rosters:Roster,from:string,all:Player[],cats:string[],
    const focusedGain=focusAfter[from]-focusBase[from];
    // Partner gain is a feasibility constraint, NEVER a positive ranking bonus.
    const benefit=cashMine*.73+focusedGain*.27-Math.max(0,-theirsValue)*.012-difference*.035;
-   potential.push({other,give:mine,receive:theirs,format,cashMine,cashTheirs,fairness:1-difference,partnerGain:theirsValue,myGain:mineValue,potMine:0,potTheirs:0,potBefore:0,potAfter:0,partnerPotBefore:0,partnerPotAfter:0,partnerDrop,myDrop,myAdd,partnerAdd,reason:'Comparable projected value and limited partner downside',_priority:benefit,_roster:draft});
+   potential.push({other,give:mine,receive:theirs,format,cashMine,cashTheirs,fairness:1-difference,partnerGain:theirsValue,myGain:mineValue,potMine:0,potTheirs:0,potBefore:0,potAfter:0,partnerPotBefore:0,partnerPotAfter:0,verdict:'situational',rivalRisk:'low',adjustedGain:0,partnerDrop,myDrop,myAdd,partnerAdd,reason:'Comparable projected value and limited partner downside',_priority:benefit,_roster:draft});
   }
  }
  // Cheap category-share screening selects diverse plausible offers to simulate.
@@ -175,15 +176,29 @@ export function findDeals(rosters:Roster,from:string,all:Player[],cats:string[],
  }
  const potBefore=potFromLookup(rosters,cats,lookup);
  const ranked:Candidate[]=[];
+ let avoided=0;
+ const threats=Object.entries(potBefore.shares).filter(([t])=>t!==from).sort((a,b)=>b[1]-a[1]);
+ const strongest=new Set(threats.slice(0,Math.max(3,Math.ceil(threats.length/3))).map(([t])=>t));
  for(const proposal of shortlist){
   const result=potFromLookup(proposal._roster,cats,lookup);
   const mineGain=result.shares[from]-potBefore.shares[from];
   // Do not recommend deals whose actual side-bet payout estimate declines.
   if(mineGain<=0.0001)continue;
-  ranked.push({...proposal,potMine:mineGain,potTheirs:result.shares[proposal.other]-potBefore.shares[proposal.other],potBefore:potBefore.shares[from],potAfter:result.shares[from],partnerPotBefore:potBefore.shares[proposal.other],partnerPotAfter:result.shares[proposal.other]});
+  const partnerGain=result.shares[proposal.other]-potBefore.shares[proposal.other];
+  const opponentBefore=potBefore.shares[proposal.other],opponentAfter=result.shares[proposal.other];
+  const ownAfter=result.shares[from];
+  const rivalRisk:'high'|'medium'|'low'=strongest.has(proposal.other)||opponentBefore>=potBefore.shares[from]*.85?'high':opponentAfter>=ownAfter*.75?'medium':'low';
+  // An already-dangerous rival cannot gain more than Ryan in a recommended trade.
+  // A weak rival may improve more if Ryan's expected pot share still improves.
+  const downside=Math.max(0,partnerGain-mineGain);
+  const riskWeight=rivalRisk==='high'?1.25:rivalRisk==='medium'?.65:.2;
+  const adjustedGain=mineGain-downside*riskWeight;
+  const verdict:TradeVerdict=partnerGain<=mineGain+.0005?'strong':rivalRisk==='low'&&adjustedGain>0?'situational':'avoid';
+  if(verdict==='avoid'||adjustedGain<=0){avoided++;continue;}
+  ranked.push({...proposal,potMine:mineGain,potTheirs:partnerGain,potBefore:potBefore.shares[from],potAfter:ownAfter,partnerPotBefore:opponentBefore,partnerPotAfter:opponentAfter,rivalRisk,adjustedGain,verdict});
  }
- ranked.sort((a,b)=>b.potMine-a.potMine||b.cashMine-a.cashMine||b.fairness-a.fairness);
- return {rows:ranked.slice(0,limit),examined,fairCount};
+ ranked.sort((a,b)=>(a.verdict==='strong'?0:1)-(b.verdict==='strong'?0:1)||b.adjustedGain-a.adjustedGain||b.potMine-a.potMine||b.fairness-a.fairness);
+ return {rows:ranked.slice(0,limit),examined,fairCount,avoided};
 }
 export function tradeMoves(deal:Candidate,from:string){
  const other=deal.other,actions:{kind:string;team:string;other:string;give:string;receive:string}[]=[];
