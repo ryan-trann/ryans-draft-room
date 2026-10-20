@@ -113,3 +113,8 @@
 .rival-ahead{color:#ffcd83!important}
 .relative-even{color:#c9bbeb!important}
 .deal-sheet .payout-comparison{padding:8px 0;font-weight:600}
+
+/* Rival-aware trade verdicts share the established purple and mint palette. */
+.trade-verdict{display:inline-block;padding:5px 8px;margin:6px 0 3px;border-radius:6px;font-size:11px;font-weight:650;line-height:1.4}
+.trade-verdict.strong{color:#88efd0;background:#173b35;border:1px solid #356f60}
+.trade-verdict.situational{color:#ffcd83;background:#382a20;border:1px solid #725536}
