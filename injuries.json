@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-21T17:12:24.484Z",
-  "count": 80,
+  "updatedAt": "2026-10-21T21:42:46.076Z",
+  "count": 78,
   "players": [
     {
       "name": "Mouhamed Gueye",
@@ -45,17 +45,22 @@
       "status": "Out"
     },
     {
+      "name": "Dailyn Swain",
+      "team": "CHI",
+      "status": "Out"
+    },
+    {
+      "name": "Jordan Hawkins",
+      "team": "CHI",
+      "status": "Out"
+    },
+    {
       "name": "Leonard Miller",
       "team": "CHI",
       "status": "Day-To-Day"
     },
     {
       "name": "Isaac Okoro",
-      "team": "CHI",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Dailyn Swain",
       "team": "CHI",
       "status": "Day-To-Day"
     },
@@ -70,17 +75,17 @@
       "status": "Day-To-Day"
     },
     {
-      "name": "Jordan Hawkins",
-      "team": "CHI",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Nic Claxton",
       "team": "CHI",
       "status": "Out"
     },
     {
-      "name": "Sam Merrill",
+      "name": "Khalifa Diop",
+      "team": "CLE",
+      "status": "Out"
+    },
+    {
+      "name": "Jarrett Allen",
       "team": "CLE",
       "status": "Day-To-Day"
     },
@@ -88,11 +93,6 @@
       "name": "Nae'Qwan Tomlin",
       "team": "CLE",
       "status": "Out"
-    },
-    {
-      "name": "Khalifa Diop",
-      "team": "CLE",
-      "status": "Day-To-Day"
     },
     {
       "name": "Jett Howard",
@@ -135,22 +135,22 @@
       "status": "Day-To-Day"
     },
     {
-      "name": "Stephen Curry",
-      "team": "GSW",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Brandin Podziemski",
+      "name": "Kristaps Porzingis",
       "team": "GSW",
       "status": "Out"
     },
     {
       "name": "Charles Bassey",
       "team": "GSW",
+      "status": "Out"
+    },
+    {
+      "name": "Stephen Curry",
+      "team": "GSW",
       "status": "Day-To-Day"
     },
     {
-      "name": "Kristaps Porzingis",
+      "name": "Brandin Podziemski",
       "team": "GSW",
       "status": "Out"
     },
@@ -215,14 +215,14 @@
       "status": "Out"
     },
     {
-      "name": "Cameron Carr",
+      "name": "Collin Sexton",
       "team": "LAL",
       "status": "Out"
     },
     {
-      "name": "Collin Sexton",
+      "name": "Cameron Carr",
       "team": "LAL",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Adou Thiero",
@@ -232,16 +232,6 @@
     {
       "name": "Isaiah Stewart",
       "team": "MEM",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Vladislav Goldin",
-      "team": "MIA",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Nate Ament",
-      "team": "MIL",
       "status": "Day-To-Day"
     },
     {
@@ -287,7 +277,7 @@
     {
       "name": "Tacko Fall",
       "team": "PHI",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Dean Wade",
@@ -315,6 +305,11 @@
       "status": "Out"
     },
     {
+      "name": "Micah Potter",
+      "team": "POR",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Branden Carlson",
       "team": "POR",
       "status": "Out"
@@ -323,11 +318,6 @@
       "name": "Chris Youngblood",
       "team": "POR",
       "status": "Out"
-    },
-    {
-      "name": "Micah Potter",
-      "team": "POR",
-      "status": "Day-To-Day"
     },
     {
       "name": "Deni Avdija",
