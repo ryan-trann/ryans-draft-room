@@ -1,4 +1,5 @@
 import type {Player,Roster} from './engine';
+import {injuryAvailability,type InjurySnapshot} from './injuries';
 
 export type DealFormat='1:1'|'2:2';
 export type TradeVerdict='strong'|'situational'|'avoid';
@@ -7,6 +8,8 @@ export type CategoryGap={cat:string;rank:number;total:number;leader:number;gap:n
 const flipped=(c:string)=>c==='TO'?-1:1;
 const num=(p:Player,c:string)=>Number(p[c]||0);
 const sum=(p:Player[],c:string)=>p.reduce((a,x)=>a+num(x,c),0);
+// Current injury status affects short-term trade value, not an entire season.
+const injuryFactor=(p:Player,snapshot:InjurySnapshot|null)=>{if(!snapshot)return 1;const a=injuryAvailability(p.name,p.team,snapshot);return a===0?.85:a<=.2?.92:a<1?.97:1};
 const stdev=(values:number[])=>{const m=values.reduce((a,b)=>a+b,0)/Math.max(values.length,1);return Math.sqrt(values.reduce((a,b)=>a+(b-m)**2,0)/Math.max(values.length,1))||1};
 
 export function gaps(team:string,rosters:Roster,cats:string[],all:Player[]):CategoryGap[]{
@@ -19,7 +22,7 @@ export function gaps(team:string,rosters:Roster,cats:string[],all:Player[]):Cate
   return {cat,rank:teams.findIndex(x=>x.name===team)+1,total,leader:leader.total,gap,gapPct:Math.max(0,Math.min(1,gap/Math.max(Math.abs(leader.total),1))),leaderName:leader.name,near:gap<=stdev(teams.map(t=>t.total))*.6};
  });
 }
-function lookupValue(all:Player[],cats:string[]){
+function lookupValue(all:Player[],cats:string[],snapshot:InjurySnapshot|null=null){
  const pg=(p:Player,c:string)=>num(p,c)/Math.max(1,p.GP);
  const av=Object.fromEntries(cats.map(c=>[c,all.reduce((n,p)=>n+pg(p,c),0)/Math.max(all.length,1)]));
  const sd=Object.fromEntries(cats.map(c=>[c,stdev(all.map(p=>pg(p,c)))]));
@@ -29,7 +32,7 @@ function lookupValue(all:Player[],cats:string[]){
  const replacementValue=replacement.reduce((n,v)=>n+v.score,0)/Math.max(1,replacement.length);
  const market=new Map<string,number>(),raw=new Map<string,number>();
  for(const {p,score} of ranked){
-  const value=Math.max(0,(score-replacementValue)*Math.max(0,Number(p.GP)||0)/82);
+  const value=Math.max(0,(score-replacementValue)*Math.max(0,Number(p.GP)||0)/82)*injuryFactor(p,snapshot);
   raw.set(p.draftId,value);
   market.set(p.draftId,value);
  }
@@ -60,8 +63,8 @@ export function estimatePot(rosters:Roster,cats:string[],all:Player[],trials=POT
  const lookup=new Map(all.map(p=>[p.draftId,p]));
  return potFromLookup(rosters,cats,lookup,trials);
 }
-function potFromLookup(rosters:Roster,cats:string[],lookup:Map<string,Player>,trials=POT_TRIALS):PotResult{
- const totals=Object.fromEntries(Object.entries(rosters).map(([t,ids])=>[t,Object.fromEntries(cats.map(c=>[c,sum(ids.map(id=>lookup.get(id)).filter(Boolean) as Player[],c)]))]));
+function potFromLookup(rosters:Roster,cats:string[],lookup:Map<string,Player>,trials=POT_TRIALS,snapshot:InjurySnapshot|null=null):PotResult{
+ const totals=Object.fromEntries(Object.entries(rosters).map(([t,ids])=>[t,Object.fromEntries(cats.map(c=>[c,ids.reduce((n,id)=>{const p=lookup.get(id);return n+(p?num(p,c)*injuryFactor(p,snapshot):0)},0)]))]));
  return estimatePotFromTotals(totals,cats,trials);
 }
 export function estimatePotFromTotals(totalsByTeam:Record<string,Record<string,number>>,cats:string[],trials=POT_TRIALS,weeklyScale=22):PotResult{
@@ -99,9 +102,9 @@ export function estimatePotFromTotals(totalsByTeam:Record<string,Record<string,n
  }
  return {teams,shares:Object.fromEntries(teams.map((team,i)=>[team,won[i]/trials])),trials};
 }
-export function potImpact(before:Roster,after:Roster,cats:string[],all:Player[],from:string,other:string){
+export function potImpact(before:Roster,after:Roster,cats:string[],all:Player[],from:string,other:string,snapshot:InjurySnapshot|null=null){
  const lookup=new Map(all.map(p=>[p.draftId,p]));
- const a=potFromLookup(before,cats,lookup),b=potFromLookup(after,cats,lookup);
+ const a=potFromLookup(before,cats,lookup,POT_TRIALS,snapshot),b=potFromLookup(after,cats,lookup,POT_TRIALS,snapshot);
  return {mine:b.shares[from]-a.shares[from],theirs:b.shares[other]-a.shares[other],beforeMine:a.shares[from],afterMine:b.shares[from],beforeTheirs:a.shares[other],afterTheirs:b.shares[other],trials:a.trials};
 }
 function packages(ids:string[],n:number){
@@ -109,8 +112,8 @@ function packages(ids:string[],n:number){
  const out:string[][]=[];for(let i=0;i<ids.length;i++)for(let j=i+1;j<ids.length;j++)out.push([ids[i],ids[j]]);
  return out;
 }
-export function findDeals(rosters:Roster,from:string,all:Player[],cats:string[],format:DealFormat='1:1',ignored:string[]=[],limit=12):{rows:Candidate[];examined:number;fairCount:number;avoided:number}{
- const lookup=new Map(all.map(p=>[p.draftId,p])),v=lookupValue(all,cats),market=v.market,raw=v.raw;
+export function findDeals(rosters:Roster,from:string,all:Player[],cats:string[],format:DealFormat='1:1',ignored:string[]=[],limit=12,snapshot:InjurySnapshot|null=null):{rows:Candidate[];examined:number;fairCount:number;avoided:number}{
+ const lookup=new Map(all.map(p=>[p.draftId,p])),v=lookupValue(all,cats,snapshot),market=v.market,raw=v.raw;
  const sides=format.split(':').map(Number),otherNames=Object.keys(rosters).filter(t=>t!==from);
  const base=share(rosters,cats,lookup),targetCats=cats.filter(c=>!ignored.includes(c)),focusBase=share(rosters,targetCats.length?targetCats:cats,lookup),taken=new Set(Object.values(rosters).flat());
  const free=all.filter(p=>!taken.has(p.draftId)).sort((a,b)=>(market.get(b.draftId)||0)-(market.get(a.draftId)||0));
@@ -170,13 +173,13 @@ export function findDeals(rosters:Roster,from:string,all:Player[],cats:string[],
   seen.add(key);perOpponent.set(row.other,(perOpponent.get(row.other)||0)+1);
   shortlist.push(row);
  }
- const potBefore=potFromLookup(rosters,cats,lookup);
+ const potBefore=potFromLookup(rosters,cats,lookup,POT_TRIALS,snapshot);
  const ranked:Candidate[]=[];
  let avoided=0;
  const threats=Object.entries(potBefore.shares).filter(([t])=>t!==from).sort((a,b)=>b[1]-a[1]);
  const strongest=new Set(threats.slice(0,Math.max(3,Math.ceil(threats.length/3))).map(([t])=>t));
  for(const proposal of shortlist){
-  const result=potFromLookup(proposal._roster,cats,lookup);
+  const result=potFromLookup(proposal._roster,cats,lookup,POT_TRIALS,snapshot);
   const mineGain=result.shares[from]-potBefore.shares[from];
   // Do not recommend deals whose actual side-bet payout estimate declines.
   if(mineGain<=0.0001)continue;
