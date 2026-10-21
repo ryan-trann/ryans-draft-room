@@ -196,7 +196,7 @@ export function findDeals(rosters:Roster,from:string,all:Player[],cats:string[],
   if(verdict==='avoid'||adjustedGain<=0){avoided++;continue;}
   ranked.push({...proposal,potMine:mineGain,potTheirs:partnerGain,potBefore:potBefore.shares[from],potAfter:ownAfter,partnerPotBefore:opponentBefore,partnerPotAfter:opponentAfter,rivalRisk,adjustedGain,verdict});
  }
- ranked.sort((a,b)=>(a.verdict==='strong'?0:1)-(b.verdict==='strong'?0:1)||b.adjustedGain-a.adjustedGain||b.potMine-a.potMine||b.fairness-a.fairness);
+ ranked.sort((a,b)=>b.adjustedGain-a.adjustedGain||b.potMine-a.potMine||b.fairness-a.fairness);
  return {rows:ranked.slice(0,limit),examined,fairCount,avoided};
 }
 export function tradeMoves(deal:Candidate,from:string){
