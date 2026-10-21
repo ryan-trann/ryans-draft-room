@@ -58,7 +58,7 @@ export function rankStreamingPairs(pairs:StreamPair[],rosters:Roster,from:string
  })) as Record<string,{mean:number;sd:number}>;
  const value=(p:Player)=>cats.reduce((n,c)=>n+(c==='TO'?-1:1)*(perGame(p,c)-perGameStats[c].mean)/perGameStats[c].sd,0);
  const mine=rosters[from]||[];
- const free=all.filter(p=>!Object.values(rosters).some(ids=>ids.includes(p.draftId))).sort((a,b)=>value(b)-value(a));
+ const free=all.filter(p=>!Object.values(rosters).some(ids=>ids.includes(p.draftId))&&(!injuries||injuryAvailability(p.name,p.team,injuries)>=.65)).sort((a,b)=>value(b)-value(a));
  const replacement=free.slice(0,10).reduce((n,p)=>n+value(p),0)/Math.max(1,Math.min(10,free.length));
  const streamable=new Set(mine.filter(id=>{const p=lookup.get(id);return p&&value(p)<=replacement+1}).map(id=>id));
  // If none of Ryan's players is near replacement level, never invent a disposable roster spot.
@@ -69,7 +69,7 @@ export function rankStreamingPairs(pairs:StreamPair[],rosters:Roster,from:string
  const trials=1024;
  const baseline=estimatePotFromTotals(totals,cats,trials,1).shares[from]||0;
  const current=games.length?projectedWeek(mine,lookup,cats,games,value,injuries):null;
- const candidates=pairs.filter(v=>v.a.games>0&&streamable.has(v.d.p.draftId)&&!Object.values(rosters).some(ids=>ids.includes(v.a.p.draftId)));
+ const candidates=pairs.filter(v=>v.a.games>0&&streamable.has(v.d.p.draftId)&&!Object.values(rosters).some(ids=>ids.includes(v.a.p.draftId))).slice(0,160);
  const results:RankedStreamPair[]=[];
  for(const v of candidates){
   const updated=Object.fromEntries(Object.entries(totals).map(([t,row])=>[t,t===from?{...row}:row]));
