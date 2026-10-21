@@ -49,7 +49,7 @@ export default function Prototype(){
  const categoryGaps=useMemo(()=>gaps(team,rosters,CATS,PROJECTIONS),[team,rosters,liveVersion]);
  const g=rosters[team].includes(give)?give:rosters[team][0],r=rosters[other].includes(receive)?receive:rosters[other][0];
  const result=useMemo(()=>g&&r?trade(rosters,team,other,g,r):null,[rosters,team,other,g,r]);
- const payout=useMemo(()=>result?potImpact(rosters,result.proposal,CATS,PROJECTIONS,team,other):null,[result,rosters,team,other,liveVersion]);
+ const payout=useMemo(()=>result?potImpact(rosters,result.proposal,CATS,PROJECTIONS,team,other,injuries):null,[result,rosters,team,other,liveVersion,injuries]);
  const packageAnalysis=useMemo(()=>{
   if(!analyzedDeal||!rosters[team]||!rosters[analyzedDeal.other])return null;
   const deal=analyzedDeal;
@@ -62,8 +62,8 @@ export default function Prototype(){
   if(deal.myAdd)next[team].push(deal.myAdd);
   if(deal.partnerAdd)next[deal.other].push(deal.partnerAdd);
   const before=standings(rosters),after=standings(next);
-  return {deal,before,after,pot:potImpact(rosters,next,CATS,PROJECTIONS,team,deal.other)};
- },[analyzedDeal,rosters,team,liveVersion]);
+  return {deal,before,after,pot:potImpact(rosters,next,CATS,PROJECTIONS,team,deal.other,injuries)};
+ },[analyzedDeal,rosters,team,liveVersion,injuries]);
 
  const list=useMemo(()=>rankedPlayers(rosters,query,sort,team).filter(p=>!freeOnly||!p.owner),[rosters,query,sort,freeOnly,team,liveVersion]);
  const queued=useMemo(()=>{try{return apply(rosters,batch)}catch{return rosters}},[rosters,batch]);
@@ -79,7 +79,7 @@ export default function Prototype(){
  const queue=(moves:Move[])=>{try{bridge.queue(moves);setBatch(bridge.data().batch);open('review')}catch(e){setNotice((e as Error).message)}};
  const toggle=(id:string)=>setSelected(s=>s.includes(id)?s.filter(x=>x!==id):s.length<2?[...s,id]:[s[0],id]);
  const pick=(s:string)=>{setAnalyzedDeal(null);setSide(s);setPickQuery('');open('pick')};
- const findIdeas=(kind:DealFormat=dealFormat)=>{setLoading(true);setIdeas(null);setTimeout(()=>{try{setIdeas(findDeals(rosters,team,PROJECTIONS,CATS,kind,[],12))}catch(e){setNotice((e as Error).message)}finally{setLoading(false)}},70)};
+ const findIdeas=(kind:DealFormat=dealFormat)=>{setLoading(true);setIdeas(null);setTimeout(()=>{try{setIdeas(findDeals(rosters,team,PROJECTIONS,CATS,kind,[],12,injuries))}catch(e){setNotice((e as Error).message)}finally{setLoading(false)}},70)};
  const refreshInjuries=async()=>{setInjuryRefreshing(true);try{const data=await getInjurySnapshot();setInjuries(data);setInjuryError('');setInjuryCheckedAt(new Date());return data}catch(e){setInjuries(null);setInjuryError((e as Error).message);setInjuryCheckedAt(new Date());return null}finally{setInjuryRefreshing(false)}};
  useEffect(()=>{void refreshInjuries()},[]);
  const findStreams=async()=>{keyboard.hide();setStreamError('');setLoading(true);try{const snapshot=excludeInjured?await refreshInjuries():null;if(excludeInjured&&!snapshot){setStreams(null);setStreamError('Cannot verify injury status. Refresh the report later, or turn off Exclude injured players to view unfiltered ideas.');return}setStreams(await stream(rosters,team,start,end))}catch(e){setStreams(null);setStreamError((e as Error).message)}finally{setLoading(false)}};
