@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-20T23:26:41.887Z",
-  "count": 82,
+  "updatedAt": "2026-10-21T04:46:17.636Z",
+  "count": 81,
   "players": [
     {
       "name": "Mouhamed Gueye",
@@ -95,6 +95,11 @@
       "status": "Day-To-Day"
     },
     {
+      "name": "Jett Howard",
+      "team": "DAL",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Caleb Martin",
       "team": "DAL",
       "status": "Out"
@@ -130,17 +135,17 @@
       "status": "Out"
     },
     {
-      "name": "Charles Bassey",
+      "name": "Stephen Curry",
       "team": "GSW",
       "status": "Day-To-Day"
     },
     {
       "name": "Brandin Podziemski",
       "team": "GSW",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
-      "name": "Stephen Curry",
+      "name": "Charles Bassey",
       "team": "GSW",
       "status": "Day-To-Day"
     },
@@ -210,19 +215,9 @@
       "status": "Out"
     },
     {
-      "name": "Adou Thiero",
-      "team": "LAL",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Cameron Carr",
       "team": "LAL",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Bronny James",
-      "team": "LAL",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Collin Sexton",
@@ -230,9 +225,9 @@
       "status": "Day-To-Day"
     },
     {
-      "name": "Jarred Vanderbilt",
+      "name": "Adou Thiero",
       "team": "LAL",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Isaiah Stewart",
@@ -292,7 +287,7 @@
     {
       "name": "Dean Wade",
       "team": "PHI",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Tacko Fall",
@@ -315,19 +310,19 @@
       "status": "Day-To-Day"
     },
     {
-      "name": "Oso Ighodaro",
-      "team": "PHX",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Mark Williams",
       "team": "PHX",
       "status": "Out"
     },
     {
+      "name": "Branden Carlson",
+      "team": "POR",
+      "status": "Out"
+    },
+    {
       "name": "Chris Youngblood",
       "team": "POR",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Micah Potter",
@@ -335,7 +330,7 @@
       "status": "Day-To-Day"
     },
     {
-      "name": "Jrue Holiday",
+      "name": "Deni Avdija",
       "team": "POR",
       "status": "Day-To-Day"
     },
