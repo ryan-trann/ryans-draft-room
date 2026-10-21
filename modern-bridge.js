@@ -101,7 +101,7 @@ window.DraftRoomBridge.stream=async function(from,start,end){  if(dayFromIso(sta
   const drop=roster.filter(p=>lowValueIds.has(p.draftId)&&counts[nbaCode(p.team)]!==undefined).map(p=>({p,games:counts[nbaCode(p.team)],score:weeklyCategoryValue(p,counts[nbaCode(p.team)])})).sort((a,b)=>a.score-b.score);
   const adds=free.filter(p=>pickupCounts[nbaCode(p.team)]!==undefined).map(p=>({p,games:pickupCounts[nbaCode(p.team)],score:weeklyCategoryValue(p,pickupCounts[nbaCode(p.team)])})).sort((a,b)=>b.score-a.score);
   const pairs=[];
-  for(const d of drop)for(const a of adds)if(a.games>=d.games&&a.games>0){
+  for(const d of drop)for(const a of adds)if(a.games>0){
    // Keep category-specialist pickups even when their equal-weight gain is negative;
    // the payout model decides whether the swap actually helps.
    const gain=a.score-d.score;
@@ -109,6 +109,6 @@ window.DraftRoomBridge.stream=async function(from,start,end){  if(dayFromIso(sta
   }
   pairs.sort((a,b)=>b.gain-a.gain);
 
- return {pairs:pairs.slice(0,180),effective,eligibility,source:schedule.source};
+ return {pairs:pairs.slice(0,600),effective,eligibility,source:schedule.source};
 };
 window.DraftRoomBridge.week=function(offset=0){let base=chooseYahooWeek();if(base<0)base=0;const index=Math.max(0,Math.min(YAHOO_WEEKS_2026.length-1,base+offset));return {0:YAHOO_WEEKS_2026[index][0],1:YAHOO_WEEKS_2026[index][1],index}};
