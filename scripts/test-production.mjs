@@ -135,9 +135,11 @@ try{
  await expect(page.locator('.stream-results')).toBeVisible();
  await expect(page.locator('.stream-results')).not.toContainText('J.Butler');
  await expect(page.locator('.stream-results')).not.toContainText('K.Porzingis');
+ await expect(page.getByRole('combobox',{name:'Trade format',exact:true})).toHaveCount(0);
  // Pot-ranked picks must be positive and sorted; injury filtering remains reversible.
  const suggestionCount=await page.locator('.stream-row').count();
- expect(suggestionCount).toBeGreaterThan(0);
+ // No offer is preferable to a modeled harmful permanent drop.
+ if(!suggestionCount)await expect(page.locator('.stream-results')).toContainText('No projected pot-improving replacements');
  if(suggestionCount){
   await expect(page.locator('.stream-row').first()).toContainText(/weekly pot share|Two-pickup plan/);
   await expect(page.locator('.stream-row').last()).toContainText('Modeled pot:');
