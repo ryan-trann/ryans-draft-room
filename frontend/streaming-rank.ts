@@ -39,7 +39,7 @@ function projectedWeek(ids:string[],lookup:Map<string,Player>,cats:string[],game
  for(const g of games){const teams=byDate.get(g.date)||new Set<string>();teams.add(nbaCode(g.home));teams.add(nbaCode(g.away));byDate.set(g.date,teams)}
  let started=0;
  for(const teams of byDate.values()){
-  const playing=ids.map(id=>lookup.get(id)).filter((p):p is Player=>Boolean(p)&&teams.has(nbaCode(p!.team)));
+  const playing=ids.map(id=>lookup.get(id)).filter((p):p is Player=>Boolean(p)&&teams.has(nbaCode(p!.team))&&Number(p!.GP)>0&&(!injuries||injuryAvailability(p!.name,p!.team,injuries)>0));
   for(const p of starters(playing,score)){
    const availability=Math.min(1,Math.max(0,Number(p.GP||0)/82))*(injuries?injuryAvailability(p.name,p.team,injuries):1);
    for(const c of cats)rows[c]+=perGame(p,c)*availability;
