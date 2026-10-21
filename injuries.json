@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-21T11:48:43.047Z",
-  "count": 81,
+  "updatedAt": "2026-10-21T17:12:24.484Z",
+  "count": 80,
   "players": [
     {
       "name": "Mouhamed Gueye",
@@ -132,7 +132,7 @@
     {
       "name": "Taurean Prince",
       "team": "DET",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Stephen Curry",
@@ -252,12 +252,12 @@
     {
       "name": "Thomas Sorber",
       "team": "OKC",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Nikola Topic",
       "team": "OKC",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Otega Oweh",
@@ -285,14 +285,14 @@
       "status": "Out"
     },
     {
-      "name": "Dean Wade",
+      "name": "Tacko Fall",
       "team": "PHI",
       "status": "Day-To-Day"
     },
     {
-      "name": "Tacko Fall",
+      "name": "Dean Wade",
       "team": "PHI",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Dominick Barlow",
@@ -362,7 +362,7 @@
     {
       "name": "Tobias Harris",
       "team": "SAS",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Jayden Quaintance",
@@ -372,11 +372,6 @@
     {
       "name": "Nate Bittle",
       "team": "TOR",
-      "status": "Out"
-    },
-    {
-      "name": "Blake Hinson",
-      "team": "UTA",
       "status": "Out"
     },
     {
