@@ -64,7 +64,7 @@ function potFromLookup(rosters:Roster,cats:string[],lookup:Map<string,Player>,tr
  const totals=Object.fromEntries(Object.entries(rosters).map(([t,ids])=>[t,Object.fromEntries(cats.map(c=>[c,sum(ids.map(id=>lookup.get(id)).filter(Boolean) as Player[],c)]))]));
  return estimatePotFromTotals(totals,cats,trials);
 }
-export function estimatePotFromTotals(totalsByTeam:Record<string,Record<string,number>>,cats:string[],trials=POT_TRIALS,weeklyScale=19):PotResult{
+export function estimatePotFromTotals(totalsByTeam:Record<string,Record<string,number>>,cats:string[],trials=POT_TRIALS,weeklyScale=22):PotResult{
  const teams=Object.keys(totalsByTeam),n=teams.length;
  const totals=teams.map(t=>cats.map(c=>totalsByTeam[t][c]||0));
  // Model noisy weekly outcomes rather than drawing independent category winners
