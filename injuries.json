@@ -1,7 +1,7 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-21T04:46:17.636Z",
+  "updatedAt": "2026-10-21T11:48:43.047Z",
   "count": 81,
   "players": [
     {
