@@ -19,7 +19,7 @@ permissions:
 
 concurrency:
   group: purple-app-build
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   verify:
@@ -41,6 +41,7 @@ jobs:
       - name: Verify NBA injury player matching
         run: node scripts/test-injuries.mjs
       - name: Install browser for regression tests
+        timeout-minutes: 5
         run: npx playwright install --with-deps chromium
       - name: Run production regression suite
         run: npm run test:production
