@@ -124,7 +124,7 @@ try{
  await page.locator('#editorToken').fill('FAKE_TEST_TOKEN_ONLY');await page.getByRole('button',{name:'Save batch to GitHub',exact:true}).click();await expect(page.locator('.live-save-status')).toHaveCount(0);expect(writes.length).toBe(1);expect(remote.revision).toBe(initial.revision+1);
  // Canonical identity must survive a save/reload even when display names are disambiguated.
  expect(remote.teams.Ryan.find(p=>p.playerId==='hb-15').name).toBe('D.Mitchell');
- expect(remote.teams.Ryan[0].name).toBe('N.Jokic');expect(remote.teams.Keith[0].name).toBe('A.Edwards');
+ expect(remote.teams.Ryan[0].playerId).toBe(initial.rosters.Keith[0]);expect(remote.teams.Keith[0].playerId).toBe(initial.rosters.Ryan[0]);
  await page.evaluate(()=>window.DraftRoomBridge.reload());expect(await page.evaluate(()=>window.DraftRoomBridge.data().revision)).toBe(initial.revision+1);
  expect(await page.evaluate(()=>state.picks)).toEqual(originalDraft);
  await page.getByRole('button',{name:'Close panel',exact:true}).click();
