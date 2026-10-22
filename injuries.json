@@ -1,7 +1,7 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-22T11:52:15.691Z",
+  "updatedAt": "2026-10-22T17:10:36.582Z",
   "count": 71,
   "players": [
     {
@@ -25,22 +25,22 @@
       "status": "Day-To-Day"
     },
     {
+      "name": "Grant Williams",
+      "team": "CHA",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Coby White",
+      "team": "CHA",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Kon Knueppel",
       "team": "CHA",
       "status": "Day-To-Day"
     },
     {
       "name": "Kylan Boswell",
-      "team": "CHA",
-      "status": "Out"
-    },
-    {
-      "name": "Grant Williams",
-      "team": "CHA",
-      "status": "Out"
-    },
-    {
-      "name": "Coby White",
       "team": "CHA",
       "status": "Out"
     },
@@ -60,19 +60,24 @@
       "status": "Out"
     },
     {
-      "name": "Khalifa Diop",
-      "team": "CLE",
-      "status": "Out"
-    },
-    {
       "name": "Jarrett Allen",
       "team": "CLE",
       "status": "Day-To-Day"
     },
     {
+      "name": "Khalifa Diop",
+      "team": "CLE",
+      "status": "Out"
+    },
+    {
       "name": "Nae'Qwan Tomlin",
       "team": "CLE",
       "status": "Out"
+    },
+    {
+      "name": "Dereck Lively II",
+      "team": "DAL",
+      "status": "Day-To-Day"
     },
     {
       "name": "Caleb Martin",
@@ -93,11 +98,6 @@
       "name": "Santi Aldama",
       "team": "DAL",
       "status": "Day-To-Day"
-    },
-    {
-      "name": "Dereck Lively II",
-      "team": "DAL",
-      "status": "Out"
     },
     {
       "name": "Spencer Jones",
@@ -245,14 +245,14 @@
       "status": "Out"
     },
     {
-      "name": "Tacko Fall",
-      "team": "PHI",
-      "status": "Out"
-    },
-    {
       "name": "Dean Wade",
       "team": "PHI",
       "status": "Day-To-Day"
+    },
+    {
+      "name": "Tacko Fall",
+      "team": "PHI",
+      "status": "Out"
     },
     {
       "name": "Dominick Barlow",
@@ -280,14 +280,14 @@
       "status": "Out"
     },
     {
-      "name": "Chris Youngblood",
+      "name": "Branden Carlson",
       "team": "POR",
       "status": "Day-To-Day"
     },
     {
-      "name": "Branden Carlson",
+      "name": "Chris Youngblood",
       "team": "POR",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Shaedon Sharpe",
@@ -347,7 +347,7 @@
     {
       "name": "AJ Dybantsa",
       "team": "WAS",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Tristan Vukcevic",
