@@ -2,7 +2,7 @@
 // Derived from the original ZIP's trade-service category-rank comparisons and
 // streaming-service per-game × weekly-games scoring. No Yahoo dependency.
 const ANALYSIS_CATS=['FGM','FTM','3PM','OREB','DREB','AST','STL','BLK','TO'];
-function analysisPlayers(t){return (currentRosters[t]||[]).map(id=>state.projections.find(p=>p.draftId===id)).filter(Boolean)}
+function analysisPlayers(t){return (currentRosters[t]||[]).filter(id=>!(editorIL[t]||[]).includes(id)).map(id=>state.projections.find(p=>p.draftId===id)).filter(Boolean)}
 function analysisTotals(ids){
  const totals=Object.fromEntries(ANALYSIS_CATS.map(c=>[c,0]));
  for(const id of ids){const p=state.projections.find(p=>p.draftId===id);if(p)for(const c of ANALYSIS_CATS)totals[c]+=Number(p[c]||0)}
