@@ -1,6 +1,6 @@
 {
   "formatVersion": 1,
-  "revision": 2,
+  "revision": 3,
   "source": "Draft Room team editor",
   "teams": {
     "Keith": [
@@ -282,7 +282,8 @@
       },
       {
         "playerId": "hb-81",
-        "name": "J.Nurkic"
+        "name": "J.Nurkic",
+        "il": true
       },
       {
         "playerId": "hb-191",
@@ -290,7 +291,16 @@
       },
       {
         "playerId": "hb-240",
-        "name": "M.Raynaud"
+        "name": "M.Raynaud",
+        "il": true
+      },
+      {
+        "playerId": "hb-247",
+        "name": "P.Larsson"
+      },
+      {
+        "playerId": "hb-218",
+        "name": "K.Wagler"
       }
     ],
     "Tim": [
@@ -303,8 +313,8 @@
         "name": "L.Ball"
       },
       {
-        "playerId": "hb-51",
-        "name": "D.Booker"
+        "playerId": "hb-61",
+        "name": "J.Brown"
       },
       {
         "playerId": "hb-26",
@@ -459,8 +469,8 @@
         "name": "K.George"
       },
       {
-        "playerId": "hb-136",
-        "name": "K.Porter Jr."
+        "playerId": "hb-158",
+        "name": "J.Smith"
       },
       {
         "playerId": "hb-131",
@@ -481,8 +491,8 @@
         "name": "B.Adebayo"
       },
       {
-        "playerId": "hb-61",
-        "name": "J.Brown"
+        "playerId": "hb-51",
+        "name": "D.Booker"
       },
       {
         "playerId": "hb-39",
@@ -697,6 +707,10 @@
       {
         "playerId": "hb-151",
         "name": "A.Drummond"
+      },
+      {
+        "playerId": "hb-86",
+        "name": "J.Butler"
       }
     ]
   }
