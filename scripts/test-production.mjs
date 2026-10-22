@@ -43,10 +43,16 @@ try{
  expect(duplicateLabels.length).toBeGreaterThan(0);
  for(const p of duplicateLabels)expect(p.actual).toBe(p.expected);
  await page.screenshot({path:evidence+'/01-team-mobile.png'});
- // v52: Team has no redundant Category Strategy entry; Trades is the sole auto finder.
+ // v53: Team has no redundant Category Strategy entry; Trades is the sole auto finder.
  await expect(page.locator('.strategy-entry')).toHaveCount(0);
  await page.getByRole('button',{name:'Trades',exact:true}).click();
+ await expect(page.getByRole('button',{name:'Choose trade teams'})).toBeVisible();
  await page.getByRole('button',{name:'Find ideas',exact:true}).click();
+ await expect(page.getByRole('button',{name:'Choose trade teams'})).toHaveCount(0);
+ await expect(page.getByRole('combobox',{name:'Find trades for team'})).toHaveValue('Ryan');
+ await page.getByRole('combobox',{name:'Find trades for team'}).selectOption('Keith');
+ await expect(page.getByRole('combobox',{name:'Find trades for team'})).toHaveValue('Keith');
+ await page.getByRole('combobox',{name:'Find trades for team'}).selectOption('Ryan');
  await expect(page.getByRole('combobox',{name:'Trade format',exact:true})).toBeVisible();
  await expect(page.locator('.ideas-section .footnote')).toContainText('cash-pot gain');
  await expect(page.locator('.ideas-section .status-note').last()).toContainText(/offers pass|No offers passed/,{timeout:60000});
@@ -79,7 +85,7 @@ try{
  }
  await page.getByRole('button',{name:'Analyze',exact:true}).click();
  await expect(page.locator('.pot-summary')).toContainText('cash-pot payout');
- await page.getByRole('button',{name:'Ranks',exact:true}).click();
+ await page.getByRole('button',{name:'Ranks',exact:true}).click();await expect(page.locator('.weekly-pot-row')).toHaveCount(12);
  await expect(page.locator('.gap-row')).toHaveCount(9);
  await expect(page.locator('.gap-value')).toHaveCount(9);
  // Percentages are relative to projected league leaders; TO is lower-is-better.
@@ -192,7 +198,7 @@ try{
  await page.locator('#reset').click();await expect(page.locator('#count')).toHaveText('0');await page.locator('#player').fill('N.Jokic');await page.locator('#playerSuggestions button').first().click();await page.locator('#record').click();await expect(page.locator('#count')).toHaveText('1');await page.locator('#undo').click();await expect(page.locator('#count')).toHaveText('0');
  await page.locator('#restore').setInputFiles({name:'draft-backup.json',mimeType:'application/json',buffer:Buffer.from(backup)});await expect(page.locator('#count')).toHaveText('168');
  await page.getByRole('button',{name:'Team',exact:true}).click();await page.getByRole('button',{name:'Open menu',exact:true}).click();await page.getByRole('button',{name:'GitHub & projections',exact:false}).click();await page.getByRole('button',{name:'Upload projections',exact:true}).click();
- await expect(page.getByRole('heading',{name:'UPLOAD PROJECTIONS',exact:true})).toBeVisible();await expect(page.locator('#legacy-ui')).toBeHidden();await expect(page.locator('.preview-label')).toHaveText('v52');expect(await page.locator('.hero-title').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);await page.screenshot({path:evidence+'/07a-projections-start-mobile.png'});
+ await expect(page.getByRole('heading',{name:'UPLOAD PROJECTIONS',exact:true})).toBeVisible();await expect(page.locator('#legacy-ui')).toBeHidden();await expect(page.locator('.preview-label')).toHaveText('v53');expect(await page.locator('.hero-title').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);await page.screenshot({path:evidence+'/07a-projections-start-mobile.png'});
  await page.getByRole('button',{name:'Validate and preview',exact:true}).click();await expect(page.locator('#tool-projections-preview')).toContainText('Validation failed');await expect(page.locator('#tool-projections-publish')).toBeDisabled();
  const tableText=await page.evaluate(()=>window.DRAFT_PROJECTIONS_RAW.trim().split(/\r?\n/).map(row=>{const x=row.split(/\s+/);x[1]=x[1].replaceAll('_',' ');if(x[2]==='-')x[2]='';return x.join(' ')}).join('\n'));
  await page.getByLabel('Projection table',{exact:true}).fill(tableText);await page.getByRole('button',{name:'Validate and preview',exact:true}).click();await expect(page.locator('#tool-projections-preview')).toContainText('Valid: 300 players');
