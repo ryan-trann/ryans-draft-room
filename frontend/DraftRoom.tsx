@@ -45,11 +45,12 @@ export default function Prototype(){
  useEffect(()=>{if(!notice||!/Saved to GitHub/i.test(notice))return;const timer=setTimeout(()=>setNotice(''),4000);return()=>clearTimeout(timer)},[notice]);
  useEffect(()=>{const sync=()=>{const data=refreshLiveData();setRosters(data.rosters);setIL(data.il||{});setBatch(data.batch);if(/failed|unavailable|Saved to GitHub \(/i.test(data.status))setNotice(data.status);setLiveVersion(n=>n+1);setIdeas(null);setStreams(null)};window.addEventListener('draftroom:change',sync);sync();return()=>window.removeEventListener('draftroom:change',sync)},[]);
 
- const league=useMemo(()=>standings(activeRosters),[rosters]),mine=league.find(t=>t.team===team)!;
- const categoryGaps=useMemo(()=>gaps(team,activeRosters,CATS,PROJECTIONS),[team,rosters,liveVersion]);
+ const activeRosters=useMemo(()=>Object.fromEntries(TEAMS.map(t=>[t,rosters[t].filter(id=>!(il[t]||[]).includes(id))])),[rosters,il]);
+ const league=useMemo(()=>standings(activeRosters),[activeRosters]),mine=league.find(t=>t.team===team)!;
+ const categoryGaps=useMemo(()=>gaps(team,activeRosters,CATS,PROJECTIONS),[team,activeRosters,liveVersion]);
  const g=rosters[team].includes(give)?give:rosters[team][0],r=rosters[other].includes(receive)?receive:rosters[other][0];
  const result=useMemo(()=>g&&r?trade(rosters,team,other,g,r):null,[rosters,team,other,g,r]);
- const payout=useMemo(()=>result?potImpact(activeRosters,result.proposal,CATS,PROJECTIONS,team,other,injuries):null,[result,rosters,team,other,liveVersion,injuries]);
+ const payout=useMemo(()=>result?potImpact(activeRosters,result.proposal,CATS,PROJECTIONS,team,other,injuries):null,[result,activeRosters,team,other,liveVersion,injuries]);
  const packageAnalysis=useMemo(()=>{
   if(!analyzedDeal||!rosters[team]||!rosters[analyzedDeal.other])return null;
   const deal=analyzedDeal;
@@ -61,11 +62,10 @@ export default function Prototype(){
   if(deal.partnerDrop)next[deal.other]=next[deal.other].filter(id=>id!==deal.partnerDrop);
   if(deal.myAdd)next[team].push(deal.myAdd);
   if(deal.partnerAdd)next[deal.other].push(deal.partnerAdd);
-  const before=standings(rosters),after=standings(next);
+  const before=standings(activeRosters),after=standings(next);
   return {deal,before,after,pot:potImpact(activeRosters,next,CATS,PROJECTIONS,team,deal.other,injuries)};
- },[analyzedDeal,rosters,team,liveVersion,injuries]);
+ },[analyzedDeal,rosters,activeRosters,team,liveVersion,injuries]);
 
- const activeRosters=useMemo(()=>Object.fromEntries(TEAMS.map(t=>[t,rosters[t].filter(id=>!(il[t]||[]).includes(id))])),[rosters,il]);
  const list=useMemo(()=>rankedPlayers(rosters,query,sort,team).filter(p=>!freeOnly||!p.owner),[rosters,query,sort,freeOnly,team,liveVersion]);
  const queued=useMemo(()=>{try{return apply(rosters,batch)}catch{return rosters}},[rosters,batch]);
  const free=PROJECTIONS.filter(p=>!TEAMS.some(t=>queued[t].includes(p.draftId)));
