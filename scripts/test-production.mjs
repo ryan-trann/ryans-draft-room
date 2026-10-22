@@ -43,7 +43,7 @@ try{
  expect(duplicateLabels.length).toBeGreaterThan(0);
  for(const p of duplicateLabels)expect(p.actual).toBe(p.expected);
  await page.screenshot({path:evidence+'/01-team-mobile.png'});
- // v49: Team has no redundant Category Strategy entry; Trades is the sole auto finder.
+ // v50: Team has no redundant Category Strategy entry; Trades is the sole auto finder.
  await expect(page.locator('.strategy-entry')).toHaveCount(0);
  await page.getByRole('button',{name:'Trades',exact:true}).click();
  await page.getByRole('button',{name:'Find ideas',exact:true}).click();
@@ -93,6 +93,24 @@ try{
  await page.getByRole('button',{name:'Trades',exact:true}).click();await expect(page.locator('.trade-summary')).toContainText('Estimated weekly side-bet change');await expect(page.locator('.trade-summary')).toContainText('category shares');await page.screenshot({path:evidence+'/02-trade-mobile.png'});
  await expect(page.getByRole('button',{name:'Queue for review',exact:true})).toHaveCount(0);
  await page.getByRole('button',{name:'Team',exact:true}).click();
+ await page.getByRole('button',{name:'Manage',exact:true}).click();
+ await expect(page.getByRole('combobox',{name:'Action',exact:true}).locator('option[value="adddrop"]')).toHaveCount(1);
+ await page.getByRole('combobox',{name:'Action',exact:true}).selectOption('add');
+ await page.getByRole('textbox',{name:'Search free agents',exact:true}).fill('Jokic');
+ await expect(page.getByRole('combobox',{name:'Free agent'}).locator('option')).toHaveCount(1); // rostered players cannot be picked
+ await page.getByRole('textbox',{name:'Search free agents',exact:true}).fill('Joe');
+ await expect(page.getByRole('combobox',{name:'Free agent'}).locator('option').count()).resolves.toBeGreaterThan(1);
+ await page.getByRole('combobox',{name:'Action',exact:true}).selectOption('adddrop');
+ await page.getByRole('textbox',{name:'Search free agents',exact:true}).fill('Joe');
+ await page.getByRole('button',{name:'Add to batch',exact:true}).click();
+ await expect(page.locator('.review-list')).toContainText('drop');
+ expect(await page.evaluate(()=>window.DraftRoomBridge.data().batch)).toHaveLength(1);
+ expect(await page.evaluate(()=>window.DraftRoomBridge.data().rosters)).toEqual(initial.rosters);
+ await page.getByRole('button',{name:'Discard batch',exact:true}).click();await page.getByRole('button',{name:'Close panel',exact:true}).click();
+ await page.getByRole('button',{name:'Move to IL N.Jokic',exact:true}).click();
+ await expect(page.locator('.review-list')).toContainText('IL');
+ expect(await page.evaluate(()=>window.DraftRoomBridge.data().batch)).toHaveLength(1);
+ await page.getByRole('button',{name:'Discard batch',exact:true}).click();await page.getByRole('button',{name:'Close panel',exact:true}).click();
  await page.getByRole('button',{name:'Manage',exact:true}).click();
  await page.getByRole('button',{name:'Add to batch',exact:true}).click();
  await expect(page.locator('#editorToken')).toBeVisible();
@@ -167,7 +185,7 @@ try{
  await page.locator('#reset').click();await expect(page.locator('#count')).toHaveText('0');await page.locator('#player').fill('N.Jokic');await page.locator('#playerSuggestions button').first().click();await page.locator('#record').click();await expect(page.locator('#count')).toHaveText('1');await page.locator('#undo').click();await expect(page.locator('#count')).toHaveText('0');
  await page.locator('#restore').setInputFiles({name:'draft-backup.json',mimeType:'application/json',buffer:Buffer.from(backup)});await expect(page.locator('#count')).toHaveText('168');
  await page.getByRole('button',{name:'Team',exact:true}).click();await page.getByRole('button',{name:'Open menu',exact:true}).click();await page.getByRole('button',{name:'GitHub & projections',exact:false}).click();await page.getByRole('button',{name:'Upload projections',exact:true}).click();
- await expect(page.getByRole('heading',{name:'UPLOAD PROJECTIONS',exact:true})).toBeVisible();await expect(page.locator('#legacy-ui')).toBeHidden();await expect(page.locator('.preview-label')).toHaveText('v49');expect(await page.locator('.hero-title').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);await page.screenshot({path:evidence+'/07a-projections-start-mobile.png'});
+ await expect(page.getByRole('heading',{name:'UPLOAD PROJECTIONS',exact:true})).toBeVisible();await expect(page.locator('#legacy-ui')).toBeHidden();await expect(page.locator('.preview-label')).toHaveText('v50');expect(await page.locator('.hero-title').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);await page.screenshot({path:evidence+'/07a-projections-start-mobile.png'});
  await page.getByRole('button',{name:'Validate and preview',exact:true}).click();await expect(page.locator('#tool-projections-preview')).toContainText('Validation failed');await expect(page.locator('#tool-projections-publish')).toBeDisabled();
  const tableText=await page.evaluate(()=>window.DRAFT_PROJECTIONS_RAW.trim().split(/\r?\n/).map(row=>{const x=row.split(/\s+/);x[1]=x[1].replaceAll('_',' ');if(x[2]==='-')x[2]='';return x.join(' ')}).join('\n'));
  await page.getByLabel('Projection table',{exact:true}).fill(tableText);await page.getByRole('button',{name:'Validate and preview',exact:true}).click();await expect(page.locator('#tool-projections-preview')).toContainText('Valid: 300 players');
