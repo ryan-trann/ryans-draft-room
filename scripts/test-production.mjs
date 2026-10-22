@@ -114,7 +114,7 @@ try{
  await expect(page.locator('.pot-summary')).toContainText('cash-pot payout');
  await expect(page.getByText('one open roster spot', {exact:false})).toBeVisible();
  await page.getByRole('combobox',{name:'Analyze trade format'}).selectOption('2:2');
- await expect(page.getByRole('combobox',{name:'Second player to receive'})).toBeVisible();
+ await expect(page.getByRole('button',{name:'Choose second player to receive'})).toBeVisible();
  await expect(page.locator('.pot-summary')).toContainText('cash-pot payout');
  await page.getByRole('combobox',{name:'Analyze trade format'}).selectOption('1:1');
  await expect(page.getByRole('combobox',{name:'Second player to send'})).toHaveCount(0);
