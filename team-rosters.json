@@ -1,6 +1,6 @@
 {
   "formatVersion": 1,
-  "revision": 3,
+  "revision": 4,
   "source": "Draft Room team editor",
   "teams": {
     "Keith": [
@@ -710,7 +710,8 @@
       },
       {
         "playerId": "hb-86",
-        "name": "J.Butler"
+        "name": "J.Butler",
+        "il": true
       }
     ]
   }
