@@ -43,10 +43,11 @@ try{
  expect(duplicateLabels.length).toBeGreaterThan(0);
  for(const p of duplicateLabels)expect(p.actual).toBe(p.expected);
  await page.screenshot({path:evidence+'/01-team-mobile.png'});
- // v53: Team has no redundant Category Strategy entry; Trades is the sole auto finder.
+ // v54: Team has no redundant Category Strategy entry; Trades is the sole auto finder.
  await expect(page.locator('.strategy-entry')).toHaveCount(0);
  await page.getByRole('button',{name:'Trades',exact:true}).click();
  await expect(page.getByRole('button',{name:'Choose trade teams'})).toBeVisible();
+ const analyzeTop=await page.getByRole('button',{name:'Analyze',exact:true}).evaluate(el=>el.getBoundingClientRect().top);const selectorTop=await page.getByRole('button',{name:'Choose trade teams'}).evaluate(el=>el.getBoundingClientRect().top);expect(selectorTop).toBeGreaterThan(analyzeTop);
  await page.getByRole('button',{name:'Find ideas',exact:true}).click();
  await expect(page.getByRole('button',{name:'Choose trade teams'})).toHaveCount(0);
  await expect(page.getByRole('combobox',{name:'Find trades for team'})).toHaveValue('Ryan');
@@ -54,6 +55,10 @@ try{
  await expect(page.getByRole('combobox',{name:'Find trades for team'})).toHaveValue('Keith');
  await page.getByRole('combobox',{name:'Find trades for team'}).selectOption('Ryan');
  await expect(page.getByRole('combobox',{name:'Trade format',exact:true})).toBeVisible();
+ await expect(page.getByRole('button',{name:'Find trades',exact:true})).toBeVisible();
+ await expect(page.locator('.ideas-section .status-note')).toHaveCount(0);
+ await page.getByRole('button',{name:'Find trades',exact:true}).click();
+ await expect(page.getByRole('progressbar',{name:'Trade search progress'})).toBeVisible();
  await expect(page.locator('.ideas-section .footnote')).toContainText('cash-pot gain');
  await expect(page.locator('.ideas-section .status-note').last()).toContainText(/offers pass|No offers passed/,{timeout:60000});
  await expect(page.locator('.payout-line').first()).toContainText('Your pot');
@@ -74,6 +79,8 @@ try{
  await page.getByRole('button',{name:'Find ideas',exact:true}).click();
  await expect(page.getByRole('combobox',{name:'Trade format',exact:true}).locator('option')).toHaveCount(2);
  await page.getByRole('combobox',{name:'Trade format',exact:true}).selectOption('2:2');
+ await expect(page.locator('.ideas-section .status-note')).toHaveCount(0);
+ await page.getByRole('button',{name:'Find trades',exact:true}).click();
  await expect(page.locator('.ideas-section .status-note').last()).toContainText(/offers pass|No offers passed/,{timeout:60000});
  // If a 2-for-2 offer is available, analyze both players on each side.
  if(await page.locator('.idea-row').count()){
@@ -198,7 +205,7 @@ try{
  await page.locator('#reset').click();await expect(page.locator('#count')).toHaveText('0');await page.locator('#player').fill('N.Jokic');await page.locator('#playerSuggestions button').first().click();await page.locator('#record').click();await expect(page.locator('#count')).toHaveText('1');await page.locator('#undo').click();await expect(page.locator('#count')).toHaveText('0');
  await page.locator('#restore').setInputFiles({name:'draft-backup.json',mimeType:'application/json',buffer:Buffer.from(backup)});await expect(page.locator('#count')).toHaveText('168');
  await page.getByRole('button',{name:'Team',exact:true}).click();await page.getByRole('button',{name:'Open menu',exact:true}).click();await page.getByRole('button',{name:'GitHub & projections',exact:false}).click();await page.getByRole('button',{name:'Upload projections',exact:true}).click();
- await expect(page.getByRole('heading',{name:'UPLOAD PROJECTIONS',exact:true})).toBeVisible();await expect(page.locator('#legacy-ui')).toBeHidden();await expect(page.locator('.preview-label')).toHaveText('v53');expect(await page.locator('.hero-title').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);await page.screenshot({path:evidence+'/07a-projections-start-mobile.png'});
+ await expect(page.getByRole('heading',{name:'UPLOAD PROJECTIONS',exact:true})).toBeVisible();await expect(page.locator('#legacy-ui')).toBeHidden();await expect(page.locator('.preview-label')).toHaveText('v54');expect(await page.locator('.hero-title').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);await page.screenshot({path:evidence+'/07a-projections-start-mobile.png'});
  await page.getByRole('button',{name:'Validate and preview',exact:true}).click();await expect(page.locator('#tool-projections-preview')).toContainText('Validation failed');await expect(page.locator('#tool-projections-publish')).toBeDisabled();
  const tableText=await page.evaluate(()=>window.DRAFT_PROJECTIONS_RAW.trim().split(/\r?\n/).map(row=>{const x=row.split(/\s+/);x[1]=x[1].replaceAll('_',' ');if(x[2]==='-')x[2]='';return x.join(' ')}).join('\n'));
  await page.getByLabel('Projection table',{exact:true}).fill(tableText);await page.getByRole('button',{name:'Validate and preview',exact:true}).click();await expect(page.locator('#tool-projections-preview')).toContainText('Valid: 300 players');
