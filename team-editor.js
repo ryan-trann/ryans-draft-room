@@ -1,6 +1,8 @@
 'use strict';
 /* The current roster is separate from immutable original draft picks. */
-let editorRevision=0,editorReady=false,editorMoves=[],editorReview=false;
+let editorRevision=0,editorReady=false,editorMoves=[],editorReview=false,editorIL={};
+function editorWorkingIL(){const il=Object.fromEntries(TEAMS.map(t=>[t,[...(editorIL[t]||[])]]));for(const op of editorMoves){if(op.type==='il'){if(!il[op.from].includes(op.player))il[op.from].push(op.player)}else if(op.type==='activate')il[op.from]=il[op.from].filter(id=>id!==op.player);else if(op.type==='drop'||op.type==='adddrop'||op.type==='move'||op.type==='swap'){il[op.from]=il[op.from].filter(id=>id!==op.player);if(op.type==='swap')il[op.to]=il[op.to].filter(id=>id!==op.other)}}return il}
+function editorActiveRosters(rosters=currentRosters,il=editorIL){return Object.fromEntries(TEAMS.map(t=>[t,(rosters[t]||[]).filter(id=>!(il[t]||[]).includes(id))]))}
 function copyRoster(obj){return Object.fromEntries(TEAMS.map(t=>[t,[...(obj[t]||[])]]))}
 function editorValidate(rosters){
  const allowed=new Set(state.projections.map(p=>p.draftId)),seen=new Set();
@@ -20,12 +22,18 @@ function editorChange(source,op){
  const next=copyRoster(source),from=next[op.from],to=next[op.to];
  if(!TEAMS.includes(op.from))throw Error('Choose a source team');
  if(['swap','move'].includes(op.type)&&(!TEAMS.includes(op.to)||op.to===op.from))throw Error('Choose a different destination team');
- if(['swap','move','drop'].includes(op.type)&&!from.includes(op.player))throw Error(editorName(op.player)+' is no longer on '+op.from);
+ if(['swap','move','drop','adddrop','il','activate'].includes(op.type)&&!from.includes(op.player))throw Error(editorName(op.player)+' is no longer on '+op.from);
  if(op.type==='swap'){
   if(!to.includes(op.other))throw Error(editorName(op.other)+' is no longer on '+op.to);
   from.splice(from.indexOf(op.player),1,op.other);to.splice(to.indexOf(op.other),1,op.player);
  }else if(op.type==='move'){from.splice(from.indexOf(op.player),1);to.push(op.player)}
  else if(op.type==='drop'){from.splice(from.indexOf(op.player),1)}
+ else if(op.type==='il'||op.type==='activate'){} // IL is recorded separately; player stays rostered.
+ else if(op.type==='adddrop'){
+  if(!state.projections.some(p=>p.draftId===op.free))throw Error('Choose a valid free agent');
+  if(Object.values(next).some(ids=>ids.includes(op.free)))throw Error(editorName(op.free)+' is already rostered');
+  from.splice(from.indexOf(op.player),1,op.free);
+ }
  else if(op.type==='add'){
   if(!state.projections.some(p=>p.draftId===op.free))throw Error('Choose a valid free agent');
   if(Object.values(next).some(ids=>ids.includes(op.free)))throw Error(editorName(op.free)+' is already on a roster');
@@ -38,6 +46,9 @@ function editorLabel(op){
  if(op.type==='swap')return 'Swap '+editorName(op.player)+' ('+op.from+') ↔ '+editorName(op.other)+' ('+op.to+')';
  if(op.type==='move')return 'Move '+editorName(op.player)+' from '+op.from+' to '+op.to;
  if(op.type==='drop')return 'Drop '+editorName(op.player)+' from '+op.from;
+ if(op.type==='adddrop')return 'Drop '+editorName(op.player)+' and add '+editorName(op.free)+' ('+op.from+')';
+ if(op.type==='il')return 'Put '+editorName(op.player)+' on IL ('+op.from+')';
+ if(op.type==='activate')return 'Activate '+editorName(op.player)+' from IL ('+op.from+')';
  return 'Add '+editorName(op.free)+' to '+op.from;
 }
 function editOptions(id,values,fallback){
@@ -83,6 +94,7 @@ async function loadRosterCloud(){
    });
   }
   editorValidate(next);
+  editorIL=Object.fromEntries(TEAMS.map(t=>[t,(data.teams[t]||[]).filter(row=>row.il===true).map(row=>next[t].find(id=>state.projections.some(p=>p.draftId===id&&p.name===row.name&&(!row.playerId||row.playerId===id)))||row.playerId).filter(id=>next[t].includes(id))]));
   currentRosters=next;editorRevision=Number(data.revision||1);editorReady=true;
   renderTeams();renderCategoryStandings();renderRankings();editorUpdateUI();
   if(typeof analysisRefresh==='function')analysisRefresh();
@@ -120,7 +132,8 @@ $('editorPublish').onclick=async()=>{
  $('editorToken').value='';$('editorPublish').disabled=true;
  $('editorStatus').textContent='Checking current GitHub revision…';
  try{
-  const next=editorWorking();
+  const next=editorWorking(),nextIL=editorWorkingIL();
+  for(const t of TEAMS)if(nextIL[t].some(id=>!next[t].includes(id)))throw Error('IL status references a player no longer on '+t);
   const url='https://api.github.com/repos/ryan-trann/ryans-draft-room/contents/team-rosters.json';
   const headers={'Accept':'application/vnd.github+json','Authorization':'Bearer '+token,'X-GitHub-Api-Version':'2022-11-28'};
   const read=await fetch(url,{headers,cache:'no-store'});
@@ -129,12 +142,12 @@ $('editorPublish').onclick=async()=>{
   const remote=JSON.parse(decodeURIComponent(Array.from(atob(encoded),c=>'%'+c.charCodeAt(0).toString(16).padStart(2,'0')).join('')));
   if(Number(remote.revision||1)!==editorRevision)throw Error('Another device has saved newer rosters. Discard your batch and reload before editing.');
   // Persist the canonical projection name; editorName includes UI-only disambiguation.
-  const teams={};for(const t of TEAMS)teams[t]=next[t].map(id=>({playerId:id,name:state.projections.find(p=>p.draftId===id).name}));
+  const teams={};for(const t of TEAMS)teams[t]=next[t].map(id=>({playerId:id,name:state.projections.find(p=>p.draftId===id).name,...(nextIL[t].includes(id)?{il:true}:{})}));
   const json=JSON.stringify({formatVersion:1,revision:editorRevision+1,source:'Draft Room team editor',teams},null,2)+'\n';
   const bytes=new TextEncoder().encode(json);let binary='';for(const b of bytes)binary+=String.fromCharCode(b);
   const response=await fetch(url,{method:'PUT',headers:{...headers,'Content-Type':'application/json'},body:JSON.stringify({message:'Update fantasy team rosters ('+editorMoves.length+' moves)',sha:old.sha,content:btoa(binary),branch:'main'})});
   if(!response.ok){const info=await response.json().catch(()=>({}));throw Error('GitHub HTTP '+response.status+': '+(info.message||'Rejected'))}
-  currentRosters=next;editorRevision++;editorMoves=[];editorReview=false;$('editorReviewArea').classList.add('hidden');
+  currentRosters=next;editorIL=nextIL;editorRevision++;editorMoves=[];editorReview=false;$('editorReviewArea').classList.add('hidden');
   renderTeams();renderCategoryStandings();renderRankings();editorUpdateUI();
   if(typeof analysisRefresh==='function')analysisRefresh();
   $('editorStatus').textContent='Saved to GitHub (revision '+editorRevision+'). Current rosters and category ranks updated.';
