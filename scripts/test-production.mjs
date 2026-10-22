@@ -98,6 +98,7 @@ try{
  await page.getByRole('combobox',{name:'Team to manage',exact:true}).selectOption('Keith');
  await expect(page.locator('.roster-heading')).toContainText('Keith roster');
  await page.getByRole('combobox',{name:'Team to manage',exact:true}).selectOption('Ryan');
+ await page.getByRole('combobox',{name:'Other team',exact:true}).selectOption('Keith');
  await expect(page.getByRole('combobox',{name:'Action',exact:true}).locator('option[value="adddrop"]')).toHaveCount(1);
  await page.getByRole('combobox',{name:'Action',exact:true}).selectOption('add');
  await page.getByRole('textbox',{name:'Search free agents',exact:true}).fill('Jokic');
