@@ -25,6 +25,7 @@
   reloadProjections:()=>reloadGitHubProjectionFile(),
   player:id=>state.projections.find(p=>p.draftId===id),label:id=>editorName(id),copy:copyRoster,
   trade(a,b,x,y){const proposal=analysisSwap(currentRosters,a,b,x,y);return {proposal,grade:analysisGrade(proposal,a,b),cash:cashImpact(currentRosters,proposal,a,b)}},
+  tradePackage(a,b,gives,receives){if(a===b||new Set(gives).size!==gives.length||new Set(receives).size!==receives.length||![1,2].includes(gives.length)||![1,2].includes(receives.length)||gives.length<receives.length)throw Error('Invalid trade package');const proposal=copyRoster(currentRosters);for(const id of gives){if(!proposal[a].includes(id))throw Error('Player not on '+a)}for(const id of receives){if(!proposal[b].includes(id))throw Error('Player not on '+b)}proposal[a]=proposal[a].filter(id=>!gives.includes(id)).concat(receives);proposal[b]=proposal[b].filter(id=>!receives.includes(id)).concat(gives);return {proposal,grade:analysisGrade(proposal,a,b),cash:cashImpact(currentRosters,proposal,a,b)}},
   legacy(tab){const root=$('root');root.hidden=true;document.body.classList.remove('modern-ready');document.body.classList.add('show-original');const button=document.querySelector('#legacy-ui [data-tab="'+tab+'"]');if(button)button.click();window.scrollTo(0,0);},
   modern(){document.body.classList.remove('show-original');document.body.classList.add('modern-ready');$('root').hidden=false;notify();},
   backup(){$('export').click()},restore(){$('restoreBtn').click()},
