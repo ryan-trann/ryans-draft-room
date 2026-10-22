@@ -18,7 +18,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: purple-app-build-v54
+  group: purple-app-build-v56
   cancel-in-progress: true
 
 jobs:
