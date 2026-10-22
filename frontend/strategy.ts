@@ -199,6 +199,100 @@ export function findDeals(rosters:Roster,from:string,all:Player[],cats:string[],
  ranked.sort((a,b)=>b.adjustedGain-a.adjustedGain||b.potMine-a.potMine||b.fairness-a.fairness);
  return {rows:ranked.slice(0,limit),examined,fairCount,avoided};
 }
+export async function findDealsAsync(rosters:Roster,from:string,all:Player[],cats:string[],format:DealFormat='1:1',ignored:string[]=[],limit=12,snapshot:InjurySnapshot|null=null,onProgress?:(done:number,total:number,stage:string)=>void):Promise<{rows:Candidate[];examined:number;fairCount:number;avoided:number}>{
+ const lookup=new Map(all.map(p=>[p.draftId,p])),v=lookupValue(all,cats,snapshot),market=v.market,raw=v.raw;
+ const sides=format.split(':').map(Number),otherNames=Object.keys(rosters).filter(t=>t!==from);
+ const base=share(rosters,cats,lookup),targetCats=cats.filter(c=>!ignored.includes(c)),focusBase=share(rosters,targetCats.length?targetCats:cats,lookup),taken=new Set(Object.values(rosters).flat());
+ const free=all.filter(p=>!taken.has(p.draftId)).sort((a,b)=>(market.get(b.draftId)||0)-(market.get(a.draftId)||0));
+ const additions=free.slice(0,4);
+ const myPacks=packages(rosters[from]||[],sides[0]);
+ const potential:(Candidate & {_priority:number;_roster:Roster})[]=[];
+ let examined=0,fairCount=0;
+ let completed=0;const progress=async(total:number,stage:string)=>{onProgress?.(completed,total,stage);await new Promise<void>(resolve=>setTimeout(resolve,0))};
+ await progress(otherNames.length+1,'Screening trade packages');
+ for(const other of otherNames){
+  const theirPacks=packages(rosters[other]||[],sides[1]);
+  const preliminary:{mine:string[];theirs:string[];difference:number}[]=[];
+  for(const mine of myPacks)for(const theirs of theirPacks){
+   examined++;
+   const a=mine.reduce((n,id)=>n+(market.get(id)||0),0),b=theirs.reduce((n,id)=>n+(market.get(id)||0),0);
+   const difference=Math.abs(a-b)/Math.max(a,b,1);
+   // Hard value guardrail: prevents star-for-role-player proposals like Braun/Wembanyama.
+   if(difference>(format==='1:1'?.19:.22))continue;
+   // Star trades need closer projected value than ordinary offers.
+   if(format==='1:1'&&Math.max(a,b)>12&&difference>.12)continue;
+   fairCount++;
+   preliminary.push({mine,theirs,difference});
+  }
+  preliminary.sort((a,b)=>a.difference-b.difference);
+  for(const {mine,theirs,difference} of preliminary.slice(0,110)){
+   const draft:Roster=Object.fromEntries(Object.entries(rosters).map(([t,ids])=>[t,[...ids]]));
+   draft[from]=draft[from].filter(x=>!mine.includes(x)).concat(theirs);
+   draft[other]=draft[other].filter(x=>!theirs.includes(x)).concat(mine);
+   let myDrop:string|undefined,partnerDrop:string|undefined,myAdd:string|undefined,partnerAdd:string|undefined;
+   const beforeSize=rosters[from].length,otherSize=rosters[other].length;
+   if(draft[from].length>beforeSize){myDrop=draft[from].filter(id=>!theirs.includes(id)).sort((a,b)=>(market.get(a)||0)-(market.get(b)||0))[0];if(!myDrop)continue;draft[from]=draft[from].filter(id=>id!==myDrop)}
+   if(draft[other].length>otherSize){partnerDrop=draft[other].filter(id=>!mine.includes(id)).sort((a,b)=>(market.get(a)||0)-(market.get(b)||0))[0];if(!partnerDrop)continue;draft[other]=draft[other].filter(id=>id!==partnerDrop)}
+   const used=new Set(Object.values(draft).flat());
+   const nextFree=additions.filter(p=>!used.has(p.draftId));
+   if(draft[from].length<beforeSize){myAdd=nextFree[0]?.draftId;if(!myAdd)continue;draft[from].push(myAdd)}
+   if(draft[other].length<otherSize){partnerAdd=nextFree.find(p=>p.draftId!==myAdd)?.draftId;if(!partnerAdd)continue;draft[other].push(partnerAdd)}
+   const mineValue=draft[from].reduce((n,id)=>n+(raw.get(id)||0),0)-rosters[from].reduce((n,id)=>n+(raw.get(id)||0),0);
+   const theirsValue=draft[other].reduce((n,id)=>n+(raw.get(id)||0),0)-rosters[other].reduce((n,id)=>n+(raw.get(id)||0),0);
+   // No deals that severely damage the other manager's overall projected production.
+   if(theirsValue < -1.3 || mineValue < -3)continue;
+   const after=share(draft,cats,lookup),cashMine=after[from]-base[from],cashTheirs=after[other]-base[other];
+   if(cashTheirs<-.018 || cashMine<-.09)continue;
+   const focusAfter=share(draft,targetCats.length?targetCats:cats,lookup);
+   const focusedGain=focusAfter[from]-focusBase[from];
+   // Partner gain is a feasibility constraint, NEVER a positive ranking bonus.
+   const benefit=cashMine*.73+focusedGain*.27-Math.max(0,-theirsValue)*.012-difference*.035;
+   potential.push({other,give:mine,receive:theirs,format,cashMine,cashTheirs,fairness:1-difference,partnerGain:theirsValue,myGain:mineValue,potMine:0,potTheirs:0,potBefore:0,potAfter:0,partnerPotBefore:0,partnerPotAfter:0,verdict:'situational',rivalRisk:'low',adjustedGain:0,partnerDrop,myDrop,myAdd,partnerAdd,reason:'Comparable projected value and limited partner downside',_priority:benefit,_roster:draft});
+  }
+  completed++;await progress(otherNames.length+1,'Screening opponents');
+ }
+ // Cheap category-share screening selects diverse plausible offers to simulate.
+ // Final ordering, however, is ONLY Ryan's modeled POT payout improvement.
+ potential.sort((a,b)=>b._priority-a._priority);
+ const seen=new Set<string>(),shortlist:typeof potential=[];
+ const perOpponent=new Map<string,number>();
+ for(const row of potential){
+  if((perOpponent.get(row.other)||0)>=20)continue;
+  const key=[row.other,...row.give,...row.receive].join('|');
+  if(seen.has(key))continue;
+  seen.add(key);perOpponent.set(row.other,(perOpponent.get(row.other)||0)+1);
+  shortlist.push(row);
+ }
+ const potBefore=potFromLookup(rosters,cats,lookup,POT_TRIALS,snapshot);
+ const ranked:Candidate[]=[];
+ let avoided=0;
+ const threats=Object.entries(potBefore.shares).filter(([t])=>t!==from).sort((a,b)=>b[1]-a[1]);
+ const strongest=new Set(threats.slice(0,Math.max(3,Math.ceil(threats.length/3))).map(([t])=>t));
+ completed=0;await progress(shortlist.length||1,'Simulating weekly cash-pot outcomes');
+ for(const proposal of shortlist){
+  if(completed%3===0)await progress(shortlist.length||1,'Simulating weekly cash-pot outcomes');
+  completed++;
+  const result=potFromLookup(proposal._roster,cats,lookup,POT_TRIALS,snapshot);
+  const mineGain=result.shares[from]-potBefore.shares[from];
+  // Do not recommend deals whose actual side-bet payout estimate declines.
+  if(mineGain<=0.0001)continue;
+  const partnerGain=result.shares[proposal.other]-potBefore.shares[proposal.other];
+  const opponentBefore=potBefore.shares[proposal.other],opponentAfter=result.shares[proposal.other];
+  const ownAfter=result.shares[from];
+  const rivalRisk:'high'|'medium'|'low'=strongest.has(proposal.other)||opponentBefore>=potBefore.shares[from]*.85?'high':opponentAfter>=ownAfter*.75?'medium':'low';
+  // An already-dangerous rival cannot gain more than Ryan in a recommended trade.
+  // A weak rival may improve more if Ryan's expected pot share still improves.
+  const downside=Math.max(0,partnerGain-mineGain);
+  const riskWeight=rivalRisk==='high'?1.25:rivalRisk==='medium'?.65:.2;
+  const adjustedGain=mineGain-downside*riskWeight;
+  const verdict:TradeVerdict=partnerGain<=mineGain+.0005?'strong':rivalRisk==='low'&&adjustedGain>0?'situational':'avoid';
+  if(verdict==='avoid'||adjustedGain<=0){avoided++;continue;}
+  ranked.push({...proposal,potMine:mineGain,potTheirs:partnerGain,potBefore:potBefore.shares[from],potAfter:ownAfter,partnerPotBefore:opponentBefore,partnerPotAfter:opponentAfter,rivalRisk,adjustedGain,verdict});
+ }
+ ranked.sort((a,b)=>b.adjustedGain-a.adjustedGain||b.potMine-a.potMine||b.fairness-a.fairness);
+ onProgress?.(1,1,'Complete');
+ return {rows:ranked.slice(0,limit),examined,fairCount,avoided};
+}
 export function tradeMoves(deal:Candidate,from:string){
  const other=deal.other,actions:{kind:string;team:string;other:string;give:string;receive:string}[]=[];
  const put=(kind:string,team:string,other:string,give='',receive='')=>actions.push({kind,team,other,give,receive});
