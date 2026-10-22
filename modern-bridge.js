@@ -10,12 +10,13 @@
  editorUpdateUI=function(...args){const value=original.editorUpdateUI(...args);notify();return value};
  new MutationObserver(notify).observe($('editorStatus'),{childList:true,subtree:true,characterData:true});
  const toOp=m=>({type:m.kind,from:m.team,to:m.other,player:m.give,other:m.receive,free:m.receive});
- const fromOp=op=>({kind:op.type,team:op.from,other:op.to,give:op.player,receive:op.type==='add'?op.free:op.other});
+ const fromOp=op=>({kind:op.type,team:op.from,other:op.to,give:op.player,receive:['add','adddrop'].includes(op.type)?op.free:op.other});
  function preview(rosters,moves){return moves.reduce((next,m)=>editorChange(next,toOp(m)),copyRoster(rosters))}
  window.DraftRoomBridge={
   teams:TEAMS,cats:CATS,
-  data:()=>({projections:state.projections,rosters:copyRoster(currentRosters),revision:editorRevision,ready:editorReady,batch:editorMoves.map(fromOp),status:$('editorStatus').textContent,projectionStatus:$('sharedProjectionStatus').textContent}),
+  data:()=>({projections:state.projections,rosters:copyRoster(currentRosters),il:Object.fromEntries(TEAMS.map(t=>[t,[...(editorIL[t]||[])]])),revision:editorRevision,ready:editorReady,batch:editorMoves.map(fromOp),status:$('editorStatus').textContent,projectionStatus:$('sharedProjectionStatus').textContent}),
   preview,
+  active:()=>editorActiveRosters(),
   queue(moves){if(!editorReady)throw Error('Saved rosters are still loading. Reload rosters before editing.');let next=editorWorking();for(const m of moves)next=editorChange(next,toOp(m));editorMoves.push(...moves.map(toOp));editorReview=false;editorUpdateUI();$('editorReview').click();notify();},
   remove(index){const next=editorMoves.filter((_,i)=>i!==index);next.reduce((roster,op)=>editorChange(roster,op),copyRoster(currentRosters));editorMoves=next;editorReview=false;editorUpdateUI();if(editorMoves.length)$('editorReview').click();notify();},
   discard(){editorMoves=[];editorReview=false;editorUpdateUI();$('editorStatus').textContent='Batch discarded; saved rosters unchanged.';notify();},
@@ -35,7 +36,7 @@
 // These calculation bodies are lifted verbatim from the existing renderers.
 window.DraftRoomBridge.standings=function(){
  const teams=TEAMS.map(team=>{
-  const ps=rosterPlayers(team);
+  const ps=(editorActiveRosters()[team]||[]).map(id=>state.projections.find(p=>p.draftId===id)).filter(Boolean);
   const totals={};for(const c of CATS)totals[c]=ps.reduce((sum,p)=>sum+Number(p[c]||0),0);
   return {team,count:ps.length,totals,ranks:{},points:0};
  });
@@ -52,7 +53,7 @@ window.DraftRoomBridge.standings=function(){
 
  return teams.map((t,i)=>({...t,rank:teams.findIndex(x=>Math.abs(x.points-t.points)<.00001)+1}));
 };
-window.DraftRoomBridge.ranked=function(query,sort){ const all=state.projections,q=norm(query),s=stats(),mine=(currentRosters['Ryan']||[]).map(id=>state.projections.find(p=>p.draftId===id)).filter(Boolean),weak={};
+window.DraftRoomBridge.ranked=function(query,sort){ const all=state.projections,q=norm(query),s=stats(),mine=(editorActiveRosters()['Ryan']||[]).map(id=>state.projections.find(p=>p.draftId===id)).filter(Boolean),weak={};
  if(mine.length)for(const c of CATS){
   const z=mine.reduce((v,p)=>v+((p[c]||0)-s[c].m)/s[c].sd*(c==='TO'?-1:1),0)/mine.length;
   weak[c]=Math.max(0,Math.min(.5,-z*.2));
@@ -91,7 +92,7 @@ window.DraftRoomBridge.stream=async function(from,start,end){  if(dayFromIso(sta
   const unknown=eligibility.stats.missingToday;
   $('streamScheduleStatus').textContent='NBA games still eligible this matchup: '+effective.start+' through '+end+' · '+schedule.source+' · Immediate free-agent eligibility, provided tipoff has not occurred'+(unknown?' · '+unknown+' games today lack start times and were excluded for safety.':'')+'.';
 
-  const roster=analysisPlayers(from);
+  const roster=analysisPlayers(from).filter(p=>!(editorIL[from]||[]).includes(p.draftId));
   const taken=new Set(TEAMS.flatMap(t=>currentRosters[t]||[]));
   const free=state.projections.filter(p=>!taken.has(p.draftId));
   // Only treat the lowest-value roster slots as disposable for short-term streaming.
