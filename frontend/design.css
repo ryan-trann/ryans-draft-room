@@ -153,3 +153,6 @@
 .il-button{flex:none;padding:6px 9px;border:1px solid #7758a2;border-radius:8px;background:#251b36;color:#d7c4ff;font:600 11px/1.2 Inter,sans-serif;cursor:pointer;white-space:nowrap}
 .il-button:hover{background:#37264d}
 .il-button:focus-visible{outline:2px solid #c7a5ff;outline-offset:2px}
+
+/* IL players remain rostered but are immediately identifiable on Team. */
+.il-roster-row .row-main b,.il-roster-row .row-main small{color:#ff6b76!important}
