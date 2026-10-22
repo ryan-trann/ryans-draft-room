@@ -99,7 +99,7 @@ try{
  await page.getByRole('textbox',{name:'Search free agents',exact:true}).fill('Jokic');
  await expect(page.getByRole('combobox',{name:'Free agent'}).locator('option')).toHaveCount(1); // rostered players cannot be picked
  await page.getByRole('textbox',{name:'Search free agents',exact:true}).fill('Joe');
- await expect(page.getByRole('combobox',{name:'Free agent'}).locator('option').count()).resolves.toBeGreaterThan(1);
+ expect(await page.getByRole('combobox',{name:'Free agent'}).locator('option').count()).toBeGreaterThan(1);
  await page.getByRole('combobox',{name:'Action',exact:true}).selectOption('adddrop');
  await page.getByRole('textbox',{name:'Search free agents',exact:true}).fill('Joe');
  await page.getByRole('button',{name:'Add to batch',exact:true}).click();
@@ -107,7 +107,7 @@ try{
  expect(await page.evaluate(()=>window.DraftRoomBridge.data().batch)).toHaveLength(1);
  expect(await page.evaluate(()=>window.DraftRoomBridge.data().rosters)).toEqual(initial.rosters);
  await page.getByRole('button',{name:'Discard batch',exact:true}).click();await page.getByRole('button',{name:'Close panel',exact:true}).click();
- await page.getByRole('button',{name:'Move to IL N.Jokic',exact:true}).click();
+ await page.getByRole('button',{name:'Move to IL A.Edwards',exact:true}).click();
  await expect(page.locator('.review-list')).toContainText('IL');
  expect(await page.evaluate(()=>window.DraftRoomBridge.data().batch)).toHaveLength(1);
  await page.getByRole('button',{name:'Discard batch',exact:true}).click();await page.getByRole('button',{name:'Close panel',exact:true}).click();
