@@ -148,3 +148,8 @@
 .matrix-rank{display:inline-flex;min-width:29px;min-height:29px;align-items:center;justify-content:center;border-radius:7px;color:#d7d2e5;font-weight:650}
 .matrix-rank.matrix-top{background:#17372e;color:#91efd0}
 .matrix-rank.matrix-low{color:#efc28b}
+
+/* Compact injured-list control on roster rows. */
+.il-button{flex:none;padding:6px 9px;border:1px solid #7758a2;border-radius:8px;background:#251b36;color:#d7c4ff;font:600 11px/1.2 Inter,sans-serif;cursor:pointer;white-space:nowrap}
+.il-button:hover{background:#37264d}
+.il-button:focus-visible{outline:2px solid #c7a5ff;outline-offset:2px}
