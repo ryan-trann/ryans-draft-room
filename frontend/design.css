@@ -158,3 +158,5 @@
 .il-roster-row .row-main b,.il-roster-row .row-main small{color:#ff6b76!important}
 
 .weekly-pot-board{margin:16px 0 22px;padding:15px;border:1px solid #333447;border-radius:14px;background:#171720}.weekly-pot-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.weekly-pot-row{display:flex;justify-content:space-between;gap:7px;padding:8px 9px;border-radius:8px;background:#22212c;font-size:12px}.weekly-pot-row strong{color:#c3a0ff;white-space:nowrap}.weekly-pot-row.is-my-team{outline:1px solid #a378ee;background:#312640}
+
+.trade-progress{padding:16px;border:1px solid #383249;border-radius:12px;margin:12px 0;background:#211d2b;display:grid;gap:10px}.trade-progress strong{font-size:14px;color:#eee5ff}.trade-progress small{color:#a8a2b5}.trade-progress-track{height:9px;border-radius:999px;overflow:hidden;background:#383344}.trade-progress-track span{display:block;height:100%;background:#9c6bff;transition:width .2s ease}
