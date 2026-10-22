@@ -8,7 +8,7 @@ function analysisTotals(ids){
  for(const id of ids){const p=state.projections.find(p=>p.draftId===id);if(p)for(const c of ANALYSIS_CATS)totals[c]+=Number(p[c]||0)}
  return totals;
 }
-function analysisAllTotals(rosters){return Object.fromEntries(TEAMS.map(t=>[t,analysisTotals(rosters[t]||[])]))}
+function analysisAllTotals(rosters){return Object.fromEntries(TEAMS.map(t=>[t,analysisTotals((rosters[t]||[]).filter(id=>!(editorIL[t]||[]).includes(id)))]))}
 function analysisRanks(totals){
  const ranks=Object.fromEntries(TEAMS.map(t=>[t,{}]));
  for(const cat of ANALYSIS_CATS){
@@ -97,7 +97,7 @@ $('analyzeTrade').onclick=()=>{
 };
 $('recommendTrades').onclick=()=>{
  const from=$('recommendFrom').value, max=Math.max(1,Math.min(20,Number($('recommendMax').value)||10));
- const mine=currentRosters[from]||[],others=TEAMS.filter(t=>t!==from);
+ const mine=(currentRosters[from]||[]).filter(id=>!(editorIL[from]||[]).includes(id)),others=TEAMS.filter(t=>t!==from);
  const recommended=[];
  for(const other of others)for(const x of mine)for(const y of currentRosters[other]||[]){
   try{
