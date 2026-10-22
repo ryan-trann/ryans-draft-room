@@ -112,6 +112,7 @@ try{
  expect(await page.evaluate(()=>window.DraftRoomBridge.data().batch)).toHaveLength(1);
  await page.getByRole('button',{name:'Discard batch',exact:true}).click();await page.getByRole('button',{name:'Close panel',exact:true}).click();
  await page.getByRole('button',{name:'Manage',exact:true}).click();
+ await page.getByRole('combobox',{name:'Action',exact:true}).selectOption('swap');
  await page.getByRole('button',{name:'Add to batch',exact:true}).click();
  await expect(page.locator('#editorToken')).toBeVisible();
  expect(await page.evaluate(()=>window.DraftRoomBridge.data().rosters)).toEqual(initial.rosters);
