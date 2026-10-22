@@ -5,6 +5,7 @@ on:
     paths:
       - "frontend/**"
       - "modern-bridge.js"
+      - "team-editor.js"
       - "analysis-tools.js"
       - "index.source.html"
       - "scripts/prepare-production.mjs"
@@ -49,6 +50,7 @@ jobs:
           name: verified-site
           path: |
             dist/index.html
+            dist/team-editor.js
             dist/modern-bridge.js
             dist/analysis-tools.js
             dist/assets/
@@ -75,13 +77,14 @@ jobs:
           test -s verified-site/index.html
           test -d verified-site/assets
           cp verified-site/index.html index.html
+          cp verified-site/team-editor.js team-editor.js
           cp verified-site/modern-bridge.js modern-bridge.js
           cp verified-site/analysis-tools.js analysis-tools.js
           mkdir -p assets
           cp -R verified-site/assets/. assets/
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html assets/
+          git add index.html assets/ team-editor.js modern-bridge.js analysis-tools.js
           if ! git diff --cached --quiet; then
             git commit -m "Publish verified security-hardened build"
             git push
