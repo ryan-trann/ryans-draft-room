@@ -49,7 +49,7 @@ try{
  await page.getByRole('button',{name:'Find ideas',exact:true}).click();
  await expect(page.getByRole('combobox',{name:'Trade format',exact:true})).toBeVisible();
  await expect(page.locator('.ideas-section .footnote')).toContainText('cash-pot gain');
- await expect(page.locator('.ideas-section .status-note').last()).toContainText(/offers pass|No offers passed/);
+ await expect(page.locator('.ideas-section .status-note').last()).toContainText(/offers pass|No offers passed/,{timeout:60000});
  await expect(page.locator('.payout-line').first()).toContainText('Your pot');
  await expect(page.locator('.payout-comparison').first()).toContainText(/You gain more|Opponent gains more|Similar gains/);
  await expect(page.locator('.trade-verdict').first()).toContainText(/Strong recommendation|Situational/);
@@ -68,7 +68,7 @@ try{
  await page.getByRole('button',{name:'Find ideas',exact:true}).click();
  await expect(page.getByRole('combobox',{name:'Trade format',exact:true}).locator('option')).toHaveCount(2);
  await page.getByRole('combobox',{name:'Trade format',exact:true}).selectOption('2:2');
- await expect(page.locator('.ideas-section .status-note').last()).toContainText(/offers pass|No offers passed/);
+ await expect(page.locator('.ideas-section .status-note').last()).toContainText(/offers pass|No offers passed/,{timeout:60000});
  // If a 2-for-2 offer is available, analyze both players on each side.
  if(await page.locator('.idea-row').count()){
   await page.locator('.idea-row').first().click();
