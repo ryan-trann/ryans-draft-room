@@ -42,7 +42,7 @@ jobs:
         run: node scripts/test-injuries.mjs
       - name: Install browser for regression tests
         timeout-minutes: 5
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install --only-shell chromium
       - name: Run production regression suite
         run: npm run test:production
       - name: Package only verified public build
