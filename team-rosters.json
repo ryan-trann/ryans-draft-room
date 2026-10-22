@@ -1,6 +1,6 @@
 {
   "formatVersion": 1,
-  "revision": 4,
+  "revision": 5,
   "source": "Draft Room team editor",
   "teams": {
     "Keith": [
@@ -111,12 +111,12 @@
         "name": "R.Sheppard"
       },
       {
-        "playerId": "hb-187",
-        "name": "N.Vucevic"
+        "playerId": "hb-251",
+        "name": "M.Bagley III"
       },
       {
-        "playerId": "hb-172",
-        "name": "T.Jones"
+        "playerId": "hb-203",
+        "name": "A.Simons"
       }
     ],
     "Sean": [
@@ -458,7 +458,8 @@
       },
       {
         "playerId": "hb-104",
-        "name": "N.Claxton"
+        "name": "N.Claxton",
+        "il": true
       },
       {
         "playerId": "hb-134",
@@ -475,6 +476,10 @@
       {
         "playerId": "hb-131",
         "name": "A.Mitchell"
+      },
+      {
+        "playerId": "hb-228",
+        "name": "J.Hayes"
       }
     ],
     "Joe": [
