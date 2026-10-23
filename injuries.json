@@ -1,7 +1,7 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-22T21:35:49.196Z",
+  "updatedAt": "2026-10-23T04:48:52.433Z",
   "count": 78,
   "players": [
     {
@@ -75,21 +75,6 @@
       "status": "Out"
     },
     {
-      "name": "Jarrett Allen",
-      "team": "CLE",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Khalifa Diop",
-      "team": "CLE",
-      "status": "Out"
-    },
-    {
-      "name": "Nae'Qwan Tomlin",
-      "team": "CLE",
-      "status": "Out"
-    },
-    {
       "name": "Jett Howard",
       "team": "DAL",
       "status": "Day-To-Day"
@@ -115,9 +100,14 @@
       "status": "Out"
     },
     {
-      "name": "Spencer Jones",
+      "name": "Cameron Johnson",
       "team": "DEN",
       "status": "Day-To-Day"
+    },
+    {
+      "name": "Spencer Jones",
+      "team": "DEN",
+      "status": "Out"
     },
     {
       "name": "Julian Strawther",
@@ -130,12 +120,12 @@
       "status": "Day-To-Day"
     },
     {
-      "name": "Brandin Podziemski",
+      "name": "Charles Bassey",
       "team": "GSW",
       "status": "Day-To-Day"
     },
     {
-      "name": "Charles Bassey",
+      "name": "Brandin Podziemski",
       "team": "GSW",
       "status": "Day-To-Day"
     },
@@ -210,23 +200,23 @@
       "status": "Out"
     },
     {
+      "name": "Adou Thiero",
+      "team": "LAL",
+      "status": "Out"
+    },
+    {
+      "name": "Cameron Carr",
+      "team": "LAL",
+      "status": "Out"
+    },
+    {
       "name": "Jake LaRavia",
       "team": "LAL",
       "status": "Day-To-Day"
     },
     {
-      "name": "Adou Thiero",
-      "team": "LAL",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Collin Sexton",
-      "team": "LAL",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Cameron Carr",
-      "team": "LAL",
+      "name": "Cedric Coward",
+      "team": "MEM",
       "status": "Day-To-Day"
     },
     {
@@ -277,7 +267,7 @@
     {
       "name": "Dean Wade",
       "team": "PHI",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Tacko Fall",
@@ -312,12 +302,12 @@
     {
       "name": "Branden Carlson",
       "team": "POR",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Chris Youngblood",
       "team": "POR",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Shaedon Sharpe",
@@ -345,9 +335,19 @@
       "status": "Out"
     },
     {
-      "name": "Tobias Harris",
+      "name": "De'Aaron Fox",
       "team": "SAS",
       "status": "Day-To-Day"
+    },
+    {
+      "name": "Keldon Johnson",
+      "team": "SAS",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Tobias Harris",
+      "team": "SAS",
+      "status": "Out"
     },
     {
       "name": "Jayden Quaintance",
@@ -360,12 +360,12 @@
       "status": "Out"
     },
     {
-      "name": "Tony Bradley",
+      "name": "Trey Alexander",
       "team": "UTA",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
-      "name": "Trey Alexander",
+      "name": "Tony Bradley",
       "team": "UTA",
       "status": "Day-To-Day"
     },
