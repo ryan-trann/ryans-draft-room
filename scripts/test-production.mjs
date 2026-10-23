@@ -59,6 +59,40 @@ try{
  }
  await page.locator('.lineup-method summary').click();await expect(page.locator('.lineup-method')).toContainText('2 C and 3 UTIL');await expect(page.locator('.lineup-method')).toContainText('Unpublished games are excluded');
  await page.screenshot({path:evidence+'/lineup-method-mobile.png'});await page.locator('.lineup-method summary').click();
+ // v59: independent season/week scope updates totals, ranks, gaps and period counts.
+ await expect(page.getByRole('button',{name:'Season',exact:true})).toHaveAttribute('aria-pressed','true');
+ await page.getByRole('button',{name:'Week',exact:true}).click();
+ await expect(page.locator('.intro')).toContainText('Lineup-adjusted weekly projections');
+ await expect(page.getByRole('combobox',{name:'Ranking week',exact:true})).toHaveValue('0');
+ await expect(page.getByRole('combobox',{name:'Ranking week',exact:true}).locator('option')).toHaveCount(23);
+ await expect(page.getByRole('button',{name:'Previous ranking week'})).toBeDisabled();
+ await expect(page.locator('.rank-week-note')).toContainText('Full matchup week');
+ const verifyRankWeek=async(from,to)=>{
+  const m=model.forRange(from,to),expected=rankTotals(m.totals(active),categoryNames).find(t=>t.team==='Ryan'),counts=m.team(active.Ryan);
+  for(let i=0;i<categoryNames.length;i++){
+   await expect(page.locator('.gap-row').nth(i).locator(':scope > span')).toHaveText(Math.round(expected.totals[categoryNames[i]]).toLocaleString('en-US'));
+   await expect(page.locator('.gap-row').nth(i).locator(':scope > strong')).toHaveText('#'+expected.ranks[categoryNames[i]]);
+  }
+  await expect(page.locator('.lineup-counts')).toContainText(counts.startable.toLocaleString()+' of '+counts.scheduled.toLocaleString());
+ };
+ await verifyRankWeek('2026-10-20','2026-10-25');
+ await page.getByRole('button',{name:'Next ranking week'}).click();await expect(page.getByRole('combobox',{name:'Ranking week',exact:true})).toHaveValue('1');
+ await verifyRankWeek('2026-10-26','2026-11-01');
+ await expect(page.locator('.weekly-pot-board summary')).toContainText('Week 2 pot share');
+ await page.setViewportSize({width:375,height:812});expect(await page.locator('.content').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);
+ await page.screenshot({path:evidence+'/ranks-week-mobile.png'});await page.setViewportSize({width:393,height:852});
+ await page.getByRole('button',{name:'League',exact:true}).click();await expect(page.locator('.league-matrix tbody tr')).toHaveCount(12);
+ const weekRanks=rankTotals(model.forRange('2026-10-26','2026-11-01').totals(active),categoryNames);
+ for(const expected of weekRanks){const row=page.locator('.league-matrix tbody tr').filter({has:page.getByRole('rowheader',{name:expected.team,exact:true})});
+  for(let i=0;i<categoryNames.length;i++)await expect(row.locator('td').nth(i)).toHaveText(String(expected.ranks[categoryNames[i]]));
+ }
+ await page.getByRole('button',{name:'My team',exact:true}).click();
+ await page.getByRole('combobox',{name:'Ranking week',exact:true}).selectOption('22');await expect(page.getByRole('button',{name:'Next ranking week'})).toBeDisabled();
+ await page.getByRole('button',{name:'Jump to current week',exact:true}).click();await expect(page.getByRole('combobox',{name:'Ranking week',exact:true})).toHaveValue('0');
+ await page.getByRole('button',{name:'Season',exact:true}).click();
+ await expect(page.getByRole('combobox',{name:'Ranking week',exact:true})).toHaveCount(0);
+ for(let i=0;i<categoryNames.length;i++)await expect(page.locator('.gap-row').nth(i).locator(':scope > span')).toHaveText(Math.round(expectedRyan.totals[categoryNames[i]]).toLocaleString('en-US'));
+
  await page.getByRole('button',{name:'Team',exact:true}).click();
  // Duplicate display names use NBA team + positions; stable player IDs remain unchanged.
  const duplicateLabels=await page.evaluate(()=>{const all=window.DraftRoomBridge.data().projections;const counts=new Map();for(const p of all){const key=p.name.toLowerCase();counts.set(key,(counts.get(key)||0)+1)}return all.filter(p=>counts.get(p.name.toLowerCase())>1).map(p=>({id:p.draftId,actual:window.DraftRoomBridge.label(p.draftId),expected:p.name+' · '+p.team+' ('+p.positions+')'}))});
@@ -284,7 +318,7 @@ try{
  await page.locator('#reset').click();await expect(page.locator('#count')).toHaveText('0');await page.locator('#player').fill('N.Jokic');await page.locator('#playerSuggestions button').first().click();await page.locator('#record').click();await expect(page.locator('#count')).toHaveText('1');await page.locator('#undo').click();await expect(page.locator('#count')).toHaveText('0');
  await page.locator('#restore').setInputFiles({name:'draft-backup.json',mimeType:'application/json',buffer:Buffer.from(backup)});await expect(page.locator('#count')).toHaveText('168');
  await page.getByRole('button',{name:'Team',exact:true}).click();await page.getByRole('button',{name:'Open menu',exact:true}).click();await page.getByRole('button',{name:'GitHub & projections',exact:false}).click();await page.getByRole('button',{name:'Upload projections',exact:true}).click();
- await expect(page.getByRole('heading',{name:'UPLOAD PROJECTIONS',exact:true})).toBeVisible();await expect(page.locator('#legacy-ui')).toBeHidden();await expect(page.locator('.preview-label')).toHaveText('v58');expect(await page.locator('.hero-title').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);await page.screenshot({path:evidence+'/07a-projections-start-mobile.png'});
+ await expect(page.getByRole('heading',{name:'UPLOAD PROJECTIONS',exact:true})).toBeVisible();await expect(page.locator('#legacy-ui')).toBeHidden();await expect(page.locator('.preview-label')).toHaveText('v59');expect(await page.locator('.hero-title').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);await page.screenshot({path:evidence+'/07a-projections-start-mobile.png'});
  await page.getByRole('button',{name:'Validate and preview',exact:true}).click();await expect(page.locator('#tool-projections-preview')).toContainText('Validation failed');await expect(page.locator('#tool-projections-publish')).toBeDisabled();
  const tableText=await page.evaluate(()=>window.DRAFT_PROJECTIONS_RAW.trim().split(/\r?\n/).map(row=>{const x=row.split(/\s+/);x[1]=x[1].replaceAll('_',' ');if(x[2]==='-')x[2]='';return x.join(' ')}).join('\n'));
  await page.getByLabel('Projection table',{exact:true}).fill(tableText);await page.getByRole('button',{name:'Validate and preview',exact:true}).click();await expect(page.locator('#tool-projections-preview')).toContainText('Valid: 300 players');
@@ -304,10 +338,10 @@ try{
  const fallback=await browser.newPage({viewport:{width:375,height:812},isMobile:true,hasTouch:true});
  await fallback.route('**/nba-schedule.json?fresh=*',route=>route.fulfill({status:503,body:'Unavailable'}));
  await fallback.goto('http://127.0.0.1:4182'+prefix);await expect(fallback.locator('.schedule-status')).toContainText('daily lineup limits are not applied');
- await fallback.getByRole('button',{name:'Ranks',exact:true}).click();await expect(fallback.locator('.intro')).toContainText('Unrestricted season estimates');
+ await fallback.getByRole('button',{name:'Ranks',exact:true}).click();await expect(fallback.locator('.intro')).toContainText('Unrestricted season estimates');await expect(fallback.getByRole('button',{name:'Week',exact:true})).toBeDisabled();
  await fallback.unroute('**/nba-schedule.json?fresh=*');await fallback.getByRole('button',{name:'Retry schedule',exact:true}).click();
  await expect(fallback.locator('.schedule-status')).toHaveCount(0);await expect(fallback.locator('.intro')).toContainText('Lineup-adjusted');
  expect(await fallback.locator('.content').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);await fallback.close();
- const result={status:'passed',viewports:[{width:393,height:852},{width:1280,height:900}],appErrors:errors,mockedGitHubWrites:writes.length,mockedProjectionWrites:projectionWrites.length,checks:['daily position-aware season projections','proposed-roster trade rank table','schedule failure and retry','live data loading','category/trade parity','review-before-save','missing-token guard','canonical identity serialization','successful save and reload','unchanged draft history','stale-revision protection','two-player comparison','rankings','search and ADP sorting','live schedule streaming','native draft record, undo and restore','native projection validation and mocked publication','native backup reconciliation','legacy upload URL redirect','responsive overflow']};
+ const result={status:'passed',viewports:[{width:393,height:852},{width:1280,height:900}],appErrors:errors,mockedGitHubWrites:writes.length,mockedProjectionWrites:projectionWrites.length,checks:['season/week rank toggle and matchup picker','weekly totals and category matrix','daily position-aware season projections','proposed-roster trade rank table','schedule failure and retry','live data loading','category/trade parity','review-before-save','missing-token guard','canonical identity serialization','successful save and reload','unchanged draft history','stale-revision protection','two-player comparison','rankings','search and ADP sorting','live schedule streaming','native draft record, undo and restore','native projection validation and mocked publication','native backup reconciliation','legacy upload URL redirect','responsive overflow']};
  await fs.writeFile(evidence+'/results.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result));
 }finally{await browser.close();await new Promise(resolve=>server.close(resolve));}

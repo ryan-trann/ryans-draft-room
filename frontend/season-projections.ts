@@ -31,6 +31,10 @@ export class SeasonProjection {
    for(const t of [home,away])this.gamesPerTeam[t]=(this.gamesPerTeam[t]||0)+1;
   }
  }
+ forRange(start:string,end:string):SeasonProjection{
+  if(!/^\d{4}-\d{2}-\d{2}$/.test(start)||!/^\d{4}-\d{2}-\d{2}$/.test(end)||start>end)throw Error('Invalid projection date range');
+  return new SeasonProjection([...this.lookup.values()],this.cats,{...this.schedule,games:this.schedule.games.filter(g=>g.date>=start&&g.date<=end)});
+ }
  team(ids:string[],factor?:(p:Player)=>number):TeamProjection{
   const players=[...new Set(ids)].map(id=>this.lookup.get(id)).filter((p):p is Player=>Boolean(p));
   const key=players.map(p=>p.draftId).sort().join('|');

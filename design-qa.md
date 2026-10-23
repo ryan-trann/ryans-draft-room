@@ -67,3 +67,10 @@ Limits: Chromium touch emulation was used for phone sizes; physical Safari and V
 - Ranks includes expandable model/coverage details and selected-team scheduled/startable/slot-blocked game counts. Unavailable schedule data gives a persistent explicit fallback notice with retry. Individual player projections, saved rosters, draft history, GitHub save controls, and CSP remain intact.
 - Revision 6 roster example: Alan has 1,120 published scheduled player-games, 1,046 startable and 74 slot-blocked before projected availability. DREB estimate changes from 5,136.6 unrestricted to 4,747.3 after coverage and lineup adjustment. Coverage is 80 assigned games per NBA team; two unassigned regular-season games are excluded.
 - Validation: typecheck/build; focused lineup tests (including exhaustive feasible-subset comparisons); injury identity tests; full production regression at 393×852 and 1280×900 plus schedule failure/retry at 375×812. Browser regression verifies displayed season totals and proposed-roster ranks against the projection model. All GitHub saves in tests are intercepted fixtures.
+
+
+## v59 — Season / Week ranking control
+
+- Added an independent ranking-period toggle and accessible matchup selector with date ranges, previous/next controls, and current-week shortcut. Reuses the published Streaming matchup calendar, including extended weeks. Full selected-week projections are labeled separately from live results.
+- All Ranks views, gaps, counts and weekly-pot shares use the chosen period. Team and trade analysis retain their season projections. Schedule failures disable Week and preserve the explicit season fallback notice.
+- Validation covers inclusive window boundaries, empty periods, season immutability, week-to-week total/rank changes, every weekly league matrix cell, first/last-week limits, current-week reset, season restoration, schedule failure and 375px mobile overflow. Full regression checks roster saving, projection uploads, draft controls and streaming.

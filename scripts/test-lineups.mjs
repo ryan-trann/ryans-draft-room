@@ -45,6 +45,14 @@ for(const c of cats){
  assert.ok(Math.abs(out.totals[c]-expected)<1e-9,'same lineup must contribute to '+c);
 }
 assert.equal(model.team(ids.slice(0,4)).blocked,0,'benched/IL players excluded by caller cannot contribute');
+const firstDay=model.forRange('2026-10-25','2026-10-25'),secondDay=model.forRange('2026-10-26','2026-10-26');
+assert.equal(firstDay.team(ids).scheduled,7);assert.equal(firstDay.team(ids).startable,5);assert.equal(firstDay.team(ids).blocked,2);
+for(const c of cats)assert.ok(Math.abs(firstDay.team(ids).totals[c]+secondDay.team(ids).totals[c]-out.totals[c])<1e-9,'inclusive date windows must sum to the full period');
+const emptyWeek=model.forRange('2026-11-01','2026-11-07').team(ids);
+assert.equal(emptyWeek.scheduled,0);assert.equal(emptyWeek.startable,0);assert.ok(cats.every(c=>emptyWeek.totals[c]===0));
+assert.deepEqual(model.team(ids),out,'weekly projection cannot change season projection');
+assert.throws(()=>model.forRange('2026-10-26','2026-10-25'),/Invalid/);
+
 const availabilityModel=new SeasonProjection([p('half','C','GSW',2,41)],cats,schedule);
 assert.equal(availabilityModel.team(['half']).expectedStarted,.5,'preserve GP forecast, normalize GS/GSW');
 assert.equal(availabilityModel.team(['half']).totals.OREB,1,'per-game stats × starts × GP/82');
