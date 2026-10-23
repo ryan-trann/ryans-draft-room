@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-23T11:38:56.779Z",
-  "count": 78,
+  "updatedAt": "2026-10-23T17:06:55.208Z",
+  "count": 79,
   "players": [
     {
       "name": "Mouhamed Gueye",
@@ -45,12 +45,12 @@
       "status": "Out"
     },
     {
-      "name": "Dailyn Swain",
+      "name": "Jordan Hawkins",
       "team": "CHI",
       "status": "Day-To-Day"
     },
     {
-      "name": "Jordan Hawkins",
+      "name": "Dailyn Swain",
       "team": "CHI",
       "status": "Day-To-Day"
     },
@@ -263,6 +263,11 @@
       "name": "Izaiyah Nelson",
       "team": "ORL",
       "status": "Out"
+    },
+    {
+      "name": "Joel Embiid",
+      "team": "PHI",
+      "status": "Day-To-Day"
     },
     {
       "name": "Tacko Fall",
