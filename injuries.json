@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-23T17:06:55.208Z",
-  "count": 79,
+  "updatedAt": "2026-10-23T21:24:29.694Z",
+  "count": 70,
   "players": [
     {
       "name": "Mouhamed Gueye",
@@ -22,7 +22,7 @@
     {
       "name": "Tyler Bilodeau",
       "team": "BKN",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Grant Williams",
@@ -43,31 +43,6 @@
       "name": "Kylan Boswell",
       "team": "CHA",
       "status": "Out"
-    },
-    {
-      "name": "Jordan Hawkins",
-      "team": "CHI",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Dailyn Swain",
-      "team": "CHI",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Zach Collins",
-      "team": "CHI",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Tobe Awaka",
-      "team": "CHI",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Josh Giddey",
-      "team": "CHI",
-      "status": "Day-To-Day"
     },
     {
       "name": "Nic Claxton",
@@ -115,14 +90,9 @@
       "status": "Out"
     },
     {
-      "name": "Taurean Prince",
-      "team": "DET",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Charles Bassey",
       "team": "GSW",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Brandin Podziemski",
@@ -200,6 +170,11 @@
       "status": "Out"
     },
     {
+      "name": "Jake LaRavia",
+      "team": "LAL",
+      "status": "Out"
+    },
+    {
       "name": "Adou Thiero",
       "team": "LAL",
       "status": "Out"
@@ -208,11 +183,6 @@
       "name": "Cameron Carr",
       "team": "LAL",
       "status": "Out"
-    },
-    {
-      "name": "Jake LaRavia",
-      "team": "LAL",
-      "status": "Day-To-Day"
     },
     {
       "name": "Cedric Coward",
@@ -230,17 +200,17 @@
       "status": "Out"
     },
     {
+      "name": "Otega Oweh",
+      "team": "OKC",
+      "status": "Out"
+    },
+    {
       "name": "Nikola Topic",
       "team": "OKC",
       "status": "Out"
     },
     {
       "name": "Thomas Sorber",
-      "team": "OKC",
-      "status": "Out"
-    },
-    {
-      "name": "Otega Oweh",
       "team": "OKC",
       "status": "Out"
     },
@@ -265,17 +235,17 @@
       "status": "Out"
     },
     {
-      "name": "Joel Embiid",
-      "team": "PHI",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Tacko Fall",
       "team": "PHI",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Dean Wade",
+      "team": "PHI",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "LeBron James",
       "team": "PHI",
       "status": "Day-To-Day"
     },
@@ -297,7 +267,7 @@
     {
       "name": "Oso Ighodaro",
       "team": "PHX",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Mark Williams",
@@ -320,11 +290,6 @@
       "status": "Out"
     },
     {
-      "name": "Malik Monk",
-      "team": "SAC",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Ben Simmons",
       "team": "SAC",
       "status": "Out"
@@ -340,12 +305,12 @@
       "status": "Out"
     },
     {
-      "name": "De'Aaron Fox",
+      "name": "Keldon Johnson",
       "team": "SAS",
       "status": "Day-To-Day"
     },
     {
-      "name": "Keldon Johnson",
+      "name": "De'Aaron Fox",
       "team": "SAS",
       "status": "Day-To-Day"
     },
@@ -370,19 +335,9 @@
       "status": "Out"
     },
     {
-      "name": "Tony Bradley",
-      "team": "UTA",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Jusuf Nurkic",
       "team": "UTA",
       "status": "Out"
-    },
-    {
-      "name": "Felix Okpara",
-      "team": "WAS",
-      "status": "Day-To-Day"
     },
     {
       "name": "AJ Dybantsa",
