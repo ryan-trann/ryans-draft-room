@@ -14,7 +14,7 @@
  function preview(rosters,moves){return moves.reduce((next,m)=>editorChange(next,toOp(m)),copyRoster(rosters))}
  window.DraftRoomBridge={
   teams:TEAMS,cats:CATS,
-  data:()=>({projections:state.projections,rosters:copyRoster(currentRosters),il:Object.fromEntries(TEAMS.map(t=>[t,[...(editorIL[t]||[])]])),revision:editorRevision,ready:editorReady,batch:editorMoves.map(fromOp),status:$('editorStatus').textContent,projectionStatus:$('sharedProjectionStatus').textContent}),
+  data:()=>({projections:state.projections,rosters:copyRoster(currentRosters),il:Object.fromEntries(TEAMS.map(t=>[t,[...(editorIL[t]||[])]])),queuedIL:editorWorkingIL(),revision:editorRevision,ready:editorReady,batch:editorMoves.map(fromOp),status:$('editorStatus').textContent,projectionStatus:$('sharedProjectionStatus').textContent}),
   preview,
   active:()=>editorActiveRosters(),
   queue(moves){if(!editorReady)throw Error('Saved rosters are still loading. Reload rosters before editing.');let next=editorWorking();for(const m of moves)next=editorChange(next,toOp(m));editorMoves.push(...moves.map(toOp));editorReview=false;editorUpdateUI();$('editorReview').click();notify();},

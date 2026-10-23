@@ -35,3 +35,26 @@ Draft Center, projection uploads and saved-team restore now share the purple hea
 The first upload capture exposed a clipped one-line heading at 393 px. Tool-page headings now wrap naturally; the refreshed `07a-projections-start-mobile.png` shows the full heading, and a browser assertion verifies its content width. Post-fix suite: passed.
 
 A purple loading state now covers original markup during initialization; successful startup hides the loading state, while startup failure reveals the existing fallback tools. This avoids a brief old-interface flash when opening saved upload links.
+
+## v57 audit of the expanded app (2026-10-22 Pacific)
+
+final result: passed
+
+Scope: current v56 production, compared with the corrected v57 implementation. Source truth is the live v56 interface and fresh screenshots in `../audit-2026-10-22/screens/`; mobile before/after captures are in its `before/` and `after/` directories. Viewports: 393 × 852 and 375 × 812 CSS pixels at density 1, plus live desktop cloud-browser inspection.
+
+Findings resolved:
+- P1: one-for-one player pickers incorrectly excluded the player held by an invisible second slot. Only visible package slots now exclude duplicates; empty searches offer a clear recovery action.
+- P1: searching for Keith still labeled recommendations as Ryan and opening analysis silently substituted Ryan’s player. Recommendation details and analysis now retain the searched team, format, and exact players.
+- P2: search selectors could change while work ran, and Trades/Stream shared one loading flag. In-flight trade controls are disabled, feature loading states are separate, and duplicate stream starts are blocked.
+- P2: the full weekly-pot board pushed category rankings below most of the phone viewport. A compact expandable summary shows the selected team’s share and keeps all 12 teams one tap away. Wording distinguishes expected split-pot share, category shares, and percentage-point changes.
+- P2: asymmetric trade cards had misaligned headings and touching second cards. All multi-player packages align at the top with consistent spacing; recommendation analysis also uses the same avatar cards.
+- P2: queued IL changes showed saved-only IL status and offered duplicate actions. Manage now previews the original editor’s working IL state and labels it as a preview. IL buttons have 44 px minimum targets.
+- P2: trade results exposed literal `{ideas.avoided}` text, and streaming could show a positive improvement as +0.0 pp. Both displays are corrected without changing the models.
+
+Evidence: full before/after rankings and 2:1 comparisons are saved as `03-ranks-comparison.png` and `09-trade-two-one-comparison.png`; post-fix `13-deal-detail.png` and `14-recommended-analysis.png` retain Keith and the exact recommended players. The source models and data files were compared byte-for-byte and preserved. One early local capture lacked the independently published injury snapshot; post-fix captures serve the actual snapshot, so injury-adjusted cash values can differ in that comparison. This is a data-loading difference rather than a model change.
+
+Fidelity surfaces: existing condensed heading/Inter typography retained; black/purple/mint/amber tokens retained; layout rhythm and radii follow existing cards; player initials use the existing avatar component with no new raster assets; labels refer to the selected manager and current navigation. No unresolved P0/P1/P2 visual findings in reviewed states.
+
+Validation: TypeScript/build passed; injury identity tests passed; the existing production suite passed with added regressions for cross-team handoffs, complete 1:1 selection, empty search recovery, independent search state, collapsed/expanded weekly shares, and IL previews. Existing save/reload, missing-token, stale-revision, upload, backup reconciliation, comparison, schedule and CSP checks passed. GitHub writes were mocked; the audit did not save actual roster or projection changes. Nineteen mobile states passed heading/page-overflow checks with zero browser application errors.
+
+Limits: Chromium touch emulation was used for phone sizes; physical Safari and VoiceOver were not available. This is not a WCAG compliance certification or independent validation of the fantasy projection model.

@@ -53,6 +53,23 @@ try{
  await expect(page.getByRole('combobox',{name:'Find trades for team'})).toHaveValue('Ryan');
  await page.getByRole('combobox',{name:'Find trades for team'}).selectOption('Keith');
  await expect(page.getByRole('combobox',{name:'Find trades for team'})).toHaveValue('Keith');
+ // v57: results and the analysis handoff must retain the searched manager and exact players.
+ await page.getByRole('button',{name:'Find trades',exact:true}).click();
+ await expect(page.getByRole('combobox',{name:'Find trades for team'})).toBeDisabled();
+ await expect(page.getByRole('combobox',{name:'Trade format',exact:true})).toBeDisabled();
+ await page.getByRole('button',{name:'Stream',exact:true}).click();
+ await expect(page.getByRole('button',{name:'Find streaming opportunities',exact:true})).toBeEnabled();
+ await page.getByRole('button',{name:'Trades',exact:true}).click();
+ await page.locator('.idea-row').first().waitFor({timeout:60000});
+ await expect(page.locator('.ideas-section .status-note')).not.toContainText('{ideas.avoided}');
+ await page.locator('.idea-row').first().click();
+ await expect(page.locator('.deal-sheet .eyebrow').first()).toHaveText('KEITH SENDS');
+ const searchedGive=await page.locator('.deal-sheet h3').nth(0).innerText(),searchedReceive=await page.locator('.deal-sheet h3').nth(1).innerText();
+ await page.getByRole('button',{name:'Analyze trade',exact:true}).click();
+ await expect(page.getByRole('button',{name:'Choose trade teams'})).toContainText('Keith');
+ await expect(page.locator('.impact-heading')).toContainText('Analyze recommended trade');
+ await expect(page.locator('.exchange')).toContainText(searchedGive);await expect(page.locator('.exchange')).toContainText(searchedReceive);
+ await page.getByRole('button',{name:'Find ideas',exact:true}).click();
  await page.getByRole('combobox',{name:'Find trades for team'}).selectOption('Ryan');
  await expect(page.getByRole('combobox',{name:'Trade format',exact:true})).toBeVisible();
  await expect(page.getByRole('button',{name:'Find trades',exact:true})).toBeVisible();
@@ -91,8 +108,12 @@ try{
   await expect(page.getByRole('button',{name:'Queue for review'})).toHaveCount(0);
  }
  await page.getByRole('button',{name:'Analyze',exact:true}).click();
+ await page.getByRole('combobox',{name:'Analyze trade format'}).selectOption('1:1');
  await expect(page.locator('.pot-summary')).toContainText('cash-pot payout');
  await page.getByRole('button',{name:'Ranks',exact:true}).click();await expect(page.locator('.weekly-pot-row')).toHaveCount(12);
+ await expect(page.locator('.weekly-pot-board')).not.toHaveAttribute('open','');
+ const ranksTabTop=await page.getByRole('button',{name:'My team',exact:true}).evaluate(el=>el.getBoundingClientRect().top);expect(ranksTabTop).toBeLessThan(600);
+ await page.locator('.weekly-pot-board summary').click();await expect(page.locator('.weekly-pot-row').first()).toBeVisible();await page.locator('.weekly-pot-board summary').click();
  await expect(page.locator('.gap-row')).toHaveCount(9);
  await expect(page.locator('.gap-value')).toHaveCount(9);
  // Percentages are relative to projected league leaders; TO is lower-is-better.
@@ -105,6 +126,11 @@ try{
 
  await page.getByRole('button',{name:'Trades',exact:true}).click();
  await expect(page.getByRole('combobox',{name:'Analyze trade format'})).toHaveValue('1:1');
+ // A hidden second slot must never remove a player from one-for-one selection.
+ await page.getByRole('button',{name:'Choose trade teams',exact:true}).click();await page.getByRole('combobox',{name:'Trading partner',exact:true}).selectOption('Keith');await page.getByRole('button',{name:'Done',exact:true}).click();
+ await page.getByRole('button',{name:'Choose player to receive',exact:true}).click();await expect(page.locator('.selection-row')).toHaveCount(initial.rosters.Keith.length);
+ await page.getByRole('textbox',{name:'Search roster players'}).fill('Durant');await expect(page.locator('.selection-row')).toContainText('K.Durant');
+ await page.getByRole('textbox',{name:'Search roster players'}).fill('zz-nobody');await expect(page.getByRole('heading',{name:'No matching players',exact:true})).toBeVisible();await page.getByRole('button',{name:'Clear roster search'}).click();await expect(page.locator('.selection-row')).toHaveCount(initial.rosters.Keith.length);await page.getByRole('button',{name:'Close panel'}).click();
  await page.getByRole('combobox',{name:'Analyze trade format'}).selectOption('2:1');
  await expect(page.getByRole('button',{name:'Choose second player to send'})).toBeVisible();
  await page.getByRole('button',{name:'Choose second player to send'}).click();
@@ -144,6 +170,8 @@ try{
  await page.getByRole('button',{name:'Move to IL A.Edwards',exact:true}).click();
  await expect(page.locator('.review-list')).toContainText('IL');
  expect(await page.evaluate(()=>window.DraftRoomBridge.data().batch)).toHaveLength(1);
+ await page.getByRole('button',{name:'Close panel',exact:true}).click();await expect(page.locator('.roster-heading')).toContainText('1 on IL · preview');await expect(page.getByRole('button',{name:'Activate A.Edwards',exact:true})).toBeVisible();await expect(page.getByRole('button',{name:'Activate A.Edwards',exact:true}).evaluate(el=>el.getBoundingClientRect().height)).resolves.toBeGreaterThanOrEqual(44);
+ await page.getByRole('button',{name:'Review 1 queued changes',exact:true}).click();
  await page.getByRole('button',{name:'Discard batch',exact:true}).click();await page.getByRole('button',{name:'Close panel',exact:true}).click();
  await page.getByRole('button',{name:'Manage',exact:true}).click();
  await page.getByRole('combobox',{name:'Action',exact:true}).selectOption('swap');
@@ -220,7 +248,7 @@ try{
  await page.locator('#reset').click();await expect(page.locator('#count')).toHaveText('0');await page.locator('#player').fill('N.Jokic');await page.locator('#playerSuggestions button').first().click();await page.locator('#record').click();await expect(page.locator('#count')).toHaveText('1');await page.locator('#undo').click();await expect(page.locator('#count')).toHaveText('0');
  await page.locator('#restore').setInputFiles({name:'draft-backup.json',mimeType:'application/json',buffer:Buffer.from(backup)});await expect(page.locator('#count')).toHaveText('168');
  await page.getByRole('button',{name:'Team',exact:true}).click();await page.getByRole('button',{name:'Open menu',exact:true}).click();await page.getByRole('button',{name:'GitHub & projections',exact:false}).click();await page.getByRole('button',{name:'Upload projections',exact:true}).click();
- await expect(page.getByRole('heading',{name:'UPLOAD PROJECTIONS',exact:true})).toBeVisible();await expect(page.locator('#legacy-ui')).toBeHidden();await expect(page.locator('.preview-label')).toHaveText('v56');expect(await page.locator('.hero-title').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);await page.screenshot({path:evidence+'/07a-projections-start-mobile.png'});
+ await expect(page.getByRole('heading',{name:'UPLOAD PROJECTIONS',exact:true})).toBeVisible();await expect(page.locator('#legacy-ui')).toBeHidden();await expect(page.locator('.preview-label')).toHaveText('v57');expect(await page.locator('.hero-title').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);await page.screenshot({path:evidence+'/07a-projections-start-mobile.png'});
  await page.getByRole('button',{name:'Validate and preview',exact:true}).click();await expect(page.locator('#tool-projections-preview')).toContainText('Validation failed');await expect(page.locator('#tool-projections-publish')).toBeDisabled();
  const tableText=await page.evaluate(()=>window.DRAFT_PROJECTIONS_RAW.trim().split(/\r?\n/).map(row=>{const x=row.split(/\s+/);x[1]=x[1].replaceAll('_',' ');if(x[2]==='-')x[2]='';return x.join(' ')}).join('\n'));
  await page.getByLabel('Projection table',{exact:true}).fill(tableText);await page.getByRole('button',{name:'Validate and preview',exact:true}).click();await expect(page.locator('#tool-projections-preview')).toContainText('Valid: 300 players');

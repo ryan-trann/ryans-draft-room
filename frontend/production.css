@@ -53,3 +53,9 @@ dialog.production-sheet[open]{display:flex;flex-direction:column}dialog.producti
 .native-tools :focus-visible,.tool-back:focus-visible{outline:2px solid #bb94ff;outline-offset:3px}
 
 .draft-app .tool-content .hero-title{white-space:normal;line-height:1.05;overflow-wrap:normal}.draft-app .tool-content .hero-title span{white-space:nowrap}
+
+/* v57 audit: compact rankings, distinct packages, and reachable controls. */
+.weekly-pot-board summary{display:flex;align-items:center;gap:12px;cursor:pointer;min-height:48px;list-style:none}.weekly-pot-board summary::-webkit-details-marker{display:none}.weekly-pot-board summary>span{flex:1}.weekly-pot-board summary b{font-size:14px}.weekly-pot-board summary small{display:block;color:#a9acc0;font-size:11px;margin-top:4px}.weekly-pot-board summary>strong{text-align:right;color:#bf9bff;font-size:23px}.weekly-pot-board summary>strong small{font-weight:400}.weekly-pot-board[open] summary>svg{transform:rotate(180deg)}.weekly-pot-board summary:focus-visible{outline:2px solid #c7a5ff;outline-offset:5px;border-radius:5px}.weekly-pot-board[open] .footnote{margin:14px 0}.weekly-pot-board{margin:14px 0 18px}
+.draft-app .trade-content .package-exchange{align-items:start}.draft-app .trade-content .package-exchange>.exchange-icon{align-self:center;margin-bottom:0}.draft-app .second-player-pick{margin-top:8px}
+.il-button{min-width:44px;min-height:44px}.field select:disabled{opacity:.65;cursor:wait}
+.pot-summary{background:#171720;border:1px solid #343044;border-radius:12px;padding:14px;margin:12px 0}.pot-summary h2{font-size:14px;margin:0 0 8px}.pot-summary>strong{font-family:'Barlow Condensed',sans-serif;font-size:32px;line-height:1.2}.pot-summary>strong small{display:inline;font:400 11px 'Inter',sans-serif}.pot-summary p{font-size:12px;line-height:1.5;margin:7px 0}.pot-summary .model-note{text-align:left}
