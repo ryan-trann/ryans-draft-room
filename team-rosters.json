@@ -1,6 +1,6 @@
 {
   "formatVersion": 1,
-  "revision": 5,
+  "revision": 6,
   "source": "Draft Room team editor",
   "teams": {
     "Keith": [
@@ -115,8 +115,8 @@
         "name": "M.Bagley III"
       },
       {
-        "playerId": "hb-203",
-        "name": "A.Simons"
+        "playerId": "hb-167",
+        "name": "G.Allen"
       }
     ],
     "Sean": [
@@ -169,12 +169,12 @@
         "name": "A.Mara"
       },
       {
-        "playerId": "hb-152",
-        "name": "A.Bailey"
+        "playerId": "hb-141",
+        "name": "Y.Lendeborg"
       },
       {
-        "playerId": "hb-211",
-        "name": "Z.Risacher"
+        "playerId": "hb-175",
+        "name": "J.Fears"
       }
     ],
     "Matt": [
@@ -478,8 +478,8 @@
         "name": "A.Mitchell"
       },
       {
-        "playerId": "hb-228",
-        "name": "J.Hayes"
+        "playerId": "hb-207",
+        "name": "P.Achiuwa"
       }
     ],
     "Joe": [
@@ -520,8 +520,8 @@
         "name": "S.Mamukelashvili"
       },
       {
-        "playerId": "hb-141",
-        "name": "Y.Lendeborg"
+        "playerId": "hb-152",
+        "name": "A.Bailey"
       },
       {
         "playerId": "hb-168",
@@ -536,8 +536,8 @@
         "name": "F.VanVleet"
       },
       {
-        "playerId": "hb-135",
-        "name": "C.Johnson"
+        "playerId": "hb-211",
+        "name": "Z.Risacher"
       }
     ],
     "Jake": [
