@@ -11,6 +11,8 @@ on:
       - "scripts/prepare-production.mjs"
       - "scripts/test-production.mjs"
       - "scripts/test-injuries.mjs"
+      - "scripts/test-lineups.mjs"
+      - "tsconfig.json"
       - ".github/workflows/build-ui.yml"
   workflow_dispatch:
 
@@ -40,6 +42,8 @@ jobs:
         run: npm run build
       - name: Verify NBA injury player matching
         run: node scripts/test-injuries.mjs
+      - name: Verify schedule and position-aware projections
+        run: node scripts/test-lineups.mjs
       - name: Install browser for regression tests
         timeout-minutes: 5
         run: npx playwright install --only-shell chromium

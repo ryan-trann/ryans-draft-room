@@ -1,5 +1,6 @@
 import type {Player,Roster} from './engine';
 import {injuryAvailability,type InjurySnapshot} from './injuries';
+import type {SeasonProjection} from './season-projections';
 
 export type DealFormat='1:1'|'2:2';
 export type TradeVerdict='strong'|'situational'|'avoid';
@@ -12,10 +13,11 @@ const sum=(p:Player[],c:string)=>p.reduce((a,x)=>a+num(x,c),0);
 const injuryFactor=(p:Player,snapshot:InjurySnapshot|null)=>{if(!snapshot)return 1;const a=injuryAvailability(p.name,p.team,snapshot);return a===0?.85:a<=.2?.92:a<1?.97:1};
 const stdev=(values:number[])=>{const m=values.reduce((a,b)=>a+b,0)/Math.max(values.length,1);return Math.sqrt(values.reduce((a,b)=>a+(b-m)**2,0)/Math.max(values.length,1))||1};
 
-export function gaps(team:string,rosters:Roster,cats:string[],all:Player[]):CategoryGap[]{
+export function gaps(team:string,rosters:Roster,cats:string[],all:Player[],model:SeasonProjection|null=null):CategoryGap[]{
  const lookup=new Map(all.map(p=>[p.draftId,p]));
+ const projected=model?.totals(rosters);
  return cats.map(cat=>{
-  const teams=Object.entries(rosters).map(([name,ids])=>({name,total:sum(ids.map(id=>lookup.get(id)).filter(Boolean) as Player[],cat)}))
+  const teams=Object.entries(rosters).map(([name,ids])=>({name,total:projected?projected[name][cat]:sum(ids.map(id=>lookup.get(id)).filter(Boolean) as Player[],cat)}))
    .sort((a,b)=>flipped(cat)*(b.total-a.total));
   const me=teams.find(x=>x.name===team),leader=teams[0],total=me?.total||0;
   const gap=Math.max(0,flipped(cat)*(leader.total-total));
@@ -38,8 +40,8 @@ function lookupValue(all:Player[],cats:string[],snapshot:InjurySnapshot|null=nul
  }
  return {market,raw};
 }
-function share(rosters:Roster,cats:string[],lookup:Map<string,Player>){
- const totals=Object.fromEntries(Object.entries(rosters).map(([t,ids])=>[t,Object.fromEntries(cats.map(c=>[c,sum(ids.map(id=>lookup.get(id)).filter(Boolean) as Player[],c)]))]));
+function share(rosters:Roster,cats:string[],lookup:Map<string,Player>,model:SeasonProjection|null=null){
+ const totals=model?model.totals(rosters):Object.fromEntries(Object.entries(rosters).map(([t,ids])=>[t,Object.fromEntries(cats.map(c=>[c,sum(ids.map(id=>lookup.get(id)).filter(Boolean) as Player[],c)]))]));
  const shares=Object.fromEntries(Object.keys(rosters).map(t=>[t,0]));
  for(const cat of cats){
   const raw=Object.keys(rosters).map(t=>flipped(cat)*totals[t][cat]),mean=raw.reduce((a,b)=>a+b,0)/raw.length,range=Math.max(...raw)-Math.min(...raw);
@@ -59,12 +61,12 @@ const PRIMES=[2,3,5,7,11,13,17,19,23];
 function halton(index:number,base:number){let f=1,r=0;while(index>0){f/=base;r+=f*(index%base);index=Math.floor(index/base)}return r}
 const POT_DRAWS=Array.from({length:POT_TRIALS},(_,i)=>PRIMES.map(p=>halton(i+1,p)));
 type PotResult={teams:string[];shares:Record<string,number>;trials:number};
-export function estimatePot(rosters:Roster,cats:string[],all:Player[],trials=POT_TRIALS):PotResult{
+export function estimatePot(rosters:Roster,cats:string[],all:Player[],trials=POT_TRIALS,model:SeasonProjection|null=null):PotResult{
  const lookup=new Map(all.map(p=>[p.draftId,p]));
- return potFromLookup(rosters,cats,lookup,trials);
+ return potFromLookup(rosters,cats,lookup,trials,null,model);
 }
-function potFromLookup(rosters:Roster,cats:string[],lookup:Map<string,Player>,trials=POT_TRIALS,snapshot:InjurySnapshot|null=null):PotResult{
- const totals=Object.fromEntries(Object.entries(rosters).map(([t,ids])=>[t,Object.fromEntries(cats.map(c=>[c,ids.reduce((n,id)=>{const p=lookup.get(id);return n+(p?num(p,c)*injuryFactor(p,snapshot):0)},0)]))]));
+function potFromLookup(rosters:Roster,cats:string[],lookup:Map<string,Player>,trials=POT_TRIALS,snapshot:InjurySnapshot|null=null,model:SeasonProjection|null=null):PotResult{
+ const totals=model?model.totals(rosters,snapshot?p=>injuryFactor(p,snapshot):undefined):Object.fromEntries(Object.entries(rosters).map(([t,ids])=>[t,Object.fromEntries(cats.map(c=>[c,ids.reduce((n,id)=>{const p=lookup.get(id);return n+(p?num(p,c)*injuryFactor(p,snapshot):0)},0)]))]));
  return estimatePotFromTotals(totals,cats,trials);
 }
 export function estimatePotFromTotals(totalsByTeam:Record<string,Record<string,number>>,cats:string[],trials=POT_TRIALS,weeklyScale=22):PotResult{
@@ -102,20 +104,24 @@ export function estimatePotFromTotals(totalsByTeam:Record<string,Record<string,n
  }
  return {teams,shares:Object.fromEntries(teams.map((team,i)=>[team,won[i]/trials])),trials};
 }
-export function potImpact(before:Roster,after:Roster,cats:string[],all:Player[],from:string,other:string,snapshot:InjurySnapshot|null=null){
+export function potImpact(before:Roster,after:Roster,cats:string[],all:Player[],from:string,other:string,snapshot:InjurySnapshot|null=null,model:SeasonProjection|null=null){
  const lookup=new Map(all.map(p=>[p.draftId,p]));
- const a=potFromLookup(before,cats,lookup,POT_TRIALS,snapshot),b=potFromLookup(after,cats,lookup,POT_TRIALS,snapshot);
+ const a=potFromLookup(before,cats,lookup,POT_TRIALS,snapshot,model),b=potFromLookup(after,cats,lookup,POT_TRIALS,snapshot,model);
  return {mine:b.shares[from]-a.shares[from],theirs:b.shares[other]-a.shares[other],beforeMine:a.shares[from],afterMine:b.shares[from],beforeTheirs:a.shares[other],afterTheirs:b.shares[other],trials:a.trials};
+}
+export function categoryShareImpact(before:Roster,after:Roster,cats:string[],all:Player[],from:string,other:string,model:SeasonProjection|null=null){
+ const lookup=new Map(all.map(p=>[p.draftId,p])),a=share(before,cats,lookup,model),b=share(after,cats,lookup,model);
+ return {a:b[from]-a[from],b:b[other]-a[other]};
 }
 function packages(ids:string[],n:number){
  if(n===1)return ids.map(x=>[x]);
  const out:string[][]=[];for(let i=0;i<ids.length;i++)for(let j=i+1;j<ids.length;j++)out.push([ids[i],ids[j]]);
  return out;
 }
-export function findDeals(rosters:Roster,from:string,all:Player[],cats:string[],format:DealFormat='1:1',ignored:string[]=[],limit=12,snapshot:InjurySnapshot|null=null):{rows:Candidate[];examined:number;fairCount:number;avoided:number}{
+export function findDeals(rosters:Roster,from:string,all:Player[],cats:string[],format:DealFormat='1:1',ignored:string[]=[],limit=12,snapshot:InjurySnapshot|null=null,model:SeasonProjection|null=null):{rows:Candidate[];examined:number;fairCount:number;avoided:number}{
  const lookup=new Map(all.map(p=>[p.draftId,p])),v=lookupValue(all,cats,snapshot),market=v.market,raw=v.raw;
  const sides=format.split(':').map(Number),otherNames=Object.keys(rosters).filter(t=>t!==from);
- const base=share(rosters,cats,lookup),targetCats=cats.filter(c=>!ignored.includes(c)),focusBase=share(rosters,targetCats.length?targetCats:cats,lookup),taken=new Set(Object.values(rosters).flat());
+ const base=share(rosters,cats,lookup,model),targetCats=cats.filter(c=>!ignored.includes(c)),focusBase=share(rosters,targetCats.length?targetCats:cats,lookup,model),taken=new Set(Object.values(rosters).flat());
  const free=all.filter(p=>!taken.has(p.draftId)).sort((a,b)=>(market.get(b.draftId)||0)-(market.get(a.draftId)||0));
  const additions=free.slice(0,4);
  const myPacks=packages(rosters[from]||[],sides[0]);
@@ -152,9 +158,9 @@ export function findDeals(rosters:Roster,from:string,all:Player[],cats:string[],
    const theirsValue=draft[other].reduce((n,id)=>n+(raw.get(id)||0),0)-rosters[other].reduce((n,id)=>n+(raw.get(id)||0),0);
    // No deals that severely damage the other manager's overall projected production.
    if(theirsValue < -1.3 || mineValue < -3)continue;
-   const after=share(draft,cats,lookup),cashMine=after[from]-base[from],cashTheirs=after[other]-base[other];
+   const after=share(draft,cats,lookup,model),cashMine=after[from]-base[from],cashTheirs=after[other]-base[other];
    if(cashTheirs<-.018 || cashMine<-.09)continue;
-   const focusAfter=share(draft,targetCats.length?targetCats:cats,lookup);
+   const focusAfter=share(draft,targetCats.length?targetCats:cats,lookup,model);
    const focusedGain=focusAfter[from]-focusBase[from];
    // Partner gain is a feasibility constraint, NEVER a positive ranking bonus.
    const benefit=cashMine*.73+focusedGain*.27-Math.max(0,-theirsValue)*.012-difference*.035;
@@ -173,13 +179,13 @@ export function findDeals(rosters:Roster,from:string,all:Player[],cats:string[],
   seen.add(key);perOpponent.set(row.other,(perOpponent.get(row.other)||0)+1);
   shortlist.push(row);
  }
- const potBefore=potFromLookup(rosters,cats,lookup,POT_TRIALS,snapshot);
+ const potBefore=potFromLookup(rosters,cats,lookup,POT_TRIALS,snapshot,model);
  const ranked:Candidate[]=[];
  let avoided=0;
  const threats=Object.entries(potBefore.shares).filter(([t])=>t!==from).sort((a,b)=>b[1]-a[1]);
  const strongest=new Set(threats.slice(0,Math.max(3,Math.ceil(threats.length/3))).map(([t])=>t));
  for(const proposal of shortlist){
-  const result=potFromLookup(proposal._roster,cats,lookup,POT_TRIALS,snapshot);
+  const result=potFromLookup(proposal._roster,cats,lookup,POT_TRIALS,snapshot,model);
   const mineGain=result.shares[from]-potBefore.shares[from];
   // Do not recommend deals whose actual side-bet payout estimate declines.
   if(mineGain<=0.0001)continue;
@@ -199,10 +205,10 @@ export function findDeals(rosters:Roster,from:string,all:Player[],cats:string[],
  ranked.sort((a,b)=>b.adjustedGain-a.adjustedGain||b.potMine-a.potMine||b.fairness-a.fairness);
  return {rows:ranked.slice(0,limit),examined,fairCount,avoided};
 }
-export async function findDealsAsync(rosters:Roster,from:string,all:Player[],cats:string[],format:DealFormat='1:1',ignored:string[]=[],limit=12,snapshot:InjurySnapshot|null=null,onProgress?:(done:number,total:number,stage:string)=>void):Promise<{rows:Candidate[];examined:number;fairCount:number;avoided:number}>{
+export async function findDealsAsync(rosters:Roster,from:string,all:Player[],cats:string[],format:DealFormat='1:1',ignored:string[]=[],limit=12,snapshot:InjurySnapshot|null=null,onProgress:((done:number,total:number,stage:string)=>void)|undefined=undefined,model:SeasonProjection|null=null):Promise<{rows:Candidate[];examined:number;fairCount:number;avoided:number}>{
  const lookup=new Map(all.map(p=>[p.draftId,p])),v=lookupValue(all,cats,snapshot),market=v.market,raw=v.raw;
  const sides=format.split(':').map(Number),otherNames=Object.keys(rosters).filter(t=>t!==from);
- const base=share(rosters,cats,lookup),targetCats=cats.filter(c=>!ignored.includes(c)),focusBase=share(rosters,targetCats.length?targetCats:cats,lookup),taken=new Set(Object.values(rosters).flat());
+ const base=share(rosters,cats,lookup,model),targetCats=cats.filter(c=>!ignored.includes(c)),focusBase=share(rosters,targetCats.length?targetCats:cats,lookup,model),taken=new Set(Object.values(rosters).flat());
  const free=all.filter(p=>!taken.has(p.draftId)).sort((a,b)=>(market.get(b.draftId)||0)-(market.get(a.draftId)||0));
  const additions=free.slice(0,4);
  const myPacks=packages(rosters[from]||[],sides[0]);
@@ -241,9 +247,9 @@ export async function findDealsAsync(rosters:Roster,from:string,all:Player[],cat
    const theirsValue=draft[other].reduce((n,id)=>n+(raw.get(id)||0),0)-rosters[other].reduce((n,id)=>n+(raw.get(id)||0),0);
    // No deals that severely damage the other manager's overall projected production.
    if(theirsValue < -1.3 || mineValue < -3)continue;
-   const after=share(draft,cats,lookup),cashMine=after[from]-base[from],cashTheirs=after[other]-base[other];
+   const after=share(draft,cats,lookup,model),cashMine=after[from]-base[from],cashTheirs=after[other]-base[other];
    if(cashTheirs<-.018 || cashMine<-.09)continue;
-   const focusAfter=share(draft,targetCats.length?targetCats:cats,lookup);
+   const focusAfter=share(draft,targetCats.length?targetCats:cats,lookup,model);
    const focusedGain=focusAfter[from]-focusBase[from];
    // Partner gain is a feasibility constraint, NEVER a positive ranking bonus.
    const benefit=cashMine*.73+focusedGain*.27-Math.max(0,-theirsValue)*.012-difference*.035;
@@ -263,7 +269,7 @@ export async function findDealsAsync(rosters:Roster,from:string,all:Player[],cat
   seen.add(key);perOpponent.set(row.other,(perOpponent.get(row.other)||0)+1);
   shortlist.push(row);
  }
- const potBefore=potFromLookup(rosters,cats,lookup,POT_TRIALS,snapshot);
+ const potBefore=potFromLookup(rosters,cats,lookup,POT_TRIALS,snapshot,model);
  const ranked:Candidate[]=[];
  let avoided=0;
  const threats=Object.entries(potBefore.shares).filter(([t])=>t!==from).sort((a,b)=>b[1]-a[1]);
@@ -272,7 +278,7 @@ export async function findDealsAsync(rosters:Roster,from:string,all:Player[],cat
  for(const proposal of shortlist){
   if(completed%3===0)await progress(shortlist.length||1,'Simulating weekly cash-pot outcomes');
   completed++;
-  const result=potFromLookup(proposal._roster,cats,lookup,POT_TRIALS,snapshot);
+  const result=potFromLookup(proposal._roster,cats,lookup,POT_TRIALS,snapshot,model);
   const mineGain=result.shares[from]-potBefore.shares[from];
   // Do not recommend deals whose actual side-bet payout estimate declines.
   if(mineGain<=0.0001)continue;

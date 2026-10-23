@@ -2,6 +2,7 @@ import {chromium,expect} from '@playwright/test';
 import fs from 'node:fs/promises';
 import http from 'node:http';
 import path from 'node:path';
+import {SeasonProjection,rankTotals} from '../frontend/season-projections.ts';
 const root=path.resolve('dist'),prefix='/ryans-draft-room/',evidence=path.resolve('../production-evidence');
 const builtHtml=await fs.readFile(path.join(root,'index.html'),'utf8');
 if(!builtHtml.includes('Content-Security-Policy')||!builtHtml.includes('script-src \'self\' \'sha256-'))throw Error('Missing script-hash CSP');
@@ -38,6 +39,27 @@ try{
  await page.waitForLoadState('networkidle');await expect(page.locator('body')).toHaveClass(/modern-ready/);await page.evaluate(()=>document.fonts.ready);
  await expect(page.getByRole('heading',{name:'MY TEAM',exact:true})).toBeVisible();await expect(page.locator('.team-overview')).toContainText('Rank points');await expect(page.locator('.team-overview')).toContainText(/\d+\.\d/);await expect(page.locator('.roster-row')).toHaveCount(14);
  const initial=await page.evaluate(()=>window.DraftRoomBridge.data());expect(initial.revision).toBeGreaterThanOrEqual(1);expect(initial.projections.length).toBe(300);expect(initial.projections.filter(p=>p.adp>0).length).toBe(186);expect(new Set(Object.values(initial.rosters).flat()).size).toBe(Object.values(initial.rosters).flat().length);expect(Object.keys(initial.rosters)).toHaveLength(12);expect(Object.values(initial.rosters).every(ids=>ids.length<=20)).toBe(true);
+ // v58: published schedule and daily legal lineups drive the displayed ranks.
+ await expect(page.locator('.schedule-status')).toHaveCount(0);
+ const seasonSchedule=JSON.parse(await fs.readFile('nba-schedule.json','utf8'));
+ const categoryNames=['FGM','FTM','3PM','OREB','DREB','AST','STL','BLK','TO'];
+ const model=new SeasonProjection(initial.projections,categoryNames,seasonSchedule);
+ const active=Object.fromEntries(Object.entries(initial.rosters).map(([t,ids])=>[t,ids.filter(id=>!(initial.il[t]||[]).includes(id))]));
+ const expectedLeague=rankTotals(model.totals(active),categoryNames);
+ const alan=model.team(active.Alan);
+ const alanRaw=Object.fromEntries(categoryNames.map(c=>[c,active.Alan.reduce((n,id)=>n+Number(initial.projections.find(p=>p.draftId===id)?.[c]||0),0)]));
+ expect(alan.blocked).toBeGreaterThan(0);expect(alan.startable).toBeLessThan(alan.scheduled);expect(alan.totals.DREB).toBeLessThan(alanRaw.DREB);
+ await fs.writeFile(evidence+'/lineup-alan-comparison.json',JSON.stringify({revision:initial.revision,scheduleGames:seasonSchedule.games.length,scheduled:alan.scheduled,startable:alan.startable,blocked:alan.blocked,expectedStarted:alan.expectedStarted,oldTotals:alanRaw,adjustedTotals:alan.totals,league:expectedLeague},null,2));
+ await page.getByRole('button',{name:'Ranks',exact:true}).click();
+ await expect(page.locator('.intro')).toContainText('Lineup-adjusted season projections');
+ await expect(page.locator('.lineup-counts')).toContainText('blocked by daily slots');
+ const expectedRyan=expectedLeague.find(r=>r.team==='Ryan');
+ for(let i=0;i<categoryNames.length;i++){
+  await expect(page.locator('.gap-row').nth(i).locator(':scope > span')).toHaveText(Math.round(expectedRyan.totals[categoryNames[i]]).toLocaleString('en-US'));
+ }
+ await page.locator('.lineup-method summary').click();await expect(page.locator('.lineup-method')).toContainText('2 C and 3 UTIL');await expect(page.locator('.lineup-method')).toContainText('Unpublished games are excluded');
+ await page.screenshot({path:evidence+'/lineup-method-mobile.png'});await page.locator('.lineup-method summary').click();
+ await page.getByRole('button',{name:'Team',exact:true}).click();
  // Duplicate display names use NBA team + positions; stable player IDs remain unchanged.
  const duplicateLabels=await page.evaluate(()=>{const all=window.DraftRoomBridge.data().projections;const counts=new Map();for(const p of all){const key=p.name.toLowerCase();counts.set(key,(counts.get(key)||0)+1)}return all.filter(p=>counts.get(p.name.toLowerCase())>1).map(p=>({id:p.draftId,actual:window.DraftRoomBridge.label(p.draftId),expected:p.name+' · '+p.team+' ('+p.positions+')'}))});
  expect(duplicateLabels.length).toBeGreaterThan(0);
@@ -69,6 +91,20 @@ try{
  await expect(page.getByRole('button',{name:'Choose trade teams'})).toContainText('Keith');
  await expect(page.locator('.impact-heading')).toContainText('Analyze recommended trade');
  await expect(page.locator('.exchange')).toContainText(searchedGive);await expect(page.locator('.exchange')).toContainText(searchedReceive);
+ // The actual proposed roster must drive the trade rank table, not saved rosters.
+ const offer=await page.evaluate(({give,receive})=>{
+  const data=window.DraftRoomBridge.data();
+  const sent=data.projections.find(p=>window.DraftRoomBridge.label(p.draftId)===give).draftId;
+  const got=data.projections.find(p=>window.DraftRoomBridge.label(p.draftId)===receive).draftId;
+  const other=Object.keys(data.rosters).find(t=>data.rosters[t].includes(got));return {sent,got,other};
+ },{give:searchedGive,receive:searchedReceive});
+ const next=structuredClone(active);next.Keith=next.Keith.filter(id=>id!==offer.sent).concat(offer.got);next[offer.other]=next[offer.other].filter(id=>id!==offer.got).concat(offer.sent);
+ const nextLeague=rankTotals(model.totals(next),categoryNames),oldKeith=expectedLeague.find(t=>t.team==='Keith'),newKeith=nextLeague.find(t=>t.team==='Keith');
+ for(const [i,c] of ['DREB','AST','OREB','FTM'].entries()){
+  const cells=page.locator('.impact-table').first().locator('tbody tr').nth(i).locator('td');
+  await expect(cells.nth(0)).toHaveText(String(oldKeith.ranks[c]));await expect(cells.nth(2)).toHaveText(String(newKeith.ranks[c]));
+ }
+
  await page.getByRole('button',{name:'Find ideas',exact:true}).click();
  await page.getByRole('combobox',{name:'Find trades for team'}).selectOption('Ryan');
  await expect(page.getByRole('combobox',{name:'Trade format',exact:true})).toBeVisible();
@@ -248,7 +284,7 @@ try{
  await page.locator('#reset').click();await expect(page.locator('#count')).toHaveText('0');await page.locator('#player').fill('N.Jokic');await page.locator('#playerSuggestions button').first().click();await page.locator('#record').click();await expect(page.locator('#count')).toHaveText('1');await page.locator('#undo').click();await expect(page.locator('#count')).toHaveText('0');
  await page.locator('#restore').setInputFiles({name:'draft-backup.json',mimeType:'application/json',buffer:Buffer.from(backup)});await expect(page.locator('#count')).toHaveText('168');
  await page.getByRole('button',{name:'Team',exact:true}).click();await page.getByRole('button',{name:'Open menu',exact:true}).click();await page.getByRole('button',{name:'GitHub & projections',exact:false}).click();await page.getByRole('button',{name:'Upload projections',exact:true}).click();
- await expect(page.getByRole('heading',{name:'UPLOAD PROJECTIONS',exact:true})).toBeVisible();await expect(page.locator('#legacy-ui')).toBeHidden();await expect(page.locator('.preview-label')).toHaveText('v57');expect(await page.locator('.hero-title').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);await page.screenshot({path:evidence+'/07a-projections-start-mobile.png'});
+ await expect(page.getByRole('heading',{name:'UPLOAD PROJECTIONS',exact:true})).toBeVisible();await expect(page.locator('#legacy-ui')).toBeHidden();await expect(page.locator('.preview-label')).toHaveText('v58');expect(await page.locator('.hero-title').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);await page.screenshot({path:evidence+'/07a-projections-start-mobile.png'});
  await page.getByRole('button',{name:'Validate and preview',exact:true}).click();await expect(page.locator('#tool-projections-preview')).toContainText('Validation failed');await expect(page.locator('#tool-projections-publish')).toBeDisabled();
  const tableText=await page.evaluate(()=>window.DRAFT_PROJECTIONS_RAW.trim().split(/\r?\n/).map(row=>{const x=row.split(/\s+/);x[1]=x[1].replaceAll('_',' ');if(x[2]==='-')x[2]='';return x.join(' ')}).join('\n'));
  await page.getByLabel('Projection table',{exact:true}).fill(tableText);await page.getByRole('button',{name:'Validate and preview',exact:true}).click();await expect(page.locator('#tool-projections-preview')).toContainText('Valid: 300 players');
@@ -264,6 +300,14 @@ try{
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBe(true);
  await page.setViewportSize({width:1280,height:900});await page.getByRole('button',{name:'Team',exact:true}).click();await page.screenshot({path:evidence+'/05-team-desktop.png'});
  expect(errors).toEqual([]);
- const result={status:'passed',viewports:[{width:393,height:852},{width:1280,height:900}],appErrors:errors,mockedGitHubWrites:writes.length,mockedProjectionWrites:projectionWrites.length,checks:['live data loading','category/trade parity','review-before-save','missing-token guard','canonical identity serialization','successful save and reload','unchanged draft history','stale-revision protection','two-player comparison','rankings','search and ADP sorting','live schedule streaming','native draft record, undo and restore','native projection validation and mocked publication','native backup reconciliation','legacy upload URL redirect','responsive overflow']};
+ // A failed schedule must never silently claim that lineup limits were applied.
+ const fallback=await browser.newPage({viewport:{width:375,height:812},isMobile:true,hasTouch:true});
+ await fallback.route('**/nba-schedule.json?fresh=*',route=>route.fulfill({status:503,body:'Unavailable'}));
+ await fallback.goto('http://127.0.0.1:4182'+prefix);await expect(fallback.locator('.schedule-status')).toContainText('daily lineup limits are not applied');
+ await fallback.getByRole('button',{name:'Ranks',exact:true}).click();await expect(fallback.locator('.intro')).toContainText('Unrestricted season estimates');
+ await fallback.unroute('**/nba-schedule.json?fresh=*');await fallback.getByRole('button',{name:'Retry schedule',exact:true}).click();
+ await expect(fallback.locator('.schedule-status')).toHaveCount(0);await expect(fallback.locator('.intro')).toContainText('Lineup-adjusted');
+ expect(await fallback.locator('.content').evaluate(el=>el.scrollWidth<=el.clientWidth)).toBe(true);await fallback.close();
+ const result={status:'passed',viewports:[{width:393,height:852},{width:1280,height:900}],appErrors:errors,mockedGitHubWrites:writes.length,mockedProjectionWrites:projectionWrites.length,checks:['daily position-aware season projections','proposed-roster trade rank table','schedule failure and retry','live data loading','category/trade parity','review-before-save','missing-token guard','canonical identity serialization','successful save and reload','unchanged draft history','stale-revision protection','two-player comparison','rankings','search and ADP sorting','live schedule streaming','native draft record, undo and restore','native projection validation and mocked publication','native backup reconciliation','legacy upload URL redirect','responsive overflow']};
  await fs.writeFile(evidence+'/results.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result));
 }finally{await browser.close();await new Promise(resolve=>server.close(resolve));}

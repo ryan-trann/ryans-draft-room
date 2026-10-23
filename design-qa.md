@@ -58,3 +58,12 @@ Fidelity surfaces: existing condensed heading/Inter typography retained; black/p
 Validation: TypeScript/build passed; injury identity tests passed; the existing production suite passed with added regressions for cross-team handoffs, complete 1:1 selection, empty search recovery, independent search state, collapsed/expanded weekly shares, and IL previews. Existing save/reload, missing-token, stale-revision, upload, backup reconciliation, comparison, schedule and CSP checks passed. GitHub writes were mocked; the audit did not save actual roster or projection changes. Nineteen mobile states passed heading/page-overflow checks with zero browser application errors.
 
 Limits: Chromium touch emulation was used for phone sizes; physical Safari and VoiceOver were not available. This is not a WCAG compliance certification or independent validation of the fantasy projection model.
+
+
+## v58 — daily lineup projection correction
+
+- Full-season team totals now derive from per-game rates and daily published NBA dates, subject to PG/SG/G/SF/PF/F/2C/3UTIL. All nine categories use one consistent strongest-overall lineup. IL is excluded, multi-position matching shares the streaming matcher, and original projected GP availability is retained.
+- Team/Ranks, category gaps, manual/recommended trade rank previews, category-share search screening, and seasonal pot model inputs use the same adjusted totals. Corrected the adapter that previously ignored hypothetical rosters.
+- Ranks includes expandable model/coverage details and selected-team scheduled/startable/slot-blocked game counts. Unavailable schedule data gives a persistent explicit fallback notice with retry. Individual player projections, saved rosters, draft history, GitHub save controls, and CSP remain intact.
+- Revision 6 roster example: Alan has 1,120 published scheduled player-games, 1,046 startable and 74 slot-blocked before projected availability. DREB estimate changes from 5,136.6 unrestricted to 4,747.3 after coverage and lineup adjustment. Coverage is 80 assigned games per NBA team; two unassigned regular-season games are excluded.
+- Validation: typecheck/build; focused lineup tests (including exhaustive feasible-subset comparisons); injury identity tests; full production regression at 393×852 and 1280×900 plus schedule failure/retry at 375×812. Browser regression verifies displayed season totals and proposed-roster ranks against the projection model. All GitHub saves in tests are intercepted fixtures.

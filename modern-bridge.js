@@ -35,9 +35,9 @@
 })();
 
 // These calculation bodies are lifted verbatim from the existing renderers.
-window.DraftRoomBridge.standings=function(){
+window.DraftRoomBridge.standings=function(rosters=editorActiveRosters()){
  const teams=TEAMS.map(team=>{
-  const ps=(editorActiveRosters()[team]||[]).map(id=>state.projections.find(p=>p.draftId===id)).filter(Boolean);
+  const ps=(rosters[team]||[]).map(id=>state.projections.find(p=>p.draftId===id)).filter(Boolean);
   const totals={};for(const c of CATS)totals[c]=ps.reduce((sum,p)=>sum+Number(p[c]||0),0);
   return {team,count:ps.length,totals,ranks:{},points:0};
  });
