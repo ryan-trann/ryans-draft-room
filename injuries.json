@@ -1,7 +1,7 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-23T04:48:52.433Z",
+  "updatedAt": "2026-10-23T11:38:56.779Z",
   "count": 78,
   "players": [
     {
@@ -100,14 +100,14 @@
       "status": "Out"
     },
     {
-      "name": "Cameron Johnson",
+      "name": "Spencer Jones",
       "team": "DEN",
       "status": "Day-To-Day"
     },
     {
-      "name": "Spencer Jones",
+      "name": "Cameron Johnson",
       "team": "DEN",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Julian Strawther",
@@ -265,14 +265,14 @@
       "status": "Out"
     },
     {
-      "name": "Dean Wade",
-      "team": "PHI",
-      "status": "Out"
-    },
-    {
       "name": "Tacko Fall",
       "team": "PHI",
-      "status": "Out"
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Dean Wade",
+      "team": "PHI",
+      "status": "Day-To-Day"
     },
     {
       "name": "Dominick Barlow",
