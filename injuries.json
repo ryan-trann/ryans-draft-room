@@ -1,7 +1,7 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-23T21:24:29.694Z",
+  "updatedAt": "2026-10-24T04:36:10.220Z",
   "count": 70,
   "players": [
     {
@@ -27,17 +27,17 @@
     {
       "name": "Grant Williams",
       "team": "CHA",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Coby White",
       "team": "CHA",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Kon Knueppel",
       "team": "CHA",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Kylan Boswell",
@@ -50,22 +50,27 @@
       "status": "Out"
     },
     {
+      "name": "Caleb Martin",
+      "team": "DAL",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Jett Howard",
       "team": "DAL",
       "status": "Day-To-Day"
     },
     {
-      "name": "Caleb Martin",
+      "name": "Tarik Biberovic",
       "team": "DAL",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Santi Aldama",
       "team": "DAL",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
-      "name": "Tarik Biberovic",
+      "name": "Cooper Flagg",
       "team": "DAL",
       "status": "Out"
     },
@@ -77,10 +82,15 @@
     {
       "name": "Spencer Jones",
       "team": "DEN",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Cameron Johnson",
+      "team": "DEN",
+      "status": "Out"
+    },
+    {
+      "name": "Alpha Diallo",
       "team": "DEN",
       "status": "Day-To-Day"
     },
@@ -90,14 +100,19 @@
       "status": "Out"
     },
     {
+      "name": "Ausar Thompson",
+      "team": "DET",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Jalen Duren",
+      "team": "DET",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Charles Bassey",
       "team": "GSW",
       "status": "Out"
-    },
-    {
-      "name": "Brandin Podziemski",
-      "team": "GSW",
-      "status": "Day-To-Day"
     },
     {
       "name": "Kristaps Porzingis",
@@ -115,27 +130,17 @@
       "status": "Out"
     },
     {
-      "name": "Steven Adams",
-      "team": "HOU",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Reed Sheppard",
       "team": "HOU",
+      "status": "Out"
+    },
+    {
+      "name": "T.J. McConnell",
+      "team": "IND",
       "status": "Day-To-Day"
     },
     {
       "name": "Ben Sheppard",
-      "team": "IND",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Aaron Nesmith",
-      "team": "IND",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "T.J. McConnell",
       "team": "IND",
       "status": "Out"
     },
@@ -187,17 +192,17 @@
     {
       "name": "Cedric Coward",
       "team": "MEM",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Isaiah Stewart",
-      "team": "MEM",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Donte DiVincenzo",
       "team": "MIN",
       "status": "Out"
+    },
+    {
+      "name": "Yves Missi",
+      "team": "NOP",
+      "status": "Day-To-Day"
     },
     {
       "name": "Otega Oweh",
@@ -215,14 +220,19 @@
       "status": "Out"
     },
     {
-      "name": "Anthony Black",
-      "team": "ORL",
-      "status": "Out"
-    },
-    {
       "name": "Jonathan Isaac",
       "team": "ORL",
-      "status": "Out"
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Anthony Black",
+      "team": "ORL",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Paolo Banchero",
+      "team": "ORL",
+      "status": "Day-To-Day"
     },
     {
       "name": "Noah Penda",
@@ -267,7 +277,7 @@
     {
       "name": "Oso Ighodaro",
       "team": "PHX",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Mark Williams",
@@ -305,16 +315,6 @@
       "status": "Out"
     },
     {
-      "name": "Keldon Johnson",
-      "team": "SAS",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "De'Aaron Fox",
-      "team": "SAS",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Tobias Harris",
       "team": "SAS",
       "status": "Out"
@@ -342,7 +342,7 @@
     {
       "name": "AJ Dybantsa",
       "team": "WAS",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Tristan Vukcevic",
