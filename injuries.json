@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-24T11:00:15.209Z",
-  "count": 70,
+  "updatedAt": "2026-10-24T15:56:40.143Z",
+  "count": 75,
   "players": [
     {
       "name": "Mouhamed Gueye",
@@ -48,6 +48,11 @@
       "name": "Nic Claxton",
       "team": "CHI",
       "status": "Out"
+    },
+    {
+      "name": "Kyrie Irving",
+      "team": "DAL",
+      "status": "Day-To-Day"
     },
     {
       "name": "Caleb Martin",
@@ -110,9 +115,19 @@
       "status": "Day-To-Day"
     },
     {
-      "name": "Charles Bassey",
+      "name": "Brandin Podziemski",
       "team": "GSW",
       "status": "Out"
+    },
+    {
+      "name": "Stephen Curry",
+      "team": "GSW",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Charles Bassey",
+      "team": "GSW",
+      "status": "Day-To-Day"
     },
     {
       "name": "Kristaps Porzingis",
@@ -130,9 +145,19 @@
       "status": "Out"
     },
     {
+      "name": "Steven Adams",
+      "team": "HOU",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Fred VanVleet",
+      "team": "HOU",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Reed Sheppard",
       "team": "HOU",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "T.J. McConnell",
@@ -175,24 +200,24 @@
       "status": "Out"
     },
     {
-      "name": "Jake LaRavia",
-      "team": "LAL",
-      "status": "Out"
-    },
-    {
       "name": "Adou Thiero",
       "team": "LAL",
-      "status": "Out"
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Jake LaRavia",
+      "team": "LAL",
+      "status": "Day-To-Day"
     },
     {
       "name": "Cameron Carr",
       "team": "LAL",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Cedric Coward",
       "team": "MEM",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Donte DiVincenzo",
@@ -285,14 +310,14 @@
       "status": "Out"
     },
     {
-      "name": "Branden Carlson",
-      "team": "POR",
-      "status": "Out"
-    },
-    {
       "name": "Chris Youngblood",
       "team": "POR",
-      "status": "Out"
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Branden Carlson",
+      "team": "POR",
+      "status": "Day-To-Day"
     },
     {
       "name": "Shaedon Sharpe",
@@ -317,7 +342,7 @@
     {
       "name": "Tobias Harris",
       "team": "SAS",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Jayden Quaintance",
@@ -332,7 +357,7 @@
     {
       "name": "Trey Alexander",
       "team": "UTA",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Jusuf Nurkic",
