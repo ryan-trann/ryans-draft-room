@@ -1,6 +1,6 @@
 {
   "formatVersion": 1,
-  "revision": 6,
+  "revision": 7,
   "source": "Draft Room team editor",
   "teams": {
     "Keith": [
@@ -150,7 +150,8 @@
       },
       {
         "playerId": "hb-108",
-        "name": "C.Coward"
+        "name": "C.Coward",
+        "il": true
       },
       {
         "playerId": "hb-110",
@@ -175,6 +176,10 @@
       {
         "playerId": "hb-175",
         "name": "J.Fears"
+      },
+      {
+        "playerId": "hb-171",
+        "name": "N.Marshall"
       }
     ],
     "Matt": [
@@ -654,6 +659,10 @@
       {
         "playerId": "hb-160",
         "name": "C.Braun"
+      },
+      {
+        "playerId": "hb-164",
+        "name": "B.Coulibaly"
       }
     ],
     "Cam": [
