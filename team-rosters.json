@@ -1,6 +1,6 @@
 {
   "formatVersion": 1,
-  "revision": 7,
+  "revision": 8,
   "source": "Draft Room team editor",
   "teams": {
     "Keith": [
@@ -630,7 +630,8 @@
       },
       {
         "playerId": "hb-96",
-        "name": "B.Podziemski"
+        "name": "B.Podziemski",
+        "il": true
       },
       {
         "playerId": "hb-82",
