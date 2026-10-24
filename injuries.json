@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-24T20:49:18.586Z",
-  "count": 84,
+  "updatedAt": "2026-10-24T23:14:07.041Z",
+  "count": 81,
   "players": [
     {
       "name": "Mouhamed Gueye",
@@ -30,11 +30,6 @@
       "status": "Out"
     },
     {
-      "name": "Christian Anderson",
-      "team": "CHA",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Coby White",
       "team": "CHA",
       "status": "Out"
@@ -50,28 +45,18 @@
       "status": "Out"
     },
     {
-      "name": "Noa Essengue",
-      "team": "CHI",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Nic Claxton",
+      "name": "Patrick Williams",
       "team": "CHI",
       "status": "Out"
     },
     {
-      "name": "Zaccharie Risacher",
-      "team": "DAL",
-      "status": "Day-To-Day"
+      "name": "Noa Essengue",
+      "team": "CHI",
+      "status": "Out"
     },
     {
-      "name": "Morez Johnson Jr.",
-      "team": "DAL",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Caleb Martin",
-      "team": "DAL",
+      "name": "Nic Claxton",
+      "team": "CHI",
       "status": "Out"
     },
     {
@@ -82,7 +67,12 @@
     {
       "name": "Kyrie Irving",
       "team": "DAL",
-      "status": "Day-To-Day"
+      "status": "Out"
+    },
+    {
+      "name": "Caleb Martin",
+      "team": "DAL",
+      "status": "Out"
     },
     {
       "name": "Max Christie",
@@ -190,19 +180,19 @@
       "status": "Out"
     },
     {
-      "name": "Reed Sheppard",
-      "team": "HOU",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Fred VanVleet",
       "team": "HOU",
       "status": "Out"
     },
     {
-      "name": "T.J. McConnell",
+      "name": "Aaron Nesmith",
       "team": "IND",
       "status": "Day-To-Day"
+    },
+    {
+      "name": "T.J. McConnell",
+      "team": "IND",
+      "status": "Out"
     },
     {
       "name": "Ben Sheppard",
@@ -240,6 +230,11 @@
       "status": "Out"
     },
     {
+      "name": "Cameron Carr",
+      "team": "LAL",
+      "status": "Out"
+    },
+    {
       "name": "Adou Thiero",
       "team": "LAL",
       "status": "Day-To-Day"
@@ -250,18 +245,8 @@
       "status": "Day-To-Day"
     },
     {
-      "name": "Cameron Carr",
-      "team": "LAL",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Cedric Coward",
       "team": "MEM",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Pelle Larsson",
-      "team": "MIA",
       "status": "Day-To-Day"
     },
     {
@@ -273,6 +258,11 @@
       "name": "Yves Missi",
       "team": "NOP",
       "status": "Out"
+    },
+    {
+      "name": "Jose Alvarado",
+      "team": "NYK",
+      "status": "Day-To-Day"
     },
     {
       "name": "Otega Oweh",
@@ -325,11 +315,6 @@
       "status": "Out"
     },
     {
-      "name": "Dean Wade",
-      "team": "PHI",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Dominick Barlow",
       "team": "PHI",
       "status": "Out"
@@ -340,14 +325,14 @@
       "status": "Out"
     },
     {
-      "name": "Oso Ighodaro",
-      "team": "PHX",
-      "status": "Out"
-    },
-    {
       "name": "Luke Kennard",
       "team": "PHX",
       "status": "Day-To-Day"
+    },
+    {
+      "name": "Oso Ighodaro",
+      "team": "PHX",
+      "status": "Out"
     },
     {
       "name": "Mark Williams",
