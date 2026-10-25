@@ -1,7 +1,7 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-25T16:18:37.736Z",
+  "updatedAt": "2026-10-25T20:50:45.817Z",
   "count": 82,
   "players": [
     {
@@ -22,7 +22,7 @@
     {
       "name": "Tyler Bilodeau",
       "team": "BKN",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Mikel Brown Jr.",
@@ -65,12 +65,17 @@
       "status": "Out"
     },
     {
-      "name": "Kyrie Irving",
+      "name": "Caleb Martin",
       "team": "DAL",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
-      "name": "Caleb Martin",
+      "name": "Cooper Flagg",
+      "team": "DAL",
+      "status": "Out"
+    },
+    {
+      "name": "Naji Marshall",
       "team": "DAL",
       "status": "Out"
     },
@@ -81,11 +86,6 @@
     },
     {
       "name": "Santi Aldama",
-      "team": "DAL",
-      "status": "Out"
-    },
-    {
-      "name": "Cooper Flagg",
       "team": "DAL",
       "status": "Out"
     },
@@ -235,6 +235,11 @@
       "status": "Out"
     },
     {
+      "name": "Karim Lopez",
+      "team": "MEM",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Cedric Coward",
       "team": "MEM",
       "status": "Day-To-Day"
@@ -300,22 +305,17 @@
       "status": "Out"
     },
     {
-      "name": "LeBron James",
+      "name": "Tacko Fall",
       "team": "PHI",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Joel Embiid",
-      "team": "PHI",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Jabari Walker",
       "team": "PHI",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
-      "name": "Tacko Fall",
+      "name": "Joel Embiid",
       "team": "PHI",
       "status": "Out"
     },
