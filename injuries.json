@@ -1,7 +1,7 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-24T23:14:07.041Z",
+  "updatedAt": "2026-10-25T04:40:43.192Z",
   "count": 81,
   "players": [
     {
@@ -17,6 +17,11 @@
     {
       "name": "Devin Carter",
       "team": "BOS",
+      "status": "Out"
+    },
+    {
+      "name": "Mikel Brown Jr.",
+      "team": "BKN",
       "status": "Out"
     },
     {
@@ -60,11 +65,6 @@
       "status": "Out"
     },
     {
-      "name": "Jett Howard",
-      "team": "DAL",
-      "status": "Out"
-    },
-    {
       "name": "Kyrie Irving",
       "team": "DAL",
       "status": "Out"
@@ -73,11 +73,6 @@
       "name": "Caleb Martin",
       "team": "DAL",
       "status": "Out"
-    },
-    {
-      "name": "Max Christie",
-      "team": "DAL",
-      "status": "Day-To-Day"
     },
     {
       "name": "Tarik Biberovic",
@@ -100,7 +95,7 @@
       "status": "Out"
     },
     {
-      "name": "Spencer Jones",
+      "name": "Alpha Diallo",
       "team": "DEN",
       "status": "Out"
     },
@@ -110,9 +105,9 @@
       "status": "Out"
     },
     {
-      "name": "Alpha Diallo",
+      "name": "Spencer Jones",
       "team": "DEN",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Julian Strawther",
@@ -130,19 +125,14 @@
       "status": "Out"
     },
     {
-      "name": "Charles Bassey",
+      "name": "Draymond Green",
       "team": "GSW",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Al Horford",
       "team": "GSW",
       "status": "Out"
-    },
-    {
-      "name": "Draymond Green",
-      "team": "GSW",
-      "status": "Day-To-Day"
     },
     {
       "name": "Stephen Curry",
@@ -172,7 +162,7 @@
     {
       "name": "Marcus Smart",
       "team": "HOU",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Steven Adams",
@@ -230,24 +220,24 @@
       "status": "Out"
     },
     {
+      "name": "Adou Thiero",
+      "team": "LAL",
+      "status": "Out"
+    },
+    {
       "name": "Cameron Carr",
       "team": "LAL",
       "status": "Out"
     },
     {
-      "name": "Adou Thiero",
-      "team": "LAL",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Jake LaRavia",
-      "team": "LAL",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Cedric Coward",
       "team": "MEM",
       "status": "Day-To-Day"
+    },
+    {
+      "name": "Zach Edey",
+      "team": "MEM",
+      "status": "Out"
     },
     {
       "name": "Donte DiVincenzo",
@@ -305,6 +295,16 @@
       "status": "Out"
     },
     {
+      "name": "Joel Embiid",
+      "team": "PHI",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Jabari Walker",
+      "team": "PHI",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "LeBron James",
       "team": "PHI",
       "status": "Out"
@@ -323,11 +323,6 @@
       "name": "Ariel Hukporti",
       "team": "PHI",
       "status": "Out"
-    },
-    {
-      "name": "Luke Kennard",
-      "team": "PHX",
-      "status": "Day-To-Day"
     },
     {
       "name": "Oso Ighodaro",
@@ -353,6 +348,11 @@
       "name": "Shaedon Sharpe",
       "team": "POR",
       "status": "Out"
+    },
+    {
+      "name": "Keegan Murray",
+      "team": "SAC",
+      "status": "Day-To-Day"
     },
     {
       "name": "Ben Simmons",
@@ -387,7 +387,7 @@
     {
       "name": "Trey Alexander",
       "team": "UTA",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Jusuf Nurkic",
