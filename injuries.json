@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-25T04:40:43.192Z",
-  "count": 81,
+  "updatedAt": "2026-10-25T11:28:26.267Z",
+  "count": 82,
   "players": [
     {
       "name": "Mouhamed Gueye",
@@ -123,6 +123,11 @@
       "name": "Jalen Duren",
       "team": "DET",
       "status": "Out"
+    },
+    {
+      "name": "Gui Santos",
+      "team": "GSW",
+      "status": "Day-To-Day"
     },
     {
       "name": "Draymond Green",
