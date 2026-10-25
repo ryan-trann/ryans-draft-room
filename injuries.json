@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-25T20:50:45.817Z",
-  "count": 82,
+  "updatedAt": "2026-10-25T23:16:22.064Z",
+  "count": 80,
   "players": [
     {
       "name": "Mouhamed Gueye",
@@ -30,7 +30,7 @@
       "status": "Out"
     },
     {
-      "name": "Grant Williams",
+      "name": "Kon Knueppel",
       "team": "CHA",
       "status": "Out"
     },
@@ -40,7 +40,7 @@
       "status": "Out"
     },
     {
-      "name": "Kon Knueppel",
+      "name": "Grant Williams",
       "team": "CHA",
       "status": "Out"
     },
@@ -95,7 +95,7 @@
       "status": "Out"
     },
     {
-      "name": "Spencer Jones",
+      "name": "Alpha Diallo",
       "team": "DEN",
       "status": "Day-To-Day"
     },
@@ -105,9 +105,9 @@
       "status": "Day-To-Day"
     },
     {
-      "name": "Alpha Diallo",
+      "name": "Spencer Jones",
       "team": "DEN",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Julian Strawther",
@@ -117,7 +117,7 @@
     {
       "name": "Ausar Thompson",
       "team": "DET",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Jalen Duren",
@@ -125,27 +125,17 @@
       "status": "Out"
     },
     {
-      "name": "Brandin Podziemski",
-      "team": "GSW",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Al Horford",
-      "team": "GSW",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Draymond Green",
-      "team": "GSW",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Stephen Curry",
-      "team": "GSW",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Gui Santos",
+      "team": "GSW",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Brandon Williams",
+      "team": "GSW",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Charles Bassey",
       "team": "GSW",
       "status": "Day-To-Day"
     },
@@ -165,11 +155,6 @@
       "status": "Out"
     },
     {
-      "name": "Fred VanVleet",
-      "team": "HOU",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Marcus Smart",
       "team": "HOU",
       "status": "Day-To-Day"
@@ -177,10 +162,10 @@
     {
       "name": "Steven Adams",
       "team": "HOU",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
-      "name": "Aaron Nesmith",
+      "name": "Ivica Zubac",
       "team": "IND",
       "status": "Day-To-Day"
     },
@@ -262,7 +247,7 @@
     {
       "name": "Jose Alvarado",
       "team": "NYK",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Otega Oweh",
@@ -285,11 +270,6 @@
       "status": "Out"
     },
     {
-      "name": "Anthony Black",
-      "team": "ORL",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Paolo Banchero",
       "team": "ORL",
       "status": "Out"
@@ -302,6 +282,11 @@
     {
       "name": "Izaiyah Nelson",
       "team": "ORL",
+      "status": "Out"
+    },
+    {
+      "name": "VJ Edgecombe",
+      "team": "PHI",
       "status": "Out"
     },
     {
@@ -357,7 +342,7 @@
     {
       "name": "Keegan Murray",
       "team": "SAC",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Ben Simmons",
@@ -382,6 +367,11 @@
     {
       "name": "Jayden Quaintance",
       "team": "SAS",
+      "status": "Out"
+    },
+    {
+      "name": "Kawhi Leonard",
+      "team": "TOR",
       "status": "Out"
     },
     {
