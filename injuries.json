@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-25T23:16:22.064Z",
-  "count": 80,
+  "updatedAt": "2026-10-26T04:46:51.700Z",
+  "count": 84,
   "players": [
     {
       "name": "Mouhamed Gueye",
@@ -115,6 +115,11 @@
       "status": "Out"
     },
     {
+      "name": "Isaiah Joe",
+      "team": "DET",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Ausar Thompson",
       "team": "DET",
       "status": "Out"
@@ -222,12 +227,7 @@
     {
       "name": "Karim Lopez",
       "team": "MEM",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Cedric Coward",
-      "team": "MEM",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Zach Edey",
@@ -250,6 +250,21 @@
       "status": "Out"
     },
     {
+      "name": "Jalen Williams",
+      "team": "OKC",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Jaylin Williams",
+      "team": "OKC",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Cason Wallace",
+      "team": "OKC",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Otega Oweh",
       "team": "OKC",
       "status": "Out"
@@ -263,6 +278,11 @@
       "name": "Thomas Sorber",
       "team": "OKC",
       "status": "Out"
+    },
+    {
+      "name": "Jalen Suggs",
+      "team": "ORL",
+      "status": "Day-To-Day"
     },
     {
       "name": "Jonathan Isaac",
