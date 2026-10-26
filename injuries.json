@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-26T13:01:56.410Z",
-  "count": 84,
+  "updatedAt": "2026-10-26T20:29:05.002Z",
+  "count": 89,
   "players": [
     {
       "name": "Mouhamed Gueye",
@@ -20,14 +20,19 @@
       "status": "Out"
     },
     {
+      "name": "Mikel Brown Jr.",
+      "team": "BKN",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Tyler Bilodeau",
       "team": "BKN",
       "status": "Out"
     },
     {
-      "name": "Mikel Brown Jr.",
-      "team": "BKN",
-      "status": "Out"
+      "name": "Naz Reid",
+      "team": "CHA",
+      "status": "Day-To-Day"
     },
     {
       "name": "Kon Knueppel",
@@ -72,7 +77,7 @@
     {
       "name": "Cooper Flagg",
       "team": "DAL",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Naji Marshall",
@@ -97,7 +102,7 @@
     {
       "name": "Alpha Diallo",
       "team": "DEN",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Cameron Johnson",
@@ -115,14 +120,14 @@
       "status": "Out"
     },
     {
-      "name": "Isaiah Joe",
+      "name": "Ausar Thompson",
       "team": "DET",
       "status": "Day-To-Day"
     },
     {
-      "name": "Ausar Thompson",
+      "name": "Isaiah Joe",
       "team": "DET",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Jalen Duren",
@@ -162,7 +167,7 @@
     {
       "name": "Marcus Smart",
       "team": "HOU",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Steven Adams",
@@ -170,12 +175,22 @@
       "status": "Out"
     },
     {
-      "name": "Ivica Zubac",
+      "name": "Andrew Nembhard",
       "team": "IND",
       "status": "Day-To-Day"
     },
     {
       "name": "T.J. McConnell",
+      "team": "IND",
+      "status": "Out"
+    },
+    {
+      "name": "Aaron Nesmith",
+      "team": "IND",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Ivica Zubac",
       "team": "IND",
       "status": "Out"
     },
@@ -225,14 +240,19 @@
       "status": "Out"
     },
     {
-      "name": "Karim Lopez",
+      "name": "Isaiah Stewart",
       "team": "MEM",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
-      "name": "Zach Edey",
+      "name": "Karim Lopez",
       "team": "MEM",
-      "status": "Out"
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Anthony Edwards",
+      "team": "MIN",
+      "status": "Day-To-Day"
     },
     {
       "name": "Donte DiVincenzo",
@@ -247,27 +267,7 @@
     {
       "name": "Jose Alvarado",
       "team": "NYK",
-      "status": "Out"
-    },
-    {
-      "name": "Jalen Williams",
-      "team": "OKC",
       "status": "Day-To-Day"
-    },
-    {
-      "name": "Jaylin Williams",
-      "team": "OKC",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Cason Wallace",
-      "team": "OKC",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Otega Oweh",
-      "team": "OKC",
-      "status": "Out"
     },
     {
       "name": "Nikola Topic",
@@ -280,9 +280,29 @@
       "status": "Out"
     },
     {
+      "name": "Cason Wallace",
+      "team": "OKC",
+      "status": "Out"
+    },
+    {
+      "name": "Chet Holmgren",
+      "team": "OKC",
+      "status": "Out"
+    },
+    {
+      "name": "Jalen Williams",
+      "team": "OKC",
+      "status": "Out"
+    },
+    {
+      "name": "Otega Oweh",
+      "team": "OKC",
+      "status": "Out"
+    },
+    {
       "name": "Jalen Suggs",
       "team": "ORL",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Jonathan Isaac",
@@ -305,22 +325,22 @@
       "status": "Out"
     },
     {
-      "name": "VJ Edgecombe",
-      "team": "PHI",
-      "status": "Out"
-    },
-    {
-      "name": "Tacko Fall",
-      "team": "PHI",
-      "status": "Out"
-    },
-    {
       "name": "Jabari Walker",
       "team": "PHI",
-      "status": "Out"
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "VJ Edgecombe",
+      "team": "PHI",
+      "status": "Day-To-Day"
     },
     {
       "name": "Joel Embiid",
+      "team": "PHI",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Tacko Fall",
       "team": "PHI",
       "status": "Out"
     },
@@ -337,7 +357,7 @@
     {
       "name": "Oso Ighodaro",
       "team": "PHX",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Mark Williams",
@@ -362,7 +382,7 @@
     {
       "name": "Keegan Murray",
       "team": "SAC",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Ben Simmons",
@@ -392,12 +412,17 @@
     {
       "name": "Kawhi Leonard",
       "team": "TOR",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Nate Bittle",
       "team": "TOR",
       "status": "Out"
+    },
+    {
+      "name": "Jaxson Hayes",
+      "team": "UTA",
+      "status": "Day-To-Day"
     },
     {
       "name": "Trey Alexander",
