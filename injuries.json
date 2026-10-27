@@ -1,7 +1,7 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-27T08:59:18.823Z",
+  "updatedAt": "2026-10-27T15:21:34.357Z",
   "count": 83,
   "players": [
     {
@@ -55,6 +55,11 @@
       "status": "Out"
     },
     {
+      "name": "Santi Aldama",
+      "team": "DAL",
+      "status": "Out"
+    },
+    {
       "name": "Naji Marshall",
       "team": "DAL",
       "status": "Day-To-Day"
@@ -71,11 +76,6 @@
     },
     {
       "name": "Tarik Biberovic",
-      "team": "DAL",
-      "status": "Out"
-    },
-    {
-      "name": "Santi Aldama",
       "team": "DAL",
       "status": "Out"
     },
@@ -215,6 +215,11 @@
       "status": "Out"
     },
     {
+      "name": "Chet Holmgren",
+      "team": "OKC",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Alex Caruso",
       "team": "OKC",
       "status": "Day-To-Day"
@@ -236,11 +241,6 @@
     },
     {
       "name": "Thomas Sorber",
-      "team": "OKC",
-      "status": "Out"
-    },
-    {
-      "name": "Chet Holmgren",
       "team": "OKC",
       "status": "Out"
     },
