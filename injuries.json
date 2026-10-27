@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-26T20:29:05.002Z",
-  "count": 89,
+  "updatedAt": "2026-10-27T00:25:38.506Z",
+  "count": 86,
   "players": [
     {
       "name": "Mouhamed Gueye",
@@ -30,17 +30,12 @@
       "status": "Out"
     },
     {
-      "name": "Naz Reid",
-      "team": "CHA",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Kon Knueppel",
+      "name": "Coby White",
       "team": "CHA",
       "status": "Out"
     },
     {
-      "name": "Coby White",
+      "name": "Kon Knueppel",
       "team": "CHA",
       "status": "Out"
     },
@@ -55,29 +50,24 @@
       "status": "Out"
     },
     {
-      "name": "Patrick Williams",
-      "team": "CHI",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Noa Essengue",
-      "team": "CHI",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Nic Claxton",
       "team": "CHI",
       "status": "Out"
     },
     {
-      "name": "Caleb Martin",
-      "team": "DAL",
+      "name": "Patrick Williams",
+      "team": "CHI",
       "status": "Out"
     },
     {
-      "name": "Cooper Flagg",
+      "name": "Sergio de Larrea",
       "team": "DAL",
       "status": "Day-To-Day"
+    },
+    {
+      "name": "Caleb Martin",
+      "team": "DAL",
+      "status": "Out"
     },
     {
       "name": "Naji Marshall",
@@ -120,12 +110,12 @@
       "status": "Out"
     },
     {
-      "name": "Ausar Thompson",
+      "name": "Isaiah Joe",
       "team": "DET",
       "status": "Day-To-Day"
     },
     {
-      "name": "Isaiah Joe",
+      "name": "Ausar Thompson",
       "team": "DET",
       "status": "Day-To-Day"
     },
@@ -165,19 +155,24 @@
       "status": "Out"
     },
     {
-      "name": "Marcus Smart",
-      "team": "HOU",
-      "status": "Out"
-    },
-    {
       "name": "Steven Adams",
       "team": "HOU",
       "status": "Out"
     },
     {
+      "name": "Marcus Smart",
+      "team": "HOU",
+      "status": "Out"
+    },
+    {
+      "name": "Ben Sheppard",
+      "team": "IND",
+      "status": "Out"
+    },
+    {
       "name": "Andrew Nembhard",
       "team": "IND",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "T.J. McConnell",
@@ -185,17 +180,7 @@
       "status": "Out"
     },
     {
-      "name": "Aaron Nesmith",
-      "team": "IND",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Ivica Zubac",
-      "team": "IND",
-      "status": "Out"
-    },
-    {
-      "name": "Ben Sheppard",
       "team": "IND",
       "status": "Out"
     },
@@ -240,18 +225,8 @@
       "status": "Out"
     },
     {
-      "name": "Isaiah Stewart",
-      "team": "MEM",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Karim Lopez",
       "team": "MEM",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Anthony Edwards",
-      "team": "MIN",
       "status": "Day-To-Day"
     },
     {
@@ -267,7 +242,17 @@
     {
       "name": "Jose Alvarado",
       "team": "NYK",
-      "status": "Day-To-Day"
+      "status": "Out"
+    },
+    {
+      "name": "Jalen Williams",
+      "team": "OKC",
+      "status": "Out"
+    },
+    {
+      "name": "Cason Wallace",
+      "team": "OKC",
+      "status": "Out"
     },
     {
       "name": "Nikola Topic",
@@ -280,17 +265,7 @@
       "status": "Out"
     },
     {
-      "name": "Cason Wallace",
-      "team": "OKC",
-      "status": "Out"
-    },
-    {
       "name": "Chet Holmgren",
-      "team": "OKC",
-      "status": "Out"
-    },
-    {
-      "name": "Jalen Williams",
       "team": "OKC",
       "status": "Out"
     },
@@ -365,28 +340,23 @@
       "status": "Out"
     },
     {
-      "name": "Chris Youngblood",
-      "team": "POR",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Branden Carlson",
       "team": "POR",
       "status": "Day-To-Day"
     },
     {
-      "name": "Shaedon Sharpe",
+      "name": "Scoot Henderson",
+      "team": "POR",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Chris Youngblood",
       "team": "POR",
       "status": "Out"
     },
     {
-      "name": "Keegan Murray",
-      "team": "SAC",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Ben Simmons",
-      "team": "SAC",
+      "name": "Shaedon Sharpe",
+      "team": "POR",
       "status": "Out"
     },
     {
@@ -396,6 +366,16 @@
     },
     {
       "name": "Maxime Raynaud",
+      "team": "SAC",
+      "status": "Out"
+    },
+    {
+      "name": "Keegan Murray",
+      "team": "SAC",
+      "status": "Out"
+    },
+    {
+      "name": "Ben Simmons",
       "team": "SAC",
       "status": "Out"
     },
@@ -422,7 +402,7 @@
     {
       "name": "Jaxson Hayes",
       "team": "UTA",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Trey Alexander",
@@ -433,6 +413,11 @@
       "name": "Jusuf Nurkic",
       "team": "UTA",
       "status": "Out"
+    },
+    {
+      "name": "Justin Champagnie",
+      "team": "WAS",
+      "status": "Day-To-Day"
     },
     {
       "name": "AJ Dybantsa",
