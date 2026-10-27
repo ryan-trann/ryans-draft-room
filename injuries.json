@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-27T00:25:38.506Z",
-  "count": 86,
+  "updatedAt": "2026-10-27T08:59:18.823Z",
+  "count": 83,
   "players": [
     {
       "name": "Mouhamed Gueye",
@@ -18,11 +18,6 @@
       "name": "Devin Carter",
       "team": "BOS",
       "status": "Out"
-    },
-    {
-      "name": "Mikel Brown Jr.",
-      "team": "BKN",
-      "status": "Day-To-Day"
     },
     {
       "name": "Tyler Bilodeau",
@@ -50,14 +45,19 @@
       "status": "Out"
     },
     {
+      "name": "Patrick Williams",
+      "team": "CHI",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Nic Claxton",
       "team": "CHI",
       "status": "Out"
     },
     {
-      "name": "Patrick Williams",
-      "team": "CHI",
-      "status": "Out"
+      "name": "Naji Marshall",
+      "team": "DAL",
+      "status": "Day-To-Day"
     },
     {
       "name": "Sergio de Larrea",
@@ -66,11 +66,6 @@
     },
     {
       "name": "Caleb Martin",
-      "team": "DAL",
-      "status": "Out"
-    },
-    {
-      "name": "Naji Marshall",
       "team": "DAL",
       "status": "Out"
     },
@@ -90,12 +85,12 @@
       "status": "Out"
     },
     {
-      "name": "Alpha Diallo",
+      "name": "Cameron Johnson",
       "team": "DEN",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
-      "name": "Cameron Johnson",
+      "name": "Alpha Diallo",
       "team": "DEN",
       "status": "Day-To-Day"
     },
@@ -125,21 +120,6 @@
       "status": "Out"
     },
     {
-      "name": "Gui Santos",
-      "team": "GSW",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Brandon Williams",
-      "team": "GSW",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Charles Bassey",
-      "team": "GSW",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Kristaps Porzingis",
       "team": "GSW",
       "status": "Out"
@@ -155,14 +135,24 @@
       "status": "Out"
     },
     {
+      "name": "Marcus Smart",
+      "team": "HOU",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Steven Adams",
       "team": "HOU",
       "status": "Out"
     },
     {
-      "name": "Marcus Smart",
-      "team": "HOU",
-      "status": "Out"
+      "name": "Ivica Zubac",
+      "team": "IND",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Andrew Nembhard",
+      "team": "IND",
+      "status": "Day-To-Day"
     },
     {
       "name": "Ben Sheppard",
@@ -170,17 +160,7 @@
       "status": "Out"
     },
     {
-      "name": "Andrew Nembhard",
-      "team": "IND",
-      "status": "Out"
-    },
-    {
       "name": "T.J. McConnell",
-      "team": "IND",
-      "status": "Out"
-    },
-    {
-      "name": "Ivica Zubac",
       "team": "IND",
       "status": "Out"
     },
@@ -220,16 +200,6 @@
       "status": "Out"
     },
     {
-      "name": "Cameron Carr",
-      "team": "LAL",
-      "status": "Out"
-    },
-    {
-      "name": "Karim Lopez",
-      "team": "MEM",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Donte DiVincenzo",
       "team": "MIN",
       "status": "Out"
@@ -243,6 +213,11 @@
       "name": "Jose Alvarado",
       "team": "NYK",
       "status": "Out"
+    },
+    {
+      "name": "Alex Caruso",
+      "team": "OKC",
+      "status": "Day-To-Day"
     },
     {
       "name": "Jalen Williams",
@@ -332,11 +307,16 @@
     {
       "name": "Oso Ighodaro",
       "team": "PHX",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Mark Williams",
       "team": "PHX",
+      "status": "Out"
+    },
+    {
+      "name": "Chris Youngblood",
+      "team": "POR",
       "status": "Out"
     },
     {
@@ -348,11 +328,6 @@
       "name": "Scoot Henderson",
       "team": "POR",
       "status": "Day-To-Day"
-    },
-    {
-      "name": "Chris Youngblood",
-      "team": "POR",
-      "status": "Out"
     },
     {
       "name": "Shaedon Sharpe",
@@ -402,7 +377,17 @@
     {
       "name": "Jaxson Hayes",
       "team": "UTA",
-      "status": "Out"
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Lauri Markkanen",
+      "team": "UTA",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Jaren Jackson Jr.",
+      "team": "UTA",
+      "status": "Day-To-Day"
     },
     {
       "name": "Trey Alexander",
