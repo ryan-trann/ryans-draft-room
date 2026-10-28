@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-28T12:53:52.127Z",
-  "count": 94,
+  "updatedAt": "2026-10-28T20:16:31.714Z",
+  "count": 93,
   "players": [
     {
       "name": "Aaron Wiggins",
@@ -70,12 +70,17 @@
       "status": "Out"
     },
     {
-      "name": "Santi Aldama",
+      "name": "Naji Marshall",
+      "team": "DAL",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Tarik Biberovic",
       "team": "DAL",
       "status": "Out"
     },
     {
-      "name": "Tarik Biberovic",
+      "name": "Santi Aldama",
       "team": "DAL",
       "status": "Out"
     },
@@ -88,11 +93,6 @@
       "name": "Caleb Martin",
       "team": "DAL",
       "status": "Out"
-    },
-    {
-      "name": "Naji Marshall",
-      "team": "DAL",
-      "status": "Day-To-Day"
     },
     {
       "name": "Kyrie Irving",
@@ -127,6 +127,11 @@
     {
       "name": "Isaiah Joe",
       "team": "DET",
+      "status": "Out"
+    },
+    {
+      "name": "Ausar Thompson",
+      "team": "DET",
       "status": "Day-To-Day"
     },
     {
@@ -157,7 +162,7 @@
     {
       "name": "Marcus Smart",
       "team": "HOU",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Alperen Sengun",
@@ -170,12 +175,12 @@
       "status": "Out"
     },
     {
-      "name": "Andrew Nembhard",
+      "name": "Tyrese Haliburton",
       "team": "IND",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
-      "name": "Tyrese Haliburton",
+      "name": "Andrew Nembhard",
       "team": "IND",
       "status": "Day-To-Day"
     },
@@ -250,14 +255,9 @@
       "status": "Out"
     },
     {
-      "name": "Pelle Larsson",
-      "team": "MIA",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Simone Fontecchio",
       "team": "MIA",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Anthony Edwards",
@@ -270,11 +270,6 @@
       "status": "Out"
     },
     {
-      "name": "Jordan Poole",
-      "team": "NOP",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Yves Missi",
       "team": "NOP",
       "status": "Out"
@@ -282,7 +277,12 @@
     {
       "name": "Jose Alvarado",
       "team": "NYK",
-      "status": "Day-To-Day"
+      "status": "Out"
+    },
+    {
+      "name": "Alex Caruso",
+      "team": "OKC",
+      "status": "Out"
     },
     {
       "name": "Thomas Sorber",
@@ -305,11 +305,6 @@
       "status": "Day-To-Day"
     },
     {
-      "name": "Alex Caruso",
-      "team": "OKC",
-      "status": "Out"
-    },
-    {
       "name": "Jalen Williams",
       "team": "OKC",
       "status": "Out"
@@ -323,6 +318,11 @@
       "name": "Otega Oweh",
       "team": "OKC",
       "status": "Out"
+    },
+    {
+      "name": "Anthony Black",
+      "team": "ORL",
+      "status": "Day-To-Day"
     },
     {
       "name": "Jonathan Isaac",
@@ -456,11 +456,6 @@
     },
     {
       "name": "Justin Champagnie",
-      "team": "WAS",
-      "status": "Out"
-    },
-    {
-      "name": "AJ Dybantsa",
       "team": "WAS",
       "status": "Out"
     },
