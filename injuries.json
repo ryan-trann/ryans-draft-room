@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-29T09:57:39.881Z",
-  "count": 86,
+  "updatedAt": "2026-10-29T18:28:27.160Z",
+  "count": 88,
   "players": [
     {
       "name": "Mouhamed Gueye",
@@ -22,7 +22,7 @@
     {
       "name": "Egor Demin",
       "team": "BKN",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Tyler Bilodeau",
@@ -63,6 +63,16 @@
       "name": "Nic Claxton",
       "team": "CHI",
       "status": "Out"
+    },
+    {
+      "name": "Meleek Thomas",
+      "team": "CLE",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Jaylon Tyson",
+      "team": "CLE",
+      "status": "Day-To-Day"
     },
     {
       "name": "Sergio de Larrea",
@@ -385,12 +395,12 @@
       "status": "Out"
     },
     {
-      "name": "Nate Bittle",
+      "name": "Kawhi Leonard",
       "team": "TOR",
       "status": "Out"
     },
     {
-      "name": "Kawhi Leonard",
+      "name": "Nate Bittle",
       "team": "TOR",
       "status": "Out"
     },
