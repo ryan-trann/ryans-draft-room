@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-29T18:28:27.160Z",
-  "count": 88,
+  "updatedAt": "2026-10-30T00:59:02.153Z",
+  "count": 94,
   "players": [
     {
       "name": "Mouhamed Gueye",
@@ -30,12 +30,17 @@
       "status": "Out"
     },
     {
-      "name": "Coby White",
+      "name": "Dennis Schroder",
+      "team": "CHA",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Kon Knueppel",
       "team": "CHA",
       "status": "Out"
     },
     {
-      "name": "Kon Knueppel",
+      "name": "Coby White",
       "team": "CHA",
       "status": "Out"
     },
@@ -50,14 +55,19 @@
       "status": "Out"
     },
     {
-      "name": "Tobe Awaka",
+      "name": "Patrick Williams",
+      "team": "CHI",
+      "status": "Out"
+    },
+    {
+      "name": "Jalen Smith",
       "team": "CHI",
       "status": "Day-To-Day"
     },
     {
-      "name": "Patrick Williams",
+      "name": "Tobe Awaka",
       "team": "CHI",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Nic Claxton",
@@ -67,22 +77,7 @@
     {
       "name": "Meleek Thomas",
       "team": "CLE",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Jaylon Tyson",
-      "team": "CLE",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Sergio de Larrea",
-      "team": "DAL",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Naji Marshall",
-      "team": "DAL",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Tarik Biberovic",
@@ -95,8 +90,23 @@
       "status": "Out"
     },
     {
+      "name": "Sergio de Larrea",
+      "team": "DAL",
+      "status": "Out"
+    },
+    {
+      "name": "Naji Marshall",
+      "team": "DAL",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Dereck Lively II",
       "team": "DAL",
+      "status": "Out"
+    },
+    {
+      "name": "Alpha Diallo",
+      "team": "DEN",
       "status": "Out"
     },
     {
@@ -106,11 +116,6 @@
     },
     {
       "name": "Spencer Jones",
-      "team": "DEN",
-      "status": "Out"
-    },
-    {
-      "name": "Alpha Diallo",
       "team": "DEN",
       "status": "Out"
     },
@@ -150,9 +155,9 @@
       "status": "Out"
     },
     {
-      "name": "Alperen Sengun",
+      "name": "Reed Sheppard",
       "team": "HOU",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Marcus Smart",
@@ -160,14 +165,29 @@
       "status": "Out"
     },
     {
+      "name": "Alperen Sengun",
+      "team": "HOU",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Steven Adams",
       "team": "HOU",
       "status": "Out"
     },
     {
-      "name": "Ivica Zubac",
+      "name": "Andrew Nembhard",
       "team": "IND",
       "status": "Day-To-Day"
+    },
+    {
+      "name": "Aaron Nesmith",
+      "team": "IND",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Ivica Zubac",
+      "team": "IND",
+      "status": "Out"
     },
     {
       "name": "T.J. McConnell",
@@ -220,16 +240,6 @@
       "status": "Out"
     },
     {
-      "name": "Ziaire Williams",
-      "team": "LAL",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Luka Doncic",
-      "team": "LAL",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Cameron Carr",
       "team": "LAL",
       "status": "Out"
@@ -238,6 +248,11 @@
       "name": "Adou Thiero",
       "team": "LAL",
       "status": "Out"
+    },
+    {
+      "name": "Ziaire Williams",
+      "team": "LAL",
+      "status": "Day-To-Day"
     },
     {
       "name": "Simone Fontecchio",
@@ -255,9 +270,14 @@
       "status": "Out"
     },
     {
+      "name": "Dejounte Murray",
+      "team": "NOP",
+      "status": "Out"
+    },
+    {
       "name": "Jordan Poole",
       "team": "NOP",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Yves Missi",
@@ -327,6 +347,11 @@
     {
       "name": "Jabari Walker",
       "team": "PHI",
+      "status": "Out"
+    },
+    {
+      "name": "Jaylen Brown",
+      "team": "PHI",
       "status": "Day-To-Day"
     },
     {
@@ -352,6 +377,11 @@
     {
       "name": "Mark Williams",
       "team": "PHX",
+      "status": "Out"
+    },
+    {
+      "name": "Robert Williams III",
+      "team": "POR",
       "status": "Out"
     },
     {
