@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-30T00:59:02.153Z",
-  "count": 94,
+  "updatedAt": "2026-10-30T10:00:06.894Z",
+  "count": 96,
   "players": [
     {
       "name": "Mouhamed Gueye",
@@ -77,7 +77,7 @@
     {
       "name": "Meleek Thomas",
       "team": "CLE",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Tarik Biberovic",
@@ -255,6 +255,11 @@
       "status": "Day-To-Day"
     },
     {
+      "name": "Quinten Post",
+      "team": "MEM",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Simone Fontecchio",
       "team": "MIA",
       "status": "Day-To-Day"
@@ -270,14 +275,14 @@
       "status": "Out"
     },
     {
-      "name": "Dejounte Murray",
-      "team": "NOP",
-      "status": "Out"
-    },
-    {
       "name": "Jordan Poole",
       "team": "NOP",
-      "status": "Out"
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Dejounte Murray",
+      "team": "NOP",
+      "status": "Day-To-Day"
     },
     {
       "name": "Yves Missi",
@@ -382,7 +387,12 @@
     {
       "name": "Robert Williams III",
       "team": "POR",
-      "status": "Out"
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Ja Morant",
+      "team": "POR",
+      "status": "Day-To-Day"
     },
     {
       "name": "Chris Youngblood",
