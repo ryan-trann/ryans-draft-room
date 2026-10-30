@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-30T18:00:00.424Z",
-  "count": 95,
+  "updatedAt": "2026-10-30T22:19:47.757Z",
+  "count": 92,
   "players": [
     {
       "name": "Mouhamed Gueye",
@@ -20,11 +20,6 @@
       "status": "Out"
     },
     {
-      "name": "Noah Clowney",
-      "team": "BKN",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Egor Demin",
       "team": "BKN",
       "status": "Out"
@@ -33,11 +28,6 @@
       "name": "Tyler Bilodeau",
       "team": "BKN",
       "status": "Out"
-    },
-    {
-      "name": "Dennis Schroder",
-      "team": "CHA",
-      "status": "Day-To-Day"
     },
     {
       "name": "Kon Knueppel",
@@ -60,18 +50,18 @@
       "status": "Out"
     },
     {
-      "name": "Jalen Smith",
+      "name": "Dailyn Swain",
       "team": "CHI",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Tobe Awaka",
-      "team": "CHI",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Nic Claxton",
       "team": "CHI",
+      "status": "Out"
+    },
+    {
+      "name": "Jaylon Tyson",
+      "team": "CLE",
       "status": "Out"
     },
     {
@@ -93,11 +83,6 @@
       "name": "Sergio de Larrea",
       "team": "DAL",
       "status": "Out"
-    },
-    {
-      "name": "Naji Marshall",
-      "team": "DAL",
-      "status": "Day-To-Day"
     },
     {
       "name": "Dereck Lively II",
@@ -127,7 +112,7 @@
     {
       "name": "Isaiah Joe",
       "team": "DET",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Jalen Duren",
@@ -175,6 +160,21 @@
       "status": "Out"
     },
     {
+      "name": "Obi Toppin",
+      "team": "IND",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "T.J. McConnell",
+      "team": "IND",
+      "status": "Out"
+    },
+    {
+      "name": "Johnny Furphy",
+      "team": "IND",
+      "status": "Out"
+    },
+    {
       "name": "Andrew Nembhard",
       "team": "IND",
       "status": "Day-To-Day"
@@ -190,22 +190,12 @@
       "status": "Out"
     },
     {
-      "name": "T.J. McConnell",
-      "team": "IND",
-      "status": "Out"
-    },
-    {
       "name": "Ben Sheppard",
       "team": "IND",
       "status": "Out"
     },
     {
       "name": "Tyrese Haliburton",
-      "team": "IND",
-      "status": "Out"
-    },
-    {
-      "name": "Johnny Furphy",
       "team": "IND",
       "status": "Out"
     },
@@ -240,14 +230,14 @@
       "status": "Out"
     },
     {
-      "name": "Adou Thiero",
+      "name": "Ziaire Williams",
       "team": "LAL",
       "status": "Out"
     },
     {
-      "name": "Ziaire Williams",
+      "name": "Adou Thiero",
       "team": "LAL",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Quinten Post",
@@ -270,19 +260,19 @@
       "status": "Out"
     },
     {
-      "name": "Jordan Poole",
-      "team": "NOP",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Dejounte Murray",
-      "team": "NOP",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Yves Missi",
       "team": "NOP",
       "status": "Out"
+    },
+    {
+      "name": "Jordan Poole",
+      "team": "NOP",
+      "status": "Out"
+    },
+    {
+      "name": "Karl-Anthony Towns",
+      "team": "NYK",
+      "status": "Day-To-Day"
     },
     {
       "name": "Jose Alvarado",
@@ -345,14 +335,14 @@
       "status": "Out"
     },
     {
-      "name": "Jabari Walker",
+      "name": "Jaylen Brown",
       "team": "PHI",
       "status": "Out"
     },
     {
-      "name": "Jaylen Brown",
+      "name": "Jabari Walker",
       "team": "PHI",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Tacko Fall",
@@ -380,12 +370,12 @@
       "status": "Out"
     },
     {
-      "name": "Robert Williams III",
+      "name": "Ja Morant",
       "team": "POR",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
-      "name": "Ja Morant",
+      "name": "Robert Williams III",
       "team": "POR",
       "status": "Day-To-Day"
     },
@@ -458,11 +448,6 @@
       "name": "Jusuf Nurkic",
       "team": "UTA",
       "status": "Out"
-    },
-    {
-      "name": "Tre Johnson",
-      "team": "WAS",
-      "status": "Day-To-Day"
     },
     {
       "name": "Justin Champagnie",
