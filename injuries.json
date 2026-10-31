@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-31T12:28:42.295Z",
-  "count": 85,
+  "updatedAt": "2026-10-31T19:17:45.625Z",
+  "count": 86,
   "players": [
     {
       "name": "Mouhamed Gueye",
@@ -60,14 +60,14 @@
       "status": "Out"
     },
     {
-      "name": "Jaylon Tyson",
-      "team": "CLE",
-      "status": "Out"
-    },
-    {
       "name": "Meleek Thomas",
       "team": "CLE",
       "status": "Day-To-Day"
+    },
+    {
+      "name": "Jaylon Tyson",
+      "team": "CLE",
+      "status": "Out"
     },
     {
       "name": "Sergio de Larrea",
@@ -132,12 +132,12 @@
     {
       "name": "Reed Sheppard",
       "team": "HOU",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
-      "name": "Alperen Sengun",
+      "name": "Fred VanVleet",
       "team": "HOU",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Steven Adams",
@@ -225,6 +225,11 @@
       "status": "Day-To-Day"
     },
     {
+      "name": "Rudy Gobert",
+      "team": "MIN",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Anthony Edwards",
       "team": "MIN",
       "status": "Out"
@@ -305,12 +310,12 @@
       "status": "Out"
     },
     {
-      "name": "Jaylen Brown",
+      "name": "Jabari Walker",
       "team": "PHI",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
-      "name": "Jabari Walker",
+      "name": "LeBron James",
       "team": "PHI",
       "status": "Out"
     },
@@ -318,6 +323,16 @@
       "name": "Tacko Fall",
       "team": "PHI",
       "status": "Out"
+    },
+    {
+      "name": "Joel Embiid",
+      "team": "PHI",
+      "status": "Out"
+    },
+    {
+      "name": "Jaylen Brown",
+      "team": "PHI",
+      "status": "Day-To-Day"
     },
     {
       "name": "Dominick Barlow",
@@ -332,16 +347,6 @@
     {
       "name": "Mark Williams",
       "team": "PHX",
-      "status": "Out"
-    },
-    {
-      "name": "Robert Williams III",
-      "team": "POR",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Chris Youngblood",
-      "team": "POR",
       "status": "Out"
     },
     {
@@ -375,6 +380,11 @@
       "status": "Out"
     },
     {
+      "name": "Stephon Castle",
+      "team": "SAS",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Tobias Harris",
       "team": "SAS",
       "status": "Out"
@@ -393,11 +403,6 @@
       "name": "Nate Bittle",
       "team": "TOR",
       "status": "Out"
-    },
-    {
-      "name": "Lauri Markkanen",
-      "team": "UTA",
-      "status": "Day-To-Day"
     },
     {
       "name": "Jaren Jackson Jr.",
