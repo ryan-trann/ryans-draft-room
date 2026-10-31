@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-30T22:19:47.757Z",
-  "count": 92,
+  "updatedAt": "2026-10-31T05:40:19.051Z",
+  "count": 85,
   "players": [
     {
       "name": "Mouhamed Gueye",
@@ -52,7 +52,7 @@
     {
       "name": "Dailyn Swain",
       "team": "CHI",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Nic Claxton",
@@ -70,7 +70,7 @@
       "status": "Day-To-Day"
     },
     {
-      "name": "Tarik Biberovic",
+      "name": "Sergio de Larrea",
       "team": "DAL",
       "status": "Out"
     },
@@ -80,7 +80,7 @@
       "status": "Out"
     },
     {
-      "name": "Sergio de Larrea",
+      "name": "Tarik Biberovic",
       "team": "DAL",
       "status": "Out"
     },
@@ -91,11 +91,6 @@
     },
     {
       "name": "Alpha Diallo",
-      "team": "DEN",
-      "status": "Out"
-    },
-    {
-      "name": "Cameron Johnson",
       "team": "DEN",
       "status": "Out"
     },
@@ -120,11 +115,6 @@
       "status": "Out"
     },
     {
-      "name": "Gui Santos",
-      "team": "GSW",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Kristaps Porzingis",
       "team": "GSW",
       "status": "Out"
@@ -142,12 +132,7 @@
     {
       "name": "Reed Sheppard",
       "team": "HOU",
-      "status": "Out"
-    },
-    {
-      "name": "Marcus Smart",
-      "team": "HOU",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Alperen Sengun",
@@ -175,16 +160,6 @@
       "status": "Out"
     },
     {
-      "name": "Andrew Nembhard",
-      "team": "IND",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Aaron Nesmith",
-      "team": "IND",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Ivica Zubac",
       "team": "IND",
       "status": "Out"
@@ -198,11 +173,6 @@
       "name": "Tyrese Haliburton",
       "team": "IND",
       "status": "Out"
-    },
-    {
-      "name": "Rui Hachimura",
-      "team": "LAC",
-      "status": "Day-To-Day"
     },
     {
       "name": "Yanic Konan Niederhauser",
@@ -232,7 +202,7 @@
     {
       "name": "Ziaire Williams",
       "team": "LAL",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Adou Thiero",
@@ -240,13 +210,18 @@
       "status": "Out"
     },
     {
-      "name": "Quinten Post",
+      "name": "Scotty Pippen Jr.",
       "team": "MEM",
       "status": "Day-To-Day"
     },
     {
-      "name": "Simone Fontecchio",
-      "team": "MIA",
+      "name": "Ty Jerome",
+      "team": "MEM",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Quinten Post",
+      "team": "MEM",
       "status": "Day-To-Day"
     },
     {
@@ -270,19 +245,19 @@
       "status": "Out"
     },
     {
-      "name": "Karl-Anthony Towns",
-      "team": "NYK",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Jose Alvarado",
       "team": "NYK",
       "status": "Out"
     },
     {
+      "name": "Cason Wallace",
+      "team": "OKC",
+      "status": "Out"
+    },
+    {
       "name": "Chet Holmgren",
       "team": "OKC",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Jalen Williams",
@@ -301,11 +276,6 @@
     },
     {
       "name": "Nikola Topic",
-      "team": "OKC",
-      "status": "Out"
-    },
-    {
-      "name": "Cason Wallace",
       "team": "OKC",
       "status": "Out"
     },
@@ -337,7 +307,7 @@
     {
       "name": "Jaylen Brown",
       "team": "PHI",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Jabari Walker",
@@ -360,18 +330,8 @@
       "status": "Out"
     },
     {
-      "name": "Oso Ighodaro",
-      "team": "PHX",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Mark Williams",
       "team": "PHX",
-      "status": "Out"
-    },
-    {
-      "name": "Ja Morant",
-      "team": "POR",
       "status": "Out"
     },
     {
@@ -381,6 +341,11 @@
     },
     {
       "name": "Chris Youngblood",
+      "team": "POR",
+      "status": "Out"
+    },
+    {
+      "name": "Ja Morant",
       "team": "POR",
       "status": "Out"
     },
