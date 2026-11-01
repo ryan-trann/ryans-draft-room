@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-10-31T19:17:45.625Z",
-  "count": 86,
+  "updatedAt": "2026-11-01T00:07:36.064Z",
+  "count": 88,
   "players": [
     {
       "name": "Mouhamed Gueye",
@@ -15,8 +15,18 @@
       "status": "Out"
     },
     {
+      "name": "Mitchell Robinson",
+      "team": "BOS",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Devin Carter",
       "team": "BOS",
+      "status": "Out"
+    },
+    {
+      "name": "Mikel Brown Jr.",
+      "team": "BKN",
       "status": "Out"
     },
     {
@@ -58,11 +68,6 @@
       "name": "Nic Claxton",
       "team": "CHI",
       "status": "Out"
-    },
-    {
-      "name": "Meleek Thomas",
-      "team": "CLE",
-      "status": "Day-To-Day"
     },
     {
       "name": "Jaylon Tyson",
@@ -115,6 +120,21 @@
       "status": "Out"
     },
     {
+      "name": "Gui Santos",
+      "team": "GSW",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Draymond Green",
+      "team": "GSW",
+      "status": "Out"
+    },
+    {
+      "name": "Stephen Curry",
+      "team": "GSW",
+      "status": "Out"
+    },
+    {
       "name": "Kristaps Porzingis",
       "team": "GSW",
       "status": "Out"
@@ -145,6 +165,16 @@
       "status": "Out"
     },
     {
+      "name": "Ivica Zubac",
+      "team": "IND",
+      "status": "Out"
+    },
+    {
+      "name": "Aaron Nesmith",
+      "team": "IND",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Obi Toppin",
       "team": "IND",
       "status": "Day-To-Day"
@@ -156,11 +186,6 @@
     },
     {
       "name": "Johnny Furphy",
-      "team": "IND",
-      "status": "Out"
-    },
-    {
-      "name": "Ivica Zubac",
       "team": "IND",
       "status": "Out"
     },
@@ -210,24 +235,24 @@
       "status": "Out"
     },
     {
-      "name": "Scotty Pippen Jr.",
-      "team": "MEM",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Ty Jerome",
       "team": "MEM",
-      "status": "Day-To-Day"
+      "status": "Out"
+    },
+    {
+      "name": "Scotty Pippen Jr.",
+      "team": "MEM",
+      "status": "Out"
     },
     {
       "name": "Quinten Post",
       "team": "MEM",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Rudy Gobert",
       "team": "MIN",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Anthony Edwards",
@@ -237,6 +262,11 @@
     {
       "name": "Donte DiVincenzo",
       "team": "MIN",
+      "status": "Out"
+    },
+    {
+      "name": "Dejounte Murray",
+      "team": "NOP",
       "status": "Out"
     },
     {
@@ -310,17 +340,7 @@
       "status": "Out"
     },
     {
-      "name": "Jabari Walker",
-      "team": "PHI",
-      "status": "Out"
-    },
-    {
       "name": "LeBron James",
-      "team": "PHI",
-      "status": "Out"
-    },
-    {
-      "name": "Tacko Fall",
       "team": "PHI",
       "status": "Out"
     },
@@ -328,11 +348,6 @@
       "name": "Joel Embiid",
       "team": "PHI",
       "status": "Out"
-    },
-    {
-      "name": "Jaylen Brown",
-      "team": "PHI",
-      "status": "Day-To-Day"
     },
     {
       "name": "Dominick Barlow",
@@ -378,11 +393,6 @@
       "name": "Ben Simmons",
       "team": "SAC",
       "status": "Out"
-    },
-    {
-      "name": "Stephon Castle",
-      "team": "SAS",
-      "status": "Day-To-Day"
     },
     {
       "name": "Tobias Harris",
