@@ -1,9 +1,14 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-02T00:44:32.361Z",
-  "count": 91,
+  "updatedAt": "2026-11-02T11:05:56.118Z",
+  "count": 95,
   "players": [
+    {
+      "name": "Kingston Flemings",
+      "team": "ATL",
+      "status": "Suspension"
+    },
     {
       "name": "Jalen Johnson",
       "team": "ATL",
@@ -37,7 +42,7 @@
     {
       "name": "Mikel Brown Jr.",
       "team": "BKN",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Egor Demin",
@@ -140,6 +145,11 @@
       "status": "Out"
     },
     {
+      "name": "Gui Santos",
+      "team": "GSW",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Draymond Green",
       "team": "GSW",
       "status": "Out"
@@ -182,7 +192,7 @@
     {
       "name": "Obi Toppin",
       "team": "IND",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "T.J. McConnell",
@@ -210,17 +220,22 @@
       "status": "Out"
     },
     {
+      "name": "Derrick Jones Jr.",
+      "team": "LAC",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Max Strus",
+      "team": "LAC",
+      "status": "Out"
+    },
+    {
       "name": "Yanic Konan Niederhauser",
       "team": "LAC",
       "status": "Out"
     },
     {
       "name": "Brandon Ingram",
-      "team": "LAC",
-      "status": "Out"
-    },
-    {
-      "name": "Max Strus",
       "team": "LAC",
       "status": "Out"
     },
@@ -290,6 +305,11 @@
       "status": "Out"
     },
     {
+      "name": "Thomas Sorber",
+      "team": "OKC",
+      "status": "Out"
+    },
+    {
       "name": "Cason Wallace",
       "team": "OKC",
       "status": "Out"
@@ -306,11 +326,6 @@
     },
     {
       "name": "Alex Caruso",
-      "team": "OKC",
-      "status": "Out"
-    },
-    {
-      "name": "Thomas Sorber",
       "team": "OKC",
       "status": "Out"
     },
@@ -408,6 +423,11 @@
       "name": "Jayden Quaintance",
       "team": "SAS",
       "status": "Out"
+    },
+    {
+      "name": "Jakob Poeltl",
+      "team": "TOR",
+      "status": "Day-To-Day"
     },
     {
       "name": "Kawhi Leonard",
