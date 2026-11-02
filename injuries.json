@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-02T11:05:56.118Z",
-  "count": 95,
+  "updatedAt": "2026-11-02T21:42:30.115Z",
+  "count": 100,
   "players": [
     {
       "name": "Kingston Flemings",
@@ -30,7 +30,7 @@
       "status": "Out"
     },
     {
-      "name": "Mitchell Robinson",
+      "name": "Paul George",
       "team": "BOS",
       "status": "Out"
     },
@@ -38,11 +38,6 @@
       "name": "Devin Carter",
       "team": "BOS",
       "status": "Out"
-    },
-    {
-      "name": "Mikel Brown Jr.",
-      "team": "BKN",
-      "status": "Day-To-Day"
     },
     {
       "name": "Egor Demin",
@@ -80,11 +75,6 @@
       "status": "Out"
     },
     {
-      "name": "Dailyn Swain",
-      "team": "CHI",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Peyton Watson",
       "team": "CLE",
       "status": "Day-To-Day"
@@ -95,6 +85,11 @@
       "status": "Out"
     },
     {
+      "name": "Kyrie Irving",
+      "team": "DAL",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Tarik Biberovic",
       "team": "DAL",
       "status": "Out"
@@ -103,11 +98,6 @@
       "name": "Dereck Lively II",
       "team": "DAL",
       "status": "Out"
-    },
-    {
-      "name": "Kyrie Irving",
-      "team": "DAL",
-      "status": "Day-To-Day"
     },
     {
       "name": "Santi Aldama",
@@ -145,17 +135,17 @@
       "status": "Out"
     },
     {
-      "name": "Gui Santos",
+      "name": "Brandon Williams",
       "team": "GSW",
       "status": "Day-To-Day"
     },
     {
-      "name": "Draymond Green",
+      "name": "Al Horford",
       "team": "GSW",
       "status": "Out"
     },
     {
-      "name": "Stephen Curry",
+      "name": "Gui Santos",
       "team": "GSW",
       "status": "Out"
     },
@@ -177,7 +167,7 @@
     {
       "name": "Clint Capela",
       "team": "HOU",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Reed Sheppard",
@@ -190,17 +180,37 @@
       "status": "Out"
     },
     {
-      "name": "Obi Toppin",
-      "team": "IND",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "T.J. McConnell",
       "team": "IND",
       "status": "Out"
     },
     {
       "name": "Ivica Zubac",
+      "team": "IND",
+      "status": "Out"
+    },
+    {
+      "name": "Larry Nance Jr.",
+      "team": "IND",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Obi Toppin",
+      "team": "IND",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Aaron Nesmith",
+      "team": "IND",
+      "status": "Out"
+    },
+    {
+      "name": "Andrew Nembhard",
+      "team": "IND",
+      "status": "Out"
+    },
+    {
+      "name": "Pascal Siakam",
       "team": "IND",
       "status": "Out"
     },
@@ -220,12 +230,12 @@
       "status": "Out"
     },
     {
-      "name": "Derrick Jones Jr.",
+      "name": "Rui Hachimura",
       "team": "LAC",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
-      "name": "Max Strus",
+      "name": "Derrick Jones Jr.",
       "team": "LAC",
       "status": "Out"
     },
@@ -250,11 +260,6 @@
       "status": "Out"
     },
     {
-      "name": "Ziaire Williams",
-      "team": "LAL",
-      "status": "Out"
-    },
-    {
       "name": "Adou Thiero",
       "team": "LAL",
       "status": "Out"
@@ -270,8 +275,13 @@
       "status": "Day-To-Day"
     },
     {
-      "name": "Tim Hardaway Jr.",
-      "team": "MIA",
+      "name": "Terrence Shannon Jr.",
+      "team": "MIN",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "LaMelo Ball",
+      "team": "MIN",
       "status": "Day-To-Day"
     },
     {
@@ -285,7 +295,7 @@
       "status": "Out"
     },
     {
-      "name": "Trey Murphy III",
+      "name": "Dejounte Murray",
       "team": "NOP",
       "status": "Day-To-Day"
     },
@@ -332,6 +342,11 @@
     {
       "name": "Nikola Topic",
       "team": "OKC",
+      "status": "Out"
+    },
+    {
+      "name": "Anthony Black",
+      "team": "ORL",
       "status": "Out"
     },
     {
@@ -425,17 +440,22 @@
       "status": "Out"
     },
     {
+      "name": "Scottie Barnes",
+      "team": "TOR",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Jakob Poeltl",
       "team": "TOR",
       "status": "Day-To-Day"
     },
     {
-      "name": "Kawhi Leonard",
+      "name": "Nate Bittle",
       "team": "TOR",
       "status": "Out"
     },
     {
-      "name": "Nate Bittle",
+      "name": "Kawhi Leonard",
       "team": "TOR",
       "status": "Out"
     },
@@ -455,19 +475,24 @@
       "status": "Out"
     },
     {
-      "name": "Tristan Vukcevic",
+      "name": "Reece Beekman",
+      "team": "WAS",
+      "status": "Out"
+    },
+    {
+      "name": "Anthony Gill",
       "team": "WAS",
       "status": "Out"
     },
     {
       "name": "Alex Sarr",
       "team": "WAS",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
-      "name": "Anthony Gill",
+      "name": "Tristan Vukcevic",
       "team": "WAS",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Justin Champagnie",
