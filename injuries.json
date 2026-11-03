@@ -1,7 +1,7 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-03T06:46:25.970Z",
+  "updatedAt": "2026-11-03T17:02:39.917Z",
   "count": 93,
   "players": [
     {
@@ -152,7 +152,7 @@
     {
       "name": "Clint Capela",
       "team": "HOU",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Steven Adams",
