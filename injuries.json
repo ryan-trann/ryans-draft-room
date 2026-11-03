@@ -1,13 +1,13 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-03T17:02:39.917Z",
-  "count": 93,
+  "updatedAt": "2026-11-03T23:23:25.561Z",
+  "count": 97,
   "players": [
     {
       "name": "Jock Landale",
       "team": "ATL",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Jalen Johnson",
@@ -25,7 +25,12 @@
       "status": "Out"
     },
     {
-      "name": "Paul George",
+      "name": "Payton Pritchard",
+      "team": "BOS",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Jayson Tatum",
       "team": "BOS",
       "status": "Day-To-Day"
     },
@@ -45,12 +50,17 @@
       "status": "Out"
     },
     {
-      "name": "Grant Williams",
+      "name": "Kon Knueppel",
       "team": "CHA",
       "status": "Out"
     },
     {
-      "name": "Kon Knueppel",
+      "name": "Coby White",
+      "team": "CHA",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Grant Williams",
       "team": "CHA",
       "status": "Out"
     },
@@ -60,24 +70,24 @@
       "status": "Out"
     },
     {
-      "name": "Peyton Watson",
-      "team": "CLE",
+      "name": "Jalen Smith",
+      "team": "CHI",
       "status": "Day-To-Day"
     },
     {
       "name": "Jaylon Tyson",
       "team": "CLE",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
-      "name": "Kyrie Irving",
-      "team": "DAL",
-      "status": "Day-To-Day"
+      "name": "Peyton Watson",
+      "team": "CLE",
+      "status": "Out"
     },
     {
       "name": "Max Christie",
       "team": "DAL",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Santi Aldama",
@@ -275,14 +285,14 @@
       "status": "Out"
     },
     {
-      "name": "Dejounte Murray",
+      "name": "Jordan Poole",
       "team": "NOP",
       "status": "Out"
     },
     {
-      "name": "Jordan Poole",
+      "name": "Trey Murphy III",
       "team": "NOP",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Yves Missi",
@@ -290,9 +300,24 @@
       "status": "Out"
     },
     {
+      "name": "Josh Hart",
+      "team": "NYK",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Nikola Topic",
+      "team": "OKC",
+      "status": "Out"
+    },
+    {
       "name": "Thomas Sorber",
       "team": "OKC",
       "status": "Out"
+    },
+    {
+      "name": "Jaylin Williams",
+      "team": "OKC",
+      "status": "Day-To-Day"
     },
     {
       "name": "Cason Wallace",
@@ -306,16 +331,6 @@
     },
     {
       "name": "Jalen Williams",
-      "team": "OKC",
-      "status": "Out"
-    },
-    {
-      "name": "Alex Caruso",
-      "team": "OKC",
-      "status": "Out"
-    },
-    {
-      "name": "Nikola Topic",
       "team": "OKC",
       "status": "Out"
     },
@@ -425,6 +440,16 @@
       "status": "Out"
     },
     {
+      "name": "Jusuf Nurkic",
+      "team": "UTA",
+      "status": "Out"
+    },
+    {
+      "name": "Mo Bamba",
+      "team": "UTA",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Jaren Jackson Jr.",
       "team": "UTA",
       "status": "Out"
@@ -435,17 +460,12 @@
       "status": "Out"
     },
     {
-      "name": "Jusuf Nurkic",
-      "team": "UTA",
-      "status": "Out"
-    },
-    {
-      "name": "Alex Sarr",
+      "name": "Anthony Gill",
       "team": "WAS",
       "status": "Day-To-Day"
     },
     {
-      "name": "Anthony Gill",
+      "name": "Alex Sarr",
       "team": "WAS",
       "status": "Day-To-Day"
     },
