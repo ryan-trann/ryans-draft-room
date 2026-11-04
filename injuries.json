@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-03T23:23:25.561Z",
-  "count": 97,
+  "updatedAt": "2026-11-04T06:21:59.244Z",
+  "count": 96,
   "players": [
     {
       "name": "Jock Landale",
@@ -110,6 +110,16 @@
       "status": "Out"
     },
     {
+      "name": "Cameron Johnson",
+      "team": "DEN",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Alpha Diallo",
+      "team": "DEN",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Spencer Jones",
       "team": "DEN",
       "status": "Out"
@@ -170,27 +180,12 @@
       "status": "Out"
     },
     {
-      "name": "Pascal Siakam",
+      "name": "Ivica Zubac",
       "team": "IND",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Aaron Nesmith",
-      "team": "IND",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Andrew Nembhard",
-      "team": "IND",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Kelly Oubre Jr.",
-      "team": "IND",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Larry Nance Jr.",
       "team": "IND",
       "status": "Day-To-Day"
     },
@@ -201,11 +196,6 @@
     },
     {
       "name": "T.J. McConnell",
-      "team": "IND",
-      "status": "Out"
-    },
-    {
-      "name": "Ivica Zubac",
       "team": "IND",
       "status": "Out"
     },
@@ -223,16 +213,6 @@
       "name": "Tyrese Haliburton",
       "team": "IND",
       "status": "Out"
-    },
-    {
-      "name": "Derrick Jones Jr.",
-      "team": "LAC",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Rui Hachimura",
-      "team": "LAC",
-      "status": "Day-To-Day"
     },
     {
       "name": "Yanic Konan Niederhauser",
@@ -267,6 +247,16 @@
     {
       "name": "Scotty Pippen Jr.",
       "team": "MEM",
+      "status": "Out"
+    },
+    {
+      "name": "Myron Gardner",
+      "team": "MIA",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Giannis Antetokounmpo",
+      "team": "MIA",
       "status": "Day-To-Day"
     },
     {
@@ -380,6 +370,11 @@
       "status": "Day-To-Day"
     },
     {
+      "name": "Rasheer Fleming",
+      "team": "PHX",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Mark Williams",
       "team": "PHX",
       "status": "Out"
@@ -395,9 +390,9 @@
       "status": "Out"
     },
     {
-      "name": "Dylan Cardwell",
+      "name": "Precious Achiuwa",
       "team": "SAC",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Maxime Raynaud",
@@ -425,17 +420,17 @@
       "status": "Out"
     },
     {
+      "name": "Kawhi Leonard",
+      "team": "TOR",
+      "status": "Out"
+    },
+    {
       "name": "Jakob Poeltl",
       "team": "TOR",
       "status": "Day-To-Day"
     },
     {
       "name": "Nate Bittle",
-      "team": "TOR",
-      "status": "Out"
-    },
-    {
-      "name": "Kawhi Leonard",
       "team": "TOR",
       "status": "Out"
     },
