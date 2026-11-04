@@ -1,7 +1,7 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-04T06:21:59.244Z",
+  "updatedAt": "2026-11-04T17:14:52.364Z",
   "count": 96,
   "players": [
     {
@@ -85,12 +85,12 @@
       "status": "Out"
     },
     {
-      "name": "Max Christie",
+      "name": "Santi Aldama",
       "team": "DAL",
       "status": "Out"
     },
     {
-      "name": "Santi Aldama",
+      "name": "Max Christie",
       "team": "DAL",
       "status": "Out"
     },
@@ -140,6 +140,11 @@
       "status": "Out"
     },
     {
+      "name": "Kristaps Porzingis",
+      "team": "GSW",
+      "status": "Out"
+    },
+    {
       "name": "Brandon Williams",
       "team": "GSW",
       "status": "Day-To-Day"
@@ -153,11 +158,6 @@
       "name": "Al Horford",
       "team": "GSW",
       "status": "Day-To-Day"
-    },
-    {
-      "name": "Kristaps Porzingis",
-      "team": "GSW",
-      "status": "Out"
     },
     {
       "name": "Moses Moody",
