@@ -1,18 +1,18 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-04T17:14:52.364Z",
-  "count": 96,
+  "updatedAt": "2026-11-04T23:39:44.082Z",
+  "count": 90,
   "players": [
     {
-      "name": "Jock Landale",
+      "name": "Jalen Johnson",
       "team": "ATL",
       "status": "Out"
     },
     {
-      "name": "Jalen Johnson",
+      "name": "Jock Landale",
       "team": "ATL",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Mouhamed Gueye",
@@ -25,14 +25,9 @@
       "status": "Out"
     },
     {
-      "name": "Payton Pritchard",
-      "team": "BOS",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Jayson Tatum",
       "team": "BOS",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Devin Carter",
@@ -50,16 +45,6 @@
       "status": "Out"
     },
     {
-      "name": "Kon Knueppel",
-      "team": "CHA",
-      "status": "Out"
-    },
-    {
-      "name": "Coby White",
-      "team": "CHA",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Grant Williams",
       "team": "CHA",
       "status": "Out"
@@ -68,11 +53,6 @@
       "name": "Nic Claxton",
       "team": "CHI",
       "status": "Out"
-    },
-    {
-      "name": "Jalen Smith",
-      "team": "CHI",
-      "status": "Day-To-Day"
     },
     {
       "name": "Jaylon Tyson",
@@ -172,7 +152,7 @@
     {
       "name": "Clint Capela",
       "team": "HOU",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Steven Adams",
@@ -215,6 +195,11 @@
       "status": "Out"
     },
     {
+      "name": "Isaiah Jackson",
+      "team": "LAC",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Yanic Konan Niederhauser",
       "team": "LAC",
       "status": "Out"
@@ -250,19 +235,19 @@
       "status": "Out"
     },
     {
-      "name": "Myron Gardner",
-      "team": "MIA",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Giannis Antetokounmpo",
       "team": "MIA",
       "status": "Day-To-Day"
     },
     {
+      "name": "Kam Jones",
+      "team": "MIL",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Terrence Shannon Jr.",
       "team": "MIN",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Anthony Edwards",
@@ -275,14 +260,14 @@
       "status": "Out"
     },
     {
-      "name": "Jordan Poole",
+      "name": "Trey Murphy III",
       "team": "NOP",
       "status": "Out"
     },
     {
-      "name": "Trey Murphy III",
+      "name": "Jordan Poole",
       "team": "NOP",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Yves Missi",
@@ -292,7 +277,12 @@
     {
       "name": "Josh Hart",
       "team": "NYK",
-      "status": "Day-To-Day"
+      "status": "Out"
+    },
+    {
+      "name": "Jaylin Williams",
+      "team": "OKC",
+      "status": "Out"
     },
     {
       "name": "Nikola Topic",
@@ -303,11 +293,6 @@
       "name": "Thomas Sorber",
       "team": "OKC",
       "status": "Out"
-    },
-    {
-      "name": "Jaylin Williams",
-      "team": "OKC",
-      "status": "Day-To-Day"
     },
     {
       "name": "Cason Wallace",
@@ -323,11 +308,6 @@
       "name": "Jalen Williams",
       "team": "OKC",
       "status": "Out"
-    },
-    {
-      "name": "Anthony Black",
-      "team": "ORL",
-      "status": "Day-To-Day"
     },
     {
       "name": "Jonathan Isaac",
@@ -365,12 +345,12 @@
       "status": "Out"
     },
     {
-      "name": "Jordan Goodwin",
+      "name": "Rasheer Fleming",
       "team": "PHX",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
-      "name": "Rasheer Fleming",
+      "name": "Jordan Goodwin",
       "team": "PHX",
       "status": "Day-To-Day"
     },
@@ -390,9 +370,9 @@
       "status": "Out"
     },
     {
-      "name": "Precious Achiuwa",
+      "name": "Daeqwon Plowden",
       "team": "SAC",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Maxime Raynaud",
@@ -435,14 +415,14 @@
       "status": "Out"
     },
     {
-      "name": "Jusuf Nurkic",
-      "team": "UTA",
-      "status": "Out"
-    },
-    {
       "name": "Mo Bamba",
       "team": "UTA",
       "status": "Day-To-Day"
+    },
+    {
+      "name": "Jusuf Nurkic",
+      "team": "UTA",
+      "status": "Out"
     },
     {
       "name": "Jaren Jackson Jr.",
@@ -453,16 +433,6 @@
       "name": "Trey Alexander",
       "team": "UTA",
       "status": "Out"
-    },
-    {
-      "name": "Anthony Gill",
-      "team": "WAS",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Alex Sarr",
-      "team": "WAS",
-      "status": "Day-To-Day"
     },
     {
       "name": "Reece Beekman",
