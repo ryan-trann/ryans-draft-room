@@ -1,21 +1,26 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-05T17:23:57.196Z",
-  "count": 91,
+  "updatedAt": "2026-11-05T23:38:17.097Z",
+  "count": 94,
   "players": [
     {
-      "name": "Jock Landale",
+      "name": "Keshon Gilbert",
       "team": "ATL",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Jalen Johnson",
-      "team": "ATL",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Asa Newell",
+      "team": "ATL",
+      "status": "Out"
+    },
+    {
+      "name": "Jock Landale",
+      "team": "ATL",
+      "status": "Out"
+    },
+    {
+      "name": "Jalen Johnson",
       "team": "ATL",
       "status": "Day-To-Day"
     },
@@ -28,11 +33,6 @@
       "name": "Henri Veesaar",
       "team": "ATL",
       "status": "Out"
-    },
-    {
-      "name": "Jayson Tatum",
-      "team": "BOS",
-      "status": "Day-To-Day"
     },
     {
       "name": "Payton Pritchard",
@@ -65,9 +65,19 @@
       "status": "Out"
     },
     {
-      "name": "Kon Knueppel",
+      "name": "Dennis Schroder",
       "team": "CHA",
       "status": "Day-To-Day"
+    },
+    {
+      "name": "Moussa Diabate",
+      "team": "CHA",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Kon Knueppel",
+      "team": "CHA",
+      "status": "Out"
     },
     {
       "name": "Grant Williams",
@@ -90,16 +100,6 @@
       "status": "Day-To-Day"
     },
     {
-      "name": "Peyton Watson",
-      "team": "CLE",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Jarrett Allen",
-      "team": "CLE",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Tyrese Proctor",
       "team": "CLE",
       "status": "Day-To-Day"
@@ -110,14 +110,29 @@
       "status": "Out"
     },
     {
-      "name": "Max Christie",
-      "team": "DAL",
+      "name": "Peyton Watson",
+      "team": "CLE",
       "status": "Day-To-Day"
+    },
+    {
+      "name": "Jarrett Allen",
+      "team": "CLE",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Sergio de Larrea",
+      "team": "DAL",
+      "status": "Out"
     },
     {
       "name": "Santi Aldama",
       "team": "DAL",
       "status": "Out"
+    },
+    {
+      "name": "Max Christie",
+      "team": "DAL",
+      "status": "Day-To-Day"
     },
     {
       "name": "Tarik Biberovic",
@@ -126,11 +141,6 @@
     },
     {
       "name": "Dereck Lively II",
-      "team": "DAL",
-      "status": "Out"
-    },
-    {
-      "name": "Sergio de Larrea",
       "team": "DAL",
       "status": "Out"
     },
@@ -242,7 +252,7 @@
     {
       "name": "Isaiah Stewart",
       "team": "MEM",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Scotty Pippen Jr.",
@@ -252,7 +262,7 @@
     {
       "name": "Kam Jones",
       "team": "MIL",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Terrence Shannon Jr.",
@@ -270,14 +280,14 @@
       "status": "Out"
     },
     {
-      "name": "Trey Murphy III",
-      "team": "NOP",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Yves Missi",
       "team": "NOP",
       "status": "Out"
+    },
+    {
+      "name": "Trey Murphy III",
+      "team": "NOP",
+      "status": "Day-To-Day"
     },
     {
       "name": "Josh Hart",
@@ -287,7 +297,7 @@
     {
       "name": "Jaylin Williams",
       "team": "OKC",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Nikola Topic",
@@ -355,14 +365,14 @@
       "status": "Out"
     },
     {
-      "name": "Jordan Goodwin",
-      "team": "PHX",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Rasheer Fleming",
       "team": "PHX",
-      "status": "Day-To-Day"
+      "status": "Out"
+    },
+    {
+      "name": "Jordan Goodwin",
+      "team": "PHX",
+      "status": "Out"
     },
     {
       "name": "Mark Williams",
@@ -438,6 +448,11 @@
       "name": "Trey Alexander",
       "team": "UTA",
       "status": "Out"
+    },
+    {
+      "name": "Anthony Davis",
+      "team": "WAS",
+      "status": "Day-To-Day"
     },
     {
       "name": "Reece Beekman",
