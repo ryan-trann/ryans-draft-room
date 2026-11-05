@@ -1,23 +1,23 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-05T06:46:20.884Z",
+  "updatedAt": "2026-11-05T17:23:57.196Z",
   "count": 91,
   "players": [
     {
-      "name": "Asa Newell",
+      "name": "Jock Landale",
       "team": "ATL",
       "status": "Day-To-Day"
     },
     {
       "name": "Jalen Johnson",
       "team": "ATL",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
-      "name": "Jock Landale",
+      "name": "Asa Newell",
       "team": "ATL",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Mouhamed Gueye",
@@ -30,6 +30,11 @@
       "status": "Out"
     },
     {
+      "name": "Jayson Tatum",
+      "team": "BOS",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Payton Pritchard",
       "team": "BOS",
       "status": "Day-To-Day"
@@ -40,17 +45,12 @@
       "status": "Out"
     },
     {
-      "name": "Jayson Tatum",
-      "team": "BOS",
-      "status": "Out"
-    },
-    {
-      "name": "Day'Ron Sharpe",
+      "name": "Noah Clowney",
       "team": "BKN",
       "status": "Day-To-Day"
     },
     {
-      "name": "Noah Clowney",
+      "name": "Day'Ron Sharpe",
       "team": "BKN",
       "status": "Day-To-Day"
     },
@@ -67,11 +67,16 @@
     {
       "name": "Kon Knueppel",
       "team": "CHA",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Grant Williams",
       "team": "CHA",
+      "status": "Out"
+    },
+    {
+      "name": "Nic Claxton",
+      "team": "CHI",
       "status": "Out"
     },
     {
@@ -85,9 +90,9 @@
       "status": "Day-To-Day"
     },
     {
-      "name": "Nic Claxton",
-      "team": "CHI",
-      "status": "Out"
+      "name": "Peyton Watson",
+      "team": "CLE",
+      "status": "Day-To-Day"
     },
     {
       "name": "Jarrett Allen",
@@ -105,17 +110,12 @@
       "status": "Out"
     },
     {
-      "name": "Peyton Watson",
-      "team": "CLE",
-      "status": "Out"
+      "name": "Max Christie",
+      "team": "DAL",
+      "status": "Day-To-Day"
     },
     {
       "name": "Santi Aldama",
-      "team": "DAL",
-      "status": "Out"
-    },
-    {
-      "name": "Max Christie",
       "team": "DAL",
       "status": "Out"
     },
@@ -137,7 +137,7 @@
     {
       "name": "DeMar DeRozan",
       "team": "DEN",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Spencer Jones",
@@ -180,19 +180,19 @@
       "status": "Out"
     },
     {
-      "name": "Steven Adams",
+      "name": "Clint Capela",
       "team": "HOU",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
-      "name": "Clint Capela",
+      "name": "Steven Adams",
       "team": "HOU",
       "status": "Out"
     },
     {
       "name": "Kelly Oubre Jr.",
       "team": "IND",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "T.J. McConnell",
@@ -252,12 +252,12 @@
     {
       "name": "Kam Jones",
       "team": "MIL",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Terrence Shannon Jr.",
       "team": "MIN",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Anthony Edwards",
@@ -272,7 +272,7 @@
     {
       "name": "Trey Murphy III",
       "team": "NOP",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Yves Missi",
@@ -282,12 +282,12 @@
     {
       "name": "Josh Hart",
       "team": "NYK",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Jaylin Williams",
       "team": "OKC",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Nikola Topic",
@@ -357,12 +357,12 @@
     {
       "name": "Jordan Goodwin",
       "team": "PHX",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Rasheer Fleming",
       "team": "PHX",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Mark Williams",
@@ -387,7 +387,7 @@
     {
       "name": "Daeqwon Plowden",
       "team": "SAC",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Maxime Raynaud",
