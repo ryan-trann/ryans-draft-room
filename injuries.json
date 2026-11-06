@@ -1,9 +1,14 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-06T16:45:49.930Z",
-  "count": 95,
+  "updatedAt": "2026-11-06T23:08:00.549Z",
+  "count": 97,
   "players": [
+    {
+      "name": "Jalen Johnson",
+      "team": "ATL",
+      "status": "Out"
+    },
     {
       "name": "Keshon Gilbert",
       "team": "ATL",
@@ -20,11 +25,6 @@
       "status": "Out"
     },
     {
-      "name": "Jalen Johnson",
-      "team": "ATL",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Mouhamed Gueye",
       "team": "ATL",
       "status": "Out"
@@ -35,19 +35,9 @@
       "status": "Out"
     },
     {
-      "name": "Payton Pritchard",
-      "team": "BOS",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Devin Carter",
       "team": "BOS",
       "status": "Out"
-    },
-    {
-      "name": "Noah Clowney",
-      "team": "BKN",
-      "status": "Day-To-Day"
     },
     {
       "name": "Day'Ron Sharpe",
@@ -67,12 +57,12 @@
     {
       "name": "Dennis Schroder",
       "team": "CHA",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Moussa Diabate",
       "team": "CHA",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Kon Knueppel",
@@ -85,14 +75,14 @@
       "status": "Out"
     },
     {
-      "name": "Nic Claxton",
-      "team": "CHI",
-      "status": "Out"
-    },
-    {
       "name": "Zach Collins",
       "team": "CHI",
       "status": "Day-To-Day"
+    },
+    {
+      "name": "Nic Claxton",
+      "team": "CHI",
+      "status": "Out"
     },
     {
       "name": "Jalen Smith",
@@ -117,6 +107,11 @@
     {
       "name": "Jarrett Allen",
       "team": "CLE",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Kyrie Irving",
+      "team": "DAL",
       "status": "Day-To-Day"
     },
     {
@@ -170,7 +165,12 @@
       "status": "Out"
     },
     {
-      "name": "Gui Santos",
+      "name": "Draymond Green",
+      "team": "GSW",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Gary Payton II",
       "team": "GSW",
       "status": "Day-To-Day"
     },
@@ -178,6 +178,11 @@
       "name": "Kristaps Porzingis",
       "team": "GSW",
       "status": "Out"
+    },
+    {
+      "name": "Gui Santos",
+      "team": "GSW",
+      "status": "Day-To-Day"
     },
     {
       "name": "Moses Moody",
@@ -192,7 +197,7 @@
     {
       "name": "Clint Capela",
       "team": "HOU",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Steven Adams",
@@ -225,12 +230,12 @@
       "status": "Out"
     },
     {
-      "name": "Yanic Konan Niederhauser",
+      "name": "Brandon Ingram",
       "team": "LAC",
       "status": "Out"
     },
     {
-      "name": "Brandon Ingram",
+      "name": "Yanic Konan Niederhauser",
       "team": "LAC",
       "status": "Out"
     },
@@ -243,11 +248,6 @@
       "name": "Jordan Miller",
       "team": "LAC",
       "status": "Out"
-    },
-    {
-      "name": "Sandro Mamukelashvili",
-      "team": "LAL",
-      "status": "Day-To-Day"
     },
     {
       "name": "Isaiah Stewart",
@@ -267,7 +267,7 @@
     {
       "name": "Terrence Shannon Jr.",
       "team": "MIN",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Anthony Edwards",
@@ -285,14 +285,9 @@
       "status": "Out"
     },
     {
-      "name": "Trey Murphy III",
-      "team": "NOP",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Josh Hart",
       "team": "NYK",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Jaylin Williams",
@@ -395,6 +390,11 @@
       "status": "Out"
     },
     {
+      "name": "De'Andre Hunter",
+      "team": "SAC",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Maxime Raynaud",
       "team": "SAC",
       "status": "Out"
@@ -420,12 +420,22 @@
       "status": "Out"
     },
     {
-      "name": "Kyle Anderson",
+      "name": "Jakob Poeltl",
+      "team": "TOR",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Immanuel Quickley",
       "team": "TOR",
       "status": "Day-To-Day"
     },
     {
       "name": "Scottie Barnes",
+      "team": "TOR",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Kyle Anderson",
       "team": "TOR",
       "status": "Day-To-Day"
     },
@@ -457,7 +467,7 @@
     {
       "name": "Anthony Davis",
       "team": "WAS",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Reece Beekman",
