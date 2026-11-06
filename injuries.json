@@ -1,7 +1,7 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-05T23:38:17.097Z",
+  "updatedAt": "2026-11-06T06:44:33.643Z",
   "count": 94,
   "players": [
     {
@@ -172,7 +172,7 @@
     {
       "name": "Gui Santos",
       "team": "GSW",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Kristaps Porzingis",
@@ -245,9 +245,9 @@
       "status": "Out"
     },
     {
-      "name": "Adou Thiero",
+      "name": "Sandro Mamukelashvili",
       "team": "LAL",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Isaiah Stewart",
@@ -365,14 +365,14 @@
       "status": "Out"
     },
     {
-      "name": "Rasheer Fleming",
-      "team": "PHX",
-      "status": "Out"
-    },
-    {
       "name": "Jordan Goodwin",
       "team": "PHX",
-      "status": "Out"
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Rasheer Fleming",
+      "team": "PHX",
+      "status": "Day-To-Day"
     },
     {
       "name": "Mark Williams",
@@ -393,11 +393,6 @@
       "name": "Shaedon Sharpe",
       "team": "POR",
       "status": "Out"
-    },
-    {
-      "name": "Daeqwon Plowden",
-      "team": "SAC",
-      "status": "Day-To-Day"
     },
     {
       "name": "Maxime Raynaud",
@@ -423,6 +418,11 @@
       "name": "Jayden Quaintance",
       "team": "SAS",
       "status": "Out"
+    },
+    {
+      "name": "Scottie Barnes",
+      "team": "TOR",
+      "status": "Day-To-Day"
     },
     {
       "name": "Kawhi Leonard",
