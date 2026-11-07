@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-06T23:08:00.549Z",
-  "count": 97,
+  "updatedAt": "2026-11-07T05:57:41.199Z",
+  "count": 92,
   "players": [
     {
       "name": "Jalen Johnson",
@@ -55,6 +55,11 @@
       "status": "Out"
     },
     {
+      "name": "Brandon Miller",
+      "team": "CHA",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Dennis Schroder",
       "team": "CHA",
       "status": "Out"
@@ -90,9 +95,14 @@
       "status": "Day-To-Day"
     },
     {
-      "name": "Tyrese Proctor",
+      "name": "Sam Merrill",
       "team": "CLE",
-      "status": "Day-To-Day"
+      "status": "Out"
+    },
+    {
+      "name": "Jarrett Allen",
+      "team": "CLE",
+      "status": "Out"
     },
     {
       "name": "Jaylon Tyson",
@@ -100,34 +110,9 @@
       "status": "Out"
     },
     {
-      "name": "Peyton Watson",
-      "team": "CLE",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Jarrett Allen",
-      "team": "CLE",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Kyrie Irving",
-      "team": "DAL",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Sergio de Larrea",
       "team": "DAL",
       "status": "Out"
-    },
-    {
-      "name": "Santi Aldama",
-      "team": "DAL",
-      "status": "Out"
-    },
-    {
-      "name": "Max Christie",
-      "team": "DAL",
-      "status": "Day-To-Day"
     },
     {
       "name": "Tarik Biberovic",
@@ -143,11 +128,6 @@
       "name": "DeMar DeRozan",
       "team": "DEN",
       "status": "Day-To-Day"
-    },
-    {
-      "name": "Spencer Jones",
-      "team": "DEN",
-      "status": "Out"
     },
     {
       "name": "Julian Strawther",
@@ -205,14 +185,14 @@
       "status": "Out"
     },
     {
-      "name": "Kelly Oubre Jr.",
-      "team": "IND",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "T.J. McConnell",
       "team": "IND",
       "status": "Out"
+    },
+    {
+      "name": "Kelly Oubre Jr.",
+      "team": "IND",
+      "status": "Day-To-Day"
     },
     {
       "name": "Johnny Furphy",
@@ -263,6 +243,11 @@
       "name": "Kam Jones",
       "team": "MIL",
       "status": "Day-To-Day"
+    },
+    {
+      "name": "Joan Beringer",
+      "team": "MIN",
+      "status": "Out"
     },
     {
       "name": "Terrence Shannon Jr.",
@@ -347,7 +332,7 @@
     {
       "name": "Adem Bona",
       "team": "PHI",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Dominick Barlow",
@@ -360,12 +345,12 @@
       "status": "Out"
     },
     {
-      "name": "Jordan Goodwin",
+      "name": "Rasheer Fleming",
       "team": "PHX",
       "status": "Day-To-Day"
     },
     {
-      "name": "Rasheer Fleming",
+      "name": "Jordan Goodwin",
       "team": "PHX",
       "status": "Day-To-Day"
     },
@@ -392,7 +377,7 @@
     {
       "name": "De'Andre Hunter",
       "team": "SAC",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Maxime Raynaud",
@@ -420,24 +405,14 @@
       "status": "Out"
     },
     {
-      "name": "Jakob Poeltl",
+      "name": "Scottie Barnes",
       "team": "TOR",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Immanuel Quickley",
       "team": "TOR",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Scottie Barnes",
-      "team": "TOR",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Kyle Anderson",
-      "team": "TOR",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Kawhi Leonard",
