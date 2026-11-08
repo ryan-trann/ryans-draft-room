@@ -1,7 +1,7 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-08T00:35:14.501Z",
+  "updatedAt": "2026-11-08T10:22:11.719Z",
   "count": 88,
   "players": [
     {
@@ -30,9 +30,9 @@
       "status": "Out"
     },
     {
-      "name": "Day'Ron Sharpe",
+      "name": "Mikel Brown Jr.",
       "team": "BKN",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Egor Demin",
@@ -185,6 +185,11 @@
       "status": "Out"
     },
     {
+      "name": "Isaiah Jackson",
+      "team": "LAC",
+      "status": "Out"
+    },
+    {
       "name": "Yanic Konan Niederhauser",
       "team": "LAC",
       "status": "Out"
@@ -320,18 +325,18 @@
       "status": "Out"
     },
     {
-      "name": "Rasheer Fleming",
-      "team": "PHX",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Jordan Goodwin",
       "team": "PHX",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Mark Williams",
       "team": "PHX",
+      "status": "Out"
+    },
+    {
+      "name": "Ja Morant",
+      "team": "POR",
       "status": "Out"
     },
     {
@@ -345,27 +350,17 @@
       "status": "Out"
     },
     {
-      "name": "Ja Morant",
-      "team": "POR",
-      "status": "Out"
-    },
-    {
       "name": "Shaedon Sharpe",
       "team": "POR",
       "status": "Out"
     },
     {
-      "name": "De'Andre Hunter",
-      "team": "SAC",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Maxime Raynaud",
+      "name": "Keegan Murray",
       "team": "SAC",
       "status": "Out"
     },
     {
-      "name": "Keegan Murray",
+      "name": "Maxime Raynaud",
       "team": "SAC",
       "status": "Out"
     },
@@ -417,6 +412,11 @@
     {
       "name": "Jaren Jackson Jr.",
       "team": "UTA",
+      "status": "Out"
+    },
+    {
+      "name": "Deandre Ayton",
+      "team": "WAS",
       "status": "Out"
     },
     {
