@@ -1,18 +1,18 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-08T10:22:11.719Z",
+  "updatedAt": "2026-11-08T17:55:46.085Z",
   "count": 88,
   "players": [
     {
-      "name": "Keshon Gilbert",
-      "team": "ATL",
-      "status": "Out"
-    },
-    {
       "name": "Asa Newell",
       "team": "ATL",
-      "status": "Out"
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Keshon Gilbert",
+      "team": "ATL",
+      "status": "Day-To-Day"
     },
     {
       "name": "Jock Landale",
@@ -28,6 +28,11 @@
       "name": "Henri Veesaar",
       "team": "ATL",
       "status": "Out"
+    },
+    {
+      "name": "Grant Nelson",
+      "team": "BKN",
+      "status": "Day-To-Day"
     },
     {
       "name": "Mikel Brown Jr.",
@@ -65,6 +70,11 @@
       "status": "Out"
     },
     {
+      "name": "Norman Powell",
+      "team": "CHI",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Tobe Awaka",
       "team": "CHI",
       "status": "Day-To-Day"
@@ -85,17 +95,17 @@
       "status": "Out"
     },
     {
-      "name": "Jaylon Tyson",
-      "team": "CLE",
-      "status": "Out"
-    },
-    {
       "name": "Sam Merrill",
       "team": "CLE",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Jarrett Allen",
+      "team": "CLE",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Jaylon Tyson",
       "team": "CLE",
       "status": "Out"
     },
@@ -120,22 +130,12 @@
       "status": "Out"
     },
     {
-      "name": "Isaiah Joe",
+      "name": "Jalen Duren",
       "team": "DET",
       "status": "Out"
     },
     {
-      "name": "Isaac Jones",
-      "team": "DET",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Elijah Harkless",
-      "team": "DET",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Jalen Duren",
+      "name": "Isaiah Joe",
       "team": "DET",
       "status": "Out"
     },
@@ -225,11 +225,6 @@
       "status": "Out"
     },
     {
-      "name": "Joan Beringer",
-      "team": "MIN",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Anthony Edwards",
       "team": "MIN",
       "status": "Out"
@@ -247,7 +242,7 @@
     {
       "name": "Josh Hart",
       "team": "NYK",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Jaylin Williams",
@@ -277,7 +272,7 @@
     {
       "name": "Desmond Bane",
       "team": "ORL",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Jonathan Isaac",
@@ -335,12 +330,12 @@
       "status": "Out"
     },
     {
-      "name": "Ja Morant",
+      "name": "Robert Williams III",
       "team": "POR",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
-      "name": "Robert Williams III",
+      "name": "Ja Morant",
       "team": "POR",
       "status": "Out"
     },
@@ -380,12 +375,12 @@
       "status": "Out"
     },
     {
-      "name": "Scottie Barnes",
+      "name": "Immanuel Quickley",
       "team": "TOR",
       "status": "Day-To-Day"
     },
     {
-      "name": "Immanuel Quickley",
+      "name": "Scottie Barnes",
       "team": "TOR",
       "status": "Day-To-Day"
     },
@@ -398,6 +393,11 @@
       "name": "Nate Bittle",
       "team": "TOR",
       "status": "Out"
+    },
+    {
+      "name": "Keyonte George",
+      "team": "UTA",
+      "status": "Day-To-Day"
     },
     {
       "name": "Lauri Markkanen",
@@ -415,14 +415,14 @@
       "status": "Out"
     },
     {
-      "name": "Deandre Ayton",
-      "team": "WAS",
-      "status": "Out"
-    },
-    {
       "name": "Anthony Davis",
       "team": "WAS",
-      "status": "Out"
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Deandre Ayton",
+      "team": "WAS",
+      "status": "Day-To-Day"
     },
     {
       "name": "Reece Beekman",
