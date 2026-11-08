@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-08T17:55:46.085Z",
-  "count": 88,
+  "updatedAt": "2026-11-08T22:04:28.183Z",
+  "count": 85,
   "players": [
     {
       "name": "Asa Newell",
@@ -28,6 +28,11 @@
       "name": "Henri Veesaar",
       "team": "ATL",
       "status": "Out"
+    },
+    {
+      "name": "Mitchell Robinson",
+      "team": "BOS",
+      "status": "Day-To-Day"
     },
     {
       "name": "Grant Nelson",
@@ -71,21 +76,6 @@
     },
     {
       "name": "Norman Powell",
-      "team": "CHI",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Tobe Awaka",
-      "team": "CHI",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Jalen Smith",
-      "team": "CHI",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Nic Claxton",
       "team": "CHI",
       "status": "Out"
     },
@@ -207,7 +197,7 @@
     {
       "name": "Luka Doncic",
       "team": "LAL",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Richie Saunders",
@@ -223,6 +213,11 @@
       "name": "Scotty Pippen Jr.",
       "team": "MEM",
       "status": "Out"
+    },
+    {
+      "name": "Gary Trent Jr.",
+      "team": "MIL",
+      "status": "Day-To-Day"
     },
     {
       "name": "Anthony Edwards",
@@ -300,11 +295,6 @@
       "status": "Out"
     },
     {
-      "name": "Joel Embiid",
-      "team": "PHI",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Adem Bona",
       "team": "PHI",
       "status": "Out"
@@ -350,11 +340,6 @@
       "status": "Out"
     },
     {
-      "name": "Keegan Murray",
-      "team": "SAC",
-      "status": "Out"
-    },
-    {
       "name": "Maxime Raynaud",
       "team": "SAC",
       "status": "Out"
@@ -375,6 +360,11 @@
       "status": "Out"
     },
     {
+      "name": "Nate Bittle",
+      "team": "TOR",
+      "status": "Out"
+    },
+    {
       "name": "Immanuel Quickley",
       "team": "TOR",
       "status": "Day-To-Day"
@@ -386,11 +376,6 @@
     },
     {
       "name": "Kawhi Leonard",
-      "team": "TOR",
-      "status": "Out"
-    },
-    {
-      "name": "Nate Bittle",
       "team": "TOR",
       "status": "Out"
     },
