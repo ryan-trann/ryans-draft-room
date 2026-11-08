@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-07T19:25:41.888Z",
-  "count": 90,
+  "updatedAt": "2026-11-08T00:35:14.501Z",
+  "count": 88,
   "players": [
     {
       "name": "Keshon Gilbert",
@@ -20,11 +20,6 @@
       "status": "Out"
     },
     {
-      "name": "Jalen Johnson",
-      "team": "ATL",
-      "status": "Out"
-    },
-    {
       "name": "Mouhamed Gueye",
       "team": "ATL",
       "status": "Out"
@@ -33,11 +28,6 @@
       "name": "Henri Veesaar",
       "team": "ATL",
       "status": "Out"
-    },
-    {
-      "name": "Noah Clowney",
-      "team": "BKN",
-      "status": "Day-To-Day"
     },
     {
       "name": "Day'Ron Sharpe",
@@ -75,7 +65,12 @@
       "status": "Out"
     },
     {
-      "name": "Zach Collins",
+      "name": "Tobe Awaka",
+      "team": "CHI",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Jalen Smith",
       "team": "CHI",
       "status": "Day-To-Day"
     },
@@ -85,9 +80,9 @@
       "status": "Out"
     },
     {
-      "name": "Jalen Smith",
+      "name": "Zach Collins",
       "team": "CHI",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Jaylon Tyson",
@@ -120,11 +115,6 @@
       "status": "Out"
     },
     {
-      "name": "DeMar DeRozan",
-      "team": "DEN",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Julian Strawther",
       "team": "DEN",
       "status": "Out"
@@ -135,29 +125,24 @@
       "status": "Out"
     },
     {
+      "name": "Isaac Jones",
+      "team": "DET",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Elijah Harkless",
+      "team": "DET",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Jalen Duren",
       "team": "DET",
       "status": "Out"
     },
     {
-      "name": "Draymond Green",
-      "team": "GSW",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Gary Payton II",
-      "team": "GSW",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Kristaps Porzingis",
       "team": "GSW",
       "status": "Out"
-    },
-    {
-      "name": "Gui Santos",
-      "team": "GSW",
-      "status": "Day-To-Day"
     },
     {
       "name": "Moses Moody",
@@ -180,14 +165,9 @@
       "status": "Out"
     },
     {
-      "name": "T.J. McConnell",
+      "name": "Tyrese Haliburton",
       "team": "IND",
       "status": "Out"
-    },
-    {
-      "name": "Kelly Oubre Jr.",
-      "team": "IND",
-      "status": "Day-To-Day"
     },
     {
       "name": "Johnny Furphy",
@@ -196,11 +176,6 @@
     },
     {
       "name": "Ben Sheppard",
-      "team": "IND",
-      "status": "Out"
-    },
-    {
-      "name": "Tyrese Haliburton",
       "team": "IND",
       "status": "Out"
     },
@@ -225,6 +200,11 @@
       "status": "Out"
     },
     {
+      "name": "Luka Doncic",
+      "team": "LAL",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Richie Saunders",
       "team": "MEM",
       "status": "Out"
@@ -243,11 +223,6 @@
       "name": "Joan Beringer",
       "team": "MIN",
       "status": "Day-To-Day"
-    },
-    {
-      "name": "Terrence Shannon Jr.",
-      "team": "MIN",
-      "status": "Out"
     },
     {
       "name": "Anthony Edwards",
@@ -295,6 +270,11 @@
       "status": "Out"
     },
     {
+      "name": "Desmond Bane",
+      "team": "ORL",
+      "status": "Out"
+    },
+    {
       "name": "Jonathan Isaac",
       "team": "ORL",
       "status": "Out"
@@ -320,9 +300,14 @@
       "status": "Out"
     },
     {
-      "name": "Adem Bona",
+      "name": "Joel Embiid",
       "team": "PHI",
       "status": "Day-To-Day"
+    },
+    {
+      "name": "Adem Bona",
+      "team": "PHI",
+      "status": "Out"
     },
     {
       "name": "Dominick Barlow",
@@ -347,6 +332,11 @@
     {
       "name": "Mark Williams",
       "team": "PHX",
+      "status": "Out"
+    },
+    {
+      "name": "Robert Williams III",
+      "team": "POR",
       "status": "Out"
     },
     {
@@ -415,6 +405,11 @@
       "status": "Out"
     },
     {
+      "name": "Lauri Markkanen",
+      "team": "UTA",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Jusuf Nurkic",
       "team": "UTA",
       "status": "Out"
@@ -425,14 +420,9 @@
       "status": "Out"
     },
     {
-      "name": "Trey Alexander",
-      "team": "UTA",
-      "status": "Out"
-    },
-    {
       "name": "Anthony Davis",
       "team": "WAS",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Reece Beekman",
