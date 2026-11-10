@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-10T14:53:14.291Z",
-  "count": 94,
+  "updatedAt": "2026-11-10T21:17:29.831Z",
+  "count": 91,
   "players": [
     {
       "name": "Asa Newell",
@@ -150,11 +150,6 @@
       "status": "Out"
     },
     {
-      "name": "Oscar Tshiebwe",
-      "team": "HOU",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Clint Capela",
       "team": "HOU",
       "status": "Out"
@@ -240,6 +235,11 @@
       "status": "Day-To-Day"
     },
     {
+      "name": "Kel'el Ware",
+      "team": "MIL",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Tyler Herro",
       "team": "MIL",
       "status": "Day-To-Day"
@@ -257,15 +257,10 @@
     {
       "name": "Trendon Watford",
       "team": "NOP",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Trey Murphy III",
-      "team": "NOP",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Zion Williamson",
       "team": "NOP",
       "status": "Day-To-Day"
     },
@@ -303,6 +298,11 @@
       "name": "Jalen Williams",
       "team": "OKC",
       "status": "Out"
+    },
+    {
+      "name": "Tristan da Silva",
+      "team": "ORL",
+      "status": "Day-To-Day"
     },
     {
       "name": "Jalen Suggs",
@@ -345,11 +345,6 @@
       "status": "Out"
     },
     {
-      "name": "Jordan Goodwin",
-      "team": "PHX",
-      "status": "Out"
-    },
-    {
       "name": "Mark Williams",
       "team": "PHX",
       "status": "Out"
@@ -375,16 +370,6 @@
       "status": "Out"
     },
     {
-      "name": "Keegan Murray",
-      "team": "SAC",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Domantas Sabonis",
-      "team": "SAC",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Ben Simmons",
       "team": "SAC",
       "status": "Out"
@@ -402,6 +387,11 @@
     {
       "name": "Jayden Quaintance",
       "team": "SAS",
+      "status": "Out"
+    },
+    {
+      "name": "Kawhi Leonard",
+      "team": "TOR",
       "status": "Out"
     },
     {
@@ -425,19 +415,14 @@
       "status": "Out"
     },
     {
-      "name": "Kawhi Leonard",
-      "team": "TOR",
+      "name": "Lauri Markkanen",
+      "team": "UTA",
       "status": "Out"
     },
     {
       "name": "Keyonte George",
       "team": "UTA",
       "status": "Out"
-    },
-    {
-      "name": "Lauri Markkanen",
-      "team": "UTA",
-      "status": "Day-To-Day"
     },
     {
       "name": "Jusuf Nurkic",
