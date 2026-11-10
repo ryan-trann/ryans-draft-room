@@ -1,7 +1,7 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-10T03:34:07.762Z",
+  "updatedAt": "2026-11-10T14:53:14.291Z",
   "count": 94,
   "players": [
     {
@@ -87,7 +87,7 @@
     {
       "name": "Morez Johnson Jr.",
       "team": "DAL",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Sergio de Larrea",
@@ -122,7 +122,12 @@
     {
       "name": "Gary Payton II",
       "team": "GSW",
-      "status": "Out"
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Brandon Williams",
+      "team": "GSW",
+      "status": "Day-To-Day"
     },
     {
       "name": "Will Richard",
@@ -145,17 +150,17 @@
       "status": "Out"
     },
     {
+      "name": "Oscar Tshiebwe",
+      "team": "HOU",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Clint Capela",
       "team": "HOU",
       "status": "Out"
     },
     {
       "name": "Steven Adams",
-      "team": "HOU",
-      "status": "Out"
-    },
-    {
-      "name": "Oscar Tshiebwe",
       "team": "HOU",
       "status": "Out"
     },
@@ -240,11 +245,6 @@
       "status": "Day-To-Day"
     },
     {
-      "name": "Gary Trent Jr.",
-      "team": "MIL",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Anthony Edwards",
       "team": "MIN",
       "status": "Out"
@@ -255,19 +255,19 @@
       "status": "Out"
     },
     {
-      "name": "Zion Williamson",
-      "team": "NOP",
-      "status": "Out"
-    },
-    {
       "name": "Trendon Watford",
       "team": "NOP",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Trey Murphy III",
       "team": "NOP",
-      "status": "Out"
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Zion Williamson",
+      "team": "NOP",
+      "status": "Day-To-Day"
     },
     {
       "name": "Yves Missi",
@@ -392,7 +392,7 @@
     {
       "name": "Devin Vassell",
       "team": "SAS",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Tobias Harris",
