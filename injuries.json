@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-12T11:08:08.945Z",
-  "count": 97,
+  "updatedAt": "2026-11-12T19:53:25.808Z",
+  "count": 98,
   "players": [
     {
       "name": "Asa Newell",
@@ -32,21 +32,11 @@
     {
       "name": "Nolan Traore",
       "team": "BKN",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Mikel Brown Jr.",
       "team": "BKN",
-      "status": "Out"
-    },
-    {
-      "name": "Grant Williams",
-      "team": "CHA",
-      "status": "Out"
-    },
-    {
-      "name": "Moussa Diabate",
-      "team": "CHA",
       "status": "Day-To-Day"
     },
     {
@@ -65,24 +55,24 @@
       "status": "Out"
     },
     {
-      "name": "Caleb Wilson",
+      "name": "Dailyn Swain",
       "team": "CHI",
       "status": "Day-To-Day"
     },
     {
-      "name": "Dailyn Swain",
-      "team": "CHI",
-      "status": "Out"
-    },
-    {
       "name": "Norman Powell",
       "team": "CHI",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Tobe Awaka",
       "team": "CHI",
-      "status": "Out"
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Caleb Wilson",
+      "team": "CHI",
+      "status": "Day-To-Day"
     },
     {
       "name": "Sam Merrill",
@@ -132,12 +122,12 @@
     {
       "name": "Stephen Curry",
       "team": "GSW",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Gary Payton II",
       "team": "GSW",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Brandon Williams",
@@ -215,6 +205,11 @@
       "status": "Out"
     },
     {
+      "name": "Quentin Grimes",
+      "team": "LAL",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Collin Sexton",
       "team": "LAL",
       "status": "Day-To-Day"
@@ -230,17 +225,12 @@
       "status": "Day-To-Day"
     },
     {
-      "name": "Quentin Grimes",
-      "team": "LAL",
-      "status": "Out"
+      "name": "Quinten Post",
+      "team": "MEM",
+      "status": "Day-To-Day"
     },
     {
       "name": "Scotty Pippen Jr.",
-      "team": "MEM",
-      "status": "Out"
-    },
-    {
-      "name": "Quinten Post",
       "team": "MEM",
       "status": "Out"
     },
@@ -250,14 +240,24 @@
       "status": "Out"
     },
     {
-      "name": "Ryan Rollins",
-      "team": "MIL",
+      "name": "Pelle Larsson",
+      "team": "MIA",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Klay Thompson",
+      "team": "MIA",
       "status": "Day-To-Day"
     },
     {
       "name": "Myles Turner",
       "team": "MIL",
-      "status": "Out"
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Ryan Rollins",
+      "team": "MIL",
+      "status": "Day-To-Day"
     },
     {
       "name": "Anthony Edwards",
@@ -270,19 +270,19 @@
       "status": "Out"
     },
     {
-      "name": "Trey Murphy III",
-      "team": "NOP",
-      "status": "Out"
-    },
-    {
       "name": "Bennedict Mathurin",
       "team": "NOP",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Trendon Watford",
       "team": "NOP",
-      "status": "Out"
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Trey Murphy III",
+      "team": "NOP",
+      "status": "Day-To-Day"
     },
     {
       "name": "Yves Missi",
@@ -290,12 +290,12 @@
       "status": "Out"
     },
     {
-      "name": "Jaylin Williams",
+      "name": "Ajay Mitchell",
       "team": "OKC",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
-      "name": "Ajay Mitchell",
+      "name": "Jaylin Williams",
       "team": "OKC",
       "status": "Out"
     },
@@ -322,12 +322,12 @@
     {
       "name": "Tristan da Silva",
       "team": "ORL",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Jamal Cain",
       "team": "ORL",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Jalen Suggs",
@@ -355,6 +355,16 @@
       "status": "Out"
     },
     {
+      "name": "LeBron James",
+      "team": "PHI",
+      "status": "Out"
+    },
+    {
+      "name": "Dominick Barlow",
+      "team": "PHI",
+      "status": "Out"
+    },
+    {
       "name": "Adem Bona",
       "team": "PHI",
       "status": "Out"
@@ -363,16 +373,6 @@
       "name": "Joel Embiid",
       "team": "PHI",
       "status": "Day-To-Day"
-    },
-    {
-      "name": "LeBron James",
-      "team": "PHI",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Dominick Barlow",
-      "team": "PHI",
-      "status": "Out"
     },
     {
       "name": "Ariel Hukporti",
@@ -387,7 +387,7 @@
     {
       "name": "Chris Youngblood",
       "team": "POR",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Vit Krejci",
@@ -422,7 +422,7 @@
     {
       "name": "Devin Vassell",
       "team": "SAS",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Tobias Harris",
@@ -437,11 +437,6 @@
     {
       "name": "Trayce Jackson-Davis",
       "team": "TOR",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Kawhi Leonard",
-      "team": "TOR",
       "status": "Out"
     },
     {
@@ -450,8 +445,18 @@
       "status": "Out"
     },
     {
+      "name": "Kawhi Leonard",
+      "team": "TOR",
+      "status": "Out"
+    },
+    {
       "name": "Nate Bittle",
       "team": "TOR",
+      "status": "Out"
+    },
+    {
+      "name": "Trey Alexander",
+      "team": "UTA",
       "status": "Out"
     },
     {
