@@ -1,11 +1,11 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-12T19:53:25.808Z",
-  "count": 98,
+  "updatedAt": "2026-11-13T01:49:09.615Z",
+  "count": 101,
   "players": [
     {
-      "name": "Asa Newell",
+      "name": "Mouhamed Gueye",
       "team": "ATL",
       "status": "Out"
     },
@@ -15,9 +15,14 @@
       "status": "Out"
     },
     {
-      "name": "Mouhamed Gueye",
+      "name": "Asa Newell",
       "team": "ATL",
       "status": "Out"
+    },
+    {
+      "name": "Kingston Flemings",
+      "team": "ATL",
+      "status": "Day-To-Day"
     },
     {
       "name": "Henri Veesaar",
@@ -55,6 +60,11 @@
       "status": "Out"
     },
     {
+      "name": "Tobe Awaka",
+      "team": "CHI",
+      "status": "Out"
+    },
+    {
       "name": "Dailyn Swain",
       "team": "CHI",
       "status": "Day-To-Day"
@@ -65,14 +75,14 @@
       "status": "Day-To-Day"
     },
     {
-      "name": "Tobe Awaka",
-      "team": "CHI",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Caleb Wilson",
       "team": "CHI",
-      "status": "Day-To-Day"
+      "status": "Out"
+    },
+    {
+      "name": "Evan Mobley",
+      "team": "CLE",
+      "status": "Out"
     },
     {
       "name": "Sam Merrill",
@@ -95,11 +105,6 @@
       "status": "Out"
     },
     {
-      "name": "Morez Johnson Jr.",
-      "team": "DAL",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Julian Strawther",
       "team": "DEN",
       "status": "Out"
@@ -120,14 +125,14 @@
       "status": "Out"
     },
     {
+      "name": "Charles Bassey",
+      "team": "GSW",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Stephen Curry",
       "team": "GSW",
       "status": "Out"
-    },
-    {
-      "name": "Gary Payton II",
-      "team": "GSW",
-      "status": "Day-To-Day"
     },
     {
       "name": "Brandon Williams",
@@ -150,6 +155,11 @@
       "status": "Out"
     },
     {
+      "name": "Marcus Smart",
+      "team": "HOU",
+      "status": "Suspension"
+    },
+    {
       "name": "Clint Capela",
       "team": "HOU",
       "status": "Out"
@@ -158,6 +168,11 @@
       "name": "Steven Adams",
       "team": "HOU",
       "status": "Out"
+    },
+    {
+      "name": "T.J. McConnell",
+      "team": "IND",
+      "status": "Day-To-Day"
     },
     {
       "name": "Aaron Nesmith",
@@ -180,17 +195,12 @@
       "status": "Out"
     },
     {
-      "name": "Cam Christie",
-      "team": "LAC",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Yanic Konan Niederhauser",
+      "name": "Brandon Ingram",
       "team": "LAC",
       "status": "Out"
     },
     {
-      "name": "Brandon Ingram",
+      "name": "Yanic Konan Niederhauser",
       "team": "LAC",
       "status": "Out"
     },
@@ -227,7 +237,12 @@
     {
       "name": "Quinten Post",
       "team": "MEM",
-      "status": "Day-To-Day"
+      "status": "Out"
+    },
+    {
+      "name": "Zach Edey",
+      "team": "MEM",
+      "status": "Out"
     },
     {
       "name": "Scotty Pippen Jr.",
@@ -240,23 +255,18 @@
       "status": "Out"
     },
     {
-      "name": "Pelle Larsson",
-      "team": "MIA",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Klay Thompson",
       "team": "MIA",
       "status": "Day-To-Day"
     },
     {
-      "name": "Myles Turner",
-      "team": "MIL",
+      "name": "Giannis Antetokounmpo",
+      "team": "MIA",
       "status": "Day-To-Day"
     },
     {
-      "name": "Ryan Rollins",
-      "team": "MIL",
+      "name": "Pelle Larsson",
+      "team": "MIA",
       "status": "Day-To-Day"
     },
     {
@@ -270,17 +280,17 @@
       "status": "Out"
     },
     {
-      "name": "Bennedict Mathurin",
+      "name": "Bryce McGowens",
       "team": "NOP",
       "status": "Day-To-Day"
     },
     {
       "name": "Trendon Watford",
       "team": "NOP",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
-      "name": "Trey Murphy III",
+      "name": "Bennedict Mathurin",
       "team": "NOP",
       "status": "Day-To-Day"
     },
@@ -290,17 +300,22 @@
       "status": "Out"
     },
     {
+      "name": "Trey Murphy III",
+      "team": "NOP",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Thomas Sorber",
+      "team": "OKC",
+      "status": "Out"
+    },
+    {
       "name": "Ajay Mitchell",
       "team": "OKC",
       "status": "Day-To-Day"
     },
     {
       "name": "Jaylin Williams",
-      "team": "OKC",
-      "status": "Out"
-    },
-    {
-      "name": "Thomas Sorber",
       "team": "OKC",
       "status": "Out"
     },
@@ -370,11 +385,6 @@
       "status": "Out"
     },
     {
-      "name": "Joel Embiid",
-      "team": "PHI",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Ariel Hukporti",
       "team": "PHI",
       "status": "Out"
@@ -387,7 +397,7 @@
     {
       "name": "Chris Youngblood",
       "team": "POR",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Vit Krejci",
@@ -421,6 +431,11 @@
     },
     {
       "name": "Devin Vassell",
+      "team": "SAS",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "De'Aaron Fox",
       "team": "SAS",
       "status": "Day-To-Day"
     },
