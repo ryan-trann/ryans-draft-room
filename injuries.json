@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-13T01:49:09.615Z",
-  "count": 101,
+  "updatedAt": "2026-11-13T10:57:58.204Z",
+  "count": 102,
   "players": [
     {
       "name": "Mouhamed Gueye",
@@ -47,7 +47,7 @@
     {
       "name": "Brandon Miller",
       "team": "CHA",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Kon Knueppel",
@@ -372,7 +372,7 @@
     {
       "name": "LeBron James",
       "team": "PHI",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Dominick Barlow",
@@ -452,7 +452,7 @@
     {
       "name": "Trayce Jackson-Davis",
       "team": "TOR",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Scottie Barnes",
@@ -488,6 +488,11 @@
       "name": "Jaren Jackson Jr.",
       "team": "UTA",
       "status": "Out"
+    },
+    {
+      "name": "Bub Carrington",
+      "team": "WAS",
+      "status": "Day-To-Day"
     },
     {
       "name": "Tristan Vukcevic",
