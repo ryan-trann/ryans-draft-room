@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-14T10:24:57.748Z",
-  "count": 100,
+  "updatedAt": "2026-11-14T18:00:19.230Z",
+  "count": 101,
   "players": [
     {
       "name": "Kingston Flemings",
@@ -60,19 +60,24 @@
       "status": "Out"
     },
     {
-      "name": "Jalen Smith",
+      "name": "Norman Powell",
       "team": "CHI",
       "status": "Day-To-Day"
     },
     {
       "name": "Dailyn Swain",
       "team": "CHI",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Tobe Awaka",
       "team": "CHI",
-      "status": "Out"
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Jalen Smith",
+      "team": "CHI",
+      "status": "Day-To-Day"
     },
     {
       "name": "Caleb Wilson",
@@ -82,7 +87,7 @@
     {
       "name": "Evan Mobley",
       "team": "CLE",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Sam Merrill",
@@ -242,12 +247,12 @@
     {
       "name": "Quinten Post",
       "team": "MEM",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Zach Edey",
       "team": "MEM",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Scotty Pippen Jr.",
@@ -260,14 +265,14 @@
       "status": "Out"
     },
     {
-      "name": "Klay Thompson",
-      "team": "MIA",
-      "status": "Out"
-    },
-    {
       "name": "Pelle Larsson",
       "team": "MIA",
-      "status": "Out"
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Klay Thompson",
+      "team": "MIA",
+      "status": "Day-To-Day"
     },
     {
       "name": "Anthony Edwards",
@@ -280,12 +285,12 @@
       "status": "Out"
     },
     {
-      "name": "Dejounte Murray",
+      "name": "Bryce McGowens",
       "team": "NOP",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
-      "name": "Bryce McGowens",
+      "name": "Dejounte Murray",
       "team": "NOP",
       "status": "Out"
     },
@@ -307,7 +312,7 @@
     {
       "name": "Ajay Mitchell",
       "team": "OKC",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Thomas Sorber",
@@ -335,17 +340,17 @@
       "status": "Out"
     },
     {
+      "name": "Noah Penda",
+      "team": "ORL",
+      "status": "Out"
+    },
+    {
       "name": "Jonathan Isaac",
       "team": "ORL",
       "status": "Out"
     },
     {
       "name": "Paolo Banchero",
-      "team": "ORL",
-      "status": "Out"
-    },
-    {
-      "name": "Noah Penda",
       "team": "ORL",
       "status": "Out"
     },
@@ -387,7 +392,7 @@
     {
       "name": "Chris Youngblood",
       "team": "POR",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Vit Krejci",
@@ -407,7 +412,7 @@
     {
       "name": "Precious Achiuwa",
       "team": "SAC",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Maxime Raynaud",
@@ -430,6 +435,11 @@
       "status": "Out"
     },
     {
+      "name": "Scottie Barnes",
+      "team": "TOR",
+      "status": "Out"
+    },
+    {
       "name": "Kevin McCullar Jr.",
       "team": "TOR",
       "status": "Day-To-Day"
@@ -438,11 +448,6 @@
       "name": "Trayce Jackson-Davis",
       "team": "TOR",
       "status": "Day-To-Day"
-    },
-    {
-      "name": "Scottie Barnes",
-      "team": "TOR",
-      "status": "Out"
     },
     {
       "name": "Kawhi Leonard",
