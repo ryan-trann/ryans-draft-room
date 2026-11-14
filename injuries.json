@@ -1,9 +1,14 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-14T01:26:40.012Z",
-  "count": 99,
+  "updatedAt": "2026-11-14T10:24:57.748Z",
+  "count": 100,
   "players": [
+    {
+      "name": "Kingston Flemings",
+      "team": "ATL",
+      "status": "Day-To-Day"
+    },
     {
       "name": "Mouhamed Gueye",
       "team": "ATL",
@@ -53,6 +58,11 @@
       "name": "Dennis Schroder",
       "team": "CHA",
       "status": "Out"
+    },
+    {
+      "name": "Jalen Smith",
+      "team": "CHI",
+      "status": "Day-To-Day"
     },
     {
       "name": "Dailyn Swain",
@@ -130,11 +140,6 @@
       "status": "Out"
     },
     {
-      "name": "Charles Bassey",
-      "team": "GSW",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Stephen Curry",
       "team": "GSW",
       "status": "Out"
@@ -173,6 +178,11 @@
       "name": "Steven Adams",
       "team": "HOU",
       "status": "Out"
+    },
+    {
+      "name": "Aaron Nesmith",
+      "team": "IND",
+      "status": "Day-To-Day"
     },
     {
       "name": "Tyrese Haliburton",
@@ -295,14 +305,14 @@
       "status": "Out"
     },
     {
-      "name": "Thomas Sorber",
+      "name": "Ajay Mitchell",
       "team": "OKC",
       "status": "Out"
     },
     {
-      "name": "Ajay Mitchell",
+      "name": "Thomas Sorber",
       "team": "OKC",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Jaylin Williams",
@@ -410,16 +420,6 @@
       "status": "Out"
     },
     {
-      "name": "Devin Vassell",
-      "team": "SAS",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "De'Aaron Fox",
-      "team": "SAS",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Tobias Harris",
       "team": "SAS",
       "status": "Out"
@@ -453,6 +453,11 @@
       "name": "Nate Bittle",
       "team": "TOR",
       "status": "Out"
+    },
+    {
+      "name": "Jaxson Hayes",
+      "team": "UTA",
+      "status": "Day-To-Day"
     },
     {
       "name": "Trey Alexander",
