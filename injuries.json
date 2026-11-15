@@ -1,13 +1,13 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-14T22:23:43.664Z",
+  "updatedAt": "2026-11-15T06:30:52.151Z",
   "count": 110,
   "players": [
     {
       "name": "Kingston Flemings",
       "team": "ATL",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Mouhamed Gueye",
@@ -30,19 +30,9 @@
       "status": "Out"
     },
     {
-      "name": "Mikel Brown Jr.",
+      "name": "Michael Porter Jr.",
       "team": "BKN",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Nolan Traore",
-      "team": "BKN",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Brandon Miller",
-      "team": "CHA",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Kon Knueppel",
@@ -55,24 +45,19 @@
       "status": "Out"
     },
     {
-      "name": "Tobe Awaka",
+      "name": "Jalen Smith",
       "team": "CHI",
       "status": "Out"
     },
     {
       "name": "Nic Claxton",
       "team": "CHI",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
-      "name": "Jalen Smith",
+      "name": "Tobe Awaka",
       "team": "CHI",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Norman Powell",
-      "team": "CHI",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Caleb Wilson",
@@ -82,27 +67,27 @@
     {
       "name": "Peyton Watson",
       "team": "CLE",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
-      "name": "Evan Mobley",
+      "name": "James Harden",
+      "team": "CLE",
+      "status": "Out"
+    },
+    {
+      "name": "Donovan Mitchell",
       "team": "CLE",
       "status": "Out"
     },
     {
       "name": "Jarrett Allen",
       "team": "CLE",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
-      "name": "Donovan Mitchell",
+      "name": "Evan Mobley",
       "team": "CLE",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "James Harden",
-      "team": "CLE",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Sam Merrill",
@@ -115,14 +100,14 @@
       "status": "Out"
     },
     {
-      "name": "Max Christie",
+      "name": "Daniel Gafford",
       "team": "DAL",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
-      "name": "Morez Johnson Jr.",
+      "name": "Max Christie",
       "team": "DAL",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Dereck Lively II",
@@ -143,6 +128,11 @@
       "name": "Julian Strawther",
       "team": "DEN",
       "status": "Out"
+    },
+    {
+      "name": "Duncan Robinson",
+      "team": "DET",
+      "status": "Day-To-Day"
     },
     {
       "name": "Ugonna Onyenso",
@@ -205,6 +195,11 @@
       "status": "Suspension"
     },
     {
+      "name": "Andrew Nembhard",
+      "team": "IND",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "T.J. McConnell",
       "team": "IND",
       "status": "Day-To-Day"
@@ -250,6 +245,11 @@
       "status": "Out"
     },
     {
+      "name": "Adou Thiero",
+      "team": "LAL",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Collin Sexton",
       "team": "LAL",
       "status": "Day-To-Day"
@@ -257,27 +257,27 @@
     {
       "name": "Austin Reaves",
       "team": "LAL",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
-      "name": "Quentin Grimes",
-      "team": "LAL",
-      "status": "Day-To-Day"
+      "name": "GG Jackson",
+      "team": "MEM",
+      "status": "Out"
     },
     {
-      "name": "Quinten Post",
+      "name": "Zach Edey",
       "team": "MEM",
       "status": "Out"
     },
     {
       "name": "Jerami Grant",
       "team": "MEM",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
-      "name": "Zach Edey",
+      "name": "Quinten Post",
       "team": "MEM",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Ty Jerome",
@@ -297,17 +297,17 @@
     {
       "name": "Pelle Larsson",
       "team": "MIA",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
-      "name": "Klay Thompson",
-      "team": "MIA",
-      "status": "Day-To-Day"
+      "name": "Ousmane Dieng",
+      "team": "MIL",
+      "status": "Out"
     },
     {
-      "name": "Giannis Antetokounmpo",
-      "team": "MIA",
-      "status": "Day-To-Day"
+      "name": "Jaylen Clark",
+      "team": "MIN",
+      "status": "Out"
     },
     {
       "name": "Anthony Edwards",
@@ -320,7 +320,7 @@
       "status": "Out"
     },
     {
-      "name": "Yves Missi",
+      "name": "Bennedict Mathurin",
       "team": "NOP",
       "status": "Out"
     },
@@ -345,17 +345,17 @@
       "status": "Out"
     },
     {
+      "name": "Jaylin Williams",
+      "team": "OKC",
+      "status": "Out"
+    },
+    {
       "name": "Ajay Mitchell",
       "team": "OKC",
       "status": "Day-To-Day"
     },
     {
       "name": "Thomas Sorber",
-      "team": "OKC",
-      "status": "Out"
-    },
-    {
-      "name": "Jaylin Williams",
       "team": "OKC",
       "status": "Out"
     },
@@ -445,6 +445,11 @@
       "status": "Out"
     },
     {
+      "name": "Maxime Raynaud",
+      "team": "SAC",
+      "status": "Out"
+    },
+    {
       "name": "Keegan Murray",
       "team": "SAC",
       "status": "Day-To-Day"
@@ -453,11 +458,6 @@
       "name": "Precious Achiuwa",
       "team": "SAC",
       "status": "Day-To-Day"
-    },
-    {
-      "name": "Maxime Raynaud",
-      "team": "SAC",
-      "status": "Out"
     },
     {
       "name": "Ben Simmons",
@@ -497,7 +497,7 @@
     {
       "name": "Jaxson Hayes",
       "team": "UTA",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Trey Alexander",
