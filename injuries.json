@@ -1,13 +1,13 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-15T22:47:48.502Z",
+  "updatedAt": "2026-11-16T06:28:53.602Z",
   "count": 102,
   "players": [
     {
       "name": "Jock Landale",
       "team": "ATL",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Kingston Flemings",
@@ -16,11 +16,6 @@
     },
     {
       "name": "Mouhamed Gueye",
-      "team": "ATL",
-      "status": "Out"
-    },
-    {
-      "name": "Keshon Gilbert",
       "team": "ATL",
       "status": "Out"
     },
@@ -138,6 +133,11 @@
       "name": "Jalen Duren",
       "team": "DET",
       "status": "Out"
+    },
+    {
+      "name": "Gui Santos",
+      "team": "GSW",
+      "status": "Day-To-Day"
     },
     {
       "name": "Stephen Curry",
@@ -272,7 +272,7 @@
     {
       "name": "Ryan Rollins",
       "team": "MIL",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Jaylen Clark",
@@ -300,12 +300,12 @@
       "status": "Out"
     },
     {
-      "name": "Trendon Watford",
+      "name": "Trey Murphy III",
       "team": "NOP",
       "status": "Out"
     },
     {
-      "name": "Trey Murphy III",
+      "name": "Trendon Watford",
       "team": "NOP",
       "status": "Out"
     },
@@ -318,11 +318,6 @@
       "name": "Jaylin Williams",
       "team": "OKC",
       "status": "Out"
-    },
-    {
-      "name": "Ajay Mitchell",
-      "team": "OKC",
-      "status": "Day-To-Day"
     },
     {
       "name": "Thomas Sorber",
@@ -397,7 +392,7 @@
     {
       "name": "Chris Youngblood",
       "team": "POR",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Vit Krejci",
@@ -415,14 +410,24 @@
       "status": "Out"
     },
     {
-      "name": "Maxime Raynaud",
+      "name": "De'Andre Hunter",
+      "team": "SAC",
+      "status": "Out"
+    },
+    {
+      "name": "Zach LaVine",
       "team": "SAC",
       "status": "Out"
     },
     {
       "name": "Precious Achiuwa",
       "team": "SAC",
-      "status": "Day-To-Day"
+      "status": "Out"
+    },
+    {
+      "name": "Maxime Raynaud",
+      "team": "SAC",
+      "status": "Out"
     },
     {
       "name": "Ben Simmons",
@@ -442,11 +447,6 @@
     {
       "name": "Jayden Quaintance",
       "team": "SAS",
-      "status": "Out"
-    },
-    {
-      "name": "Scottie Barnes",
-      "team": "TOR",
       "status": "Out"
     },
     {
