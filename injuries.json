@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-16T19:36:12.968Z",
-  "count": 105,
+  "updatedAt": "2026-11-17T03:53:15.507Z",
+  "count": 104,
   "players": [
     {
       "name": "Jock Landale",
@@ -45,14 +45,19 @@
       "status": "Out"
     },
     {
-      "name": "Tobe Awaka",
-      "team": "CHI",
-      "status": "Out"
-    },
-    {
       "name": "Jalen Smith",
       "team": "CHI",
       "status": "Day-To-Day"
+    },
+    {
+      "name": "Patrick Williams",
+      "team": "CHI",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Tobe Awaka",
+      "team": "CHI",
+      "status": "Out"
     },
     {
       "name": "Caleb Wilson",
@@ -120,9 +125,14 @@
       "status": "Out"
     },
     {
-      "name": "Duncan Robinson",
+      "name": "Taurean Prince",
       "team": "DET",
-      "status": "Day-To-Day"
+      "status": "Out"
+    },
+    {
+      "name": "Ronald Holland II",
+      "team": "DET",
+      "status": "Out"
     },
     {
       "name": "Isaiah Joe",
@@ -130,14 +140,14 @@
       "status": "Out"
     },
     {
-      "name": "Jalen Duren",
+      "name": "Duncan Robinson",
       "team": "DET",
       "status": "Out"
     },
     {
-      "name": "Gui Santos",
-      "team": "GSW",
-      "status": "Day-To-Day"
+      "name": "Jalen Duren",
+      "team": "DET",
+      "status": "Out"
     },
     {
       "name": "Stephen Curry",
@@ -170,12 +180,17 @@
       "status": "Day-To-Day"
     },
     {
-      "name": "Clint Capela",
+      "name": "Marcus Smart",
       "team": "HOU",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Steven Adams",
+      "team": "HOU",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Clint Capela",
       "team": "HOU",
       "status": "Out"
     },
@@ -183,11 +198,6 @@
       "name": "Julian Phillips",
       "team": "HOU",
       "status": "Day-To-Day"
-    },
-    {
-      "name": "Marcus Smart",
-      "team": "HOU",
-      "status": "Suspension"
     },
     {
       "name": "Andrew Nembhard",
@@ -210,12 +220,12 @@
       "status": "Out"
     },
     {
-      "name": "Brandon Ingram",
+      "name": "Yanic Konan Niederhauser",
       "team": "LAC",
       "status": "Out"
     },
     {
-      "name": "Yanic Konan Niederhauser",
+      "name": "Brandon Ingram",
       "team": "LAC",
       "status": "Out"
     },
@@ -232,12 +242,22 @@
     {
       "name": "Austin Reaves",
       "team": "LAL",
-      "status": "Day-To-Day"
+      "status": "Out"
+    },
+    {
+      "name": "Walker Kessler",
+      "team": "LAL",
+      "status": "Out"
     },
     {
       "name": "Isaiah Stewart",
       "team": "MEM",
-      "status": "Out"
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Ty Jerome",
+      "team": "MEM",
+      "status": "Day-To-Day"
     },
     {
       "name": "Scotty Pippen Jr.",
@@ -250,21 +270,6 @@
       "status": "Out"
     },
     {
-      "name": "Ty Jerome",
-      "team": "MEM",
-      "status": "Out"
-    },
-    {
-      "name": "Quinten Post",
-      "team": "MEM",
-      "status": "Out"
-    },
-    {
-      "name": "Zach Edey",
-      "team": "MEM",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Richie Saunders",
       "team": "MEM",
       "status": "Out"
@@ -275,9 +280,14 @@
       "status": "Day-To-Day"
     },
     {
-      "name": "Pelle Larsson",
+      "name": "Bam Adebayo",
       "team": "MIA",
       "status": "Day-To-Day"
+    },
+    {
+      "name": "Pelle Larsson",
+      "team": "MIA",
+      "status": "Out"
     },
     {
       "name": "Ryan Rollins",
@@ -288,6 +298,11 @@
       "name": "Ousmane Dieng",
       "team": "MIL",
       "status": "Out"
+    },
+    {
+      "name": "Jonathan Kuminga",
+      "team": "MIN",
+      "status": "Day-To-Day"
     },
     {
       "name": "Jaylen Clark",
@@ -375,14 +390,9 @@
       "status": "Out"
     },
     {
-      "name": "Joel Embiid",
-      "team": "PHI",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "LeBron James",
       "team": "PHI",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Dominick Barlow",
@@ -450,11 +460,6 @@
       "status": "Out"
     },
     {
-      "name": "De'Aaron Fox",
-      "team": "SAS",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Tobias Harris",
       "team": "SAS",
       "status": "Out"
@@ -482,11 +487,6 @@
     {
       "name": "Jaxson Hayes",
       "team": "UTA",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Trey Alexander",
-      "team": "UTA",
       "status": "Out"
     },
     {
@@ -503,11 +503,6 @@
       "name": "Jaren Jackson Jr.",
       "team": "UTA",
       "status": "Out"
-    },
-    {
-      "name": "Tre Johnson",
-      "team": "WAS",
-      "status": "Day-To-Day"
     },
     {
       "name": "Tristan Vukcevic",
