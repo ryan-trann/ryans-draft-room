@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-17T03:53:15.507Z",
-  "count": 104,
+  "updatedAt": "2026-11-17T15:59:02.859Z",
+  "count": 105,
   "players": [
     {
       "name": "Jock Landale",
@@ -320,12 +320,12 @@
       "status": "Out"
     },
     {
-      "name": "Bryce McGowens",
+      "name": "Bennedict Mathurin",
       "team": "NOP",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
-      "name": "Bennedict Mathurin",
+      "name": "Bryce McGowens",
       "team": "NOP",
       "status": "Out"
     },
@@ -388,6 +388,11 @@
       "name": "Izaiyah Nelson",
       "team": "ORL",
       "status": "Out"
+    },
+    {
+      "name": "Jaylen Brown",
+      "team": "PHI",
+      "status": "Day-To-Day"
     },
     {
       "name": "LeBron James",
