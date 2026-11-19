@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-19T02:34:12.256Z",
-  "count": 99,
+  "updatedAt": "2026-11-19T11:38:55.246Z",
+  "count": 101,
   "players": [
     {
       "name": "Jock Landale",
@@ -170,6 +170,11 @@
       "status": "Out"
     },
     {
+      "name": "Braden Smith",
+      "team": "IND",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Andrew Nembhard",
       "team": "IND",
       "status": "Out"
@@ -297,6 +302,11 @@
     {
       "name": "Dejounte Murray",
       "team": "NOP",
+      "status": "Out"
+    },
+    {
+      "name": "Alex Caruso",
+      "team": "OKC",
       "status": "Out"
     },
     {
