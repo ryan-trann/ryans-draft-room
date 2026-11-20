@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-20T11:38:57.988Z",
-  "count": 108,
+  "updatedAt": "2026-11-20T20:18:00.852Z",
+  "count": 109,
   "players": [
     {
       "name": "Jock Landale",
@@ -60,6 +60,11 @@
       "status": "Out"
     },
     {
+      "name": "Jalen Smith",
+      "team": "CHI",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Noa Essengue",
       "team": "CHI",
       "status": "Day-To-Day"
@@ -95,17 +100,17 @@
       "status": "Out"
     },
     {
+      "name": "Dereck Lively II",
+      "team": "DAL",
+      "status": "Out"
+    },
+    {
       "name": "Tobi Lawal",
       "team": "DAL",
       "status": "Day-To-Day"
     },
     {
       "name": "Sergio de Larrea",
-      "team": "DAL",
-      "status": "Out"
-    },
-    {
-      "name": "Dereck Lively II",
       "team": "DAL",
       "status": "Out"
     },
@@ -120,17 +125,17 @@
       "status": "Out"
     },
     {
+      "name": "Ronald Holland II",
+      "team": "DET",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Taurean Prince",
       "team": "DET",
       "status": "Out"
     },
     {
       "name": "Ebuka Okorie",
-      "team": "DET",
-      "status": "Out"
-    },
-    {
-      "name": "Ronald Holland II",
       "team": "DET",
       "status": "Out"
     },
@@ -340,6 +345,11 @@
       "status": "Out"
     },
     {
+      "name": "Nikola Topic",
+      "team": "OKC",
+      "status": "Out"
+    },
+    {
       "name": "Alex Caruso",
       "team": "OKC",
       "status": "Day-To-Day"
@@ -385,9 +395,9 @@
       "status": "Out"
     },
     {
-      "name": "Dean Wade",
+      "name": "Adem Bona",
       "team": "PHI",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Tyrese Maxey",
@@ -401,11 +411,6 @@
     },
     {
       "name": "Dominick Barlow",
-      "team": "PHI",
-      "status": "Out"
-    },
-    {
-      "name": "Adem Bona",
       "team": "PHI",
       "status": "Out"
     },
