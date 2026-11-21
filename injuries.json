@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-21T02:13:43.606Z",
-  "count": 106,
+  "updatedAt": "2026-11-21T11:00:00.087Z",
+  "count": 107,
   "players": [
     {
       "name": "Kingston Flemings",
@@ -45,14 +45,14 @@
       "status": "Day-To-Day"
     },
     {
-      "name": "Grant Nelson",
+      "name": "Nolan Traore",
       "team": "BKN",
       "status": "Out"
     },
     {
-      "name": "Brandon Miller",
-      "team": "CHA",
-      "status": "Day-To-Day"
+      "name": "Grant Nelson",
+      "team": "BKN",
+      "status": "Out"
     },
     {
       "name": "Grant Williams",
@@ -205,6 +205,11 @@
       "status": "Out"
     },
     {
+      "name": "T.J. McConnell",
+      "team": "IND",
+      "status": "Out"
+    },
+    {
       "name": "Tyrese Haliburton",
       "team": "IND",
       "status": "Out"
@@ -240,6 +245,11 @@
       "status": "Out"
     },
     {
+      "name": "Jerami Grant",
+      "team": "MEM",
+      "status": "Out"
+    },
+    {
       "name": "Javon Small",
       "team": "MEM",
       "status": "Out"
@@ -253,11 +263,6 @@
       "name": "Ty Jerome",
       "team": "MEM",
       "status": "Out"
-    },
-    {
-      "name": "Jerami Grant",
-      "team": "MEM",
-      "status": "Day-To-Day"
     },
     {
       "name": "GG Jackson",
@@ -410,6 +415,11 @@
       "status": "Out"
     },
     {
+      "name": "Ryan Dunn",
+      "team": "PHX",
+      "status": "Out"
+    },
+    {
       "name": "Mark Williams",
       "team": "PHX",
       "status": "Out"
@@ -443,11 +453,6 @@
       "name": "Precious Achiuwa",
       "team": "SAC",
       "status": "Out"
-    },
-    {
-      "name": "De'Andre Hunter",
-      "team": "SAC",
-      "status": "Day-To-Day"
     },
     {
       "name": "Maxime Raynaud",
