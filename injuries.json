@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-22T01:18:27.821Z",
-  "count": 111,
+  "updatedAt": "2026-11-22T11:23:41.295Z",
+  "count": 110,
   "players": [
     {
       "name": "Kingston Flemings",
@@ -78,6 +78,11 @@
       "name": "Dennis Schroder",
       "team": "CHA",
       "status": "Out"
+    },
+    {
+      "name": "Patrick Williams",
+      "team": "CHI",
+      "status": "Day-To-Day"
     },
     {
       "name": "Norman Powell",
@@ -178,11 +183,6 @@
       "name": "Jalen Duren",
       "team": "DET",
       "status": "Out"
-    },
-    {
-      "name": "Draymond Green",
-      "team": "GSW",
-      "status": "Day-To-Day"
     },
     {
       "name": "Brandon Williams",
@@ -352,17 +352,17 @@
     {
       "name": "Karl-Anthony Towns",
       "team": "NYK",
-      "status": "Out"
-    },
-    {
-      "name": "OG Anunoby",
-      "team": "NYK",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Jordan Clarkson",
       "team": "NYK",
-      "status": "Out"
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "OG Anunoby",
+      "team": "NYK",
+      "status": "Day-To-Day"
     },
     {
       "name": "Shai Gilgeous-Alexander",
@@ -473,11 +473,6 @@
       "name": "Shaedon Sharpe",
       "team": "POR",
       "status": "Out"
-    },
-    {
-      "name": "Precious Achiuwa",
-      "team": "SAC",
-      "status": "Day-To-Day"
     },
     {
       "name": "Maxime Raynaud",
