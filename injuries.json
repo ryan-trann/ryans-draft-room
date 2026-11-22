@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-21T19:15:09.052Z",
-  "count": 105,
+  "updatedAt": "2026-11-22T01:18:27.821Z",
+  "count": 111,
   "players": [
     {
       "name": "Kingston Flemings",
@@ -35,14 +35,19 @@
       "status": "Out"
     },
     {
-      "name": "Jayson Tatum",
+      "name": "Mitchell Robinson",
       "team": "BOS",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Derrick White",
       "team": "BOS",
-      "status": "Day-To-Day"
+      "status": "Out"
+    },
+    {
+      "name": "Jayson Tatum",
+      "team": "BOS",
+      "status": "Out"
     },
     {
       "name": "Nolan Traore",
@@ -75,6 +80,11 @@
       "status": "Out"
     },
     {
+      "name": "Norman Powell",
+      "team": "CHI",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Jalen Smith",
       "team": "CHI",
       "status": "Day-To-Day"
@@ -105,19 +115,14 @@
       "status": "Out"
     },
     {
-      "name": "Tobi Lawal",
+      "name": "P.J. Washington",
       "team": "DAL",
       "status": "Out"
     },
     {
-      "name": "P.J. Washington",
+      "name": "Tobi Lawal",
       "team": "DAL",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Walter Clayton Jr.",
-      "team": "DAL",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Dereck Lively II",
@@ -140,14 +145,19 @@
       "status": "Out"
     },
     {
-      "name": "Ebuka Okorie",
-      "team": "DET",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Ronald Holland II",
       "team": "DET",
       "status": "Out"
+    },
+    {
+      "name": "Ebuka Okorie",
+      "team": "DET",
+      "status": "Out"
+    },
+    {
+      "name": "Cade Cunningham",
+      "team": "DET",
+      "status": "Day-To-Day"
     },
     {
       "name": "Taurean Prince",
@@ -206,6 +216,11 @@
     },
     {
       "name": "T.J. McConnell",
+      "team": "IND",
+      "status": "Out"
+    },
+    {
+      "name": "Pascal Siakam",
       "team": "IND",
       "status": "Day-To-Day"
     },
@@ -280,6 +295,11 @@
       "status": "Day-To-Day"
     },
     {
+      "name": "Giannis Antetokounmpo",
+      "team": "MIA",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Ousmane Dieng",
       "team": "MIL",
       "status": "Out"
@@ -297,6 +317,11 @@
     {
       "name": "Donte DiVincenzo",
       "team": "MIN",
+      "status": "Out"
+    },
+    {
+      "name": "Zion Williamson",
+      "team": "NOP",
       "status": "Out"
     },
     {
@@ -325,14 +350,14 @@
       "status": "Out"
     },
     {
-      "name": "OG Anunoby",
-      "team": "NYK",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Karl-Anthony Towns",
       "team": "NYK",
-      "status": "Day-To-Day"
+      "status": "Out"
+    },
+    {
+      "name": "OG Anunoby",
+      "team": "NYK",
+      "status": "Out"
     },
     {
       "name": "Jordan Clarkson",
@@ -340,14 +365,24 @@
       "status": "Out"
     },
     {
-      "name": "Nikola Topic",
+      "name": "Shai Gilgeous-Alexander",
       "team": "OKC",
       "status": "Day-To-Day"
     },
     {
+      "name": "Nikola Topic",
+      "team": "OKC",
+      "status": "Out"
+    },
+    {
+      "name": "Jaylin Williams",
+      "team": "OKC",
+      "status": "Out"
+    },
+    {
       "name": "Alex Caruso",
       "team": "OKC",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Thomas Sorber",
@@ -370,12 +405,12 @@
       "status": "Out"
     },
     {
-      "name": "Izaiyah Nelson",
+      "name": "Jonathan Isaac",
       "team": "ORL",
       "status": "Out"
     },
     {
-      "name": "Jonathan Isaac",
+      "name": "Izaiyah Nelson",
       "team": "ORL",
       "status": "Out"
     },
@@ -423,11 +458,6 @@
       "name": "Chris Youngblood",
       "team": "POR",
       "status": "Out"
-    },
-    {
-      "name": "Deni Avdija",
-      "team": "POR",
-      "status": "Day-To-Day"
     },
     {
       "name": "Vit Krejci",
