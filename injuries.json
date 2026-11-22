@@ -1,14 +1,9 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-22T11:23:41.295Z",
+  "updatedAt": "2026-11-22T19:38:59.986Z",
   "count": 110,
   "players": [
-    {
-      "name": "Kingston Flemings",
-      "team": "ATL",
-      "status": "Out"
-    },
     {
       "name": "Jock Landale",
       "team": "ATL",
@@ -35,19 +30,19 @@
       "status": "Out"
     },
     {
-      "name": "Mitchell Robinson",
-      "team": "BOS",
-      "status": "Out"
-    },
-    {
       "name": "Derrick White",
       "team": "BOS",
-      "status": "Out"
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Mitchell Robinson",
+      "team": "BOS",
+      "status": "Day-To-Day"
     },
     {
       "name": "Jayson Tatum",
       "team": "BOS",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Nolan Traore",
@@ -80,12 +75,7 @@
       "status": "Out"
     },
     {
-      "name": "Patrick Williams",
-      "team": "CHI",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Norman Powell",
+      "name": "Nic Claxton",
       "team": "CHI",
       "status": "Day-To-Day"
     },
@@ -95,9 +85,14 @@
       "status": "Day-To-Day"
     },
     {
-      "name": "Tobe Awaka",
+      "name": "Norman Powell",
       "team": "CHI",
       "status": "Out"
+    },
+    {
+      "name": "Patrick Williams",
+      "team": "CHI",
+      "status": "Day-To-Day"
     },
     {
       "name": "Caleb Wilson",
@@ -122,7 +117,12 @@
     {
       "name": "P.J. Washington",
       "team": "DAL",
-      "status": "Out"
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Walter Clayton Jr.",
+      "team": "DAL",
+      "status": "Day-To-Day"
     },
     {
       "name": "Tobi Lawal",
@@ -150,11 +150,6 @@
       "status": "Out"
     },
     {
-      "name": "Ronald Holland II",
-      "team": "DET",
-      "status": "Out"
-    },
-    {
       "name": "Ebuka Okorie",
       "team": "DET",
       "status": "Out"
@@ -168,11 +163,6 @@
       "name": "Taurean Prince",
       "team": "DET",
       "status": "Out"
-    },
-    {
-      "name": "Ugonna Onyenso",
-      "team": "DET",
-      "status": "Day-To-Day"
     },
     {
       "name": "Duncan Robinson",
@@ -260,19 +250,19 @@
       "status": "Out"
     },
     {
-      "name": "Jerami Grant",
-      "team": "MEM",
-      "status": "Out"
-    },
-    {
       "name": "Javon Small",
       "team": "MEM",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Cameron Boozer",
       "team": "MEM",
-      "status": "Out"
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Jerami Grant",
+      "team": "MEM",
+      "status": "Day-To-Day"
     },
     {
       "name": "GG Jackson",
@@ -322,12 +312,12 @@
     {
       "name": "Zion Williamson",
       "team": "NOP",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Trey Murphy III",
       "team": "NOP",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Trendon Watford",
@@ -350,6 +340,11 @@
       "status": "Out"
     },
     {
+      "name": "OG Anunoby",
+      "team": "NYK",
+      "status": "Out"
+    },
+    {
       "name": "Karl-Anthony Towns",
       "team": "NYK",
       "status": "Day-To-Day"
@@ -357,12 +352,7 @@
     {
       "name": "Jordan Clarkson",
       "team": "NYK",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "OG Anunoby",
-      "team": "NYK",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Shai Gilgeous-Alexander",
@@ -427,15 +417,15 @@
     {
       "name": "Dean Wade",
       "team": "PHI",
-      "status": "Out"
-    },
-    {
-      "name": "Adem Bona",
-      "team": "PHI",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Jaylen Brown",
+      "team": "PHI",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Adem Bona",
       "team": "PHI",
       "status": "Out"
     },
@@ -533,6 +523,16 @@
       "name": "Jaren Jackson Jr.",
       "team": "UTA",
       "status": "Out"
+    },
+    {
+      "name": "Bub Carrington",
+      "team": "WAS",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Deandre Ayton",
+      "team": "WAS",
+      "status": "Day-To-Day"
     },
     {
       "name": "Tristan Vukcevic",
