@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-23T01:42:13.635Z",
-  "count": 101,
+  "updatedAt": "2026-11-23T12:38:32.460Z",
+  "count": 104,
   "players": [
     {
       "name": "Jock Landale",
@@ -217,7 +217,7 @@
     {
       "name": "Jerami Grant",
       "team": "MEM",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Cameron Boozer",
@@ -433,6 +433,21 @@
       "name": "Ben Simmons",
       "team": "SAC",
       "status": "Out"
+    },
+    {
+      "name": "Victor Wembanyama",
+      "team": "SAS",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "De'Aaron Fox",
+      "team": "SAS",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Jordan McLaughlin",
+      "team": "SAS",
+      "status": "Day-To-Day"
     },
     {
       "name": "Dylan Harper",
