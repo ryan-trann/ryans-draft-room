@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-24T02:12:20.019Z",
-  "count": 90,
+  "updatedAt": "2026-11-24T13:42:13.091Z",
+  "count": 92,
   "players": [
     {
       "name": "Jock Landale",
@@ -40,12 +40,17 @@
       "status": "Out"
     },
     {
-      "name": "Grayson Allen",
+      "name": "Grant Williams",
       "team": "CHA",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
-      "name": "Grant Williams",
+      "name": "Ryan Kalkbrenner",
+      "team": "CHA",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Grayson Allen",
       "team": "CHA",
       "status": "Out"
     },
@@ -155,14 +160,19 @@
       "status": "Out"
     },
     {
-      "name": "T.J. McConnell",
-      "team": "IND",
-      "status": "Out"
-    },
-    {
       "name": "Aaron Nesmith",
       "team": "IND",
-      "status": "Out"
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "T.J. McConnell",
+      "team": "IND",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Larry Nance Jr.",
+      "team": "IND",
+      "status": "Day-To-Day"
     },
     {
       "name": "Tyrese Haliburton",
@@ -272,15 +282,15 @@
     {
       "name": "Jaylin Williams",
       "team": "OKC",
-      "status": "Out"
-    },
-    {
-      "name": "Nikola Topic",
-      "team": "OKC",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Aday Mara",
+      "team": "OKC",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Nikola Topic",
       "team": "OKC",
       "status": "Out"
     },
@@ -332,7 +342,7 @@
     {
       "name": "Joel Embiid",
       "team": "PHI",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Ariel Hukporti",
@@ -375,14 +385,14 @@
       "status": "Out"
     },
     {
-      "name": "De'Aaron Fox",
-      "team": "SAS",
-      "status": "Out"
-    },
-    {
       "name": "Victor Wembanyama",
       "team": "SAS",
-      "status": "Out"
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "De'Aaron Fox",
+      "team": "SAS",
+      "status": "Day-To-Day"
     },
     {
       "name": "Dylan Harper",
@@ -417,7 +427,7 @@
     {
       "name": "Jaxson Hayes",
       "team": "UTA",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Jusuf Nurkic",
