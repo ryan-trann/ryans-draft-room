@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-25T08:32:49.832Z",
-  "count": 93,
+  "updatedAt": "2026-11-25T19:15:21.317Z",
+  "count": 95,
   "players": [
     {
       "name": "Jock Landale",
@@ -42,7 +42,12 @@
     {
       "name": "Ryan Kalkbrenner",
       "team": "CHA",
-      "status": "Day-To-Day"
+      "status": "Out"
+    },
+    {
+      "name": "Grayson Allen",
+      "team": "CHA",
+      "status": "Out"
     },
     {
       "name": "Dennis Schroder",
@@ -53,11 +58,6 @@
       "name": "Sion James",
       "team": "CHA",
       "status": "Day-To-Day"
-    },
-    {
-      "name": "Grayson Allen",
-      "team": "CHA",
-      "status": "Out"
     },
     {
       "name": "Kon Knueppel",
@@ -112,7 +112,7 @@
     {
       "name": "Cade Cunningham",
       "team": "DET",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Ebuka Okorie",
@@ -250,6 +250,11 @@
       "status": "Out"
     },
     {
+      "name": "Julian Reese",
+      "team": "NOP",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Trendon Watford",
       "team": "NOP",
       "status": "Out"
@@ -265,7 +270,22 @@
       "status": "Out"
     },
     {
+      "name": "Josh Hart",
+      "team": "NYK",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Miles McBride",
+      "team": "NYK",
+      "status": "Out"
+    },
+    {
+      "name": "Karl-Anthony Towns",
+      "team": "NYK",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Jalen Brunson",
       "team": "NYK",
       "status": "Day-To-Day"
     },
@@ -275,19 +295,9 @@
       "status": "Out"
     },
     {
-      "name": "Josh Hart",
-      "team": "NYK",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "OG Anunoby",
       "team": "NYK",
       "status": "Out"
-    },
-    {
-      "name": "Karl-Anthony Towns",
-      "team": "NYK",
-      "status": "Day-To-Day"
     },
     {
       "name": "Nikola Topic",
