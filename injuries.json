@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-24T23:54:06.995Z",
-  "count": 95,
+  "updatedAt": "2026-11-25T08:32:49.832Z",
+  "count": 93,
   "players": [
     {
       "name": "Jock Landale",
@@ -93,11 +93,6 @@
       "name": "Tobi Lawal",
       "team": "DAL",
       "status": "Out"
-    },
-    {
-      "name": "P.J. Washington",
-      "team": "DAL",
-      "status": "Day-To-Day"
     },
     {
       "name": "Dereck Lively II",
@@ -395,12 +390,12 @@
       "status": "Out"
     },
     {
-      "name": "Victor Wembanyama",
+      "name": "De'Aaron Fox",
       "team": "SAS",
       "status": "Day-To-Day"
     },
     {
-      "name": "De'Aaron Fox",
+      "name": "Victor Wembanyama",
       "team": "SAS",
       "status": "Day-To-Day"
     },
@@ -453,11 +448,6 @@
       "name": "Jaren Jackson Jr.",
       "team": "UTA",
       "status": "Out"
-    },
-    {
-      "name": "Tre Mann",
-      "team": "WAS",
-      "status": "Day-To-Day"
     },
     {
       "name": "Tristan Vukcevic",
