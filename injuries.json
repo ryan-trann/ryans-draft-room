@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-26T03:34:22.840Z",
-  "count": 93,
+  "updatedAt": "2026-11-26T16:53:49.448Z",
+  "count": 94,
   "players": [
     {
       "name": "Jock Landale",
@@ -47,7 +47,7 @@
     {
       "name": "Ryan Kalkbrenner",
       "team": "CHA",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Grayson Allen",
@@ -67,7 +67,7 @@
     {
       "name": "Jalen Smith",
       "team": "CHI",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Norman Powell",
@@ -110,6 +110,11 @@
       "status": "Out"
     },
     {
+      "name": "Jalen Duren",
+      "team": "DET",
+      "status": "Out"
+    },
+    {
       "name": "Cade Cunningham",
       "team": "DET",
       "status": "Day-To-Day"
@@ -126,11 +131,6 @@
     },
     {
       "name": "Duncan Robinson",
-      "team": "DET",
-      "status": "Out"
-    },
-    {
-      "name": "Jalen Duren",
       "team": "DET",
       "status": "Out"
     },
@@ -265,17 +265,17 @@
       "status": "Out"
     },
     {
+      "name": "Miles McBride",
+      "team": "NYK",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Andre Drummond",
       "team": "NYK",
       "status": "Day-To-Day"
     },
     {
       "name": "OG Anunoby",
-      "team": "NYK",
-      "status": "Out"
-    },
-    {
-      "name": "Miles McBride",
       "team": "NYK",
       "status": "Out"
     },
@@ -318,6 +318,11 @@
       "name": "Chet Holmgren",
       "team": "OKC",
       "status": "Out"
+    },
+    {
+      "name": "Colin Castleton",
+      "team": "ORL",
+      "status": "Day-To-Day"
     },
     {
       "name": "Jonathan Isaac",
@@ -382,7 +387,7 @@
     {
       "name": "Zach LaVine",
       "team": "SAC",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Maxime Raynaud",
@@ -397,7 +402,7 @@
     {
       "name": "De'Aaron Fox",
       "team": "SAS",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Dylan Harper",
