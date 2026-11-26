@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-25T19:15:21.317Z",
-  "count": 95,
+  "updatedAt": "2026-11-26T03:34:22.840Z",
+  "count": 93,
   "players": [
     {
       "name": "Jock Landale",
@@ -35,6 +35,11 @@
       "status": "Out"
     },
     {
+      "name": "Moritz Wagner",
+      "team": "BKN",
+      "status": "Out"
+    },
+    {
       "name": "Nolan Traore",
       "team": "BKN",
       "status": "Out"
@@ -55,11 +60,6 @@
       "status": "Out"
     },
     {
-      "name": "Sion James",
-      "team": "CHA",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Kon Knueppel",
       "team": "CHA",
       "status": "Out"
@@ -67,7 +67,7 @@
     {
       "name": "Jalen Smith",
       "team": "CHI",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Norman Powell",
@@ -135,16 +135,6 @@
       "status": "Out"
     },
     {
-      "name": "Yaxel Lendeborg",
-      "team": "GSW",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Brandon Williams",
-      "team": "GSW",
-      "status": "Out"
-    },
-    {
       "name": "Stephen Curry",
       "team": "GSW",
       "status": "Out"
@@ -205,6 +195,11 @@
       "status": "Out"
     },
     {
+      "name": "Zach Edey",
+      "team": "MEM",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Scotty Pippen Jr.",
       "team": "MEM",
       "status": "Out"
@@ -230,8 +225,8 @@
       "status": "Out"
     },
     {
-      "name": "Giannis Antetokounmpo",
-      "team": "MIA",
+      "name": "LaMelo Ball",
+      "team": "MIN",
       "status": "Day-To-Day"
     },
     {
@@ -270,9 +265,14 @@
       "status": "Out"
     },
     {
-      "name": "Josh Hart",
+      "name": "Andre Drummond",
       "team": "NYK",
       "status": "Day-To-Day"
+    },
+    {
+      "name": "OG Anunoby",
+      "team": "NYK",
+      "status": "Out"
     },
     {
       "name": "Miles McBride",
@@ -280,22 +280,7 @@
       "status": "Out"
     },
     {
-      "name": "Karl-Anthony Towns",
-      "team": "NYK",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Jalen Brunson",
-      "team": "NYK",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Jordan Clarkson",
-      "team": "NYK",
-      "status": "Out"
-    },
-    {
-      "name": "OG Anunoby",
       "team": "NYK",
       "status": "Out"
     },
@@ -360,6 +345,11 @@
       "status": "Day-To-Day"
     },
     {
+      "name": "Jaylen Brown",
+      "team": "PHI",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "Ariel Hukporti",
       "team": "PHI",
       "status": "Out"
@@ -390,6 +380,11 @@
       "status": "Out"
     },
     {
+      "name": "Zach LaVine",
+      "team": "SAC",
+      "status": "Out"
+    },
+    {
       "name": "Maxime Raynaud",
       "team": "SAC",
       "status": "Out"
@@ -402,12 +397,7 @@
     {
       "name": "De'Aaron Fox",
       "team": "SAS",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Victor Wembanyama",
-      "team": "SAS",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Dylan Harper",
