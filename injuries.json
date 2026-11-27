@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-26T16:53:49.448Z",
-  "count": 94,
+  "updatedAt": "2026-11-27T01:43:12.350Z",
+  "count": 98,
   "players": [
     {
       "name": "Jock Landale",
@@ -95,12 +95,12 @@
       "status": "Out"
     },
     {
-      "name": "Dereck Lively II",
+      "name": "Sergio de Larrea",
       "team": "DAL",
       "status": "Out"
     },
     {
-      "name": "Sergio de Larrea",
+      "name": "Dereck Lively II",
       "team": "DAL",
       "status": "Out"
     },
@@ -110,14 +110,19 @@
       "status": "Out"
     },
     {
-      "name": "Jalen Duren",
+      "name": "Duncan Robinson",
       "team": "DET",
       "status": "Out"
     },
     {
       "name": "Cade Cunningham",
       "team": "DET",
-      "status": "Day-To-Day"
+      "status": "Out"
+    },
+    {
+      "name": "Jalen Duren",
+      "team": "DET",
+      "status": "Out"
     },
     {
       "name": "Ebuka Okorie",
@@ -126,11 +131,6 @@
     },
     {
       "name": "Taurean Prince",
-      "team": "DET",
-      "status": "Out"
-    },
-    {
-      "name": "Duncan Robinson",
       "team": "DET",
       "status": "Out"
     },
@@ -155,6 +155,16 @@
       "status": "Out"
     },
     {
+      "name": "Kelly Oubre Jr.",
+      "team": "IND",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Larry Nance Jr.",
+      "team": "IND",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "T.J. McConnell",
       "team": "IND",
       "status": "Day-To-Day"
@@ -163,16 +173,6 @@
       "name": "Tyrese Haliburton",
       "team": "IND",
       "status": "Out"
-    },
-    {
-      "name": "Aaron Nesmith",
-      "team": "IND",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Larry Nance Jr.",
-      "team": "IND",
-      "status": "Day-To-Day"
     },
     {
       "name": "Ben Sheppard",
@@ -193,6 +193,11 @@
       "name": "Austin Reaves",
       "team": "LAL",
       "status": "Out"
+    },
+    {
+      "name": "Isaiah Stewart",
+      "team": "MEM",
+      "status": "Day-To-Day"
     },
     {
       "name": "Zach Edey",
@@ -225,6 +230,16 @@
       "status": "Out"
     },
     {
+      "name": "Giannis Antetokounmpo",
+      "team": "MIA",
+      "status": "Day-To-Day"
+    },
+    {
+      "name": "Andrew Wiggins",
+      "team": "MIA",
+      "status": "Day-To-Day"
+    },
+    {
       "name": "LaMelo Ball",
       "team": "MIN",
       "status": "Day-To-Day"
@@ -245,11 +260,6 @@
       "status": "Out"
     },
     {
-      "name": "Julian Reese",
-      "team": "NOP",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Trendon Watford",
       "team": "NOP",
       "status": "Out"
@@ -258,6 +268,11 @@
       "name": "Bennedict Mathurin",
       "team": "NOP",
       "status": "Out"
+    },
+    {
+      "name": "Julian Reese",
+      "team": "NOP",
+      "status": "Day-To-Day"
     },
     {
       "name": "Dejounte Murray",
@@ -270,9 +285,9 @@
       "status": "Day-To-Day"
     },
     {
-      "name": "Andre Drummond",
+      "name": "Jordan Clarkson",
       "team": "NYK",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "OG Anunoby",
@@ -280,9 +295,9 @@
       "status": "Out"
     },
     {
-      "name": "Jordan Clarkson",
+      "name": "Andre Drummond",
       "team": "NYK",
-      "status": "Out"
+      "status": "Day-To-Day"
     },
     {
       "name": "Nikola Topic",
@@ -352,7 +367,7 @@
     {
       "name": "Jaylen Brown",
       "team": "PHI",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Ariel Hukporti",
@@ -400,14 +415,14 @@
       "status": "Out"
     },
     {
-      "name": "De'Aaron Fox",
-      "team": "SAS",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Dylan Harper",
       "team": "SAS",
       "status": "Out"
+    },
+    {
+      "name": "De'Aaron Fox",
+      "team": "SAS",
+      "status": "Day-To-Day"
     },
     {
       "name": "Tobias Harris",
@@ -418,6 +433,11 @@
       "name": "Jayden Quaintance",
       "team": "SAS",
       "status": "Out"
+    },
+    {
+      "name": "Alijah Martin",
+      "team": "TOR",
+      "status": "Day-To-Day"
     },
     {
       "name": "Kawhi Leonard",
