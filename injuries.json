@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-27T12:18:42.742Z",
-  "count": 98,
+  "updatedAt": "2026-11-27T23:27:13.135Z",
+  "count": 102,
   "players": [
     {
       "name": "Jock Landale",
@@ -45,14 +45,14 @@
       "status": "Out"
     },
     {
-      "name": "Ryan Kalkbrenner",
-      "team": "CHA",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Grayson Allen",
       "team": "CHA",
       "status": "Out"
+    },
+    {
+      "name": "Ryan Kalkbrenner",
+      "team": "CHA",
+      "status": "Day-To-Day"
     },
     {
       "name": "Dennis Schroder",
@@ -63,6 +63,11 @@
       "name": "Kon Knueppel",
       "team": "CHA",
       "status": "Out"
+    },
+    {
+      "name": "Noa Essengue",
+      "team": "CHI",
+      "status": "Day-To-Day"
     },
     {
       "name": "Jalen Smith",
@@ -88,6 +93,11 @@
       "name": "Evan Mobley",
       "team": "CLE",
       "status": "Out"
+    },
+    {
+      "name": "Kyrie Irving",
+      "team": "DAL",
+      "status": "Day-To-Day"
     },
     {
       "name": "Tobi Lawal",
@@ -155,17 +165,17 @@
       "status": "Out"
     },
     {
-      "name": "Kelly Oubre Jr.",
-      "team": "IND",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Larry Nance Jr.",
-      "team": "IND",
+      "name": "Steven Adams",
+      "team": "HOU",
       "status": "Day-To-Day"
     },
     {
       "name": "T.J. McConnell",
+      "team": "IND",
+      "status": "Out"
+    },
+    {
+      "name": "Larry Nance Jr.",
       "team": "IND",
       "status": "Day-To-Day"
     },
@@ -187,11 +197,6 @@
     {
       "name": "Jordan Miller",
       "team": "LAC",
-      "status": "Out"
-    },
-    {
-      "name": "Austin Reaves",
-      "team": "LAL",
       "status": "Out"
     },
     {
@@ -230,19 +235,14 @@
       "status": "Out"
     },
     {
-      "name": "Giannis Antetokounmpo",
-      "team": "MIA",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Andrew Wiggins",
-      "team": "MIA",
-      "status": "Day-To-Day"
+      "name": "Kasparas Jakucionis",
+      "team": "MIL",
+      "status": "Out"
     },
     {
       "name": "LaMelo Ball",
       "team": "MIN",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Donte DiVincenzo",
@@ -282,11 +282,6 @@
     {
       "name": "Miles McBride",
       "team": "NYK",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Jordan Clarkson",
-      "team": "NYK",
       "status": "Out"
     },
     {
@@ -295,9 +290,24 @@
       "status": "Out"
     },
     {
-      "name": "Andre Drummond",
+      "name": "Jordan Clarkson",
+      "team": "NYK",
+      "status": "Out"
+    },
+    {
+      "name": "Karl-Anthony Towns",
       "team": "NYK",
       "status": "Day-To-Day"
+    },
+    {
+      "name": "Andre Drummond",
+      "team": "NYK",
+      "status": "Out"
+    },
+    {
+      "name": "Aday Mara",
+      "team": "OKC",
+      "status": "Out"
     },
     {
       "name": "Nikola Topic",
@@ -306,11 +316,6 @@
     },
     {
       "name": "Jaylin Williams",
-      "team": "OKC",
-      "status": "Out"
-    },
-    {
-      "name": "Aday Mara",
       "team": "OKC",
       "status": "Out"
     },
@@ -333,6 +338,16 @@
       "name": "Chet Holmgren",
       "team": "OKC",
       "status": "Out"
+    },
+    {
+      "name": "Kevin Porter Jr.",
+      "team": "ORL",
+      "status": "Out"
+    },
+    {
+      "name": "Anthony Black",
+      "team": "ORL",
+      "status": "Day-To-Day"
     },
     {
       "name": "Colin Castleton",
@@ -360,14 +375,14 @@
       "status": "Out"
     },
     {
-      "name": "Joel Embiid",
-      "team": "PHI",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Jaylen Brown",
       "team": "PHI",
       "status": "Out"
+    },
+    {
+      "name": "Joel Embiid",
+      "team": "PHI",
+      "status": "Day-To-Day"
     },
     {
       "name": "Ariel Hukporti",
@@ -377,6 +392,11 @@
     {
       "name": "Mark Williams",
       "team": "PHX",
+      "status": "Out"
+    },
+    {
+      "name": "Damian Lillard",
+      "team": "POR",
       "status": "Out"
     },
     {
@@ -435,11 +455,6 @@
       "status": "Out"
     },
     {
-      "name": "Alijah Martin",
-      "team": "TOR",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Kawhi Leonard",
       "team": "TOR",
       "status": "Out"
@@ -453,6 +468,11 @@
       "name": "RJ Barrett",
       "team": "TOR",
       "status": "Out"
+    },
+    {
+      "name": "Mo Bamba",
+      "team": "UTA",
+      "status": "Day-To-Day"
     },
     {
       "name": "Jaxson Hayes",
