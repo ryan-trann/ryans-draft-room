@@ -1,8 +1,8 @@
 {
   "source": "ESPN NBA injuries",
   "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries",
-  "updatedAt": "2026-11-27T23:27:13.135Z",
-  "count": 102,
+  "updatedAt": "2026-11-28T07:47:36.054Z",
+  "count": 100,
   "players": [
     {
       "name": "Jock Landale",
@@ -65,6 +65,11 @@
       "status": "Out"
     },
     {
+      "name": "Norman Powell",
+      "team": "CHI",
+      "status": "Out"
+    },
+    {
       "name": "Noa Essengue",
       "team": "CHI",
       "status": "Day-To-Day"
@@ -73,11 +78,6 @@
       "name": "Jalen Smith",
       "team": "CHI",
       "status": "Day-To-Day"
-    },
-    {
-      "name": "Norman Powell",
-      "team": "CHI",
-      "status": "Out"
     },
     {
       "name": "Caleb Wilson",
@@ -95,9 +95,14 @@
       "status": "Out"
     },
     {
-      "name": "Kyrie Irving",
+      "name": "Caleb Martin",
       "team": "DAL",
       "status": "Day-To-Day"
+    },
+    {
+      "name": "Kyrie Irving",
+      "team": "DAL",
+      "status": "Out"
     },
     {
       "name": "Tobi Lawal",
@@ -145,6 +150,11 @@
       "status": "Out"
     },
     {
+      "name": "Gui Santos",
+      "team": "GSW",
+      "status": "Out"
+    },
+    {
       "name": "Stephen Curry",
       "team": "GSW",
       "status": "Out"
@@ -175,11 +185,6 @@
       "status": "Out"
     },
     {
-      "name": "Larry Nance Jr.",
-      "team": "IND",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Tyrese Haliburton",
       "team": "IND",
       "status": "Out"
@@ -187,6 +192,11 @@
     {
       "name": "Ben Sheppard",
       "team": "IND",
+      "status": "Out"
+    },
+    {
+      "name": "Yanic Konan Niederhauser",
+      "team": "LAC",
       "status": "Out"
     },
     {
@@ -202,12 +212,7 @@
     {
       "name": "Isaiah Stewart",
       "team": "MEM",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Zach Edey",
-      "team": "MEM",
-      "status": "Day-To-Day"
+      "status": "Out"
     },
     {
       "name": "Scotty Pippen Jr.",
@@ -260,11 +265,6 @@
       "status": "Out"
     },
     {
-      "name": "Trendon Watford",
-      "team": "NOP",
-      "status": "Out"
-    },
-    {
       "name": "Bennedict Mathurin",
       "team": "NOP",
       "status": "Out"
@@ -295,22 +295,17 @@
       "status": "Out"
     },
     {
-      "name": "Karl-Anthony Towns",
-      "team": "NYK",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Andre Drummond",
       "team": "NYK",
       "status": "Out"
     },
     {
-      "name": "Aday Mara",
+      "name": "Nikola Topic",
       "team": "OKC",
       "status": "Out"
     },
     {
-      "name": "Nikola Topic",
+      "name": "Aday Mara",
       "team": "OKC",
       "status": "Out"
     },
@@ -340,17 +335,17 @@
       "status": "Out"
     },
     {
+      "name": "Colin Castleton",
+      "team": "ORL",
+      "status": "Out"
+    },
+    {
       "name": "Kevin Porter Jr.",
       "team": "ORL",
       "status": "Out"
     },
     {
       "name": "Anthony Black",
-      "team": "ORL",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Colin Castleton",
       "team": "ORL",
       "status": "Day-To-Day"
     },
@@ -375,14 +370,24 @@
       "status": "Out"
     },
     {
-      "name": "Jaylen Brown",
+      "name": "Joel Embiid",
       "team": "PHI",
       "status": "Out"
     },
     {
-      "name": "Joel Embiid",
+      "name": "LeBron James",
       "team": "PHI",
-      "status": "Day-To-Day"
+      "status": "Out"
+    },
+    {
+      "name": "Dean Wade",
+      "team": "PHI",
+      "status": "Out"
+    },
+    {
+      "name": "Jaylen Brown",
+      "team": "PHI",
+      "status": "Out"
     },
     {
       "name": "Ariel Hukporti",
@@ -435,16 +440,6 @@
       "status": "Out"
     },
     {
-      "name": "Dylan Harper",
-      "team": "SAS",
-      "status": "Out"
-    },
-    {
-      "name": "De'Aaron Fox",
-      "team": "SAS",
-      "status": "Day-To-Day"
-    },
-    {
       "name": "Tobias Harris",
       "team": "SAS",
       "status": "Out"
@@ -452,6 +447,11 @@
     {
       "name": "Jayden Quaintance",
       "team": "SAS",
+      "status": "Out"
+    },
+    {
+      "name": "Ja'Kobe Walter",
+      "team": "TOR",
       "status": "Out"
     },
     {
@@ -471,16 +471,6 @@
     },
     {
       "name": "Mo Bamba",
-      "team": "UTA",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Jaxson Hayes",
-      "team": "UTA",
-      "status": "Day-To-Day"
-    },
-    {
-      "name": "Jusuf Nurkic",
       "team": "UTA",
       "status": "Out"
     },
